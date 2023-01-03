@@ -1,9 +1,11 @@
+
 import { useState, useEffect } from 'react'
-import AuthPage from '../AuthPage/AuthPage'
+// import AuthPage from '../AuthPage/AuthPage'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
-import OrderHistoryPage from '../OrderHistotyPage/OrderHistoryPage'
+import CompletedOrdersPage from '../OrderHistotyPage/OrderHistoryPage.js'
 import { Routes, Route } from 'react-router-dom'
-import NavBar from '../../components/NavBar/NavBar'
+import NavBar from '../../components/NavBarLinks/NavBarLinks'
+import LandingPage from '../LandingPage/LandingPage'
 
 function App () {
   const [state, setState] = useState(null)
@@ -29,13 +31,12 @@ function App () {
         ? <>
           <NavBar />
           <Routes>
-            {/* <Route path='/fruits' element={<FruitsPage />} /> */}
             <Route path='/orders/new' element={<NewOrderPage />} />
-            <Route path='/orders' element={<OrderHistoryPage />} />
+            <Route path='/orders' element={<CompletedOrdersPage />} />
             <Route path='/' element={<NewOrderPage />} />
           </Routes>
         </>
-        : <AuthPage setUser={setUser}/>}
+        : <LandingPage setUser={setUser} />}
     </main>
   )
 }

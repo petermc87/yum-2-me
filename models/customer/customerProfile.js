@@ -1,15 +1,16 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const orderSchema = require('./order')
+const { Schema, model } = require('mongoose')
+require('./order')
 
-//will need to create functio
 const customerProfileSchema = new Schema({
-    image: { type: String },
-    location: { type: String, required: true },
-    previousOrders: [{ type: Schema.Types.ObjectId, ref: 'Order'}],
-    currentOrder: { type: Schema.Types.ObjectId, ref: 'Order'}
+  image: { type: String },
+  location: { type: String, required: true },
+  user: { type: Schema.Types.ObjectId, ref: 'Order' },
+  previousOrders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
+  currentOrder: { type: Schema.Types.ObjectId, ref: 'Order' }
 }, {
-    timestamps: true
+  timestamps: true
 })
 
-module.exports = mongoose.model('CustomerProfile', customerProfileSchema)
+const Customer = model('Customer', customerProfileSchema)
+
+module.exports = Customer
