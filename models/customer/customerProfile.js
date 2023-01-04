@@ -4,7 +4,7 @@ require('./order')
 const customerProfileSchema = new Schema({
   image: { type: String },
   location: { type: String, required: true },
-  user: { type: Schema.Types.ObjectId, ref: 'Order' },
+  user: { type: String },
   previousOrders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
   currentOrder: { type: Schema.Types.ObjectId, ref: 'Order' }
 }, {

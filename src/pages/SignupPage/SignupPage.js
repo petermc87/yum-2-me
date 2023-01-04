@@ -5,19 +5,11 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm'
 import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer'
 
-export default function SignUpPage(props) {
+export default function SignUpPage (props) {
   return (
     <>
-    {/* <header>
-      <NavBar />
-    </header>
-    <main> */}
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <SignUpForm setUser={props.setUser} />
-    {/* </main>
-    <footer>
-      <Footer />
-    </footer> */}
     </>
   )
 }
