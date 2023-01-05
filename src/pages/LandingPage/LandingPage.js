@@ -22,20 +22,20 @@ export default function LandingPage (props) {
         <main>
           <article className='top-content'>
             <div className='top-container' id='top-container-1'>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12 text-center">
-                    <h3 class="animate-charcter"> CONVENIENT</h3>
-                    <h3 class="animate-charcter">&nbsp;AND </h3>
-                    <h3 class="animate-charcter">&nbsp;&nbsp;TRANSPARENT </h3>
-                    <h3 class="animate-charcter">&nbsp;&nbsp;&nbsp; DELIVERY</h3>
+              <div class='container'>
+                <div class='row'>
+                  <div class='col-md-12 text-center'>
+                    <h3 class='animate-charcter'> CONVENIENT</h3>
+                    <h3 class='animate-charcter'>&nbsp;AND </h3>
+                    <h3 class='animate-charcter'>&nbsp;&nbsp;TRANSPARENT </h3>
+                    <h3 class='animate-charcter'>&nbsp;&nbsp;&nbsp; DELIVERY</h3>
                   </div>
                 </div>
               </div>
               {/* <h1></h1>
               <br/>
               <h2>Oh So Yummy!</h2> */}
-              </div>
+            </div>
             <div className='top-container'>
               <LoginLinks />
               <Routes>

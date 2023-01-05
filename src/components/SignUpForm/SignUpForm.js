@@ -3,12 +3,12 @@ import { signUp } from '../../utilities/users-service'
 
 export default class SignUpForm extends Component {
   state = {
-        name: '',
-        email: '',
-        password: '',
-        confirm: '',
-        userType: false,
-        error: ''
+    name: '',
+    email: '',
+    password: '',
+    confirm: '',
+    userType: false,
+    error: ''
   }
 
   handleSubmit = async (evt) => {
@@ -36,12 +36,12 @@ export default class SignUpForm extends Component {
       <div>
         <div className='form-container'>
           <form autoComplete='off' onSubmit={this.handleSubmit}>
-            <input type='text' name='name' value={this.state.name} onChange={this.handleChange} placeholder='name'required />
-            <input type='email' name='email' value={this.state.email} onChange={this.handleChange} placeholder='email'required />
+            <input type='text' name='name' value={this.state.name} onChange={this.handleChange} placeholder='name' required />
+            <input type='email' name='email' value={this.state.email} onChange={this.handleChange} placeholder='email' required />
             <input type='password' name='password' value={this.state.password} onChange={this.handleChange} placeholder='password' required />
             <input type='password' name='confirm' value={this.state.confirm} onChange={this.handleChange} placeholder='confirm' required />
             <label>Are you a restaurant?</label>
-            <input type='checkbox' name='userType' checked={this.state.userType} onChange={ (evt) => this.setState({ userType: evt.target.checked })} />
+            <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} />
             <button type='submit' disabled={disable}>SIGN UP</button>
           </form>
         </div>
@@ -51,17 +51,11 @@ export default class SignUpForm extends Component {
   }
 }
 
-
-
-
-
 // import { Component } from 'react'
 // import { signUp } from '../../utilities/users-service'
 // import { useState } from 'react'
 
-
 // export default class SignUpForm extends Component {
-
 
 //     state = {
 //         name: '',

@@ -30,7 +30,7 @@ function App () {
     <>
       {user
         ? <>
-          <HomePage user={user} setUser={setUser}/>
+          <HomePage user={user} setUser={setUser} />
         </>
         : <LandingPage setUser={setUser} />}
     </>

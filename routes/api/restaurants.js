@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { dataController, apiController } = require('../../controllers/api/restaurants')
 
-
 // Create
 router.post('/', dataController.create, apiController.show)
 // Index
@@ -13,7 +12,6 @@ router.delete('/:id', dataController.destroy, apiController.show)
 router.put('/:id', dataController.update, apiController.show)
 // Show
 router.get('/:id', dataController.show, apiController.show)
-
 
 module.exports = router
 // // POST /api/customers
