@@ -7,7 +7,7 @@ export default function NavBarLinks (props) {
         <Link to='/orders'>Order History</Link>
       </li>
       <li id='icon'>
-        <Link className='cat-icon'to='/new'><CgProfile size={22}/></Link>
+        <Link className='cat-icon'to='/profile'><CgProfile size={22}/></Link>
       </li>
     </>
   )

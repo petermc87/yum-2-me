@@ -1,8 +1,9 @@
 require('dotenv').config()
 require('./database')
 
-const Category = require('../models/restaurant/category')
 const Item = require('../models/restaurant/item');
+const Category = require('../models/restaurant/category')
+
 // const Restaurant = require('../models/restaurant/restaurantProfile')
 
 (async function () {

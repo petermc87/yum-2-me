@@ -1,6 +1,33 @@
-export default function RestuarantProfile (props) {
+import RestaurantProfileFormn from '../../components/UserProfileForm/RestaurantProfileForm'
+
+export default function RestaurantProfilePage ({
+  createRestaurant,
+  setNewRestaurant, 
+  newRestaurant,
+  setFoundRestaurant,
+  foundRestaurant, 
+  setRestaurants, 
+  restaurants, 
+  restaurantHandleChange,
+  items,
+  foundItem,
+  setFoundItem
+
+}) {
     return (
-      <h1>RestaurantProfilePage</h1>
+      <>
+        <RestaurantProfileFormn  
+          createRestaurant={createRestaurant} 
+          setNewRestaurant={setNewRestaurant} 
+          newRestaurant={newRestaurant} 
+          setFoundRestaurant={setFoundRestaurant} 
+          foundRestaurant={foundRestaurant} 
+          restaurantHandleChange={restaurantHandleChange}
+          items={items} 
+          foundItem={foundItem}
+          setFoundItem={setFoundItem}
+        />
+      </>
     )
   }
-  
+   

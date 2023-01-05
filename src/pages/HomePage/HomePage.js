@@ -13,12 +13,20 @@ import CustomerProfilePage from '../ProfilePages/CustomerProfile'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-// import LocalDiningIcon from '@mui/icons-material/LocalDining';
-// import { Button }from '@mui/material';
 
 export default function HomePage (props) {
+  const [items, setItems] = useState([])
+  const [foundItem, setFoundItem] = useState(null)
+
   const [restaurants, setRestaurants] = useState([])
   const [foundRestaurant, setFoundRestaurant] = useState(null)
+  const [newRestaurant, setNewRestaurant] = useState({
+    name: '',
+    location: '',
+    type: '',
+    user: props.user._id,
+    menu: []
+  })
   const [customers, setCustomers] = useState([])
   const [foundCustomer, setFoundCustomer] = useState(null)
   const [newCustomer, setNewCustomer] = useState({
@@ -27,7 +35,7 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-    // create
+    // create customer
     const createCustomer = async () => {
       try {
         console.log('posting')
@@ -49,8 +57,31 @@ export default function HomePage (props) {
         console.error(error)
       }
     }
+        // create
+        const createRestaurant = async () => {
+          try {
+            const response = await fetch('/api/restaurants', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ ...newRestaurant })
+            })
+            const data = await response.json()
+            setFoundRestaurant(data)
+            setNewRestaurant({
+              name: '',
+              location: '',
+              type:'',
+              user: props.user._id,
+              menu: []
+            })
+          } catch (error) {
+            console.error(error)
+          }
+        }
 
-  //Index
+  //Index Restaurants
   const getRestaurants = async () => {
     try {
       const response = await fetch('/api/restaurants')
@@ -60,7 +91,7 @@ export default function HomePage (props) {
       console.log(err)
     }
   }
-  //Index
+  //Index Customers
   const getCustomers = async () => {
     try {
       const response = await fetch('/api/customers')
@@ -71,22 +102,41 @@ export default function HomePage (props) {
     }
   }
 
+  //Index Items
+  const getItems= async () => {
+    try {
+      const response = await fetch('/api/items')
+      const data = await response.json()
+      setItems(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
   }
 
+  const restaurantHandleChange = (evt) => {
+    setNewRestaurant({ ...newRestaurant, [evt.target.name]: evt.target.value })
+  }
+
+
   useEffect(() => {
     getRestaurants()
-  }, [])
+  }, [foundRestaurant])
 
   useEffect(() => {
     getCustomers()
   }, [foundCustomer])
 
+  useEffect(() => {
+    getItems()
+  }, [foundItem])
+
+
   return (
     <>
-    
-
       <body>
         <header>
           <nav aria-label='Main Navigation' role='navigation'>
@@ -107,18 +157,19 @@ export default function HomePage (props) {
           <Routes>
             <>
             { props.user.userType ?
-              <Route path='/new' element ={<RestaurantProfilePage user={props.user} /> } />
+              <Route path='/profile' element ={<RestaurantProfilePage user={props.user} setNewRestuarant={setNewRestaurant} newRestaurant={newRestaurant} setRestaurants={setRestaurants} restaurants={restaurants} foundRestaurant={foundRestaurant} setFoundRestaurant={setFoundRestaurant} createRestaurant ={createRestaurant} restaurantHandleChange={restaurantHandleChange} items={items} foundItem={setFoundItem}/> } />
                 :
                 <>
                 <Route path='/orders/new' element={<NewOrderPage foundRestaurant={foundRestaurant} />} />
                 <Route path='/orders' element={<OrderHistoryPage />} />
-                <Route path='/home' element ={<Restaurants setRestaurants={setRestaurants} restaurants={restaurants} foundRestaurant={foundRestaurant} setFoundRestaurant={setFoundRestaurant}/> } />
-                <Route path='/new' element ={<CustomerProfilePage handleChange = {handleChange} newCustomer={newCustomer} setNewCustomer={setNewCustomer} createCustomer={createCustomer} /> } />
+                <Route path='/home' element ={<Restaurants setRestaurants={setRestaurants} restaurants={restaurants} foundRestaurant={foundRestaurant} setFoundRestaurant={setFoundRestaurant} createRestaurant ={createRestaurant}/> } />
+                <Route path='/profile' element ={<CustomerProfilePage handleChange = {handleChange} newCustomer={newCustomer} setNewCustomer={setNewCustomer} createCustomer={createCustomer} /> } />
               </>
             }
             </>
           </Routes>
           </section>
+          <Perks />
           <Perks />
         </main>
         <footer>
