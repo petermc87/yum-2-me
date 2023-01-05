@@ -7,7 +7,7 @@ export default function CreateCustomerProfile ( {
 {
     return (
         <>
-        <div className='form-container'>
+        <div className='form-container' id='form-container-profile'>
         <h1>Create your profile below</h1>
           <form autoComplete='off' onSubmit={createCustomer}>
             <input type='text' name='image' value={newCustomer.image} onChange={handleChange} placeholder='image'/>

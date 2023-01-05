@@ -36,13 +36,9 @@ export default class SignUpForm extends Component {
       <div>
         <div className='form-container'>
           <form autoComplete='off' onSubmit={this.handleSubmit}>
-            {/* <label>Name</label> */}
             <input type='text' name='name' value={this.state.name} onChange={this.handleChange} placeholder='name'required />
-            {/* <label>Email</label> */}
             <input type='email' name='email' value={this.state.email} onChange={this.handleChange} placeholder='email'required />
-            {/* <label>Password</label> */}
             <input type='password' name='password' value={this.state.password} onChange={this.handleChange} placeholder='password' required />
-            {/* <label>Confirm</label> */}
             <input type='password' name='confirm' value={this.state.confirm} onChange={this.handleChange} placeholder='confirm' required />
             <label>Are you a restaurant?</label>
             <input type='checkbox' name='userType' checked={this.state.userType} onChange={ (evt) => this.setState({ userType: evt.target.checked })} />

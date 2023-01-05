@@ -13,7 +13,7 @@ export default function CreateRestaurantProfile ({
 
     return (
         <>
-        <div className='form-container'>
+        <div className='form-container' id='form-container-profile'>
         <h1>Create your profile below</h1>
           <form autoComplete='off' onSubmit={createRestaurant}>
             <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required/>
@@ -36,7 +36,7 @@ export default function CreateRestaurantProfile ({
                     <div className='res-icon' key={item._id} >
                     <h1>{item.name}</h1>
                         <p>{item.type}</p>
-                        <p>{item.category}</p>
+                        {/* <p>{item.category}</p> */}
                         <button to='/profile' onClick={() => setFoundItem(item)}>
                             {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
                             Add Item

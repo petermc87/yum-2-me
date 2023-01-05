@@ -105,9 +105,7 @@
   }
 }
 
-/* .h3{
-  line-height: 10px;
-} */
+
 
 /*--- HOME PAGE ----*/
 body{
@@ -272,4 +270,11 @@ li{
 
 footer > ul{
   box-shadow: none;
+}
+
+/* FORM CONTAINER */
+#form-container-profile{
+  width: 100vw;
+  padding: 2rem;
+  text-align: center;
 }
