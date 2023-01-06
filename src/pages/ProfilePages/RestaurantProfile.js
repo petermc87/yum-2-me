@@ -34,7 +34,7 @@ export default function RestaurantProfilePage ({
   selectedItems,
   handleAddItem,
   handleRemoveItem
-  
+
 }) {
   return (
     <>
@@ -50,7 +50,7 @@ export default function RestaurantProfilePage ({
         starterItems={starterItems}
         foundStarterItem={foundStarterItem}
         setFoundStarterItem={setFoundStarterItem}
- 
+
         mainItems={mainItems}
         setFoundMainItems={setFoundMainItems}
         foundMainItem={foundMainItem}
@@ -63,9 +63,9 @@ export default function RestaurantProfilePage ({
         setFoundSideItem={setFoundSideItem}
         foundSideItem={foundSideItem}
 
-        drinkItems={drinkItems} 
-        setFoundDrinkItem={setFoundDrinkItem} 
-        foundDrinkItem={foundDrinkItem}  
+        drinkItems={drinkItems}
+        setFoundDrinkItem={setFoundDrinkItem}
+        foundDrinkItem={foundDrinkItem}
 
         selectedItems={selectedItems}
         handleAddItem={handleAddItem}

@@ -9,7 +9,7 @@
     --tan-3: #E2D9D1;
     --tan-4: #D3C1AE;
     --orange: #F67F00;
-    --text-light: #968c84;
+    /* --text-light: #968c84; */
     --text-dark: #615954;
    
   }
@@ -184,33 +184,100 @@ main{
   /* border: solid purple */
   background-image: url("/home/petermc/Desktop/software_homework/unit_3/yum2me/public/images/restaurantback.png");
   /* opacity: 0.7; */
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.3);
-  text-shadow: 2px 2px 3px rgb(126, 69, 69);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+  /* text-shadow: 2px 2px 3px rgb(126, 69, 69); */
   color: #b0d3f7;
   padding: 2rem;
   margin: 0 auto;
   margin-top: 2rem;
   width: 35vw;
   text-align: center;
-  
 }
 
+/*--- MENU ITEMS--- */
+#menu-item {
+  background-image: none;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 auto;
+  width: 70vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.5fr;
+}
+
+.menu-image, .menu-details, .menu-button{
+  text-align: center;
+}
+
+#menu-item > p, #menu-item > h1, #menu-item > button, .menu-image, .menu-button{
+  margin: 1rem;
+}
+
+.menu-button > button{
+  /* border: solid black; */
+  width: 2.5rem;
+  height:2.5rem;
+  border-radius: 50%;
+  background-color: rgb(191, 3, 3);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.menu-button > button:hover{
+  /* border: solid black; */
+  cursor: pointer;
+  background-color: rgb(216, 108, 108);
+}
+
+
+.menu-details{
+  border-left: solid gray;
+  border-right: solid gray;
+  border-width: 0.5px;
+  border-radius: 0;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.menu-details > p, .menu-details > h4{
+  margin: 0.5rem;
+}
 form {
   display: grid;
   grid-template-rows: 2fr 2fr;
   gap: 1.25vmin;
   color: var(--text-light);
-  /* border: solid black; */
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0 0 0 / 30%);
+  padding: 2rem;
+}
+
+form > h1, .menu-select > h1{
+  border-bottom: solid rgb(196, 196, 196);
+  border-width: 0.5px;
+  padding-bottom: 2rem;
+  border-radius: 0;
+}
+
+.menu-select {
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0 0 0 / 30%);
+  padding: 2rem;
+}
+
+.menu-select > .res-icon > .menu-button > button{
+  background-color: rgb(6, 165, 70);
+}
+
+.menu-select > .res-icon > .menu-button > button:hover{
+  background-color: rgb(37, 235, 116);
+  cursor: pointer;
 }
 
 
 input {
   padding: 1vmin;
   font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
+  border: .2vmin solid rgb(208, 208, 208);
   border-radius: .5vmin;
   color: var(--text-dark);
-  background-image: none !important; /* prevent lastpass */
+  background-image: none !important; 
   outline: none;
 }
 
@@ -231,7 +298,6 @@ input {
   width: 90%;
   text-align: center;
   border-radius: 0;
-  /* text-shadow: 2px 2px 3px rgb(126, 69, 69); */
   color: white;
 
 }
@@ -240,12 +306,7 @@ input {
   border-radius: 0;
 }
 
-h1{
-  font-size: 1.5rem;
-  line-height: 25px;
-  text-shadow: 1px 1px 2px rgb(126, 69, 69);
 
-}
 
 .logo, h2{
   font-family: 'Yellowtail', cursive;
@@ -274,8 +335,9 @@ footer > ul{
 
 /* FORM CONTAINER */
 #form-container-profile{
-  width: 70vw;
+  /* width: 70vw; */
   padding: 2rem;
   text-align: center;
   align-items: center;
 }
+

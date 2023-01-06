@@ -33,8 +33,6 @@ export default function CreateRestaurantProfile ({
 
   handleRemoveItem
 }) {
-
-
   return (
     <>
       <div className='form-container' id='form-container-profile'>
@@ -43,14 +41,10 @@ export default function CreateRestaurantProfile ({
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />
-          
-          <button type='submit'>CREATE
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
-          </button>
-        </form>
+
           <h1>Selected Items</h1>
           <>
-          <h2>~ Starters ~</h2>
+            <h2>~ Starters ~</h2>
             {
                 selectedItems.length > 0
                   ? <>
@@ -58,16 +52,21 @@ export default function CreateRestaurantProfile ({
                       selectedItems.filter(item => item.category === '63b4374e29fa968943911bbf').map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
                                 <button onClick={() => {
-                                handleRemoveItem(item)
-                              }}>Remove</button>
-
+                                  handleRemoveItem(item)
+                                }}
+                                >&#10006;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -78,7 +77,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Mains ~</h2>
+            <h2>~ Mains ~</h2>
             {
                 selectedItems.length > 0
                   ? <>
@@ -86,16 +85,21 @@ export default function CreateRestaurantProfile ({
                       selectedItems.filter(item => item.category === '63b4374e29fa968943911bc0').map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
                                 <button onClick={() => {
-                                handleRemoveItem(item)
-                              }}>Remove</button>
-
+                                  handleRemoveItem(item)
+                                }}
+                                >&#10006;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -106,7 +110,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Sides ~</h2>
+            <h2>~ Sides ~</h2>
             {
                 selectedItems.length > 0
                   ? <>
@@ -114,16 +118,21 @@ export default function CreateRestaurantProfile ({
                       selectedItems.filter(item => item.category === '63b4374e29fa968943911bc1').map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
                                 <button onClick={() => {
-                                handleRemoveItem(item)
-                              }}>Remove</button>
-
+                                  handleRemoveItem(item)
+                                }}
+                                >&#10006;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -134,7 +143,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Desserts ~</h2>
+            <h2>~ Desserts ~</h2>
             {
                 selectedItems.length > 0
                   ? <>
@@ -142,16 +151,21 @@ export default function CreateRestaurantProfile ({
                       selectedItems.filter(item => item.category === '63b4374e29fa968943911bc2').map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
                                 <button onClick={() => {
-                                handleRemoveItem(item)
-                              }}>Remove</button>
-
+                                  handleRemoveItem(item)
+                                }}
+                                >&#10006;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -162,7 +176,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Drinks ~</h2>
+            <h2>~ Drinks ~</h2>
             {
                 selectedItems.length > 0
                   ? <>
@@ -170,16 +184,21 @@ export default function CreateRestaurantProfile ({
                       selectedItems.filter(item => item.category === '63b4374e29fa968943911bc3').map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
                                 <button onClick={() => {
-                                handleRemoveItem(item)
-                              }}>Remove</button>
-
+                                  handleRemoveItem(item)
+                                }}
+                                >&#10006;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -189,6 +208,12 @@ export default function CreateRestaurantProfile ({
                   : 'No items to display'
               }
           </>
+          <button type='submit'>CREATE
+            <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
+          </button>
+        </form>
+        <div className='menu-select'>
+          <br />
           <h1>Select Menu Items</h1>
           <h2>~ Starters ~</h2>
           <>
@@ -199,14 +224,21 @@ export default function CreateRestaurantProfile ({
                       starterItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              <button onClick={() => {
-                                handleAddItem(item)
-                              }}>Add Item</button>
-
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
+                                <button onClick={() => {
+                                  handleAddItem(item)
+                                }}
+                                >&#x2713;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -217,7 +249,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Mains ~</h2>
+            <h2>~ Mains ~</h2>
             {
                 mainItems
                   ? <>
@@ -225,13 +257,21 @@ export default function CreateRestaurantProfile ({
                       mainItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              <button onClick={() => {
-                                handleAddItem(item)
-                              }}>Add Item</button>
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
+                                <button onClick={() => {
+                                  handleAddItem(item)
+                                }}
+                                >&#x2713;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -242,7 +282,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Sides ~</h2>
+            <h2>~ Sides ~</h2>
             {
                 sideItems
                   ? <>
@@ -250,13 +290,21 @@ export default function CreateRestaurantProfile ({
                       sideItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              <button onClick={() => {
-                                handleAddItem(item)
-                              }}>Add Item</button>
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
+                                <button onClick={() => {
+                                  handleAddItem(item)
+                                }}
+                                >&#x2713;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -267,7 +315,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Desserts ~</h2>
+            <h2>~ Desserts ~</h2>
             {
                 dessertItems
                   ? <>
@@ -275,13 +323,21 @@ export default function CreateRestaurantProfile ({
                       dessertItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              <button onClick={() => {
-                                handleAddItem(item)
-                              }}>Add Item</button>
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
+                                <button onClick={() => {
+                                  handleAddItem(item)
+                                }}
+                                >&#x2713;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -292,7 +348,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>~ Drinks ~</h2>
+            <h2>~ Drinks ~</h2>
             {
                 drinkItems
                   ? <>
@@ -300,13 +356,21 @@ export default function CreateRestaurantProfile ({
                       drinkItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={item._id}>
-                              <h1>{item.name}</h1>
-                              <p>{item.type}</p>
-                              {/* <p>{item.category}</p> */}
-                              <button onClick={() => {
-                                handleAddItem(item)
-                              }}>Add Item</button>
+                            <div className='res-icon' id='menu-item' key={item._id}>
+                              <div className='menu-image'>
+                                {item.image}
+                              </div>
+                              <div className='menu-details'>
+                                <h4>{item.name}</h4>
+                                <p>${item.price}</p>
+                              </div>
+                              <div className='menu-button'>
+                                <button onClick={() => {
+                                  handleAddItem(item)
+                                }}
+                                >&#x2713;
+                                </button>
+                              </div>
                             </div>
                           </>
                         )
@@ -315,62 +379,13 @@ export default function CreateRestaurantProfile ({
                   </>
                   : 'No drinks to display'
               }
-          </>         
+          </>
+        </div>
       </div>
     </>
+
   )
 }
 
-/* <div>
-            <div>
-             <button onClick={()=>{
-                // this.props.user = null
-               " props.user"
-             }}>LOG OUT</button>
-            </div>
-         </div> */
-
-
-
-
-      //    <button to='/profile' onClick={handleStarters}>
-      //    {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-      //    Add Item
-      //  </button>
-
-      //    <Mains 
-      //    getMainItems={getMainItems}
-      //    mainItems={mainItems}
-      //    setFoundMainItem={setFoundMainItem}
-      //    foundMainItem={found}
-      //  />
-      //  <>
-
-
-
-        //  <h2>Mains</h2>
-        //  <>
-        //    {
-        //        mainItems
-        //          ? <>
-        //            {
-        //              mainItems.map((mainItem) => {
-        //                return (
-        //                  <>
-        //                    <div className='res-icon' key={mainItem._id}>
-        //                      <h1>{mainItem.name}</h1>
-        //                      <p>{mainItem.type}</p>
-        //                      {/* <p>{item.category}</p> */}
-        //                      <button to='/profile' onClick={() => setFoundMainItem(mainItem)}>
-        //                        {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-        //                        Add Item
-        //                      </button>
-        //                    </div>
-        //                  </>
-        //                )
-        //              })
-        //            }
-        //          </>
-        //          : 'No mains to display'
-        //      }
-        //  </>
+// Tick Unicode
+// &#x2713;

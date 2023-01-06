@@ -58,4 +58,3 @@ const Category = require('../models/restaurant/category')
 
   process.exit()
 })()
-

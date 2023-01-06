@@ -6,8 +6,6 @@ export default function Mains ({
   setFoundMainItem,
   foundMainItem
 }) {
-
-
   return (
     <>
       <h2>Mains</h2>
@@ -39,11 +37,6 @@ export default function Mains ({
     </>
   )
 }
-
-
-
-
-
 
 // <>
 // {

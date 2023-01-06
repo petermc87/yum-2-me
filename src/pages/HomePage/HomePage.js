@@ -15,30 +15,28 @@ import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 
 export default function HomePage (props) {
-  //starters
+  // starters
   const [starterItems, setStarterItems] = useState([])
   const [foundStarterItem, setFoundStarterItem] = useState(null)
   const [selectedItems, setSelectedItems] = useState([])
 
-  //mains
+  // mains
   const [mainItems, setMainItems] = useState([])
   const [foundMainItem, setFoundMainItem] = useState(null)
 
-  //sides
+  // sides
   const [sideItems, setSideItems] = useState([])
   const [foundSideItem, setFoundSideItem] = useState(null)
 
-  //desserts
+  // desserts
   const [dessertItems, setDessertItems] = useState([])
   const [foundDessertItem, setFoundDessertItem] = useState(null)
 
-  //drinks
+  // drinks
   const [drinkItems, setDrinkItems] = useState([])
-  const [foundDrinkItem, setFoundDrinkItem] = useState(null) 
+  const [foundDrinkItem, setFoundDrinkItem] = useState(null)
 
-
-
-  //restaurants
+  // restaurants
   const [restaurants, setRestaurants] = useState([])
   const [foundRestaurant, setFoundRestaurant] = useState(null)
   const [newRestaurant, setNewRestaurant] = useState({
@@ -137,48 +135,46 @@ export default function HomePage (props) {
     }
   }
 
-    // Index main items
-    const getMainItems = async () => {
-      try {
-        const response = await fetch('/api/items')
-        const data = await response.json()
-        setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
-      } catch (err) {
-        console.log(err)
-      }
+  // Index main items
+  const getMainItems = async () => {
+    try {
+      const response = await fetch('/api/items')
+      const data = await response.json()
+      setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
+    } catch (err) {
+      console.log(err)
     }
-    // Index side items
-      const getSideItems = async () => {
-        try {
-          const response = await fetch('/api/items')
-          const data = await response.json()
-          setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
-        } catch (err) {
-          console.log(err)
-        }
-      }
-        // Index dessert items
-        const getDessertItems = async () => {
-          try {
-            const response = await fetch('/api/items')
-            const data = await response.json()
-            setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
-          } catch (err) {
-            console.log(err)
-          }
-        }
-        // Index drink items
-        const getDrinkItems = async () => {
-          try {
-            const response = await fetch('/api/items')
-            const data = await response.json()
-            setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
-          } catch (err) {
-            console.log(err)
-          }
-        }
-    
-
+  }
+  // Index side items
+  const getSideItems = async () => {
+    try {
+      const response = await fetch('/api/items')
+      const data = await response.json()
+      setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  // Index dessert items
+  const getDessertItems = async () => {
+    try {
+      const response = await fetch('/api/items')
+      const data = await response.json()
+      setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  // Index drink items
+  const getDrinkItems = async () => {
+    try {
+      const response = await fetch('/api/items')
+      const data = await response.json()
+      setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
@@ -188,20 +184,20 @@ export default function HomePage (props) {
     setNewRestaurant({ ...newRestaurant, [evt.target.name]: evt.target.value })
   }
 
-//adding to selected items only if it already isn't in the list
-const handleAddItem = (item) => {
-  console.log(item.category)
-  if (selectedItems.includes(item) == false){
-    setSelectedItems(copyItems => [ ...copyItems, item])
+  // adding to selected items only if it already isn't in the list
+  const handleAddItem = (item) => {
+    console.log(item.category)
+    if (selectedItems.includes(item) == false) {
+      setSelectedItems(copyItems => [...copyItems, item])
+    }
   }
-}
 
-//updating selected list without the item to remove
-const handleRemoveItem = (removedItem) => {
-  setSelectedItems((selectedItems) => 
-    selectedItems.filter((item) => item._id != removedItem._id)
-  )
-}
+  // updating selected list without the item to remove
+  const handleRemoveItem = (removedItem) => {
+    setSelectedItems((selectedItems) =>
+      selectedItems.filter((item) => item._id != removedItem._id)
+    )
+  }
 
   useEffect(() => {
     getRestaurants()
@@ -211,8 +207,7 @@ const handleRemoveItem = (removedItem) => {
     getCustomers()
   }, [foundCustomer])
 
-
-//items
+  // items
   useEffect(() => {
     getStarterItems()
   }, [foundStarterItem])
@@ -234,7 +229,7 @@ const handleRemoveItem = (removedItem) => {
   }, [foundDrinkItem])
 
   // useEffect(() => {
-  //   selectedItems  
+  //   selectedItems
   // }, [])
 
   return (
@@ -259,59 +254,64 @@ const handleRemoveItem = (removedItem) => {
             <Routes>
               <>
                 {props.user.userType
-                  ? <Route path='/profile' element={<RestaurantProfilePage 
-                      drinkItems={drinkItems} 
-                      setFoundDrinkItem={setFoundDrinkItem} 
-                      foundDrinkItem={foundDrinkItem}  
+                  ? <Route
+                      path='/profile' element={<RestaurantProfilePage
+                        drinkItems={drinkItems}
+                        setFoundDrinkItem={setFoundDrinkItem}
+                        foundDrinkItem={foundDrinkItem}
 
-                      dessertItems={dessertItems} 
-                      setFoundDessertItem={setFoundDessertItem} 
-                      foundDessertItem={foundDessertItem}
+                        dessertItems={dessertItems}
+                        setFoundDessertItem={setFoundDessertItem}
+                        foundDessertItem={foundDessertItem}
 
-                      sideItems={sideItems}
-                      setFoundSideItem={setFoundSideItem}
-                      foundSideItem={foundSideItem}
+                        sideItems={sideItems}
+                        setFoundSideItem={setFoundSideItem}
+                        foundSideItem={foundSideItem}
 
-                      foundMainItem={foundMainItem} 
-                      mainItems={mainItems} 
-                      setFoundMainItem={setFoundMainItem}  
+                        foundMainItem={foundMainItem}
+                        mainItems={mainItems}
+                        setFoundMainItem={setFoundMainItem}
 
-                      setFoundStarterItem={setFoundStarterItem} 
-                      starterItems={starterItems}
-                    
+                        setFoundStarterItem={setFoundStarterItem}
+                        starterItems={starterItems}
 
-                      selectedItems={selectedItems}
-                      handleAddItem={handleAddItem}
+                        selectedItems={selectedItems}
+                        handleAddItem={handleAddItem}
 
-                      handleRemoveItem={handleRemoveItem}
-                      
-                      user={props.user} 
-            
-                      setNewRestuarant={setNewRestaurant}
-                      newRestaurant={newRestaurant} 
-                      setRestaurants={setRestaurants} 
-                      restaurants={restaurants} 
-                      foundRestaurant={foundRestaurant} 
-                      setFoundRestaurant={setFoundRestaurant} 
-                      createRestaurant={createRestaurant} 
-                      restaurantHandleChange={restaurantHandleChange}
-                    />} />
+                        handleRemoveItem={handleRemoveItem}
+
+                        user={props.user}
+
+                        setNewRestuarant={setNewRestaurant}
+                        newRestaurant={newRestaurant}
+                        setRestaurants={setRestaurants}
+                        restaurants={restaurants}
+                        foundRestaurant={foundRestaurant}
+                        setFoundRestaurant={setFoundRestaurant}
+                        createRestaurant={createRestaurant}
+                        restaurantHandleChange={restaurantHandleChange}
+                                               />}
+                    />
                   : <>
                     <Route path='/orders/new' element={<NewOrderPage foundRestaurant={foundRestaurant} />} />
                     <Route path='/orders' element={<OrderHistoryPage />} />
-                    <Route path='/home' element={<Restaurants 
-                      setRestaurants={setRestaurants} 
-                      restaurants={restaurants} 
-                      foundRestaurant={foundRestaurant} 
-                      setFoundRestaurant={setFoundRestaurant} 
-                      createRestaurant={createRestaurant} 
-                      />} />
-                    <Route path='/profile' element={<CustomerProfilePage 
-                      handleChange={handleChange} 
-                      newCustomer={newCustomer} 
-                      setNewCustomer={setNewCustomer} 
-                      createCustomer={createCustomer} 
-                      />} />
+                    <Route
+                      path='/home' element={<Restaurants
+                        setRestaurants={setRestaurants}
+                        restaurants={restaurants}
+                        foundRestaurant={foundRestaurant}
+                        setFoundRestaurant={setFoundRestaurant}
+                        createRestaurant={createRestaurant}
+                                            />}
+                    />
+                    <Route
+                      path='/profile' element={<CustomerProfilePage
+                        handleChange={handleChange}
+                        newCustomer={newCustomer}
+                        setNewCustomer={setNewCustomer}
+                        createCustomer={createCustomer}
+                                               />}
+                    />
                     </>}
               </>
             </Routes>
