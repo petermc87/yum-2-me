@@ -55,7 +55,119 @@ export default function CreateRestaurantProfile ({
                 selectedItems.length > 0
                   ? <>
                     {
-                      selectedItems.map((item) => {
+                      selectedItems.filter(item => item.category === '63b4374e29fa968943911bbf').map((item) => {
+                        return (
+                          <>
+                            <div className='res-icon' key={item._id}>
+                              <h1>{item.name}</h1>
+                              <p>{item.type}</p>
+                              {/* <p>{item.category}</p> */}
+                              
+                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                                <button onClick={() => {
+                                handleRemoveItem(item)
+                              }}>Remove</button>
+
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+                  </>
+                  : 'No items to display'
+              }
+          </>
+          <>
+          <h2>~ Mains ~</h2>
+            {
+                selectedItems.length > 0
+                  ? <>
+                    {
+                      selectedItems.filter(item => item.category === '63b4374e29fa968943911bc0').map((item) => {
+                        return (
+                          <>
+                            <div className='res-icon' key={item._id}>
+                              <h1>{item.name}</h1>
+                              <p>{item.type}</p>
+                              {/* <p>{item.category}</p> */}
+                              
+                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                                <button onClick={() => {
+                                handleRemoveItem(item)
+                              }}>Remove</button>
+
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+                  </>
+                  : 'No items to display'
+              }
+          </>
+          <>
+          <h2>~ Sides ~</h2>
+            {
+                selectedItems.length > 0
+                  ? <>
+                    {
+                      selectedItems.filter(item => item.category === '63b4374e29fa968943911bc1').map((item) => {
+                        return (
+                          <>
+                            <div className='res-icon' key={item._id}>
+                              <h1>{item.name}</h1>
+                              <p>{item.type}</p>
+                              {/* <p>{item.category}</p> */}
+                              
+                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                                <button onClick={() => {
+                                handleRemoveItem(item)
+                              }}>Remove</button>
+
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+                  </>
+                  : 'No items to display'
+              }
+          </>
+          <>
+          <h2>~ Desserts ~</h2>
+            {
+                selectedItems.length > 0
+                  ? <>
+                    {
+                      selectedItems.filter(item => item.category === '63b4374e29fa968943911bc2').map((item) => {
+                        return (
+                          <>
+                            <div className='res-icon' key={item._id}>
+                              <h1>{item.name}</h1>
+                              <p>{item.type}</p>
+                              {/* <p>{item.category}</p> */}
+                              
+                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+                                <button onClick={() => {
+                                handleRemoveItem(item)
+                              }}>Remove</button>
+
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+                  </>
+                  : 'No items to display'
+              }
+          </>
+          <>
+          <h2>~ Drinks ~</h2>
+            {
+                selectedItems.length > 0
+                  ? <>
+                    {
+                      selectedItems.filter(item => item.category === '63b4374e29fa968943911bc3').map((item) => {
                         return (
                           <>
                             <div className='res-icon' key={item._id}>
@@ -142,10 +254,9 @@ export default function CreateRestaurantProfile ({
                               <h1>{item.name}</h1>
                               <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button to='/profile' onClick={() => setFoundSideItem(item)}>
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                Add Item
-                              </button>
+                              <button onClick={() => {
+                                handleAddItem(item)
+                              }}>Add Item</button>
                             </div>
                           </>
                         )
@@ -168,10 +279,9 @@ export default function CreateRestaurantProfile ({
                               <h1>{item.name}</h1>
                               <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button to='/profile' onClick={() => setFoundDessertItem(item)}>
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                Add Item
-                              </button>
+                              <button onClick={() => {
+                                handleAddItem(item)
+                              }}>Add Item</button>
                             </div>
                           </>
                         )
@@ -194,10 +304,9 @@ export default function CreateRestaurantProfile ({
                               <h1>{item.name}</h1>
                               <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button to='/profile' onClick={() => setFoundDrinkItem(item)}>
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                Add Item
-                              </button>
+                              <button onClick={() => {
+                                handleAddItem(item)
+                              }}>Add Item</button>
                             </div>
                           </>
                         )
