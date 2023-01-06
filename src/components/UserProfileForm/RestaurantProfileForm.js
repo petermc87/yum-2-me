@@ -29,7 +29,9 @@ export default function CreateRestaurantProfile ({
   foundDrinkItem,
 
   selectedItems,
-  handleStarters
+  handleAddItem,
+
+  handleRemoveItem
 }) {
 
 
@@ -41,10 +43,16 @@ export default function CreateRestaurantProfile ({
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />
-          <h1>Select Items</h1>
+          
+          <button type='submit'>CREATE
+            <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
+          </button>
+        </form>
+          <h1>Selected Items</h1>
           <>
+          <h2>~ Starters ~</h2>
             {
-                selectedItems
+                selectedItems.length > 0
                   ? <>
                     {
                       selectedItems.map((item) => {
@@ -54,26 +62,23 @@ export default function CreateRestaurantProfile ({
                               <h1>{item.name}</h1>
                               <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button >
+                              
                                 {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                REMOVE
-                              </button>
+                                <button onClick={() => {
+                                handleRemoveItem(item)
+                              }}>Remove</button>
+
                             </div>
                           </>
                         )
                       })
                     }
                   </>
-                  : 'No starters to display'
+                  : 'No items to display'
               }
           </>
-
-          <button type='submit'>CREATE
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
-          </button>
-        </form>
           <h1>Select Menu Items</h1>
-          <h2>Starters</h2>
+          <h2>~ Starters ~</h2>
           <>
             {
                 starterItems
@@ -86,10 +91,10 @@ export default function CreateRestaurantProfile ({
                               <h1>{item.name}</h1>
                               <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button to='/profile' onClick={handleStarters}>
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                Add Item
-                              </button>
+                              <button onClick={() => {
+                                handleAddItem(item)
+                              }}>Add Item</button>
+
                             </div>
                           </>
                         )
@@ -100,22 +105,21 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>Mains</h2>
+          <h2>~ Mains ~</h2>
             {
                 mainItems
                   ? <>
                     {
-                      mainItems.map((mainItem) => {
+                      mainItems.map((item) => {
                         return (
                           <>
-                            <div className='res-icon' key={mainItem._id}>
-                              <h1>{mainItem.name}</h1>
-                              <p>{mainItem.type}</p>
+                            <div className='res-icon' key={item._id}>
+                              <h1>{item.name}</h1>
+                              <p>{item.type}</p>
                               {/* <p>{item.category}</p> */}
-                              <button to='/profile' onClick={() => setFoundMainItem(mainItem)}>
-                                {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-                                Add Item
-                              </button>
+                              <button onClick={() => {
+                                handleAddItem(item)
+                              }}>Add Item</button>
                             </div>
                           </>
                         )
@@ -126,7 +130,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>Sides</h2>
+          <h2>~ Sides ~</h2>
             {
                 sideItems
                   ? <>
@@ -152,7 +156,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>Desserts</h2>
+          <h2>~ Desserts ~</h2>
             {
                 dessertItems
                   ? <>
@@ -178,7 +182,7 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <>
-          <h2>Drinks</h2>
+          <h2>~ Drinks ~</h2>
             {
                 drinkItems
                   ? <>
@@ -202,10 +206,7 @@ export default function CreateRestaurantProfile ({
                   </>
                   : 'No drinks to display'
               }
-          </>          
-
-
-
+          </>         
       </div>
     </>
   )
@@ -223,7 +224,10 @@ export default function CreateRestaurantProfile ({
 
 
 
-
+      //    <button to='/profile' onClick={handleStarters}>
+      //    {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
+      //    Add Item
+      //  </button>
 
       //    <Mains 
       //    getMainItems={getMainItems}

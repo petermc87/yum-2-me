@@ -188,12 +188,20 @@ export default function HomePage (props) {
     setNewRestaurant({ ...newRestaurant, [evt.target.name]: evt.target.value })
   }
 
-const handleStarters = (evt) => {
-  console.log(foundStarterItem)
-  setSelectedItems(starterItems => [ ...starterItems, [evt.target.value]])
+//adding to selected items only if it already isn't in the list
+const handleAddItem = (item) => {
+  console.log(item.category)
+  if (selectedItems.includes(item) == false){
+    setSelectedItems(copyItems => [ ...copyItems, item])
+  }
 }
 
-
+//updating selected list without the item to remove
+const handleRemoveItem = (removedItem) => {
+  setSelectedItems((selectedItems) => 
+    selectedItems.filter((item) => item._id != removedItem._id)
+  )
+}
 
   useEffect(() => {
     getRestaurants()
@@ -273,7 +281,9 @@ const handleStarters = (evt) => {
                     
 
                       selectedItems={selectedItems}
-                      handleStarters={handleStarters}
+                      handleAddItem={handleAddItem}
+
+                      handleRemoveItem={handleRemoveItem}
                       
                       user={props.user} 
             
