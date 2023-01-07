@@ -186,7 +186,8 @@ export default function HomePage (props) {
 
   // adding to selected items only if it already isn't in the list
   const handleAddItem = (item) => {
-    console.log(item.category)
+    // console.log(item.image)
+    console.log(selectedItems)
     if (selectedItems.includes(item) == false) {
       setSelectedItems(copyItems => [...copyItems, item])
     }
@@ -227,10 +228,6 @@ export default function HomePage (props) {
   useEffect(() => {
     getDrinkItems()
   }, [foundDrinkItem])
-
-  // useEffect(() => {
-  //   selectedItems
-  // }, [])
 
   return (
     <>
@@ -316,8 +313,10 @@ export default function HomePage (props) {
               </>
             </Routes>
           </section>
-          <Perks />
-          <Perks />
+          <section className='bottom'>
+            <Perks />
+            <Perks />
+          </section>
         </main>
         <footer>
           <Footer />

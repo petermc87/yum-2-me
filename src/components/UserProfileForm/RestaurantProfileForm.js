@@ -1,5 +1,6 @@
 import Mains from '../../components/MenuItems/Mains'
 import { Link } from 'react-router-dom'
+// import charcuterie from 'https://imgur.com/OPJSZq9'
 // import { useEffect } from 'react'
 export default function CreateRestaurantProfile ({
   createRestaurant,
@@ -54,7 +55,7 @@ export default function CreateRestaurantProfile ({
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
                               <div className='menu-image'>
-                                {item.image}
+                              <img src={item.image} alt='starter' />
                               </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>
@@ -208,9 +209,11 @@ export default function CreateRestaurantProfile ({
                   : 'No items to display'
               }
           </>
-          <button type='submit'>CREATE
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
-          </button>
+          <div className='create-button'>
+            <button type='submit'>CREATE
+              <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
+            </button>
+          </div>
         </form>
         <div className='menu-select'>
           <br />
@@ -225,9 +228,10 @@ export default function CreateRestaurantProfile ({
                         return (
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
-                              <div className='menu-image'>
-                                {item.image}
-                              </div>
+                            <div className='menu-image'>
+                                <img src={item.image} alt='starter' />
+                                {/* <img src={require(item.image)} alt='starter' />  */}
+                            </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>
                                 <p>${item.price}</p>
@@ -292,7 +296,7 @@ export default function CreateRestaurantProfile ({
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
                               <div className='menu-image'>
-                                {item.image}
+                                <img src={`${item.image}`} ></img>
                               </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>
@@ -386,6 +390,3 @@ export default function CreateRestaurantProfile ({
 
   )
 }
-
-// Tick Unicode
-// &#x2713;
