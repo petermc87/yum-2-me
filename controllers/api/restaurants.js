@@ -14,6 +14,20 @@ const dataController = {
       }
     })
   },
+  // Index by User
+  indexUser (req, res, next) {
+    Restaurant.find({ user: req.params.id}, (err, foundRestaurants) => {
+      if (err) {
+        res.status(400).send({
+          msg: err.message
+        })
+      } else {
+        console.log(foundRestaurants)
+        res.locals.data.restaurants = foundRestaurants
+        next()
+      }
+    })
+  },
   // Destroy
   destroy (req, res, next) {
     Restaurant.findByIdAndDelete(req.params.id, (err, deletedRestaurant) => {

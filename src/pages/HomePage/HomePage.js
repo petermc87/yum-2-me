@@ -5,16 +5,21 @@ import Footer from '../../components/Footer/Footer'
 import NavBarLinks from '../../components/NavBarLinks/NavBarLinks'
 import { Routes, Route } from 'react-router-dom'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
-import OrderHistoryPage from '../OrderHistotyPage/OrderHistoryPage'
+import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import Restaurants from '../../components/Restaurant/Restaurants'
+import RestaurantIndexPage from '../IndexPages/RestaurantIndexPage'
 import { useState, useEffect } from 'react'
 import RestaurantProfilePage from '../ProfilePages/RestaurantProfile'
 import CustomerProfilePage from '../ProfilePages/CustomerProfile'
+import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 
 export default function HomePage (props) {
+
+  //---HOOKS---//
+
   // starters
   const [starterItems, setStarterItems] = useState([])
   const [foundStarterItem, setFoundStarterItem] = useState(null)
@@ -47,6 +52,8 @@ export default function HomePage (props) {
     menu: []
   })
 
+
+
   // customers
   const [customers, setCustomers] = useState([])
   const [foundCustomer, setFoundCustomer] = useState(null)
@@ -55,6 +62,9 @@ export default function HomePage (props) {
     location: '',
     user: props.user._id
   })
+
+
+  //---BACKEND REQUESTS---//
 
   // create customer
   const createCustomer = async () => {
@@ -113,6 +123,9 @@ export default function HomePage (props) {
     }
   }
 
+
+
+
   // Index Customers
   const getCustomers = async () => {
     try {
@@ -128,6 +141,7 @@ export default function HomePage (props) {
   const getStarterItems = async () => {
     try {
       const response = await fetch('/api/items')
+      console.log(props)
       const data = await response.json()
       setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
     } catch (err) {
@@ -176,6 +190,8 @@ export default function HomePage (props) {
     }
   }
 
+  
+
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
   }
@@ -199,6 +215,11 @@ export default function HomePage (props) {
       selectedItems.filter((item) => item._id != removedItem._id)
     )
   }
+
+  // useEffect(() => {
+  //   getRestaurantsByUser(props.user._id)
+  //   console.log(restaurantsByUser)
+  // }, [restaurantsByUser])
 
   useEffect(() => {
     getRestaurants()
@@ -251,44 +272,61 @@ export default function HomePage (props) {
             <Routes>
               <>
                 {props.user.userType
-                  ? <Route
-                      path='/profile' element={<RestaurantProfilePage
-                        drinkItems={drinkItems}
-                        setFoundDrinkItem={setFoundDrinkItem}
-                        foundDrinkItem={foundDrinkItem}
+                  ? 
+                    <>
+                    
+                      <Route
+                        path='/profile' element={<RestaurantProfilePage
+                          drinkItems={drinkItems}
+                          setFoundDrinkItem={setFoundDrinkItem}
+                          foundDrinkItem={foundDrinkItem}
 
-                        dessertItems={dessertItems}
-                        setFoundDessertItem={setFoundDessertItem}
-                        foundDessertItem={foundDessertItem}
+                          dessertItems={dessertItems}
+                          setFoundDessertItem={setFoundDessertItem}
+                          foundDessertItem={foundDessertItem}
 
-                        sideItems={sideItems}
-                        setFoundSideItem={setFoundSideItem}
-                        foundSideItem={foundSideItem}
+                          sideItems={sideItems}
+                          setFoundSideItem={setFoundSideItem}
+                          foundSideItem={foundSideItem}
 
-                        foundMainItem={foundMainItem}
-                        mainItems={mainItems}
-                        setFoundMainItem={setFoundMainItem}
+                          foundMainItem={foundMainItem}
+                          mainItems={mainItems}
+                          setFoundMainItem={setFoundMainItem}
 
-                        setFoundStarterItem={setFoundStarterItem}
-                        starterItems={starterItems}
+                          setFoundStarterItem={setFoundStarterItem}
+                          starterItems={starterItems}
 
-                        selectedItems={selectedItems}
-                        handleAddItem={handleAddItem}
+                          selectedItems={selectedItems}
+                          handleAddItem={handleAddItem}
 
-                        handleRemoveItem={handleRemoveItem}
+                          handleRemoveItem={handleRemoveItem}
 
-                        user={props.user}
+                          user={props.user}
 
-                        setNewRestuarant={setNewRestaurant}
-                        newRestaurant={newRestaurant}
-                        setRestaurants={setRestaurants}
-                        restaurants={restaurants}
+                          setNewRestuarant={setNewRestaurant}
+                          newRestaurant={newRestaurant}
+                          setRestaurants={setRestaurants}
+                          restaurants={restaurants}
+                          foundRestaurant={foundRestaurant}
+                          setFoundRestaurant={setFoundRestaurant}
+                          createRestaurant={createRestaurant}
+                          restaurantHandleChange={restaurantHandleChange}
+                                                />}
+                      />
+                      <Route path='/home'element={<RestaurantIndexPage 
+                          getRestaurantsByUser={props.getRestaurantsByUser}
+                          setRestaurantsByUser={props.setRestaurantsByUser}
+                          restaurantsByUser={props.restaurantsByUser}
+                          user={props.user}
+                          setFoundRestaurant={setFoundRestaurant}
+                                                />}
+                      />
+                      <Route path='/edit' element={<RestaurantEditPage 
                         foundRestaurant={foundRestaurant}
-                        setFoundRestaurant={setFoundRestaurant}
-                        createRestaurant={createRestaurant}
-                        restaurantHandleChange={restaurantHandleChange}
-                                               />}
-                    />
+                        user={props.user}
+                        getRestaurantsByUser={props.getRestaurantsByUser}
+                      />} />
+                    </>   
                   : <>
                     <Route path='/orders/new' element={<NewOrderPage foundRestaurant={foundRestaurant} />} />
                     <Route path='/orders' element={<OrderHistoryPage />} />

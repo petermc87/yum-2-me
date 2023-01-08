@@ -1,7 +1,13 @@
+// import Link from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
 
-export default function LoginForm ({ setUser }) {
+export default function LoginForm ({ 
+    getRestaurantsByUser,
+    setRestaurantsByUser,
+    setUser 
+  
+  }) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -18,6 +24,11 @@ export default function LoginForm ({ setUser }) {
     try {
       const user = await userService.login(credentials)
       setUser(user)
+      // setting the restaurants created by the user ID if the user is a restaurant owner
+      console.log(user._id)
+      if(user.userType){
+        getRestaurantsByUser(user._id)
+      }
     } catch (error) {
       setError(error.message)
     }
@@ -31,7 +42,9 @@ export default function LoginForm ({ setUser }) {
           <input type='email' name='email' value={credentials.email} onChange={handleChange} placeholder='email' required />
           {/* <label>Password</label> */}
           <input type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='password' required />
-          <button type='submit'>LOG IN</button>
+          <button type='submit'>LOG IN
+          
+          </button>
         </form>
       </div>
       <h1 className='error-message'>&nbsp;{error}</h1>

@@ -160,7 +160,7 @@ ul{
   box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.3);
   background-color: white;
 }
- .restaurant, .category{
+ .category{
   display: flex;
   justify-content: space-around; 
  
@@ -175,28 +175,39 @@ main{
   /* border: solid blue; */
   box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.3);
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-around;
   background-color: white;
   flex-wrap: wrap;
   padding: 1rem;
   border-radius: 4px 4px 0 0;
 }
+
+
+
+
 .res-icon{
   /* border: solid purple */
   background-image: url("/home/petermc/Desktop/software_homework/unit_3/yum2me/public/images/restaurantback.png");
   /* opacity: 0.7; */
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
-  /* text-shadow: 2px 2px 3px rgb(126, 69, 69); */
   color: #b0d3f7;
-  padding: 2rem;
+  /* padding: 1rem; */
   margin: 0 auto;
   margin-top: 2rem;
   width: 35vw;
   text-align: center;
+  margin: 0 auto;
 }
 
+#res-icon-index{
+  width: 60vw;
+  /* padding: 20px */
+  margin: 1.5rem;
+}
+
+
 /*--- MENU ITEMS--- */
-#menu-item {
+#menu-item{
   background-image: none;
   color: black;
   padding: 0.5rem;
@@ -204,6 +215,20 @@ main{
   width: 70vw;
   display: grid;
   grid-template-columns: 0.7fr 1.5fr 0.7fr;
+  
+}
+
+
+ .res-icon {
+  background-image: none;
+  color: black;
+  /* padding: 0.5rem; */
+  margin: 0 auto;
+}
+
+.res-image{
+  /* border: solid black; */
+  height: 8rem;
 }
 
 .menu-image, .menu-details, .menu-button{
@@ -214,29 +239,50 @@ main{
   margin: 1rem;
 }
 
-.menu-image{
-  border: solid black;
+.menu-image, .res-image{
   border-width: 0.5px;
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 0.8rem;
+  background-image: url("/home/petermc/Desktop/software_homework/unit_3/yum2me/public/images/restaurantback.png");
 }
+
 .menu-button > button{
-  /* border: solid black; */
   width: 2.5rem;
   height:2.5rem;
   border-radius: 50%;
   background-color: rgb(191, 3, 3);
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+  
+}
+
+.res-details{
+  padding: 0.25rem;
+}
+
+#res-icon-index{
+  width: 20rem;
+  margin: 0.5rem;
 }
 
 .menu-button > button:hover{
-  /* border: solid black; */
   cursor: pointer;
   background-color: rgb(216, 108, 108);
 }
 
+.index-header{
+  margin: 0 10rem 0 10rem;
+  width: 100%;
+  border-width: 0.4px;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
+.res-button{
+  padding-bottom: .5rem;
+}
+
+.index-header > h1{
+  border-radius: none;
+}
 .menu-details{
   border-left: solid gray;
   border-right: solid gray;
@@ -295,11 +341,15 @@ form > button:hover{
 input {
   padding: 1vmin;
   font-size: 2vmin;
-  border: .2vmin solid rgb(208, 208, 208);
+  border: .1vmin solid rgb(191, 191, 191);
   border-radius: .5vmin;
   color: var(--text-dark);
   background-image: none !important; 
   outline: none;
+}
+
+input:hover{
+  border:  .1vmin solid rgb(106, 87, 255);
 }
 
 .top-container{

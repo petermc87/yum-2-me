@@ -10,10 +10,3 @@ export default function NewOrderPage ({ foundRestaurant }) {
   )
 }
 
-{ /* <div className='res-icon' key={restaurant._id} >
-<h1>{restaurant.name}</h1>
-    <p>{restaurant.type}</p>
-    <button onClick={() => setFoundRestaurant(restaurant)}>
-        <Link to='/orders/new'>Order from here</Link>
-    </button>
-</div> */ }
