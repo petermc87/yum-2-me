@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-export default function NewOrderPage ({ 
-  foundRestaurant, 
-  user, 
-  getRestaurantsByUser, 
+export default function NewOrderPage ({
+  foundRestaurant,
+  user,
+  getRestaurantsByUser,
   restaurantsByUser
 }) {
   const deleteRestaurant = async (id) => {
@@ -13,11 +13,10 @@ export default function NewOrderPage ({
         headers: {
           'Content-Type': 'application/json'
         }
-        
+
       })
       getRestaurantsByUser(user._id)
       // console.log(restaurantsByUser)
-
     } catch (error) {
       console.error(error)
     }
@@ -25,7 +24,7 @@ export default function NewOrderPage ({
 
   return (
     <div className='res-icon' id='show page'>
-    <button>
+      <button>
         <Link style={{ textDecoration: 'none', color: 'white' }} to='/home'>GO BACK</Link>
       </button>
       <h1>Edit Your Restaurant Below</h1>

@@ -7,8 +7,6 @@ export default function RestaurantShowPage ({
   setRestaurantsByUser,
   user
 }) {
-
-  
   return (
     <>
 
@@ -32,7 +30,7 @@ export default function RestaurantShowPage ({
                 <p>{restaurant.type}</p>
               </div>
               <div className='res-button'>
-                <button  onClick={() => setFoundRestaurant(restaurant)}>
+                <button onClick={() => setFoundRestaurant(restaurant)}>
                   <Link style={{ textDecoration: 'none', color: 'white' }} to='/edit'>Edit</Link>
                 </button>
               </div>

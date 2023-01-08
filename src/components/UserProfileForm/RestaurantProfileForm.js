@@ -1,6 +1,7 @@
-import Mains from '../../components/MenuItems/Mains'
-import { Link } from 'react-router-dom'
+// import Mains from '../../components/MenuItems/Mains'
+// import { Link } from 'react-router-dom'
 // import charcuterie from 'https://imgur.com/OPJSZq9'
+import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 export default function CreateRestaurantProfile ({
   createRestaurant,
@@ -37,16 +38,23 @@ export default function CreateRestaurantProfile ({
   getRestaurantsByUser,
   user
 }) {
-
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
+  // page naviagation
+  const navigate = useNavigate()
 
   return (
     <>
       <div className='form-container' id='form-container-profile'>
         <h1>Create your profile below</h1>
-        <form autoComplete='off' onSubmit={createRestaurant}>
+        {/* <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' > */}
+        <form
+          autoComplete='off' onSubmit={
+          createRestaurant
+
+          }
+        >
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />
@@ -63,7 +71,7 @@ export default function CreateRestaurantProfile ({
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
                               <div className='menu-image'>
-                              <img src={item.image} alt='starter' />
+                                <img src={item.image} alt='starter' />
                               </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>
@@ -218,12 +226,11 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <div className='create-button'>
-            <button type='submit' onSubmit={
-              <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' ></Link>
-            }>CREATE 
+            <button type='submit'>CREATE
             </button>
           </div>
         </form>
+        {/* </Link> */}
         <div className='menu-select'>
           <br />
           <h1>Select Menu Items</h1>
@@ -237,10 +244,10 @@ export default function CreateRestaurantProfile ({
                         return (
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
-                            <div className='menu-image'>
+                              <div className='menu-image'>
                                 <img src={item.image} alt='starter' />
                                 {/* <img src={require(item.image)} alt='starter' />  */}
-                            </div>
+                              </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>
                                 <p>${item.price}</p>
@@ -305,7 +312,7 @@ export default function CreateRestaurantProfile ({
                           <>
                             <div className='res-icon' id='menu-item' key={item._id}>
                               <div className='menu-image'>
-                                <img src={`${item.image}`} ></img>
+                                <img src={`${item.image}`} />
                               </div>
                               <div className='menu-details'>
                                 <h4>{item.name}</h4>

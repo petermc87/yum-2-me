@@ -3,7 +3,7 @@ import Perks from '../../components/Perks/Perks'
 // import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
 import NavBarLinks from '../../components/NavBarLinks/NavBarLinks'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import Restaurants from '../../components/Restaurant/Restaurants'
@@ -15,7 +15,6 @@ import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-
 export default function HomePage (props) {
   // ---HOOKS---//
 
@@ -60,6 +59,9 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
+  // page naviagation
+  const navigate = useNavigate()
+
   // ---BACKEND REQUESTS---//
 
   // create customer
@@ -102,7 +104,10 @@ export default function HomePage (props) {
         type: '',
         user: props.user._id,
         menu: []
+
       })
+      // navigate('/edit')
+      // props.setUser(props.user)
     } catch (error) {
       console.error(error)
     }
@@ -302,7 +307,7 @@ export default function HomePage (props) {
                         createRestaurant={createRestaurant}
                         restaurantHandleChange={restaurantHandleChange}
                         getRestaurantsByUser={props.getRestaurantsByUser}
-                        
+
                                                />}
                     />
                     <Route

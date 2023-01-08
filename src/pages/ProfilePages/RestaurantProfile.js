@@ -1,4 +1,6 @@
 import RestaurantProfileFormn from '../../components/UserProfileForm/RestaurantProfileForm'
+import RestaurantEditPage from '../EditPages/RestaurantEditPage'
+import { Routes, Route } from 'react-router-dom'
 
 export default function RestaurantProfilePage ({
   createRestaurant,
@@ -41,42 +43,53 @@ export default function RestaurantProfilePage ({
 }) {
   return (
     <>
-      <RestaurantProfileFormn
-        createRestaurant={createRestaurant}
-        setNewRestaurant={setNewRestaurant}
-        newRestaurant={newRestaurant}
+      <Routes>
+        <Route
+          path='/' element={
+            <RestaurantProfileFormn
+              createRestaurant={createRestaurant}
+              setNewRestaurant={setNewRestaurant}
+              newRestaurant={newRestaurant}
 
-        setFoundRestaurant={setFoundRestaurant}
-        foundRestaurant={foundRestaurant}
-        restaurantHandleChange={restaurantHandleChange}
+              setFoundRestaurant={setFoundRestaurant}
+              foundRestaurant={foundRestaurant}
+              restaurantHandleChange={restaurantHandleChange}
 
-        starterItems={starterItems}
-        foundStarterItem={foundStarterItem}
-        setFoundStarterItem={setFoundStarterItem}
+              starterItems={starterItems}
+              foundStarterItem={foundStarterItem}
+              setFoundStarterItem={setFoundStarterItem}
 
-        mainItems={mainItems}
-        setFoundMainItems={setFoundMainItems}
-        foundMainItem={foundMainItem}
+              mainItems={mainItems}
+              setFoundMainItems={setFoundMainItems}
+              foundMainItem={foundMainItem}
 
-        dessertItems={dessertItems}
-        setFoundDessertItems={setFoundDessertItems}
-        foundDessertItem={foundDessertItem}
+              dessertItems={dessertItems}
+              setFoundDessertItems={setFoundDessertItems}
+              foundDessertItem={foundDessertItem}
 
-        sideItems={sideItems}
-        setFoundSideItem={setFoundSideItem}
-        foundSideItem={foundSideItem}
+              sideItems={sideItems}
+              setFoundSideItem={setFoundSideItem}
+              foundSideItem={foundSideItem}
 
-        drinkItems={drinkItems}
-        setFoundDrinkItem={setFoundDrinkItem}
-        foundDrinkItem={foundDrinkItem}
+              drinkItems={drinkItems}
+              setFoundDrinkItem={setFoundDrinkItem}
+              foundDrinkItem={foundDrinkItem}
 
-        selectedItems={selectedItems}
-        handleAddItem={handleAddItem}
-        handleRemoveItem={handleRemoveItem}
+              selectedItems={selectedItems}
+              handleAddItem={handleAddItem}
+              handleRemoveItem={handleRemoveItem}
 
-        getRestaurantsByUser={getRestaurantsByUser}
-        user={user}
-      />
+              getRestaurantsByUser={getRestaurantsByUser}
+              user={user}
+            />
+}
+        />
+        <Route
+          path='/edit' element={
+            <RestaurantEditPage />
+      }
+        />
+      </Routes>
     </>
   )
 }

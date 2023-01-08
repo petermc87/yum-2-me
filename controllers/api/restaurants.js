@@ -1,5 +1,7 @@
 const Restaurant = require('../../models/restaurant/restaurantProfile')
 
+const Item = require('../../models/restaurant/item')
+
 const dataController = {
   // Index,
   index (req, res, next) {
@@ -53,6 +55,30 @@ const dataController = {
         next()
       }
     })
+  },
+  // Update Menu
+  async updateMenu (req, res, next) {
+    // JobPost.findByIdAndDelete(req.params.id, (err, deletedJobPost) => {
+    //   if (err) {
+    //     res.status(400).send({
+    //       msg: err.message
+    //     })
+    //   } else {
+    //     res.locals.data.jobPost = deletedJobPost
+    //     next()
+    //   }
+    // })
+    try {
+      const addedItem = await Item.findById(req.params.id)
+      await Restaurant.findByIdAndUpdate(addedItem.company, {
+        $push: {
+          menu: req.params.id
+        }
+      })
+      res.status(200).json(addedItem)
+    } catch (error) {
+      console.log(error)
+    }
   },
   // Create
   // create (req, res, next) {
