@@ -1,7 +1,7 @@
 import Mains from '../../components/MenuItems/Mains'
 import { Link } from 'react-router-dom'
 // import charcuterie from 'https://imgur.com/OPJSZq9'
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
 export default function CreateRestaurantProfile ({
   createRestaurant,
   newRestaurant,
@@ -32,8 +32,16 @@ export default function CreateRestaurantProfile ({
   selectedItems,
   handleAddItem,
 
-  handleRemoveItem
+  handleRemoveItem,
+
+  getRestaurantsByUser,
+  user
 }) {
+
+  useEffect(() => {
+    getRestaurantsByUser(user._id)
+  }, [])
+
   return (
     <>
       <div className='form-container' id='form-container-profile'>
@@ -210,8 +218,9 @@ export default function CreateRestaurantProfile ({
               }
           </>
           <div className='create-button'>
-            <button type='submit'>CREATE
-              <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' />
+            <button type='submit' onSubmit={
+              <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' ></Link>
+            }>CREATE 
             </button>
           </div>
         </form>

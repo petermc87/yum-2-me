@@ -13,9 +13,6 @@ function App () {
   const [user, setUser] = useState(null)
   const [restaurantsByUser, setRestaurantsByUser] = useState([])
 
-
-
-
   const fetchState = async () => {
     try {
       const response = await fetch('/api/test')
@@ -28,42 +25,40 @@ function App () {
     }
   }
 
-    //Index created restaurants by user
+  // Index created restaurants by user
   const getRestaurantsByUser = async (id) => {
-      try {
-        const response = await fetch(`/api/restaurants/user/${id}`)
-        const data = await response.json()
-        console.log(data)
-        setRestaurantsByUser(data)
-        console.log(restaurantsByUser)
-      } catch (err) {
-        console.log(err)
-      }
+    try {
+      const response = await fetch(`/api/restaurants/user/${id}`)
+      const data = await response.json()
+      console.log(data)
+      setRestaurantsByUser(data)
+      // console.log(restaurantsByUser)
+    } catch (err) {
+      console.log(err)
     }
-  
-  
+  }
 
   useEffect(() => {
     fetchState()
-    console.log(restaurantsByUser)
   }, [])
 
   return (
     <>
       {user
         ? <>
-          <HomePage 
-            user={user} 
-            setUser={setUser} 
+          <HomePage
+            user={user}
+            setUser={setUser}
             restaurantsByUser={restaurantsByUser}
-            setRestaurantsByUser={setRestaurantsByUser}
-            />
-        </>
-        : <LandingPage 
-            setUser={setUser} 
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
+          />
+        </>
+        : <LandingPage
+            setUser={setUser}
             restaurantsByUser={restaurantsByUser}
+            getRestaurantsByUser={getRestaurantsByUser}
+            setRestaurantsByUser={setRestaurantsByUser}
           />}
     </>
   )

@@ -8,11 +8,12 @@ export default function CustomerProfilePage ({
 }) {
   return (
     <>
-      <CustomerProfileFormn 
-        handleChange={handleChange} 
-        newCustomer={newCustomer} 
-        setNewCustomer={setNewCustomer} 
-        createCustomer={createCustomer} />
+      <CustomerProfileFormn
+        handleChange={handleChange}
+        newCustomer={newCustomer}
+        setNewCustomer={setNewCustomer}
+        createCustomer={createCustomer}
+      />
     </>
   )
 }

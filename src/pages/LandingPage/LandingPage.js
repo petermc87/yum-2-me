@@ -9,9 +9,6 @@ import SignUpPage from '../SignupPage/SignupPage'
 import { Routes, Route } from 'react-router-dom'
 
 export default function LandingPage (props) {
-
-
-
   return (
     <>
       <body>
@@ -42,14 +39,18 @@ export default function LandingPage (props) {
             <div className='top-container'>
               <LoginLinks />
               <Routes>
-                <Route path='/login' element={<LoginPage 
-                  setUser={props.setUser}
-                  getRestaurantsByUser={props.getRestaurantsByUser}
-                  setRestaurantsByUser={props.setRestaurantsByUser}
-                  />} />
-                <Route path='/signup' element={<SignUpPage 
-                  setUser={props.setUser} 
-                  />} />
+                <Route
+                  path='/login' element={<LoginPage
+                    setUser={props.setUser}
+                    getRestaurantsByUser={props.getRestaurantsByUser}
+                    setRestaurantsByUser={props.setRestaurantsByUser}
+                                         />}
+                />
+                <Route
+                  path='/signup' element={<SignUpPage
+                    setUser={props.setUser}
+                                          />}
+                />
               </Routes>
             </div>
           </article>

@@ -17,8 +17,7 @@ import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 
 export default function HomePage (props) {
-
-  //---HOOKS---//
+  // ---HOOKS---//
 
   // starters
   const [starterItems, setStarterItems] = useState([])
@@ -52,8 +51,6 @@ export default function HomePage (props) {
     menu: []
   })
 
-
-
   // customers
   const [customers, setCustomers] = useState([])
   const [foundCustomer, setFoundCustomer] = useState(null)
@@ -63,8 +60,7 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-
-  //---BACKEND REQUESTS---//
+  // ---BACKEND REQUESTS---//
 
   // create customer
   const createCustomer = async () => {
@@ -122,9 +118,6 @@ export default function HomePage (props) {
       console.log(err)
     }
   }
-
-
-
 
   // Index Customers
   const getCustomers = async () => {
@@ -189,8 +182,6 @@ export default function HomePage (props) {
       console.log(err)
     }
   }
-
-  
 
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
@@ -272,61 +263,67 @@ export default function HomePage (props) {
             <Routes>
               <>
                 {props.user.userType
-                  ? 
-                    <>
-                    
-                      <Route
-                        path='/profile' element={<RestaurantProfilePage
-                          drinkItems={drinkItems}
-                          setFoundDrinkItem={setFoundDrinkItem}
-                          foundDrinkItem={foundDrinkItem}
+                  ? <>
 
-                          dessertItems={dessertItems}
-                          setFoundDessertItem={setFoundDessertItem}
-                          foundDessertItem={foundDessertItem}
+                    <Route
+                      path='/profile' element={<RestaurantProfilePage
+                        drinkItems={drinkItems}
+                        setFoundDrinkItem={setFoundDrinkItem}
+                        foundDrinkItem={foundDrinkItem}
 
-                          sideItems={sideItems}
-                          setFoundSideItem={setFoundSideItem}
-                          foundSideItem={foundSideItem}
+                        dessertItems={dessertItems}
+                        setFoundDessertItem={setFoundDessertItem}
+                        foundDessertItem={foundDessertItem}
 
-                          foundMainItem={foundMainItem}
-                          mainItems={mainItems}
-                          setFoundMainItem={setFoundMainItem}
+                        sideItems={sideItems}
+                        setFoundSideItem={setFoundSideItem}
+                        foundSideItem={foundSideItem}
 
-                          setFoundStarterItem={setFoundStarterItem}
-                          starterItems={starterItems}
+                        foundMainItem={foundMainItem}
+                        mainItems={mainItems}
+                        setFoundMainItem={setFoundMainItem}
 
-                          selectedItems={selectedItems}
-                          handleAddItem={handleAddItem}
+                        setFoundStarterItem={setFoundStarterItem}
+                        starterItems={starterItems}
 
-                          handleRemoveItem={handleRemoveItem}
+                        selectedItems={selectedItems}
+                        handleAddItem={handleAddItem}
 
-                          user={props.user}
+                        handleRemoveItem={handleRemoveItem}
 
-                          setNewRestuarant={setNewRestaurant}
-                          newRestaurant={newRestaurant}
-                          setRestaurants={setRestaurants}
-                          restaurants={restaurants}
-                          foundRestaurant={foundRestaurant}
-                          setFoundRestaurant={setFoundRestaurant}
-                          createRestaurant={createRestaurant}
-                          restaurantHandleChange={restaurantHandleChange}
-                                                />}
-                      />
-                      <Route path='/home'element={<RestaurantIndexPage 
-                          getRestaurantsByUser={props.getRestaurantsByUser}
-                          setRestaurantsByUser={props.setRestaurantsByUser}
-                          restaurantsByUser={props.restaurantsByUser}
-                          user={props.user}
-                          setFoundRestaurant={setFoundRestaurant}
-                                                />}
-                      />
-                      <Route path='/edit' element={<RestaurantEditPage 
+                        user={props.user}
+
+                        setNewRestuarant={setNewRestaurant}
+                        newRestaurant={newRestaurant}
+                        setRestaurants={setRestaurants}
+                        restaurants={restaurants}
                         foundRestaurant={foundRestaurant}
+                        setFoundRestaurant={setFoundRestaurant}
+                        createRestaurant={createRestaurant}
+                        restaurantHandleChange={restaurantHandleChange}
+                        getRestaurantsByUser={props.getRestaurantsByUser}
+                        
+                                               />}
+                    />
+                    <Route
+                      path='/home'element={<RestaurantIndexPage
+                        getRestaurantsByUser={props.getRestaurantsByUser}
+                        setRestaurantsByUser={props.setRestaurantsByUser}
+                        restaurantsByUser={props.restaurantsByUser}
+                        user={props.user}
+                        setFoundRestaurant={setFoundRestaurant}
+                                           />}
+                    />
+                    <Route
+                      path='/edit' element={<RestaurantEditPage
+                        foundRestaurant={foundRestaurant}
+                        restaurantsByUser={props.restaurantsByUser}
                         user={props.user}
                         getRestaurantsByUser={props.getRestaurantsByUser}
-                      />} />
-                    </>   
+                        setRestaurantsByUser={props.setRestaurantsByUser}
+                                            />}
+                    />
+                  </>
                   : <>
                     <Route path='/orders/new' element={<NewOrderPage foundRestaurant={foundRestaurant} />} />
                     <Route path='/orders' element={<OrderHistoryPage />} />

@@ -348,7 +348,7 @@ input {
   outline: none;
 }
 
-input:hover{
+input:focus{
   border:  .1vmin solid rgb(106, 87, 255);
 }
 

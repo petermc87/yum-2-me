@@ -13,7 +13,7 @@ const dataController = {
       res.status(400).json({ msg: e.message })
     }
   },
-  
+
   async createBlog (req, res, next) {
     Blog.create(req.body, async (err, createdBlog) => {
       if (err) {

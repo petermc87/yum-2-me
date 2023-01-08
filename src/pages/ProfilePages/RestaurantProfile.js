@@ -33,7 +33,10 @@ export default function RestaurantProfilePage ({
 
   selectedItems,
   handleAddItem,
-  handleRemoveItem
+  handleRemoveItem,
+
+  getRestaurantsByUser,
+  user
 
 }) {
   return (
@@ -70,6 +73,9 @@ export default function RestaurantProfilePage ({
         selectedItems={selectedItems}
         handleAddItem={handleAddItem}
         handleRemoveItem={handleRemoveItem}
+
+        getRestaurantsByUser={getRestaurantsByUser}
+        user={user}
       />
     </>
   )

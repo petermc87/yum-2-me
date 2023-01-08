@@ -10,7 +10,7 @@ export default class SignUpForm extends Component {
     userType: false,
     error: ''
   }
-  
+
   handleSubmit = async (evt) => {
     evt.preventDefault()
     try {

@@ -16,7 +16,6 @@ router.get('/:id', dataController.show, apiController.show)
 // IndexUser
 router.get('/user/:id', dataController.indexUser, apiController.index)
 
-
 module.exports = router
 // // POST /api/customers
 // router.post('/', dataController.createCustomer, apiController.show)
