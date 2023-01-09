@@ -3,7 +3,7 @@ import Perks from '../../components/Perks/Perks'
 // import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
 import NavBarLinks from '../../components/NavBarLinks/NavBarLinks'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import Restaurants from '../../components/Restaurant/Restaurants'
@@ -15,7 +15,6 @@ import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
 export default function HomePage (props) {
   // ---HOOKS---//
 
@@ -60,26 +59,13 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-
-
   const [category, setCategory] = useState('')
 
-
-
-  //single item
+  // single item
   const [menuItem, setMenuItem] = useState({})
 
-  //items array
+  // items array
   const [menuItems, setMenuItems] = useState([])
-
-
-
-
-
-
-
-
-
 
   // ---BACKEND REQUESTS---//
 
@@ -107,7 +93,6 @@ export default function HomePage (props) {
     }
   }
 
-
   // create restaurant
   const createRestaurant = async () => {
     try {
@@ -126,7 +111,7 @@ export default function HomePage (props) {
         type: '',
         user: props.user._id,
         menu: []
-        
+
       })
       // navigate('/edit')
       // props.setUser(props.user)
@@ -161,7 +146,7 @@ export default function HomePage (props) {
   const getStarterItems = async () => {
     try {
       const response = await fetch('/api/items')
-      console.log(props)
+      // console.log(props)
       const data = await response.json()
       setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
     } catch (err) {
@@ -210,13 +195,6 @@ export default function HomePage (props) {
     }
   }
 
-
-
-
-
-
-
-
   // Index menu items
   const getMenuItems = async (id) => {
     try {
@@ -229,11 +207,6 @@ export default function HomePage (props) {
       console.log(err)
     }
   }
-
-
-
-
-
 
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
@@ -259,7 +232,6 @@ export default function HomePage (props) {
     )
   }
 
-
   useEffect(() => {
     getRestaurants()
   }, [foundRestaurant])
@@ -268,26 +240,30 @@ export default function HomePage (props) {
     getCustomers()
   }, [foundCustomer])
 
-  // items
-  useEffect(() => {
-    getStarterItems()
-  }, [foundStarterItem])
+  // // items
+  // useEffect(() => {
+  //   getStarterItems()
+  // }, [foundStarterItem])
 
-  useEffect(() => {
-    getMainItems()
-  }, [foundMainItem])
+  // useEffect(() => {
+  //   getMainItems()
+  // }, [foundMainItem])
 
-  useEffect(() => {
-    getDessertItems()
-  }, [foundDessertItem])
+  // useEffect(() => {
+  //   getDessertItems()
+  // }, [foundDessertItem])
 
-  useEffect(() => {
-    getSideItems()
-  }, [foundSideItem])
+  // useEffect(() => {
+  //   getSideItems()
+  // }, [foundSideItem])
 
-  useEffect(() => {
-    getDrinkItems()
-  }, [foundDrinkItem])
+  // useEffect(() => {
+  //   getDrinkItems()
+  // }, [foundDrinkItem])
+
+  // useEffect(() => {
+  //   getMenuItems(foundRestaurant._id)
+  // }, [menuItem])
 
   return (
     <>
@@ -356,7 +332,7 @@ export default function HomePage (props) {
                         menuItems={menuItems}
                         setMenuItems={setMenuItems}
                         getMenuItems={getMenuItems}
-                        
+
                                                />}
                     />
                     <Route
@@ -365,7 +341,12 @@ export default function HomePage (props) {
                         setRestaurantsByUser={props.setRestaurantsByUser}
                         restaurantsByUser={props.restaurantsByUser}
                         user={props.user}
+
                         setFoundRestaurant={setFoundRestaurant}
+                        foundRestaurant={foundRestaurant}
+
+                        getMenuItems={getMenuItems}
+                        setMenuItems={setMenuItems}
                                            />}
                     />
                     <Route
@@ -375,6 +356,12 @@ export default function HomePage (props) {
                         user={props.user}
                         getRestaurantsByUser={props.getRestaurantsByUser}
                         setRestaurantsByUser={props.setRestaurantsByUser}
+
+                        menuItem={menuItem}
+                        setMenuItem={setMenuItem}
+                        menuItems={menuItems}
+                        setMenuItems={setMenuItems}
+                        getMenuItems={getMenuItems}
                                             />}
                     />
                   </>

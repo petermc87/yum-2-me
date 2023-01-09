@@ -27,7 +27,6 @@ async function show (req, res) {
   }
 }
 
-
 async function indexUser (req, res) {
   try {
     console.log(req.params.id)
@@ -54,17 +53,17 @@ async function indexUser (req, res) {
 //   })
 // }
 
-  // // Index by User
-  // indexUser (req, res, next) {
-  //   Restaurant.find({ user: req.params.id }, (err, foundRestaurants) => {
-  //     if (err) {
-  //       res.status(400).send({
-  //         msg: err.message
-  //       })
-  //     } else {
-  //       console.log(foundRestaurants)
-  //       res.locals.data.restaurants = foundRestaurants
-  //       next()
-  //     }
-  //   })
-  // },
+// // Index by User
+// indexUser (req, res, next) {
+//   Restaurant.find({ user: req.params.id }, (err, foundRestaurants) => {
+//     if (err) {
+//       res.status(400).send({
+//         msg: err.message
+//       })
+//     } else {
+//       console.log(foundRestaurants)
+//       res.locals.data.restaurants = foundRestaurants
+//       next()
+//     }
+//   })
+// },

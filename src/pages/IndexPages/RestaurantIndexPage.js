@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom'
 export default function RestaurantShowPage ({
   restaurantsByUser,
   setFoundRestaurant,
+  foundRestaurant,
   getRestaurantsByUser,
   setRestaurantsByUser,
-  user
+  user,
+
+  getMenuItems,
+  setMenuItems
 }) {
   return (
     <>
@@ -30,7 +34,10 @@ export default function RestaurantShowPage ({
                 <p>{restaurant.type}</p>
               </div>
               <div className='res-button'>
-                <button onClick={() => setFoundRestaurant(restaurant)}>
+                <button onClick={() => {
+                  setFoundRestaurant(restaurant)
+                }}
+                >
                   <Link style={{ textDecoration: 'none', color: 'white' }} to='/edit'>Edit</Link>
                 </button>
               </div>

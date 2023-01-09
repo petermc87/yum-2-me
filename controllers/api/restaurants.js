@@ -72,8 +72,6 @@ const dataController = {
   //   }
   // },
 
-
-
   // Create
   // create (req, res, next) {
   //   Restaurant.create(req.body, (err, createdRestaurant) => {
@@ -112,24 +110,24 @@ const dataController = {
   //   })
   // },
 
-    // Create Menu item
-    async createMenu(req, res, next) {
-      try {
-        const newMenuItem = await Item.create(req.body)
-        await Restaurant.findByIdAndUpdate(newMenuItem.restaurantId, {
-          $push: {
-            mwnu: newMenuItem._id
-          }
-        })
-        res.status(200).json(newMenuItem)
-        res.locals.data.restaurant = newMenuItem
-      } catch (error) {
-        console.log(error)
-      }
-    },
+  // Create Menu item
+  async createMenu (req, res, next) {
+    try {
+      const newMenuItem = await Item.create(req.body)
+      await Restaurant.findByIdAndUpdate(newMenuItem.restaurantId, {
+        $push: {
+          mwnu: newMenuItem._id
+        }
+      })
+      res.status(200).json(newMenuItem)
+      res.locals.data.restaurant = newMenuItem
+    } catch (error) {
+      console.log(error)
+    }
+  },
 
-    //Find menu items by restaurant
-      // Index by User
+  // Find menu items by restaurant
+  // Index by User
   indexItems (req, res, next) {
     console.log(req.params.id)
     Item.find({ restaurantId: req.params.id }, (err, foundItems) => {
@@ -140,6 +138,21 @@ const dataController = {
       } else {
         console.log(foundItems)
         res.locals.data.restaurants = foundItems
+        next()
+      }
+    })
+  },
+
+  // Delete Menu Items
+  deleteItem (req, res, next) {
+    console.log(req.params.id)
+    Item.findByIdAndDelete(req.params.id, (err, deletedRestaurant) => {
+      if (err) {
+        res.status(400).send({
+          msg: err.message
+        })
+      } else {
+        res.locals.data.restaurant = deletedRestaurant
         next()
       }
     })

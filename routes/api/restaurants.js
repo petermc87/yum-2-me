@@ -16,24 +16,14 @@ router.get('/:id', dataController.show, apiController.show)
 // IndexUser
 router.get('/user/:id', dataController.indexUser, apiController.index)
 
-//Create Menu Item
+// MENU ITEMS
+// Create Menu Item
 router.post('/menu', dataController.createMenu, apiController.show)
 
-//Get Menu Items
+// Get Menu Items
 router.get('/menu/items/:id', dataController.indexItems, apiController.index)
 
+// Delete Menu Items
+router.delete('/menu/items/:id', dataController.deleteItem, apiController.show)
+
 module.exports = router
-// // POST /api/customers
-// router.post('/', dataController.createCustomer, apiController.show)
-
-// // // PUT /api/customers/:id
-// // router.put('/:id', dataController.addBlog, apiController.show)
-
-// // PUT /api/customers/:id
-// router.put('/:id', dataController.createBlog, apiController.show)
-
-// // GET /api/customers/:id/:id
-// router.get('/:id/:id', dataController.updateCustomer, apiController.show)
-
-// // POST /api/customers/:id
-// router.get('/:id', dataController.show, apiController.show)

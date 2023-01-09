@@ -90,18 +90,6 @@ export default function RestaurantProfilePage ({
             />
 }
         />
-        <Route
-          path='/edit' element={
-            <RestaurantEditPage 
-            menuItem={menuItem}
-            setMenuItem={setMenuItem}
-            menuItems={menuItems}
-            setMenuItems={setMenuItems}
-            getMenuItems={getMenuItems}
-            
-            />
-      }
-        />
       </Routes>
     </>
   )
