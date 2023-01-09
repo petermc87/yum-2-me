@@ -16,6 +16,12 @@ router.get('/:id', dataController.show, apiController.show)
 // IndexUser
 router.get('/user/:id', dataController.indexUser, apiController.index)
 
+//Create Menu Item
+router.post('/menu', dataController.createMenu, apiController.show)
+
+//Get Menu Items
+router.get('/menu/items/:id', dataController.indexItems, apiController.index)
+
 module.exports = router
 // // POST /api/customers
 // router.post('/', dataController.createCustomer, apiController.show)

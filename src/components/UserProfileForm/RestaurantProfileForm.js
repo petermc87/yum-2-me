@@ -1,8 +1,5 @@
-// import Mains from '../../components/MenuItems/Mains'
-// import { Link } from 'react-router-dom'
-// import charcuterie from 'https://imgur.com/OPJSZq9'
-import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 export default function CreateRestaurantProfile ({
   createRestaurant,
   newRestaurant,
@@ -41,19 +38,19 @@ export default function CreateRestaurantProfile ({
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
-  // page naviagation
-  const navigate = useNavigate()
 
+  const navigate = useNavigate()
   return (
     <>
       <div className='form-container' id='form-container-profile'>
         <h1>Create your profile below</h1>
         {/* <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' > */}
         <form
-          autoComplete='off' onSubmit={
-          createRestaurant
-
-          }
+          autoComplete='off' onSubmit={() => {
+                createRestaurant()
+                navigate('/home')
+                getRestaurantsByUser(user._id)  
+              }}
         >
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />

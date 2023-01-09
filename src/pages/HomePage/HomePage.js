@@ -3,7 +3,7 @@ import Perks from '../../components/Perks/Perks'
 // import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
 import NavBarLinks from '../../components/NavBarLinks/NavBarLinks'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import Restaurants from '../../components/Restaurant/Restaurants'
@@ -15,6 +15,7 @@ import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 export default function HomePage (props) {
   // ---HOOKS---//
 
@@ -59,8 +60,26 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-  // page naviagation
-  const navigate = useNavigate()
+
+
+  const [category, setCategory] = useState('')
+
+
+
+  //single item
+  const [menuItem, setMenuItem] = useState({})
+
+  //items array
+  const [menuItems, setMenuItems] = useState([])
+
+
+
+
+
+
+
+
+
 
   // ---BACKEND REQUESTS---//
 
@@ -77,6 +96,7 @@ export default function HomePage (props) {
       })
       const data = await response.json()
       setFoundCustomer(data)
+      console.log(foundRestaurant)
       setNewCustomer({
         image: '',
         location: '',
@@ -86,6 +106,8 @@ export default function HomePage (props) {
       console.error(error)
     }
   }
+
+
   // create restaurant
   const createRestaurant = async () => {
     try {
@@ -104,7 +126,7 @@ export default function HomePage (props) {
         type: '',
         user: props.user._id,
         menu: []
-
+        
       })
       // navigate('/edit')
       // props.setUser(props.user)
@@ -188,6 +210,31 @@ export default function HomePage (props) {
     }
   }
 
+
+
+
+
+
+
+
+  // Index menu items
+  const getMenuItems = async (id) => {
+    try {
+      console.log(id)
+      const response = await fetch(`/api/restaurants/menu/items/${id}`)
+      const data = await response.json()
+      console.log(data)
+      setMenuItems(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
+
+
+
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
   }
@@ -205,17 +252,13 @@ export default function HomePage (props) {
     }
   }
 
-  // updating selected list without the item to remove
+  // updating selected list without the item to be removed
   const handleRemoveItem = (removedItem) => {
     setSelectedItems((selectedItems) =>
       selectedItems.filter((item) => item._id != removedItem._id)
     )
   }
 
-  // useEffect(() => {
-  //   getRestaurantsByUser(props.user._id)
-  //   console.log(restaurantsByUser)
-  // }, [restaurantsByUser])
 
   useEffect(() => {
     getRestaurants()
@@ -308,6 +351,12 @@ export default function HomePage (props) {
                         restaurantHandleChange={restaurantHandleChange}
                         getRestaurantsByUser={props.getRestaurantsByUser}
 
+                        menuItem={menuItem}
+                        setMenuItem={setMenuItem}
+                        menuItems={menuItems}
+                        setMenuItems={setMenuItems}
+                        getMenuItems={getMenuItems}
+                        
                                                />}
                     />
                     <Route

@@ -38,7 +38,13 @@ export default function RestaurantProfilePage ({
   handleRemoveItem,
 
   getRestaurantsByUser,
-  user
+  user,
+
+  menuItems,
+  setMenuItems,
+  getMenuItems,
+  menuItem,
+  setMenuItem
 
 }) {
   return (
@@ -86,7 +92,14 @@ export default function RestaurantProfilePage ({
         />
         <Route
           path='/edit' element={
-            <RestaurantEditPage />
+            <RestaurantEditPage 
+            menuItem={menuItem}
+            setMenuItem={setMenuItem}
+            menuItems={menuItems}
+            setMenuItems={setMenuItems}
+            getMenuItems={getMenuItems}
+            
+            />
       }
         />
       </Routes>
