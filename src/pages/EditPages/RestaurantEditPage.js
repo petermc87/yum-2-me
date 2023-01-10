@@ -1,19 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import MenuItem from '../../components/MenuItems/MenuItem'
+import NewMenuItem from '../../components/MenuItems/NewMenuItem'
+import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
+// import { NineKTwoTone } from '@mui/icons-material'
 
-export default function NewOrderPage ({
+export default function RestaurantEditPage ({
   foundRestaurant,
+
   user,
+  // userType,
+
   getRestaurantsByUser,
-  restaurantsByUser,
-  menuItem,
-  setMenuItem,
   menuItems,
   setMenuItems,
   getMenuItems
 }) {
-  // new menu
+ 
+  //----HOOKS---//
   const [newMenuItem, setNewMenuItem] = useState({
     name: '',
     restaurantId: foundRestaurant._id,
@@ -23,7 +27,9 @@ export default function NewOrderPage ({
 
   const navigate = useNavigate()
 
-  // -----delete restaurant----//
+
+  //----BACKEND REQUESTS ----//
+  //delete restaurant
   const deleteRestaurant = async (id) => {
     try {
       await fetch(`/api/restaurants/${id}`, {
@@ -41,7 +47,7 @@ export default function NewOrderPage ({
     }
   }
 
-  // create menu item
+  //create menu item 
   const createMenuItem = async (category) => {
     try {
       const response = await fetch('/api/restaurants/menu', {
@@ -52,8 +58,6 @@ export default function NewOrderPage ({
         body: JSON.stringify({ ...newMenuItem })
       })
       const data = await response.json()
-      // setMenuItem(data)
-      // console.log(menuItem)
       setNewMenuItem({
         name: '',
         restaurantId: foundRestaurant._id,
@@ -65,29 +69,7 @@ export default function NewOrderPage ({
     }
   }
 
-  // delete menu item
-  const deleteMenuItem = async (category) => {
-    try {
-      const response = await fetch('/api/restaurants/menu', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ...newMenuItem })
-      })
-      const data = await response.json()
-      setNewMenuItem({
-        name: '',
-        restaurantId: foundRestaurant._id,
-        category,
-        price: Number
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  // -----delete menu item----//
+  //delete menu item
   const deleteItem = async (id) => {
     try {
       await fetch(`/api/restaurants/menu/items/${id}`, {
@@ -103,15 +85,24 @@ export default function NewOrderPage ({
     }
   }
 
+
+//--- EVENT HANDLERS ---//
   const menuHandleChange = (evt) => {
     setNewMenuItem({ ...newMenuItem, [evt.target.name]: evt.target.value })
   }
 
-  // updating selected list without the item to be removed
   const handleRemoveItem = (id) => {
     deleteItem(id)
     setMenuItems(getMenuItems(foundRestaurant._id))
   }
+
+  const handleSubmitMenuItem = (e) => {
+    e.preventDefault()
+    createMenuItem('starter')
+    navigate('/edit')
+    getMenuItems(foundRestaurant._id)
+  }
+
 
   useEffect(() => {
     setMenuItems(getMenuItems(foundRestaurant._id))
@@ -121,47 +112,22 @@ export default function NewOrderPage ({
     <>
       <h1>Edit Your Restaurant Below</h1>
       <div className='res-icon' id='show-page'>
-        <br />
-        <h2>{foundRestaurant.name}</h2> <br />
-        <h2>{foundRestaurant.type}</h2>
-        <h3>Located at: {foundRestaurant.location}</h3>
-        <div className='menu-button'>
-          <Link style={{ textDecoration: 'none', color: 'white' }} to='/home'>
-            <button>
-              &#8249;
-            </button>
-          </Link>
-          <Link style={{ textDecoration: 'none', color: 'white' }} to='/home'>
-            <button onClick={(evt) => {
-              deleteRestaurant(foundRestaurant._id)
-            }}
-            >
-              &#10006;
-            </button>
-          </Link>
-        </div>
-        <div className='form-container' id='form-container-profile'>
-          <h1>Create your Menu Below</h1>
-          <form
-            autoComplete='off' onSubmit={(e) => {
-              e.preventDefault()
-              createMenuItem('starter')
-              navigate('/edit')
-              getMenuItems(foundRestaurant._id)
-            }}
-          >
-            <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
-            <input type='text' name='price' value={newMenuItem.price} onChange={menuHandleChange} placeholder='price' required />
-            <input
-              type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange} placeholder='category' required
-            />
-            <div className='create-button'>
-              <button type='submit'>CREATE
-              </button>
-            </div>
-          </form>
-        </div>
+
+        <ShowRestaurant
+          foundRestaurant={foundRestaurant}
+          deleteRestaurant={deleteRestaurant}
+          user={user}
+        />
+
+        <NewMenuItem 
+          createMenuItem={createMenuItem}
+          newMenuItem={newMenuItem}
+          menuHandleChange={menuHandleChange}
+          getMenuItems={getMenuItems}
+          handleSubmitMenuItem={handleSubmitMenuItem}
+        />
       </div>
+
       <h1>Your Menu</h1>
       <div className='menu-select'>
         <>
@@ -171,6 +137,7 @@ export default function NewOrderPage ({
             handleRemoveItem={handleRemoveItem}
             filterOne='starters'
             filterTwo='starter'
+            user={user}
           />
         </>
         <>
@@ -180,6 +147,7 @@ export default function NewOrderPage ({
             handleRemoveItem={handleRemoveItem}
             filterOne='mains'
             filterTwo='main'
+            user={user}
           />
         </>
         <>
@@ -187,8 +155,9 @@ export default function NewOrderPage ({
           <MenuItem
             menuItems={menuItems}
             handleRemoveItem={handleRemoveItem}
-            filterOne='side'
-            filterTwo='sides'
+            filterOne='sides'
+            filterTwo='side'
+            user={user}
           />
         </>
         <>
@@ -196,8 +165,9 @@ export default function NewOrderPage ({
           <MenuItem
             menuItems={menuItems}
             handleRemoveItem={handleRemoveItem}
-            filterOne='dessert'
-            filterTwo='desserts'
+            filterOne='desserts'
+            filterTwo='dessert'
+            user={user}
           />
         </>
         <>
@@ -205,15 +175,15 @@ export default function NewOrderPage ({
           <MenuItem
             menuItems={menuItems}
             handleRemoveItem={handleRemoveItem}
-            filterOne='drink'
-            filterTwo='drinks'
+            filterOne='drinks'
+            filterTwo='drink'
+            user={user}
           />
         </>
       </div>
     </>
   )
 }
-
 // <div className='menu-button'>
 // <button onClick={() => {
 //   handleRemoveItem(item)
@@ -392,3 +362,28 @@ export default function NewOrderPage ({
 //   <option name='category' value={newMenuItem.category}>Drink</option>
 // </select>
 // </label>
+
+
+
+{/* <NewMenuItem
+user={user}
+foundRestaurant={foundRestaurant}
+
+getRestaurantsByUser={getRestaurantsByUser}
+restaurantsByUser={restaurantsByUser}
+
+setMenuItem={setMenuItem}
+menuItem={menuItem}
+
+setMenuItems={setMenuItem}
+menuItems={menuItem}
+
+getMenuItems={getMenuItems}
+
+createMenuItem={createMenuItem}
+
+setNewMenuItem={setNewMenuItem}
+newMenuItem={setNewMenuItem}
+
+menuHandleChange={menuHandleChange}
+/> */}

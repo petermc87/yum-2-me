@@ -1,20 +1,22 @@
 import NavBar from '../../components/NavBar/NavBar'
 import Perks from '../../components/Perks/Perks'
-// import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
 import NavBarLinks from '../../components/NavBarLinks/NavBarLinks'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import NewOrderPage from '../NewOrderPage/NewOrderPage'
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
-import Restaurants from '../../components/Restaurant/Restaurants'
-import RestaurantIndexPage from '../IndexPages/RestaurantIndexPage'
-import { useState, useEffect } from 'react'
 import RestaurantProfilePage from '../ProfilePages/RestaurantProfile'
 import CustomerProfilePage from '../ProfilePages/CustomerProfile'
 import RestaurantEditPage from '../EditPages/RestaurantEditPage'
+import NewOrderPage from '../NewOrderPage/NewOrderPage'
+import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
+import Restaurants from '../../components/Restaurant/AllRestaurants'
+import RestaurantIndexPage from '../RestaurantByUser/RestaurantByUser'
+
+import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+
+
 export default function HomePage (props) {
   // ---HOOKS---//
 
@@ -142,66 +144,75 @@ export default function HomePage (props) {
     }
   }
 
-  // Index starter items
-  const getStarterItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      // console.log(props)
-      const data = await response.json()
-      setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // // Index starter items
+  // const getStarterItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     // console.log(props)
+  //     const data = await response.json()
+  //     setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  // Index main items
-  const getMainItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index side items
-  const getSideItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index dessert items
-  const getDessertItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index drink items
-  const getDrinkItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // // Index main items
+  // const getMainItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index side items
+  // const getSideItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index dessert items
+  // const getDessertItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index drink items
+  // const getDrinkItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // Index menu items
+  
+  
+
+
+
+
+  
+  //--- Index Menu Items by Restaurant --//
   const getMenuItems = async (id) => {
     try {
       console.log(id)
       const response = await fetch(`/api/restaurants/menu/items/${id}`)
       const data = await response.json()
       console.log(data)
+      // console.log(props.user.userType)
       setMenuItems(data)
     } catch (err) {
       console.log(err)
@@ -231,6 +242,7 @@ export default function HomePage (props) {
       selectedItems.filter((item) => item._id != removedItem._id)
     )
   }
+
 
   useEffect(() => {
     getRestaurants()
@@ -353,7 +365,11 @@ export default function HomePage (props) {
                       path='/edit' element={<RestaurantEditPage
                         foundRestaurant={foundRestaurant}
                         restaurantsByUser={props.restaurantsByUser}
+
+                        userType={props.user.userType}
                         user={props.user}
+
+
                         getRestaurantsByUser={props.getRestaurantsByUser}
                         setRestaurantsByUser={props.setRestaurantsByUser}
 
@@ -366,15 +382,32 @@ export default function HomePage (props) {
                     />
                   </>
                   : <>
-                    <Route path='/orders/new' element={<NewOrderPage foundRestaurant={foundRestaurant} />} />
+                    <Route path='/orders/new' element={<NewOrderPage 
+                      foundRestaurant={foundRestaurant} 
+
+                      userType={props.user.userType}
+                      user={props.user} 
+
+                      menuItems={menuItems}
+                      setMenuItems={setMenuItems}
+                      getMenuItems={getMenuItems}
+                      
+                      />} />
+                      
                     <Route path='/orders' element={<OrderHistoryPage />} />
                     <Route
                       path='/home' element={<Restaurants
                         setRestaurants={setRestaurants}
                         restaurants={restaurants}
-                        foundRestaurant={foundRestaurant}
+
                         setFoundRestaurant={setFoundRestaurant}
-                        createRestaurant={createRestaurant}
+                        foundRestaurant={foundRestaurant}
+
+                        setMenuItems={setMenuItems}
+                        menItems={menuItems}
+
+                        getMenuItems={getMenuItems}
+                        // createRestaurant={createRestaurant}
                                             />}
                     />
                     <Route

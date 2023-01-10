@@ -1,70 +1,45 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 export default function CreateRestaurantProfile ({
   createRestaurant,
   newRestaurant,
   restaurantHandleChange,
-
-  starterItems,
-  foundStarterItem,
-  setFoundStarterItem,
-  getStarterItems,
-
-  getMainItems,
-  mainItems,
-  setFoundMainItem,
-  foundMainItem,
-
-  dessertItems,
-  setFoundDessertItem,
-  foundDessertItem,
-
-  sideItems,
-  setFoundSideItem,
-  foundSideItem,
-
-  drinkItems,
-  setFoundDrinkItem,
-  foundDrinkItem,
-
-  selectedItems,
-  handleAddItem,
-
-  handleRemoveItem,
-
   getRestaurantsByUser,
   user
 }) {
+
+
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
 
   const navigate = useNavigate()
+
+  const handleSubmit = () => {
+    createRestaurant()
+    navigate('/home')
+    getRestaurantsByUser(user._id)
+
+  }
+  
   return (
     <>
       <div className='form-container' id='form-container-profile'>
         <h1>Create your restaurant</h1>
-        {/* <Link style={{ textDecoration: 'none', color: 'white' }} to='/home' > */}
         <form
-          autoComplete='off' onSubmit={() => {
-            createRestaurant()
-            navigate('/home')
-            getRestaurantsByUser(user._id)
-          }}
+          autoComplete='off' onSubmit={handleSubmit}
         >
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />
-
           <div className='create-button'>
             <button type='submit'>CREATE
             </button>
           </div>
         </form>
-
       </div>
     </>
-
   )
 }
 

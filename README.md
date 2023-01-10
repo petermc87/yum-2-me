@@ -1,6 +1,4 @@
-
 ![Logo](public/images/logo.png)
-
 
 # Introduction 
 Inspired by other food delivery applications drivers & restaurants lack of accountability, **Yum2Me** is an app that makes it easy for the Customer, Driver and Restaurant to provide feedback based on the service. It uses a unique rating system making transparency guaranteed across the board!
@@ -20,7 +18,7 @@ LINK HERE
 
 When you arrive at the landing page, there will be an option to Login or Signup. Here, you can choose whether you are accessing the Restaurant or Customer home page.
 
-When logged in, the will be a hamburger that will direct you to the profile section. Update the information in the field provided. 
+When logged in, a hamburger will direct you to the profile section. Update the information in the field provided. 
 
 ## Customers
 When you select the **Yum2me** icon on the left corner of the navigation bar, you will be rediected to the index page. All registered restaurants will be listed here for the customer to select.
@@ -42,19 +40,19 @@ This page will have the options to add, delete and edit menu items. You will als
 
 [ERD Link](https://lucid.app/lucidchart/b52bc4f5-208f-4236-b238-51611daf5680/edit?beaconFlowId=6727BA894B6096A9&invitationId=inv_2e64d5cd-5c18-424b-9689-7f77493518d0&page=0_0#)
 
-# Wire frames
+## Wire frames
 
-## Landing Page
+### Landing Page
 ![Landing Page](public/images/landing.png)
 
-## Customer Facing Webpage
+### Customer Facing Webpage
 ![Customer Page](public/images/customerpage.png)
 
-## Restaurant Facing Index
+### Restaurant Facing Index
 ![Restaurant Page](public/images/restaurantpage.png)
 
 
-# ERD
+## ERD
 ![ERD](public/images/ERD.png)
 
 # Unsolved Problems 

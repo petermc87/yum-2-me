@@ -1,14 +1,29 @@
 import { Link } from 'react-router-dom'
 
-export default function AllRestaurants ({ restaurants, setFoundRestaurant }) {
+export default function AllRestaurants ({ 
+  restaurants, 
+
+  setFoundRestaurant,
+  foundRestaurant,
+
+  setMenuItems,
+  menItems,
+
+  getMenuItems
+
+}) {
+
+  const handleChange = (restaurant) => {
+    setFoundRestaurant(restaurant)
+    setMenuItems(getMenuItems(restaurant._id))
+
+  }
   return (
     <>
       <div className='index-header'>
         <h1>Choose a Restaurant</h1>
       </div>
-
       {
-
         restaurants
           ? <>
             {
@@ -21,7 +36,11 @@ export default function AllRestaurants ({ restaurants, setFoundRestaurant }) {
                 <p>{restaurant.type}</p>
               </div>
               <div className='res-button'>
-                <button to='orders/new' onClick={() => setFoundRestaurant(restaurant)}>
+                <button to='orders/new' onClick={() => 
+                  // setFoundRestaurant(restaurant)
+                  handleChange(restaurant)
+
+                  }>
                   <Link style={{ textDecoration: 'none', color: 'white' }} to='/orders/new'>Order from here</Link>
                 </button>
               </div>

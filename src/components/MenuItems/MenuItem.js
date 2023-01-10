@@ -4,7 +4,8 @@ export default function MenuItem ({
   handleRemoveItem,
   menuItems,
   filterOne,
-  filterTwo
+  filterTwo,
+  user
 }) {
   return (
     <>
@@ -23,6 +24,9 @@ export default function MenuItem ({
                         <h4>{item.name}</h4>
                         <p>${item.price}</p>
                       </div>
+
+                    {
+                      user.userType ?
                       <div className='menu-button'>
                         <button onClick={() => {
                           handleRemoveItem(item._id)
@@ -30,6 +34,15 @@ export default function MenuItem ({
                         >&#10006;
                         </button>
                       </div>
+                      :
+                      <div className='menu-button'>
+                        <button
+                        >&#43;
+                        </button>
+                      </div>
+                    }
+
+
                     </div>
                   </>
                 )
