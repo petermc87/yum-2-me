@@ -97,18 +97,6 @@ const dataController = {
       }
     })
   },
-  // createMenu (req, res, next) {
-  //   Item.create(req.body, (err, createdRestaurant) => {
-  //     if (err) {
-  //       res.status(400).send({
-  //         msg: err.message
-  //       })
-  //     } else {
-  //       res.locals.data.restaurant = createdRestaurant
-  //       next()
-  //     }
-  //   })
-  // },
 
   // Create Menu item
   async createMenu (req, res, next) {
@@ -129,14 +117,12 @@ const dataController = {
   // Find menu items by restaurant
   // Index by User
   indexItems (req, res, next) {
-    console.log(req.params.id)
     Item.find({ restaurantId: req.params.id }, (err, foundItems) => {
       if (err) {
         res.status(400).send({
           msg: err.message
         })
       } else {
-        console.log(foundItems)
         res.locals.data.restaurants = foundItems
         next()
       }

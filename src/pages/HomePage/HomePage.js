@@ -143,68 +143,68 @@ export default function HomePage (props) {
     }
   }
 
-  // Index starter items
-  const getStarterItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      // console.log(props)
-      const data = await response.json()
-      setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // // Index starter items
+  // const getStarterItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     // console.log(props)
+  //     const data = await response.json()
+  //     setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  // Index main items
-  const getMainItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index side items
-  const getSideItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index dessert items
-  const getDessertItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Index drink items
-  const getDrinkItems = async () => {
-    try {
-      const response = await fetch('/api/items')
-      const data = await response.json()
-      setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // // Index main items
+  // const getMainItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index side items
+  // const getSideItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index dessert items
+  // const getDessertItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Index drink items
+  // const getDrinkItems = async () => {
+  //   try {
+  //     const response = await fetch('/api/items')
+  //     const data = await response.json()
+  //     setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // Index menu items
 
   // --- Index Menu Items by Restaurant --//
   const getMenuItems = async (id) => {
     try {
-      console.log(id)
+      // console.log(id)
       const response = await fetch(`/api/restaurants/menu/items/${id}`)
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       // console.log(props.user.userType)
       setMenuItems(data)
     } catch (err) {

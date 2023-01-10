@@ -12,11 +12,13 @@ export default function AllRestaurants ({
   getMenuItems
 
 }) {
+
   const handleChange = (restaurant) => {
-    console.log(restaurant)
+    // console.log(restaurant)
     setFoundRestaurant(restaurant)
     setMenuItems(getMenuItems(restaurant._id))
   }
+
   return (
     <>
       <div className='index-header'>

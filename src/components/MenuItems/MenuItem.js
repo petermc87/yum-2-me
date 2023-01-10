@@ -1,3 +1,6 @@
+import * as ordersAPI from '../../utilities/orders-api';
+import { useEffect } from 'react'
+
 export default function MenuItem ({
   handleRemoveItem,
   handleAddToOrder,
@@ -6,10 +9,23 @@ export default function MenuItem ({
   filterOne,
   filterTwo,
 
-  user
+  user,
+
+  setCart
 
 }) {
 
+  // const handleUpdatedCart = () => {
+  //     const cart = await ordersAPI.getCart();
+  //     setCart(cart);
+  //   }
+  // }
+
+
+  // const handleUpdatedCart = () => {
+  //   const cart = 
+  //   setCart(cart)
+  // } 
 
   return (
     <>
@@ -41,6 +57,8 @@ export default function MenuItem ({
                         : <div className='menu-button'>
                           <button onClick={() => {
                             handleAddToOrder(item._id)
+                            // handleUpdatedCart()
+                            // setCart(ordersAPI.getCart)
                             }}>&#43;
                           </button>
                         </div>
