@@ -11,7 +11,10 @@ export default function MenuItem ({
 
   user,
 
-  setCart
+  setCart,
+  setRestaurantOrder,
+
+  foundRestaurant
 
 }) {
 
@@ -57,6 +60,7 @@ export default function MenuItem ({
                         : <div className='menu-button'>
                           <button onClick={() => {
                             handleAddToOrder(item._id)
+                            console.log(foundRestaurant)
                             // handleUpdatedCart()
                             // setCart(ordersAPI.getCart)
                             }}>&#43;

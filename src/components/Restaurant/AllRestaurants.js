@@ -2,13 +2,9 @@ import { Link } from 'react-router-dom'
 
 export default function AllRestaurants ({
   restaurants,
-
   setFoundRestaurant,
-  foundRestaurant,
 
   setMenuItems,
-  menItems,
-
   getMenuItems
 
 }) {

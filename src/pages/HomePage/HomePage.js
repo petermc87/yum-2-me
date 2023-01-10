@@ -19,26 +19,26 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 export default function HomePage (props) {
   // ---HOOKS---//
 
-  // starters
-  const [starterItems, setStarterItems] = useState([])
-  const [foundStarterItem, setFoundStarterItem] = useState(null)
+  // selected Items
+  // const [starterItems, setStarterItems] = useState([])
+  // const [foundStarterItem, setFoundStarterItem] = useState(null)
   const [selectedItems, setSelectedItems] = useState([])
 
-  // mains
-  const [mainItems, setMainItems] = useState([])
-  const [foundMainItem, setFoundMainItem] = useState(null)
+  // // mains
+  // const [mainItems, setMainItems] = useState([])
+  // const [foundMainItem, setFoundMainItem] = useState(null)
 
-  // sides
-  const [sideItems, setSideItems] = useState([])
-  const [foundSideItem, setFoundSideItem] = useState(null)
+  // // sides
+  // const [sideItems, setSideItems] = useState([])
+  // const [foundSideItem, setFoundSideItem] = useState(null)
 
-  // desserts
-  const [dessertItems, setDessertItems] = useState([])
-  const [foundDessertItem, setFoundDessertItem] = useState(null)
+  // // desserts
+  // const [dessertItems, setDessertItems] = useState([])
+  // const [foundDessertItem, setFoundDessertItem] = useState(null)
 
-  // drinks
-  const [drinkItems, setDrinkItems] = useState([])
-  const [foundDrinkItem, setFoundDrinkItem] = useState(null)
+  // // drinks
+  // const [drinkItems, setDrinkItems] = useState([])
+  // const [foundDrinkItem, setFoundDrinkItem] = useState(null)
 
   // restaurants
   const [restaurants, setRestaurants] = useState([])
@@ -51,6 +51,8 @@ export default function HomePage (props) {
     menu: []
   })
 
+  const [restaurantOrder, setRestaurantOrder] = useState(null)
+
   // customers
   const [customers, setCustomers] = useState([])
   const [foundCustomer, setFoundCustomer] = useState(null)
@@ -60,13 +62,14 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-  const [category, setCategory] = useState('')
 
   // single item
   const [menuItem, setMenuItem] = useState({})
 
   // items array
   const [menuItems, setMenuItems] = useState([])
+
+
 
   // ---BACKEND REQUESTS---//
 
@@ -295,24 +298,24 @@ export default function HomePage (props) {
 
                     <Route
                       path='/profile' element={<RestaurantProfilePage
-                        drinkItems={drinkItems}
-                        setFoundDrinkItem={setFoundDrinkItem}
-                        foundDrinkItem={foundDrinkItem}
+                        // drinkItems={drinkItems}
+                        // setFoundDrinkItem={setFoundDrinkItem}
+                        // foundDrinkItem={foundDrinkItem}
 
-                        dessertItems={dessertItems}
-                        setFoundDessertItem={setFoundDessertItem}
-                        foundDessertItem={foundDessertItem}
+                        // dessertItems={dessertItems}
+                        // setFoundDessertItem={setFoundDessertItem}
+                        // foundDessertItem={foundDessertItem}
 
-                        sideItems={sideItems}
-                        setFoundSideItem={setFoundSideItem}
-                        foundSideItem={foundSideItem}
+                        // sideItems={sideItems}
+                        // setFoundSideItem={setFoundSideItem}
+                        // foundSideItem={foundSideItem}
 
-                        foundMainItem={foundMainItem}
-                        mainItems={mainItems}
-                        setFoundMainItem={setFoundMainItem}
+                        // foundMainItem={foundMainItem}
+                        // mainItems={mainItems}
+                        // setFoundMainItem={setFoundMainItem}
 
-                        setFoundStarterItem={setFoundStarterItem}
-                        starterItems={starterItems}
+                        // setFoundStarterItem={setFoundStarterItem}
+                        // starterItems={starterItems}
 
                         selectedItems={selectedItems}
                         handleAddItem={handleAddItem}
@@ -383,6 +386,10 @@ export default function HomePage (props) {
                         menuItems={menuItems}
                         setMenuItems={setMenuItems}
                         getMenuItems={getMenuItems}
+
+                        setRestaurantOrder={setRestaurantOrder}
+                        restaurantOrder={restaurantOrder}
+
                                                   />}
                     />
 

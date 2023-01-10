@@ -16,6 +16,7 @@ lineItemSchema.virtual('extPrice').get(function () {
 })
 
 const orderSchema = new Schema({
+  restaurant : { type: Schema.Types.ObjectId, ref: 'Restaurant'},
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   lineItems: [lineItemSchema],
   isPaid: { type: Boolean, default: false }

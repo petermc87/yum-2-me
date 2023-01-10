@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-// import itemSchema from '../../../models/restaurant/itemSchema'
 import LineItem from '../LineItem/LineItem'
 
 export default function OrderDetail ({
@@ -25,6 +24,10 @@ export default function OrderDetail ({
 //     console.log(item[0].props.lineItem.item.restaurantId)
 //   }
 
+  const test = (order) => {
+    console.log(order.isPaid)
+  }
+
   return (
     <>
       <div classNam='order-heading'>
@@ -39,7 +42,7 @@ export default function OrderDetail ({
         {lineItems.length ?
             <>
                 {lineItems}
-                {/* {test(lineItems)} */}
+                {test(order)}
                 <section className='order-total'>
                     
                     {order.isPaid?

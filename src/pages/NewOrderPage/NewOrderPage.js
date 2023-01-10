@@ -13,8 +13,8 @@ export default function NewOrderPage ({
   foundRestaurant,
   user,
   menuItems,
-  setMenuItems,
-  getMenuItems
+  setRestaurantOrder,
+  restaurantOrder
 
 }) {
 
@@ -40,8 +40,10 @@ export default function NewOrderPage ({
   async function handleAddToOrder(itemId){
     // console.log(itemId)
     const updatedCart = await ordersAPI.addItemToCart(itemId)
-    // console.log(updatedCart)
     setCart(updatedCart)
+    // setRestaurantOrder(foundRestaurant)
+    // console.log(restaurantOrder)
+    console.log(user)
   }
 
   async function handleChangeQty(itemId, newQty){
@@ -74,6 +76,8 @@ export default function NewOrderPage ({
             filterOne='starters'
             filterTwo='starter'
             user={user}
+            setRestaurantOrder={setRestaurantOrder}
+            foundRestaurant={foundRestaurant}
           />
         </>
         <>
@@ -85,6 +89,8 @@ export default function NewOrderPage ({
             filterTwo='main'
             user={user}
             setCart={setCart}
+            setRestaurantOrder={setRestaurantOrder}
+            foundRestaurant={foundRestaurant}
           />
         </>
         <>
@@ -96,6 +102,8 @@ export default function NewOrderPage ({
             filterTwo='sides'
             user={user}
             setCart={setCart}
+            setRestaurantOrder={setRestaurantOrder}
+            foundRestaurant={foundRestaurant}
           />
         </>
         <>
@@ -107,6 +115,8 @@ export default function NewOrderPage ({
             filterTwo='desserts'
             user={user}
             setCart={setCart}
+            setRestaurantOrder={setRestaurantOrder}
+            foundRestaurant={foundRestaurant}
           />
         </>
         <>
@@ -118,6 +128,8 @@ export default function NewOrderPage ({
             filterTwo='drinks'
             user={user}
             setCart={setCart}
+            setRestaurantOrder={setRestaurantOrder}
+            foundRestaurant={foundRestaurant}
           />
         </>
       </div>
@@ -133,6 +145,7 @@ export default function NewOrderPage ({
                     handleChangeQty={handleChangeQty}
                     handleCheckout={handleCheckout}
                     foundRestaurant={foundRestaurant}
+                    setRestaurantOrder={setRestaurantOrder}
                   />
                 </>
               </div>
