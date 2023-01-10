@@ -16,8 +16,7 @@ export default function RestaurantEditPage ({
   setMenuItems,
   getMenuItems
 }) {
- 
-  //----HOOKS---//
+  // ----HOOKS---//
   const [newMenuItem, setNewMenuItem] = useState({
     name: '',
     restaurantId: foundRestaurant._id,
@@ -27,9 +26,8 @@ export default function RestaurantEditPage ({
 
   const navigate = useNavigate()
 
-
-  //----BACKEND REQUESTS ----//
-  //delete restaurant
+  // ----BACKEND REQUESTS ----//
+  // delete restaurant
   const deleteRestaurant = async (id) => {
     try {
       await fetch(`/api/restaurants/${id}`, {
@@ -47,7 +45,7 @@ export default function RestaurantEditPage ({
     }
   }
 
-  //create menu item 
+  // create menu item
   const createMenuItem = async (category) => {
     try {
       const response = await fetch('/api/restaurants/menu', {
@@ -69,7 +67,7 @@ export default function RestaurantEditPage ({
     }
   }
 
-  //delete menu item
+  // delete menu item
   const deleteItem = async (id) => {
     try {
       await fetch(`/api/restaurants/menu/items/${id}`, {
@@ -85,8 +83,7 @@ export default function RestaurantEditPage ({
     }
   }
 
-
-//--- EVENT HANDLERS ---//
+  // --- EVENT HANDLERS ---//
   const menuHandleChange = (evt) => {
     setNewMenuItem({ ...newMenuItem, [evt.target.name]: evt.target.value })
   }
@@ -103,7 +100,6 @@ export default function RestaurantEditPage ({
     getMenuItems(foundRestaurant._id)
   }
 
-
   useEffect(() => {
     setMenuItems(getMenuItems(foundRestaurant._id))
   }, [])
@@ -119,7 +115,7 @@ export default function RestaurantEditPage ({
           user={user}
         />
 
-        <NewMenuItem 
+        <NewMenuItem
           createMenuItem={createMenuItem}
           newMenuItem={newMenuItem}
           menuHandleChange={menuHandleChange}
@@ -363,9 +359,7 @@ export default function RestaurantEditPage ({
 // </select>
 // </label>
 
-
-
-{/* <NewMenuItem
+{ /* <NewMenuItem
 user={user}
 foundRestaurant={foundRestaurant}
 
@@ -386,4 +380,4 @@ setNewMenuItem={setNewMenuItem}
 newMenuItem={setNewMenuItem}
 
 menuHandleChange={menuHandleChange}
-/> */}
+/> */ }

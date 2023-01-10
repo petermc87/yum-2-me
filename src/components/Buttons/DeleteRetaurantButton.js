@@ -4,17 +4,16 @@ export default function DeleteRestauantButton ({
   foundRestaurant,
   deleteRestaurant
 }) {
-
   return (
     <>
-        <Link style={{ textDecoration: 'none', color: 'white' }} to='/home'>
-            <button onClick={(evt) => {
-              deleteRestaurant(foundRestaurant._id)
-            }}
-            >
-              &#10006;
-            </button>
-        </Link>
+      <Link style={{ textDecoration: 'none', color: 'white' }} to='/home'>
+        <button onClick={(evt) => {
+          deleteRestaurant(foundRestaurant._id)
+        }}
+        >
+          &#10006;
+        </button>
+      </Link>
     </>
   )
 }

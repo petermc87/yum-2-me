@@ -7,38 +7,37 @@ export default function ShowRestaurant ({
   deleteRestaurant,
   user
 }) {
-
-    const link = '/home'
+  const link = '/home'
 
   return (
     <>
-     <br />
-        <h2>{foundRestaurant.name}</h2> 
-        <br />
-        <h2>{foundRestaurant.type}</h2>
-        <h3>Located at: {foundRestaurant.location}</h3>
-        <div className='menu-button'>
-    {
-        user.userType ? 
-        <>
+      <br />
+      <h2>{foundRestaurant.name}</h2>
+      <br />
+      <h2>{foundRestaurant.type}</h2>
+      <h3>Located at: {foundRestaurant.location}</h3>
+      <div className='menu-button'>
+        {
+        user.userType
+          ? <>
             <Link style={{ textDecoration: 'none', color: 'white' }} to={link}>
-                <button>
-                    &#8249;
-                </button>
+              <button>
+                &#8249;
+              </button>
             </Link>
             <DeleteRestauantButton
-                foundRestaurant={foundRestaurant}
-                deleteRestaurant={deleteRestaurant}
-            /> 
-        </> :
-            <Link style={{ textDecoration: 'none', color: 'white' }} to={link}>
+              foundRestaurant={foundRestaurant}
+              deleteRestaurant={deleteRestaurant}
+            />
+          </>
+          : <Link style={{ textDecoration: 'none', color: 'white' }} to={link}>
             <button>
-                &#8249;
+              &#8249;
             </button>
-            </Link>
+          </Link>
     }
 
-        </div>
+      </div>
     </>
   )
 }

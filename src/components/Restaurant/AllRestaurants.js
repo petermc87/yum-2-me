@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-export default function AllRestaurants ({ 
-  restaurants, 
+export default function AllRestaurants ({
+  restaurants,
 
   setFoundRestaurant,
   foundRestaurant,
@@ -12,11 +12,10 @@ export default function AllRestaurants ({
   getMenuItems
 
 }) {
-
   const handleChange = (restaurant) => {
+    console.log(restaurant)
     setFoundRestaurant(restaurant)
     setMenuItems(getMenuItems(restaurant._id))
-
   }
   return (
     <>
@@ -36,11 +35,11 @@ export default function AllRestaurants ({
                 <p>{restaurant.type}</p>
               </div>
               <div className='res-button'>
-                <button to='orders/new' onClick={() => 
+                <button
+                  to='orders/new' onClick={() =>
                   // setFoundRestaurant(restaurant)
-                  handleChange(restaurant)
-
-                  }>
+                    handleChange(restaurant)}
+                >
                   <Link style={{ textDecoration: 'none', color: 'white' }} to='/orders/new'>Order from here</Link>
                 </button>
               </div>

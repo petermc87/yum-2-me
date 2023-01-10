@@ -8,8 +8,6 @@ export default function CreateRestaurantProfile ({
   getRestaurantsByUser,
   user
 }) {
-
-
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
@@ -20,9 +18,8 @@ export default function CreateRestaurantProfile ({
     createRestaurant()
     navigate('/home')
     getRestaurantsByUser(user._id)
-
   }
-  
+
   return (
     <>
       <div className='form-container' id='form-container-profile'>

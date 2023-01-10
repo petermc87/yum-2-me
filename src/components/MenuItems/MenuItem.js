@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom'
-// import { useEffect } from 'react'
 export default function MenuItem ({
   handleRemoveItem,
+  handleAddToOrder,
+
   menuItems,
   filterOne,
   filterTwo,
+
   user
+
 }) {
+
+
   return (
     <>
       {
@@ -25,23 +29,22 @@ export default function MenuItem ({
                         <p>${item.price}</p>
                       </div>
 
-                    {
-                      user.userType ?
-                      <div className='menu-button'>
-                        <button onClick={() => {
-                          handleRemoveItem(item._id)
-                        }}
-                        >&#10006;
-                        </button>
-                      </div>
-                      :
-                      <div className='menu-button'>
-                        <button
-                        >&#43;
-                        </button>
-                      </div>
+                      {
+                      user.userType
+                        ? <div className='menu-button'>
+                          <button onClick={() => {
+                            handleRemoveItem(item._id)
+                          }}
+                          >&#10006;
+                          </button>
+                        </div>
+                        : <div className='menu-button'>
+                          <button onClick={() => {
+                            handleAddToOrder(item._id)
+                            }}>&#43;
+                          </button>
+                        </div>
                     }
-
 
                     </div>
                   </>

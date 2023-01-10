@@ -65,75 +65,14 @@ Using MERN stack setup, the application has full CRUD capability. See below for 
 ADD FILE STRUCTURE TREE HERE
 
 ```
-📦src
- ┣ 📂components
- ┃ ┣ 📂Buttons
- ┃ ┃ ┣ 📜BackButton
- ┃ ┃ ┗ 📜DeleteRetaurantButton.js
- ┃ ┣ 📂Comments
- ┃ ┃ ┗ 📜Comments.js
- ┃ ┣ 📂Footer
- ┃ ┃ ┗ 📜Footer.js
- ┃ ┣ 📂LoginForm
- ┃ ┃ ┗ 📜LoginForm.js
- ┃ ┣ 📂LoginLinks
- ┃ ┃ ┣ 📜LoginLinks.js
- ┃ ┃ ┗ 📜LoginLinks.module.scss
- ┃ ┣ 📂MenuItems
- ┃ ┃ ┣ 📜MenuItem.js
- ┃ ┃ ┗ 📜NewMenuItem.js
- ┃ ┣ 📂NavBar
- ┃ ┃ ┣ 📜NavBar.js
- ┃ ┃ ┗ 📜NavBar.scss
- ┃ ┣ 📂NavBarLinks
- ┃ ┃ ┣ 📜NavBar.module.scss
- ┃ ┃ ┗ 📜NavBarLinks.js
- ┃ ┣ 📂Perks
- ┃ ┃ ┗ 📜Perks.js
- ┃ ┣ 📂Restaurant
- ┃ ┃ ┣ 📜AllRestaurants.js
- ┃ ┃ ┗ 📜ShowRestaurant.js
- ┃ ┣ 📂SignUpForm
- ┃ ┃ ┗ 📜SignUpForm.js
- ┃ ┗ 📂UserProfileForm
- ┃ ┃ ┣ 📜CustomerProfileForm.js
- ┃ ┃ ┗ 📜RestaurantProfileForm.js
- ┣ 📂pages
- ┃ ┣ 📂App
- ┃ ┃ ┣ 📜App.js
- ┃ ┃ ┗ 📜App.module.scss
- ┃ ┣ 📂EditPages
- ┃ ┃ ┗ 📜RestaurantEditPage.js
- ┃ ┣ 📂HomePage
- ┃ ┃ ┗ 📜HomePage.js
- ┃ ┣ 📂LandingPage
- ┃ ┃ ┗ 📜LandingPage.js
- ┃ ┣ 📂LoginPage
- ┃ ┃ ┣ 📜LoginPage.js
- ┃ ┃ ┗ 📜LoginPage.module.scss
- ┃ ┣ 📂NewOrderPage
- ┃ ┃ ┣ 📜NewOrderPage.js
- ┃ ┃ ┗ 📜NewOrderPage.module.scss
- ┃ ┣ 📂OrderHistoryPage
- ┃ ┃ ┣ 📜OrderHistoryPage.js
- ┃ ┃ ┗ 📜OrderHistoryPage.module.scss
- ┃ ┣ 📂ProfilePages
- ┃ ┃ ┣ 📜CustomerProfile.js
- ┃ ┃ ┗ 📜RestaurantProfile.js
- ┃ ┣ 📂RestaurantByUser
- ┃ ┃ ┗ 📜RestaurantByUser.js
- ┃ ┗ 📂SignupPage
- ┃ ┃ ┣ 📜SignupPage.js
- ┃ ┃ ┗ 📜SignupPage.module.scss
- ┣ 📂utilities
- ┃ ┣ 📜.gitkeep
- ┃ ┣ 📜items-api.js
- ┃ ┣ 📜orders.js
- ┃ ┣ 📜send-request.js
- ┃ ┣ 📜users-api.js
- ┃ ┗ 📜users-service.js
- ┣ 📜index.js
- ┗ 📜styles.css
+controllers
+ ┗ api
+ ┃ ┣ customers.js
+ ┃ ┣ items.js
+ ┃ ┣ orders.js
+ ┃ ┣ restaurants.js
+ ┃ ┣ users.js
+ ┃ ┗ usertest.js
 
 ```
 ## Conrtollers
