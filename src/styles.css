@@ -170,7 +170,7 @@ main{
 }
 .res-icon{
   /* border: solid purple */
-  /* background-image: url("/home/petermc/Desktop/software_homework/unit_3/yum2me/public/images/restaurantback.png"); */
+  background-image: url("https://imgur.com/yKFK1VN");
   /* opacity: 0.7; */
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   color: #b0d3f7;
@@ -277,7 +277,7 @@ main{
 
 .menu-image, .res-image{
   border-width: 0.5px;
-  /* background-image: url("/home/petermc/Desktop/software_homework/unit_3/yum2me/public/images/restaurantback.png"); */
+  background-image: url("https://imgur.com/yKFK1VN");
 }
 
 
