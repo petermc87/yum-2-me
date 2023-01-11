@@ -29,7 +29,7 @@ const userSchema = new Schema({
     }
   }
 })
-
+// A user model is created for each visitor to the site that is not admin.
 userSchema.pre('save', async function (next) {
   // 'this' is the use document
   if (!this.isModified('password')) return next()

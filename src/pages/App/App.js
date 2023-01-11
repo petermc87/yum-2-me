@@ -42,6 +42,11 @@ function App () {
     fetchState()
   }, [])
 
+
+  // useEffect(() => {
+  //   getRestaurantsByUser(user._id)
+  // }, [])
+
   return (
     <>
       {user

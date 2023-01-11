@@ -104,7 +104,7 @@ const dataController = {
       const newMenuItem = await Item.create(req.body)
       await Restaurant.findByIdAndUpdate(newMenuItem.restaurantId, {
         $push: {
-          mwnu: newMenuItem._id
+          menu: newMenuItem._id
         }
       })
       res.status(200).json(newMenuItem)
