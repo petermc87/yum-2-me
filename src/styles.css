@@ -271,9 +271,10 @@ main{
   text-align: center;
 }
 
-#menu-item > p, #menu-item > h1, #menu-item > button, .menu-image, .menu-button{
+/* #menu-item > p, #menu-item > h1, #menu-item > button, .menu-image{
   margin: 1rem;
-}
+} */
+
 
 .menu-image, .res-image{
   border-width: 0.5px;
@@ -358,6 +359,36 @@ form > button:hover{
   padding-bottom: .5rem;
 }
 
+#menu-button-select > button{
+  background-color: green;
+}
+
+#menu-button-select > button:hover{
+  background-color: rgb(29, 255, 29);
+}
+
+#menu-button-minus, #menu-button-plus{
+  /* border: solid black; */
+  /* padding: 0; */
+  background-color: #1f1388;
+  border-radius: 30%;
+  /* border-radius: ; */
+  width: 1.5rem;
+  height: 1.5rem; 
+  justify-content: center;
+  align-items: center;
+  margin: 0.3rem;
+  padding: 0.2rem;
+}
+#menu-button-minus:hover, #menu-button-plus:hover{
+ background-color: #6655ff;
+}
+#menu-add{
+  /* border: solid black; */
+  padding-top: .57em;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
 
 /* FORM & PROFILE CONTAINER*/
 form, .order-list-container {

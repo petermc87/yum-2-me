@@ -55,7 +55,7 @@ export default function MenuItem ({
                           >&#10006;
                           </button>
                         </div>
-                        : <div className='menu-button'>
+                        : <div className='menu-button' id='menu-button-select'>
                           <button onClick={() => {
                             handleAddToOrder(item._id)
                             }}>&#43;

@@ -175,7 +175,7 @@ const restaurantProfileSchema = new Schema({
 
 CRUD functionality is achieved using `.create()` `.find()` `.findByIdAndUpdate()` `.findById` and `.findByIdAndDelete` Mongoose methods.
 
-To note, the `createMenu` function will take the body of the new menu item created, then finds the restuarant by `restaurantId` passed in from the front end, then pushes the object Id of the menu item into the `menu` array element defined in the model (see models)
+To note, the `createMenu` function will take the body of the new menu item created, finds the restuarant by `restaurantId` passed in from the front end, then pushes the object Id of the menu item into the `menu` array element defined in the model (see models)
 
 
 ```js
@@ -266,9 +266,9 @@ components
    └─ RestaurantProfileForm.js  
 ```
 
-Props drilling was made easier by follwing this structure. In some cases, nearly 20 props from a parent component or page has to be drilled!
+Props drilling was made easier by follwing this structure. In some cases, nearly 20 props from a parent component or page needed to be drilled!
 
-One of the components that stands is for mapping out the menu items on creation the `RestaurantEditPage`. 
+A components that stands the`RestaurantEditPage` for listing menu items to the page
 
 ```js
   return (

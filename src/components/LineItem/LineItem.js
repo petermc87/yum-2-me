@@ -1,12 +1,12 @@
+  // import DeleteIcon from '@mui/icons-material/Delete'
 export default function LineItem ({
     lineItem,
     isPaid,
     handleChangeQty,
     foundRestaurant
-  
   }) {
   
-
+  
     //Added a ternary to check if the restaurant ID matches the current selected restaurant
     //so only items in that restaurant are indexed
     return (
@@ -56,21 +56,16 @@ export default function LineItem ({
                 <h4>{lineItem.item.name}</h4>
                 <p>${lineItem.item.price}</p>
               </div>
-              <div className="menu-button">
+              <div className="menu-button" id='menu-add'>
               {!isPaid &&
-                  <button 
-                  onClick={() => {handleChangeQty(lineItem.item._id, lineItem.qty - 1)
-                    test(lineItem)}
-                }
-                  >−</button>
+                  <button className="menu-button"  id="menu-button-minus" onClick={() => {handleChangeQty(lineItem.item._id, lineItem.qty - 1)
+                    test(lineItem)}}>−</button>
          
               }
               <span>{lineItem.qty}</span>
               {!isPaid &&
-                  <button
-                  className="menu-button"
-                  onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}
-                  >+</button>
+              <button className="menu-button" id="menu-button-plus"
+                  onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}>+</button>
               }
               </div>
             </div>
