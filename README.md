@@ -56,7 +56,7 @@ This page will have the options to add, delete and edit menu items. You will als
 ![ERD](public/images/ERD.png)
 
 
-## Screenshots
+# Screenshots
 ## Landing Page
 ![Landing Page](public/images/landing-shot.png)
 
