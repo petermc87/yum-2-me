@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 export default function HomePage (props) {
   // ---HOOKS---//
@@ -227,7 +227,7 @@ export default function HomePage (props) {
   const handleAddItem = (item) => {
     // console.log(item.image)
     console.log(selectedItems)
-    if (selectedItems.includes(item) == false) {
+    if (selectedItems.includes(item) === false) {
       setSelectedItems(copyItems => [...copyItems, item])
     }
   }
@@ -235,7 +235,7 @@ export default function HomePage (props) {
   // updating selected list without the item to be removed
   const handleRemoveItem = (removedItem) => {
     setSelectedItems((selectedItems) =>
-      selectedItems.filter((item) => item._id != removedItem._id)
+      selectedItems.filter((item) => item._id !== removedItem._id)
     )
   }
 

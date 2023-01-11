@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -21,7 +21,7 @@ export default function NewOrderPage ({
   // const [menuItems, setMenuItems] = useState([]);
   // const [activeCat, setActiveCat] = useState('');
   const [cart, setCart] = useState(null);
-  const categoriesRef = useRef([]);
+
   const navigate = useNavigate();
 
   useEffect(function() {

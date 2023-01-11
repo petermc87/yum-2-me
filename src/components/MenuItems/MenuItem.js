@@ -1,5 +1,3 @@
-import * as ordersAPI from '../../utilities/orders-api';
-import { useEffect } from 'react'
 
 export default function MenuItem ({
   handleRemoveItem,
@@ -36,7 +34,7 @@ export default function MenuItem ({
         menuItems.length > 0
           ? <>
             {
-              menuItems.filter(item => item.category == filterOne || item.category == filterTwo).map((item) => {
+              menuItems.filter(item => item.category === filterOne || item.category === filterTwo).map((item) => {
                 return (
                   <>
                     <div className='res-icon' id='menu-item' key={item._id}>
@@ -60,7 +58,7 @@ export default function MenuItem ({
                         : <div className='menu-button'>
                           <button onClick={() => {
                             handleAddToOrder(item._id)
-                            console.log(foundRestaurant)
+                            // console.log(foundRestaurant)
                             // handleUpdatedCart()
                             // setCart(ordersAPI.getCart)
                             }}>&#43;
