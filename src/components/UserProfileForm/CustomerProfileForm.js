@@ -14,12 +14,12 @@ export default function CreateCustomerProfile ({
         </form>
       </div>
       <div>
-        <div>
+        {/* <div>
           <button onClick={() => {
           }}
           >LOG OUT
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   )

@@ -8,7 +8,7 @@ export default function NavBar (props) {
       </li>
       <li />
       <li />
-      <li className='header-text' />
+      <li />
     </>
   )
 }

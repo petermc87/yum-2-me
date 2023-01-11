@@ -23,7 +23,6 @@ export default function CreateRestaurantProfile ({
   return (
     <>
       <div className='form-container' id='form-container-profile'>
-        <h1>Create your restaurant</h1>
         <form
           autoComplete='off' onSubmit={handleSubmit}
         >

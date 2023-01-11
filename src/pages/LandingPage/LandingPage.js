@@ -3,11 +3,11 @@ import NavBar from '../../components/NavBar/NavBar'
 import Perks from '../../components/Perks/Perks'
 import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
-import LoginLinks from '../../components/LoginLinks/LoginLinks'
+// import LoginLinks from '../../components/LoginLinks/LoginLinks'
 import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignupPage/SignupPage'
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 
 export default function LandingPage (props) {
   return (
@@ -38,10 +38,10 @@ export default function LandingPage (props) {
               <h2>Oh So Yummy!</h2> */}
             </div>
             <div className='top-container'>
-              <LoginLinks />
+            
               <Routes>
                 <Route
-                  path='/login' element={<LoginPage
+                  path='/' element={<LoginPage
                     setUser={props.setUser}
                     getRestaurantsByUser={props.getRestaurantsByUser}
                     setRestaurantsByUser={props.setRestaurantsByUser}

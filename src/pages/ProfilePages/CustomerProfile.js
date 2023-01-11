@@ -1,10 +1,13 @@
 import CustomerProfileFormn from '../../components/UserProfileForm/CustomerProfileForm'
+import UserLogOut from '../../components/UserLogOut/UserLogOut'
 
 export default function CustomerProfilePage ({
   handleChange,
   setNewCustomer,
   newCustomer,
-  createCustomer
+  createCustomer,
+  user,
+  setUser
 }) {
   return (
     <>
@@ -14,6 +17,10 @@ export default function CustomerProfilePage ({
         setNewCustomer={setNewCustomer}
         createCustomer={createCustomer}
       />
+       <UserLogOut
+        user={user}
+        setUser={setUser}
+       />
     </>
   )
 }

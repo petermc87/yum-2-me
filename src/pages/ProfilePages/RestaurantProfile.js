@@ -1,5 +1,6 @@
 import RestaurantProfileFormn from '../../components/UserProfileForm/RestaurantProfileForm'
 import RestaurantEditPage from '../EditPages/RestaurantEditPage'
+import UserLogOut from '../../components/UserLogOut/UserLogOut'
 import { Routes, Route } from 'react-router-dom'
 
 export default function RestaurantProfilePage ({
@@ -12,43 +13,45 @@ export default function RestaurantProfilePage ({
   restaurants,
   restaurantHandleChange,
 
-  getStarterItems,
-  starterItems,
-  setFoundStarterItem,
-  foundStarterItem,
+  // getStarterItems,
+  // starterItems,
+  // setFoundStarterItem,
+  // foundStarterItem,
 
-  mainItems,
-  setFoundMainItems,
-  foundMainItem,
+  // mainItems,
+  // setFoundMainItems,
+  // foundMainItem,
 
-  dessertItems,
-  setFoundDessertItems,
-  foundDessertItem,
+  // dessertItems,
+  // setFoundDessertItems,
+  // foundDessertItem,
 
-  sideItems,
-  setFoundSideItem,
-  foundSideItem,
+  // sideItems,
+  // setFoundSideItem,
+  // foundSideItem,
 
-  drinkItems,
-  setFoundDrinkItem,
-  foundDrinkItem,
+  // drinkItems,
+  // setFoundDrinkItem,
+  // foundDrinkItem,
 
   selectedItems,
   handleAddItem,
   handleRemoveItem,
 
   getRestaurantsByUser,
+  setUser,
   user,
-
-  menuItems,
-  setMenuItems,
-  getMenuItems,
-  menuItem,
-  setMenuItem
 
 }) {
   return (
     <>
+      <div className='index-header'>
+        <h1>Create your Restaurant</h1>
+      </div>
+      <UserLogOut
+        user={user}
+        setUser={setUser}
+      />
       <Routes>
         <Route
           path='/' element={
@@ -61,25 +64,25 @@ export default function RestaurantProfilePage ({
               foundRestaurant={foundRestaurant}
               restaurantHandleChange={restaurantHandleChange}
 
-              starterItems={starterItems}
-              foundStarterItem={foundStarterItem}
-              setFoundStarterItem={setFoundStarterItem}
+              // starterItems={starterItems}
+              // foundStarterItem={foundStarterItem}
+              // setFoundStarterItem={setFoundStarterItem}
 
-              mainItems={mainItems}
-              setFoundMainItems={setFoundMainItems}
-              foundMainItem={foundMainItem}
+              // mainItems={mainItems}
+              // setFoundMainItems={setFoundMainItems}
+              // foundMainItem={foundMainItem}
 
-              dessertItems={dessertItems}
-              setFoundDessertItems={setFoundDessertItems}
-              foundDessertItem={foundDessertItem}
+              // dessertItems={dessertItems}
+              // setFoundDessertItems={setFoundDessertItems}
+              // foundDessertItem={foundDessertItem}
 
-              sideItems={sideItems}
-              setFoundSideItem={setFoundSideItem}
-              foundSideItem={foundSideItem}
+              // sideItems={sideItems}
+              // setFoundSideItem={setFoundSideItem}
+              // foundSideItem={foundSideItem}
 
-              drinkItems={drinkItems}
-              setFoundDrinkItem={setFoundDrinkItem}
-              foundDrinkItem={foundDrinkItem}
+              // drinkItems={drinkItems}
+              // setFoundDrinkItem={setFoundDrinkItem}
+              // foundDrinkItem={foundDrinkItem}
 
               selectedItems={selectedItems}
               handleAddItem={handleAddItem}
@@ -87,8 +90,8 @@ export default function RestaurantProfilePage ({
 
               getRestaurantsByUser={getRestaurantsByUser}
               user={user}
-            />
-}
+              setUser={setUser}
+            />}
         />
       </Routes>
     </>

@@ -323,6 +323,7 @@ export default function HomePage (props) {
                         handleRemoveItem={handleRemoveItem}
 
                         user={props.user}
+                        setUser={props.setUser}
 
                         setNewRestuarant={setNewRestaurant}
                         newRestaurant={newRestaurant}
@@ -415,6 +416,8 @@ export default function HomePage (props) {
                         newCustomer={newCustomer}
                         setNewCustomer={setNewCustomer}
                         createCustomer={createCustomer}
+                        user={props.user}
+                        setUser={props.setUser}
                                                />}
                     />
                     </>}
