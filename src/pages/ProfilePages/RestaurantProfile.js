@@ -46,12 +46,8 @@ export default function RestaurantProfilePage ({
   return (
     <>
       <div className='index-header'>
-        <h1>Create your Restaurant</h1>
+        <h1>Your Profile</h1>
       </div>
-      <UserLogOut
-        user={user}
-        setUser={setUser}
-      />
       <Routes>
         <Route
           path='/' element={
@@ -94,6 +90,11 @@ export default function RestaurantProfilePage ({
             />}
         />
       </Routes>
+      <UserLogOut
+        user={user}
+        setUser={setUser}
+      />
+
     </>
   )
 }

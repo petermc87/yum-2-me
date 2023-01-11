@@ -358,14 +358,20 @@ The `RestaurantEditPage` contains three different components, `RestuarantShowPag
 # Unsolved Problems 
 * A customer can order from more than one restaurant at a time
 * Landing page styling needs update
-* Correct routing on signup
+* Incorrect routing on signup
+* State sometimes doesn't update when creating a restaurant
 
 # Future Icebox
 * Ternary to ensure a user can't order from more than one restaurant at a time
+* Add images and location to navbar
+* Fix styling in places
+* Dropdown options for user type (add driver profile)
 * DRY components and pages
 * Multi user chat system
 * Search bar 
 * Utilize SCSS instead of CSS
+* Use Restaurants API
+* Add Driver profile
 
 
       

@@ -6,11 +6,11 @@ export default function CreateCustomerProfile ({
   return (
     <>
       <div className='form-container' id='form-container-profile'>
-        <h1>Create your profile below</h1>
+        <h2>Update Your Profile</h2>
         <form autoComplete='off' onSubmit={createCustomer}>
           <input type='text' name='image' value={newCustomer.image} onChange={handleChange} placeholder='image' />
           <input type='text' name='location' value={newCustomer.location} onChange={handleChange} placeholder='location' required />
-          <button type='submit'>UPDATE PROFILE</button>
+          <button type='submit'>UPDATE</button>
         </form>
       </div>
       <div>

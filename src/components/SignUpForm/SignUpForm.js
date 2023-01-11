@@ -17,7 +17,7 @@ export default class SignUpForm extends Component {
  
 
   handleSubmit = async (evt) => {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     evt.preventDefault()
     try {
       const formData = { ...this.state }
@@ -29,7 +29,7 @@ export default class SignUpForm extends Component {
     } catch (error) {
       this.setState({ error: 'Sign Up Failed' })
     }
-    navigate('/home')
+    // navigate('/home')
   }
 
   handleChange = (evt) => {

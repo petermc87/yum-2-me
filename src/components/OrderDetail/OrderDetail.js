@@ -1,5 +1,4 @@
-
-import LineItem from '../LineItem/LineItem'
+import LineItem from '../../components/LineItem/LineItem'
 
 export default function OrderDetail ({
     order,
@@ -25,16 +24,16 @@ export default function OrderDetail ({
 //   }
 
   const test = (order) => {
-    console.log(order.isPaid)
+    console.log(order)
   }
 
   return (
     <>
       <div classNam='order-heading'>
         {order.isPaid?
-            <span>ORDER</span>
+            <h2>Order</h2>
             :
-            <span>NEW ORDER</span>
+            <h2>New Order</h2>
         }
         <span>{new Date(order.updatedAt).toLocaleDateString}</span>
       </div>
@@ -46,15 +45,17 @@ export default function OrderDetail ({
                 <section className='order-total'>
                     
                     {order.isPaid?
-                    <span>TOTAL</span> 
+                    <h3>TOTAL</h3> 
                     :
                     <button
                         onClick={handleCheckout}
                         disabled={!lineItems.length}
                     >CHECKOUT</button>
                 }
-                <span>{order.totalQty}</span>
+              
                 <span>${order.orderTotal.toFixed(2)}</span>
+                <br/>
+                <span>Items: {order.totalQty}</span>
                 </section>
             </>
             :

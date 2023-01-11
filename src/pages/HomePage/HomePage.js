@@ -394,7 +394,10 @@ export default function HomePage (props) {
                                                   />}
                     />
 
-                    <Route path='/orders' element={<OrderHistoryPage />} />
+                    <Route path='/orders' element={<OrderHistoryPage 
+                      user={props.user}
+                      foundRestaurant={foundRestaurant}
+                    />} />
                     <Route
                       path='/home' element={<Restaurants
                         setRestaurants={setRestaurants}

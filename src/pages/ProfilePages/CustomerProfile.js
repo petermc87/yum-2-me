@@ -11,13 +11,14 @@ export default function CustomerProfilePage ({
 }) {
   return (
     <>
-      <CustomerProfileFormn
+    <h1>Your Profile</h1>
+    <CustomerProfileFormn
         handleChange={handleChange}
         newCustomer={newCustomer}
         setNewCustomer={setNewCustomer}
         createCustomer={createCustomer}
       />
-       <UserLogOut
+      <UserLogOut
         user={user}
         setUser={setUser}
        />

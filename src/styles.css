@@ -359,22 +359,8 @@ form > button:hover{
 }
 
 
-/* FORM CONTAINER */
-#form-container-profile{
-  padding: 2rem;
-  text-align: center;
-  align-items: center;
-  border-width: 0.5px;
-  /* margin-top: 3rem; */
-  border-radius: 0;
-}
-
-.res-icon > .form-container{
-  border-top: solid rgb(196, 196, 196);
-}
-
-
-form {
+/* FORM & PROFILE CONTAINER*/
+form, .order-list-container {
   display: grid;
   grid-template-rows: 2fr 2fr;
   gap: 1.25vmin;
@@ -388,6 +374,55 @@ form > h1, .menu-select > h1{
   border-width: 0.5px;
   padding-bottom: 2rem;
   border-radius: 0;
+}
+#form-container-profile{
+  padding: 2rem;
+  text-align: center;
+  align-items: center;
+  border-width: 0.5px;
+  /* margin-top: 3rem; */
+  border-radius: 0;
+  /* border: solid black; */
+}
+
+.res-icon > .form-container{
+  border-top: solid rgb(196, 196, 196);
+}
+
+#form-container-profile, #profile-info, #form-container-edit{
+  border: solid rgb(199, 199, 199);
+  border-width: 0.005px;
+  border-radius: 0.2rem;
+  padding: 0;
+}
+
+#form-container-edit{
+  border: none;
+  border-top: solid rgb(185, 185, 185);
+  border-width: 0.001rem;
+  border-radius: 0;
+  padding-top: 1rem;
+}
+
+#form-container-edit > form{
+  border: none;
+  box-shadow: none;
+  /* border-width: 0.005px;
+  border-radius: 0.2rem;
+  padding: 0; */
+}
+
+
+#form-container-profile > form{
+  box-shadow: none;
+  width: 22rem;
+}
+
+
+#profile-info{
+  padding: 0 2rem 2rem 2rem;
+  width: 12rem;
+  text-align: center;
 }
 
 
@@ -404,6 +439,8 @@ input {
 input:focus{
   border:  .1vmin solid rgb(106, 87, 255);
 }
+
+
 
 
 /* BOTTOM CONTENT */

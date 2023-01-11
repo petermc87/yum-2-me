@@ -15,7 +15,7 @@ export default function NewMenuItem ({
   return (
     <>
 
-      <div className='form-container' id='form-container-profile'>
+      <div className='form-container' id='form-container-edit'>
         <h1>Create your Menu Below</h1>
         <form
           autoComplete='off' onSubmit={(e) => {

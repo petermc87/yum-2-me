@@ -16,7 +16,8 @@ function handleLogOut() {
 }
 
 return (
-  <div>
+  <div className='form-container' id='profile-info'>
+    <h2>Profile Info</h2>
     <div>{user.name}</div>
     <div>{user.email}</div>
     <button onClick={handleLogOut}>LOG OUT</button>
