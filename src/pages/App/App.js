@@ -1,10 +1,5 @@
 
 import { useState, useEffect } from 'react'
-
-// import NewOrderPage from '../NewOrderPage/NewOrderPage'
-// import CompletedOrdersPage from '../OrderHistotyPage/OrderHistoryPage.js'
-// import { Routes, Route } from 'react-router-dom'
-// import NavBar from '../../components/NavBarLinks/NavBarLinks'
 import HomePage from '../HomePage/HomePage'
 import LandingPage from '../LandingPage/LandingPage'
 
@@ -12,14 +7,15 @@ function App () {
   const [state, setState] = useState(null)
   const [user, setUser] = useState(null)
   const [restaurantsByUser, setRestaurantsByUser] = useState([])
+  //Profile info
+  const [customerProfile, setCustomerProfile] = useState([])
+  const [restaurantProfile, setRestaurantProfile] = useState([])
 
   const fetchState = async () => {
     try {
       const response = await fetch('/api/test')
       const data = await response.json()
       setState(data)
-      // getRestaurantsByUser(user)
-      // console.log(user._id)
     } catch (error) {
       console.error(error)
     }
@@ -32,20 +28,38 @@ function App () {
       const data = await response.json()
       console.log(data)
       setRestaurantsByUser(data)
-      // console.log(restaurantsByUser)
     } catch (err) {
       console.log(err)
     }
   }
 
+  //Get customer profile
+  const getCustomerProfile = async (id) => {
+    try {
+      const response = await fetch(`/api/customers/${id}`)
+      const data = await response.json()
+      setCustomerProfile(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  //Get restaurant profile
+  const getRestaurantProfile = async (id) => {
+    try {
+      const response = await fetch(`/api/restaurants/${id}`)
+      const data = await response.json()
+      setRestaurantProfile(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
   useEffect(() => {
     fetchState()
   }, [])
-
-
-  // useEffect(() => {
-  //   getRestaurantsByUser(user._id)
-  // }, [])
 
   return (
     <>
@@ -57,6 +71,16 @@ function App () {
             restaurantsByUser={restaurantsByUser}
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
+
+            getCustomerProfile={getCustomerProfile}
+            getRestaurantProfile={getRestaurantProfile}
+
+            setCustomerProfile={setCustomerProfile}
+            customerProfile={customerProfile}
+
+            setRestaurantProfile={setRestaurantProfile}
+            restaurantProfile={restaurantProfile}
+
           />
         </>
         : <LandingPage
@@ -64,6 +88,15 @@ function App () {
             restaurantsByUser={restaurantsByUser}
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
+
+            getCustomerProfile={getCustomerProfile}
+            getRestaurantProfile={getRestaurantProfile}
+
+            setCustomerProfile={setCustomerProfile}
+            // customerProfile={customerProfile}
+
+            setRestaurantProfile={setRestaurantProfile}
+            // restaurantProfile={restaurantProfile}
           />}
     </>
   )

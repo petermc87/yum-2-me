@@ -60,13 +60,14 @@ const dataController = {
   // Edit
   // Show
   show (req, res, next) {
-    Customer.findById(req.params.id, (err, foundCustomer) => {
+    Customer.find({ user: req.params.id }, (err, foundCustomer) => {
       if (err) {
         res.status(404).send({
           msg: err.message,
           output: 'Could not find a Customer with that ID'
         })
       } else {
+        console.log(foundCustomer)
         res.locals.data.customer = foundCustomer
         next()
       }

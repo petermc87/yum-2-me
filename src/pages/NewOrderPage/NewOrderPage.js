@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
 import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
 import MenuItem from '../../components/MenuItems/MenuItem'
 
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
-// import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 export default function NewOrderPage ({
   foundRestaurant,
@@ -136,19 +133,19 @@ export default function NewOrderPage ({
 
       {cart ?
         <>
-              <h1>Your Order</h1>
-              <div className='menu-select' id='order-select'>
-                <>
-                  <OrderDetail
-                    order={cart}
+            <h1>Your Order</h1>
+            <div className='menu-select' id='order-select'>
+              <>
+                <OrderDetail
+                  order={cart}
                     // user={user}
                     handleChangeQty={handleChangeQty}
                     handleCheckout={handleCheckout}
                     foundRestaurant={foundRestaurant}
-                    setRestaurantOrder={setRestaurantOrder}
-                  />
-                </>
-              </div>
+                  setRestaurantOrder={setRestaurantOrder}
+                />
+              </>
+            </div>
         </>
         :
         <h1>No Order to Display</h1>

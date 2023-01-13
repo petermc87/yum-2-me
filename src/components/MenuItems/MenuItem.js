@@ -16,18 +16,6 @@ export default function MenuItem ({
 
 }) {
 
-  // const handleUpdatedCart = () => {
-  //     const cart = await ordersAPI.getCart();
-  //     setCart(cart);
-  //   }
-  // }
-
-
-  // const handleUpdatedCart = () => {
-  //   const cart = 
-  //   setCart(cart)
-  // } 
-
   return (
     <>
       {
@@ -58,7 +46,8 @@ export default function MenuItem ({
                         : <div className='menu-button' id='menu-button-select'>
                           <button onClick={() => {
                             handleAddToOrder(item._id)
-                            }}>&#43;
+                          }}
+                          >&#43;
                           </button>
                         </div>
                     }

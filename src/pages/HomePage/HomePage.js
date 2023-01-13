@@ -14,14 +14,12 @@ import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 export default function HomePage (props) {
   // ---HOOKS---//
-
+  const navigate = useNavigate()
   // selected Items
-  // const [starterItems, setStarterItems] = useState([])
-  // const [foundStarterItem, setFoundStarterItem] = useState(null)
   const [selectedItems, setSelectedItems] = useState([])
 
   // // mains
@@ -62,21 +60,16 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-
   // single item
   const [menuItem, setMenuItem] = useState({})
 
   // items array
   const [menuItems, setMenuItems] = useState([])
 
-
-
   // ---BACKEND REQUESTS---//
-
   // create customer
   const createCustomer = async () => {
     try {
-      console.log('posting')
       const response = await fetch('/api/customers', {
         method: 'POST',
         headers: {
@@ -86,15 +79,16 @@ export default function HomePage (props) {
       })
       const data = await response.json()
       setFoundCustomer(data)
-      console.log(foundRestaurant)
       setNewCustomer({
         image: '',
         location: '',
         user: props.user._id
       })
+     
     } catch (error) {
       console.error(error)
     }
+    // console.log(foundCustomer)
   }
 
   // create restaurant
@@ -117,8 +111,6 @@ export default function HomePage (props) {
         menu: []
 
       })
-      // navigate('/edit')
-      // props.setUser(props.user)
     } catch (error) {
       console.error(error)
     }
@@ -146,7 +138,18 @@ export default function HomePage (props) {
     }
   }
 
-  // // Index starter items
+  // Get Customer Profile
+  const getCustomer = async (id) => {
+    try {
+      const response = await fetch(`api/customers/${id}`)
+      const data = await response.json()
+      setFoundCustomer(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  // Index starter items
   // const getStarterItems = async () => {
   //   try {
   //     const response = await fetch('/api/items')
@@ -204,11 +207,8 @@ export default function HomePage (props) {
   // --- Index Menu Items by Restaurant --//
   const getMenuItems = async (id) => {
     try {
-      // console.log(id)
       const response = await fetch(`/api/restaurants/menu/items/${id}`)
       const data = await response.json()
-      // console.log(data)
-      // console.log(props.user.userType)
       setMenuItems(data)
     } catch (err) {
       console.log(err)
@@ -225,8 +225,6 @@ export default function HomePage (props) {
 
   // adding to selected items only if it already isn't in the list
   const handleAddItem = (item) => {
-    // console.log(item.image)
-    console.log(selectedItems)
     if (selectedItems.includes(item) === false) {
       setSelectedItems(copyItems => [...copyItems, item])
     }
@@ -247,30 +245,17 @@ export default function HomePage (props) {
     getCustomers()
   }, [foundCustomer])
 
-  // // items
-  // useEffect(() => {
-  //   getStarterItems()
-  // }, [foundStarterItem])
+  useEffect(() => {
 
-  // useEffect(() => {
-  //   getMainItems()
-  // }, [foundMainItem])
+    if(props.user.userType){
+      console.log(props.user._id)
+    } else{
+      getCustomer(props.user._id)
+    }
+  }, [])
 
-  // useEffect(() => {
-  //   getDessertItems()
-  // }, [foundDessertItem])
 
-  // useEffect(() => {
-  //   getSideItems()
-  // }, [foundSideItem])
 
-  // useEffect(() => {
-  //   getDrinkItems()
-  // }, [foundDrinkItem])
-
-  // useEffect(() => {
-  //   getMenuItems(foundRestaurant._id)
-  // }, [menuItem])
 
   return (
     <>
@@ -394,10 +379,12 @@ export default function HomePage (props) {
                                                   />}
                     />
 
-                    <Route path='/orders' element={<OrderHistoryPage 
-                      user={props.user}
-                      foundRestaurant={foundRestaurant}
-                    />} />
+                    <Route
+                      path='/orders' element={<OrderHistoryPage
+                        user={props.user}
+                        foundRestaurant={foundRestaurant}
+                                              />}
+                    />
                     <Route
                       path='/home' element={<Restaurants
                         setRestaurants={setRestaurants}
@@ -416,7 +403,10 @@ export default function HomePage (props) {
                     <Route
                       path='/profile' element={<CustomerProfilePage
                         handleChange={handleChange}
+
                         newCustomer={newCustomer}
+                        foundCustomer={foundCustomer}
+
                         setNewCustomer={setNewCustomer}
                         createCustomer={createCustomer}
                         user={props.user}

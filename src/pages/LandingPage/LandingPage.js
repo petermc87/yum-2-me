@@ -3,13 +3,15 @@ import NavBar from '../../components/NavBar/NavBar'
 import Perks from '../../components/Perks/Perks'
 import '../../styles.css'
 import Footer from '../../components/Footer/Footer'
-// import LoginLinks from '../../components/LoginLinks/LoginLinks'
 import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignupPage/SignupPage'
 
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 
 export default function LandingPage (props) {
+
   return (
     <>
       <body>
@@ -38,14 +40,14 @@ export default function LandingPage (props) {
               <h2>Oh So Yummy!</h2> */}
             </div>
             <div className='top-container'>
-            
+
               <Routes>
                 <Route
                   path='/' element={<LoginPage
                     setUser={props.setUser}
                     getRestaurantsByUser={props.getRestaurantsByUser}
                     setRestaurantsByUser={props.setRestaurantsByUser}
-                                         />}
+                                    />}
                 />
                 <Route
                   path='/signup' element={<SignUpPage

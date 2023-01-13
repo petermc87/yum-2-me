@@ -8,6 +8,7 @@ export default function CreateRestaurantProfile ({
   getRestaurantsByUser,
   user
 }) {
+
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
@@ -30,6 +31,7 @@ export default function CreateRestaurantProfile ({
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />
+          <input type='text' name='image' value={newRestaurant.image} onChange={restaurantHandleChange} placeholder='image' required />
           <div className='create-button'>
             <button type='submit'>CREATE
             </button>

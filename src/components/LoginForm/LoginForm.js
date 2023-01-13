@@ -1,8 +1,7 @@
 // import Link from 'react-router-dom'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
-import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm ({
   getRestaurantsByUser,
@@ -10,7 +9,6 @@ export default function LoginForm ({
   setUser
 
 }) {
-
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -25,7 +23,6 @@ export default function LoginForm ({
   }
 
   const handleSubmit = async (evt) => {
-    
     evt.preventDefault()
     try {
       const user = await userService.login(credentials)
@@ -43,22 +40,22 @@ export default function LoginForm ({
 
   return (
     <>
-    <div>
-      <div className='form-container'>
-        <form autoComplete='off' onSubmit={handleSubmit}>
-          {/* <label>Email</label> */}
-          <input type='email' name='email' value={credentials.email} onChange={handleChange} placeholder='email' required />
-          {/* <label>Password</label> */}
-          <input type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='password' required />
-          <button type='submit'>
-            LOG IN
-          </button>
-        </form>
+      <div>
+        <div className='form-container'>
+          <form autoComplete='off' onSubmit={handleSubmit}>
+            {/* <label>Email</label> */}
+            <input type='email' name='email' value={credentials.email} onChange={handleChange} placeholder='email' required />
+            {/* <label>Password</label> */}
+            <input type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='password' required />
+            <button type='submit'>
+              LOG IN
+            </button>
+          </form>
+        </div>
+        <h1 className='error-message'>&nbsp;{error}</h1>
       </div>
-      <h1 className='error-message'>&nbsp;{error}</h1>
-    </div>
-    <p>Don't have an account? <Link to='/signup'>signup</Link>
-    </p>
+      <p>Don't have an account? <Link to='/signup'>signup</Link>
+      </p>
     </>
   )
 }

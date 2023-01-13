@@ -6,13 +6,16 @@ export default function CustomerProfilePage ({
   setNewCustomer,
   newCustomer,
   createCustomer,
+
   user,
-  setUser
+  setUser,
+
+  foundCustomer
 }) {
   return (
     <>
-    <h1>Your Profile</h1>
-    <CustomerProfileFormn
+      <h1>Your Profile</h1>
+      <CustomerProfileFormn
         handleChange={handleChange}
         newCustomer={newCustomer}
         setNewCustomer={setNewCustomer}
@@ -21,7 +24,10 @@ export default function CustomerProfilePage ({
       <UserLogOut
         user={user}
         setUser={setUser}
-       />
+        // {foundCustomer.image}
+        foundCustomer={foundCustomer}
+      />
+      
     </>
   )
 }

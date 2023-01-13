@@ -1,9 +1,6 @@
 import { Component } from 'react'
 import { signUp } from '../../utilities/users-service'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-
-
+import { Link, useNavigate } from 'react-router-dom'
 
 export default class SignUpForm extends Component {
   state = {
@@ -14,7 +11,6 @@ export default class SignUpForm extends Component {
     userType: false,
     error: ''
   }
- 
 
   handleSubmit = async (evt) => {
     // const navigate = useNavigate()
@@ -25,11 +21,9 @@ export default class SignUpForm extends Component {
       delete formData.confirm
       const user = await signUp(formData)
       this.props.setUser(user)
-      
     } catch (error) {
       this.setState({ error: 'Sign Up Failed' })
     }
-    // navigate('/home')
   }
 
   handleChange = (evt) => {
@@ -37,6 +31,8 @@ export default class SignUpForm extends Component {
       [evt.target.name]: evt.target.value
     })
   }
+
+
 
   render () {
     const disable = this.state.password !== this.state.confirm
@@ -56,7 +52,7 @@ export default class SignUpForm extends Component {
           </div>
           <p className='error-message'>&nbsp;{this.state.error}</p>
         </div>
-          <p>Alreay have an account? <Link to='/'>login</Link></p>
+        <p>Already have an account? <Link to='/'>login</Link></p>
       </>
     )
   }

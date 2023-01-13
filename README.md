@@ -363,6 +363,7 @@ The `RestaurantEditPage` contains three different components, `RestuarantShowPag
 
 # Future Icebox
 * Ternary to ensure a user can't order from more than one restaurant at a time
+* Ternary for nav bar logo
 * Add images and location to navbar
 * Fix styling in places
 * Dropdown options for user type (add driver profile)

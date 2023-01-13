@@ -278,9 +278,14 @@ main{
 
 .menu-image, .res-image{
   border-width: 0.5px;
-  background-image: url("https://i.imgur.com/yKFK1VN.png?3");
+  /* background-image: url("https://i.imgur.com/yKFK1VN.png?3"); */
 }
-
+.menu-image > img, .res-image > img{
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  overflow: hidden;
+}
 
 /* BUTTONS */
 
@@ -471,7 +476,15 @@ input:focus{
   border:  .1vmin solid rgb(106, 87, 255);
 }
 
+/* .image-container{
+  border: solid black;
+} */
 
+.image-container > img{
+  /* border: solid black; */
+  max-width: 100%;
+  max-height: 100%;
+}
 
 
 /* BOTTOM CONTENT */

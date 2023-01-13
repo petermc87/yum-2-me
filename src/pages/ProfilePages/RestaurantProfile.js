@@ -13,34 +13,13 @@ export default function RestaurantProfilePage ({
   restaurants,
   restaurantHandleChange,
 
-  // getStarterItems,
-  // starterItems,
-  // setFoundStarterItem,
-  // foundStarterItem,
-
-  // mainItems,
-  // setFoundMainItems,
-  // foundMainItem,
-
-  // dessertItems,
-  // setFoundDessertItems,
-  // foundDessertItem,
-
-  // sideItems,
-  // setFoundSideItem,
-  // foundSideItem,
-
-  // drinkItems,
-  // setFoundDrinkItem,
-  // foundDrinkItem,
-
   selectedItems,
   handleAddItem,
   handleRemoveItem,
 
   getRestaurantsByUser,
   setUser,
-  user,
+  user
 
 }) {
   return (
@@ -60,26 +39,6 @@ export default function RestaurantProfilePage ({
               foundRestaurant={foundRestaurant}
               restaurantHandleChange={restaurantHandleChange}
 
-              // starterItems={starterItems}
-              // foundStarterItem={foundStarterItem}
-              // setFoundStarterItem={setFoundStarterItem}
-
-              // mainItems={mainItems}
-              // setFoundMainItems={setFoundMainItems}
-              // foundMainItem={foundMainItem}
-
-              // dessertItems={dessertItems}
-              // setFoundDessertItems={setFoundDessertItems}
-              // foundDessertItem={foundDessertItem}
-
-              // sideItems={sideItems}
-              // setFoundSideItem={setFoundSideItem}
-              // foundSideItem={foundSideItem}
-
-              // drinkItems={drinkItems}
-              // setFoundDrinkItem={setFoundDrinkItem}
-              // foundDrinkItem={foundDrinkItem}
-
               selectedItems={selectedItems}
               handleAddItem={handleAddItem}
               handleRemoveItem={handleRemoveItem}
@@ -90,11 +49,10 @@ export default function RestaurantProfilePage ({
             />}
         />
       </Routes>
-      <UserLogOut
-        user={user}
-        setUser={setUser}
-      />
-
+        <UserLogOut
+          user={user}
+          setUser={setUser}
+        />
     </>
   )
 }

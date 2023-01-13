@@ -6,10 +6,7 @@ import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
 
 export default function RestaurantEditPage ({
   foundRestaurant,
-
   user,
-  // userType,
-
   getRestaurantsByUser,
   menuItems,
   setMenuItems,
@@ -38,7 +35,6 @@ export default function RestaurantEditPage ({
       })
       console.log(menuItems)
       getRestaurantsByUser(user._id)
-      // console.log(restaurantsByUser)
     } catch (error) {
       console.error(error)
     }
