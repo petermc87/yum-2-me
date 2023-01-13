@@ -1,9 +1,13 @@
+// const { Restaurant } = require('@mui/icons-material')
+const item = require('../../models/restaurant/item')
 const Item = require('../../models/restaurant/item')
+const Restaurant = require('../../models/restaurant/restaurantProfile')
 
 module.exports = {
   index,
   show,
-  indexUser
+  indexUser,
+  getMenuByRestaurant
 }
 
 async function index (req, res) {
@@ -38,32 +42,46 @@ async function indexUser (req, res) {
   }
 }
 
-// const indexUser = (req, res, next) => {
-//  Item.find({ restaurantId: req.params.id }, (err, foundItems) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       console.log(foundItems)
-//       // res.locals.data.restaurants = foundRestaurants
-//       res.status(200).json(foundItems)
-//       next()
-//     }
-//   })
-// }
 
-// // Index by User
-// indexUser (req, res, next) {
-//   Restaurant.find({ user: req.params.id }, (err, foundRestaurants) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       console.log(foundRestaurants)
-//       res.locals.data.restaurants = foundRestaurants
-//       next()
-//     }
-//   })
-// },
+
+ 
+
+// Get Menu items by restaurant 
+
+async function getMenuByRestaurant (req, res){ 
+  try{ 
+      const restaurant = await Restaurant.findById(req.params.id) 
+      const response = await Item.find().where('_id').in(restaurant.menu) 
+      
+      // const response = await Item.find({ '_id': { $in: restaurant.menu} }); 
+      res.status(200).json(response) 
+    } catch (err) { 
+      console.log(err) 
+      
+    } 
+  } 
+
+
+
+
+  // async function getMenuByRestaurant (req, res){
+  //   try{
+
+
+  //     const restaurant = await Restaurant.findById(req.params.id)
+  //     console.log(restaurant)
+
+  //     // const response = await Item.find().where('menu').in(restaurant) -- this was finding every menu array
+
+  //     const response = await Item.find({ '_id': { $in: restaurant.menu} });
+
+  //     // const response = await Item.find().where('menu').in(restaurant.menu).exec()
+
+      
+  //     console.log(response)
+  //     res.status(200).json(response)
+  //     // res.status(200).json(restaurant)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
