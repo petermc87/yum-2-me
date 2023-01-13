@@ -6,8 +6,13 @@ import * as userService from '../../utilities/users-service'
 export default function LoginForm ({
   getRestaurantsByUser,
   setRestaurantsByUser,
-  setUser
+  setUser,
+  user, 
 
+  getCustomer
+
+
+  // setFoundCustomer
 }) {
   const [credentials, setCredentials] = useState({
     email: '',
@@ -30,12 +35,17 @@ export default function LoginForm ({
       navigate('/home')
       // setting the restaurants created by the user ID if the user is a restaurant owner
       console.log(user._id)
-      if (user.userType) {
-        getRestaurantsByUser(user._id)
-      }
+
     } catch (error) {
       setError(error.message)
     }
+
+    if (user.userType) {
+      getRestaurantsByUser(user._id)
+    } else{
+      getCustomer(user._id)
+    }
+    // console.log(foundCustomer)
   }
 
   return (

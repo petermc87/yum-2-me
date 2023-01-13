@@ -53,7 +53,6 @@ export default function HomePage (props) {
 
   // customers
   const [customers, setCustomers] = useState([])
-  const [foundCustomer, setFoundCustomer] = useState(null)
   const [newCustomer, setNewCustomer] = useState({
     image: '',
     location: '',
@@ -78,7 +77,7 @@ export default function HomePage (props) {
         body: JSON.stringify({ ...newCustomer })
       })
       const data = await response.json()
-      setFoundCustomer(data)
+      props.setFoundCustomer(data)
       setNewCustomer({
         image: '',
         location: '',
@@ -138,16 +137,16 @@ export default function HomePage (props) {
     }
   }
 
-  // Get Customer Profile
-  const getCustomer = async (id) => {
-    try {
-      const response = await fetch(`api/customers/${id}`)
-      const data = await response.json()
-      setFoundCustomer(data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // // Get Customer Profile
+  // const getCustomer = async (id) => {
+  //   try {
+  //     const response = await fetch(`api/customers/${id}`)
+  //     const data = await response.json()
+  //     setFoundCustomer(data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   // Index starter items
   // const getStarterItems = async () => {
@@ -243,18 +242,15 @@ export default function HomePage (props) {
 
   useEffect(() => {
     getCustomers()
-  }, [foundCustomer])
+  }, [props.foundCustomer])
 
   useEffect(() => {
-
     if(props.user.userType){
       console.log(props.user._id)
     } else{
-      getCustomer(props.user._id)
+      props.getCustomer(props.user._id)
     }
   }, [])
-
-
 
 
   return (
@@ -263,8 +259,15 @@ export default function HomePage (props) {
         <header>
           <nav aria-label='Main Navigation' role='navigation'>
             <ul class='navigation-list' id='header-list'>
-              <NavBar />
-              <NavBarLinks />
+              <NavBar 
+                foundCustomer={props.foundCustomer}
+                user={props.user}
+              />
+
+              <NavBarLinks 
+                user={props.user}
+                foundCustomer={props.foundCustomer}
+              />
             </ul>
           </nav>
         </header>
@@ -397,6 +400,8 @@ export default function HomePage (props) {
                         menItems={menuItems}
 
                         getMenuItems={getMenuItems}
+
+                        foundCustomer={props.foundCustomer}
                         // createRestaurant={createRestaurant}
                                             />}
                     />
@@ -405,10 +410,12 @@ export default function HomePage (props) {
                         handleChange={handleChange}
 
                         newCustomer={newCustomer}
-                        foundCustomer={foundCustomer}
+                        foundCustomer={props.foundCustomer}
 
                         setNewCustomer={setNewCustomer}
                         createCustomer={createCustomer}
+                        getCustomer={props.getCustomer}
+
                         user={props.user}
                         setUser={props.setUser}
                                                />}

@@ -9,7 +9,9 @@ export default function AllRestaurants ({
   setFoundRestaurant,
 
   setMenuItems,
-  getMenuItems
+  getMenuItems,
+
+  foundCustomer
 
 }) {
   const handleChange = (restaurant) => {
@@ -17,7 +19,7 @@ export default function AllRestaurants ({
     setFoundRestaurant(restaurant)
     setMenuItems(getMenuItems(restaurant._id))
   }
-
+  console.log(foundCustomer[0])
   return (
     <>
       <div className='index-header'>

@@ -58,7 +58,7 @@ const dataController = {
     })
   },
   // Edit
-  // Show
+  // Show - finding profile info by their ID
   show (req, res, next) {
     Customer.find({ user: req.params.id }, (err, foundCustomer) => {
       if (err) {

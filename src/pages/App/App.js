@@ -11,6 +11,11 @@ function App () {
   const [customerProfile, setCustomerProfile] = useState([])
   const [restaurantProfile, setRestaurantProfile] = useState([])
 
+  //customer
+  const [foundCustomer, setFoundCustomer] = useState({})
+
+
+
   const fetchState = async () => {
     try {
       const response = await fetch('/api/test')
@@ -55,7 +60,17 @@ function App () {
     }
   }
 
-
+  // Get Customer Profile
+  const getCustomer = async (id) => {
+    try {
+      const response = await fetch(`api/customers/${id}`)
+      const data = await response.json()
+      console.log(data)
+      setFoundCustomer(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     fetchState()
@@ -80,7 +95,11 @@ function App () {
 
             setRestaurantProfile={setRestaurantProfile}
             restaurantProfile={restaurantProfile}
+            
+            foundCustomer={foundCustomer}
+            setFoundCustomer={setFoundCustomer}
 
+            getCustomer={getCustomer}
           />
         </>
         : <LandingPage
@@ -96,6 +115,9 @@ function App () {
             // customerProfile={customerProfile}
 
             setRestaurantProfile={setRestaurantProfile}
+
+            // foundCustomer={fou}
+            setFoundCustomer={setFoundCustomer}
             // restaurantProfile={restaurantProfile}
           />}
     </>

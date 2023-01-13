@@ -1,17 +1,20 @@
 import CustomerProfileFormn from '../../components/UserProfileForm/CustomerProfileForm'
 import UserLogOut from '../../components/UserLogOut/UserLogOut'
 
+import { useEffect } from 'react'
 export default function CustomerProfilePage ({
   handleChange,
   setNewCustomer,
   newCustomer,
   createCustomer,
+  getCustomer,
 
   user,
   setUser,
 
   foundCustomer
 }) {
+
   return (
     <>
       <h1>Your Profile</h1>
@@ -20,11 +23,13 @@ export default function CustomerProfilePage ({
         newCustomer={newCustomer}
         setNewCustomer={setNewCustomer}
         createCustomer={createCustomer}
+        foundCustomer={foundCustomer}
+        user={user}
+        getCustomer={getCustomer}
       />
       <UserLogOut
         user={user}
         setUser={setUser}
-        // {foundCustomer.image}
         foundCustomer={foundCustomer}
       />
       

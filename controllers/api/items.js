@@ -42,24 +42,18 @@ async function indexUser (req, res) {
   }
 }
 
-
-
- 
-
 // Get Menu items by restaurant 
-
 async function getMenuByRestaurant (req, res){ 
-  try{ 
-      const restaurant = await Restaurant.findById(req.params.id) 
-      const response = await Item.find().where('_id').in(restaurant.menu) 
+  try { 
+    const restaurant = await Restaurant.findById(req.params.id) 
+    const response = await Item.find().where('_id').in(restaurant.menu) 
       
       // const response = await Item.find({ '_id': { $in: restaurant.menu} }); 
-      res.status(200).json(response) 
-    } catch (err) { 
-      console.log(err) 
-      
-    } 
+    res.status(200).json(response) 
+  } catch (err) { 
+    console.log(err)   
   } 
+} 
 
 
 
