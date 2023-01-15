@@ -83,7 +83,6 @@ export default function HomePage (props) {
         location: '',
         user: props.user._id
       })
-     
     } catch (error) {
       console.error(error)
     }
@@ -126,6 +125,18 @@ export default function HomePage (props) {
     }
   }
 
+  // Index Restaurants
+  const getRestaurant = async (id) => {
+    try {
+      const response = await fetch(`/api/restaurants/${id}`)
+      const data = await response.json()
+      setFoundRestaurant(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  console.log(user)
   // Index Customers
   const getCustomers = async () => {
     try {
@@ -245,13 +256,12 @@ export default function HomePage (props) {
   }, [props.foundCustomer])
 
   useEffect(() => {
-    if(props.user.userType){
+    if (props.user.userType) {
       console.log(props.user._id)
-    } else{
+    } else {
       props.getCustomer(props.user._id)
     }
   }, [])
-
 
   return (
     <>
@@ -259,12 +269,12 @@ export default function HomePage (props) {
         <header>
           <nav aria-label='Main Navigation' role='navigation'>
             <ul class='navigation-list' id='header-list'>
-              <NavBar 
+              <NavBar
                 foundCustomer={props.foundCustomer}
                 user={props.user}
               />
 
-              <NavBarLinks 
+              <NavBarLinks
                 user={props.user}
                 foundCustomer={props.foundCustomer}
               />
@@ -286,25 +296,6 @@ export default function HomePage (props) {
 
                     <Route
                       path='/profile' element={<RestaurantProfilePage
-                        // drinkItems={drinkItems}
-                        // setFoundDrinkItem={setFoundDrinkItem}
-                        // foundDrinkItem={foundDrinkItem}
-
-                        // dessertItems={dessertItems}
-                        // setFoundDessertItem={setFoundDessertItem}
-                        // foundDessertItem={foundDessertItem}
-
-                        // sideItems={sideItems}
-                        // setFoundSideItem={setFoundSideItem}
-                        // foundSideItem={foundSideItem}
-
-                        // foundMainItem={foundMainItem}
-                        // mainItems={mainItems}
-                        // setFoundMainItem={setFoundMainItem}
-
-                        // setFoundStarterItem={setFoundStarterItem}
-                        // starterItems={starterItems}
-
                         selectedItems={selectedItems}
                         handleAddItem={handleAddItem}
 
@@ -386,6 +377,9 @@ export default function HomePage (props) {
                       path='/orders' element={<OrderHistoryPage
                         user={props.user}
                         foundRestaurant={foundRestaurant}
+                        setFoundRestaurant={setFoundRestaurant}
+                        getRestaurantsByUser={props.getRestaurantsByUser}
+                        getRestaurant={getRestaurant}
                                               />}
                     />
                     <Route

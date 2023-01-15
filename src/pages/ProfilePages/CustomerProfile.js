@@ -14,7 +14,6 @@ export default function CustomerProfilePage ({
 
   foundCustomer
 }) {
-
   return (
     <>
       <h1>Your Profile</h1>
@@ -32,7 +31,7 @@ export default function CustomerProfilePage ({
         setUser={setUser}
         foundCustomer={foundCustomer}
       />
-      
+
     </>
   )
 }

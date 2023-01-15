@@ -6,43 +6,38 @@ export default function NavBar ({
 }) {
   return (
     <>
-    {user ?
-            <li>
-            <Link className='logo' to='/home'>Yum2me</Link>
-          </li>
-          :
-        <li>
-          <Link className='logo' to='/'>Yum2me</Link>
+      {user
+        ? <li>
+          <Link className='logo' to='/home'>Yum2me</Link>
         </li>
-    }
+        : <li>
+          <Link className='logo' to='/'>Yum2me</Link>
+        </li>}
       <li />
       <li />
     </>
   )
 }
-        
 
-      {/* {foundCustomer.length > 0 ?
+{ /* {foundCustomer.length > 0 ?
         <li className='header-text'>
           {foundCustomer[0].location}
         </li>
         :
         ''
-      } */}
+      } */ }
 
-
-
-      {/* <li className='header-text'>
+{ /* <li className='header-text'>
           {foundCustomer[0].location}
-        </li> */}
+        </li> */ }
 
-      {/* {user ?
+{ /* {user ?
         {foundCustomer ?
           <li className='header-text'>
           {foundCustomer[0].location}
         </li>
         : ''
-        
-        } 
+
+        }
         : ''
-      } */}
+      } */ }

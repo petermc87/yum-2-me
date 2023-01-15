@@ -24,7 +24,7 @@ const dataController = {
           msg: err.message
         })
       } else {
-        console.log(foundRestaurants)
+        // console.log(foundRestaurants)
         res.locals.data.restaurants = foundRestaurants
         next()
       }

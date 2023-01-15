@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as ordersAPI from '../../utilities/orders-api';
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import * as ordersAPI from '../../utilities/orders-api'
 import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
 import MenuItem from '../../components/MenuItems/MenuItem'
 
-import OrderDetail from '../../components/OrderDetail/OrderDetail';
+import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
 export default function NewOrderPage ({
   foundRestaurant,
@@ -14,27 +14,25 @@ export default function NewOrderPage ({
   restaurantOrder
 
 }) {
-
   // const [menuItems, setMenuItems] = useState([]);
   // const [activeCat, setActiveCat] = useState('');
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState(null)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  useEffect(function() {
-    async function getCart() {
-      const cart = await ordersAPI.getCart();
-      setCart(cart);
+  useEffect(function () {
+    async function getCart () {
+      const cart = await ordersAPI.getCart()
+      setCart(cart)
       // console.log(cart)
     }
-    getCart();
+    getCart()
     // console.log(foundRestaurant)
     // console.log(cart)
-  }, []);
+  }, [])
 
-
-  //--- EVENT HANDLERS ---//
-  async function handleAddToOrder(itemId){
+  // --- EVENT HANDLERS ---//
+  async function handleAddToOrder (itemId) {
     // console.log(itemId)
     const updatedCart = await ordersAPI.addItemToCart(itemId)
     setCart(updatedCart)
@@ -43,12 +41,12 @@ export default function NewOrderPage ({
     console.log(user)
   }
 
-  async function handleChangeQty(itemId, newQty){
+  async function handleChangeQty (itemId, newQty) {
     const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty)
     setCart(updatedCart)
   }
 
-  async function handleCheckout() {
+  async function handleCheckout () {
     await ordersAPI.checkout()
     navigate('/orders')
   }
@@ -131,25 +129,23 @@ export default function NewOrderPage ({
         </>
       </div>
 
-      {cart ?
-        <>
-            <h1>Your Order</h1>
-            <div className='menu-select' id='order-select'>
-              <>
-                <OrderDetail
-                  order={cart}
+      {cart
+        ? <>
+          <h1>Your Order</h1>
+          <div className='menu-select' id='order-select'>
+            <>
+              <OrderDetail
+                order={cart}
                     // user={user}
-                    handleChangeQty={handleChangeQty}
-                    handleCheckout={handleCheckout}
-                    foundRestaurant={foundRestaurant}
-                  setRestaurantOrder={setRestaurantOrder}
-                />
-              </>
-            </div>
-        </>
-        :
-        <h1>No Order to Display</h1>
-      }
+                handleChangeQty={handleChangeQty}
+                handleCheckout={handleCheckout}
+                foundRestaurant={foundRestaurant}
+                setRestaurantOrder={setRestaurantOrder}
+              />
+            </>
+          </div>
+          </>
+        : <h1>No Order to Display</h1>}
     </>
   )
 }

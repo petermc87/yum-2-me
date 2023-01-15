@@ -15,7 +15,7 @@ export default function ShowRestaurant ({
       <h2>{foundRestaurant.name}</h2>
       <br />
       <div className='menu-image'>
-        <img src={foundRestaurant.image}></img>
+        <img src={foundRestaurant.image} />
       </div>
       <h2>{foundRestaurant.type}</h2>
       <h3>Located at: {foundRestaurant.location}</h3>

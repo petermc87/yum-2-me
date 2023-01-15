@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import React from 'react';
+import React from 'react'
 // import 'bootstrap/dist/js/bootstrap'
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import {Carousel} from "react-bootstrap";
+import { Carousel } from 'react-bootstrap'
 
 export default function AllRestaurants ({
   restaurants,
@@ -15,11 +15,10 @@ export default function AllRestaurants ({
 
 }) {
   const handleChange = (restaurant) => {
-    // console.log(restaurant)
     setFoundRestaurant(restaurant)
     setMenuItems(getMenuItems(restaurant._id))
   }
-  console.log(foundCustomer[0])
+
   return (
     <>
       <div className='index-header'>
@@ -61,7 +60,7 @@ export default function AllRestaurants ({
                 </Carousel.Item>
             </Carousel>
         </div> */}
-      </div> 
+      </div>
 
       {
         restaurants
@@ -71,7 +70,7 @@ export default function AllRestaurants ({
           return (
             <div className='res-icon' key={restaurant._id} id='res-icon-index'>
               <div className='res-image'>
-                <img src={restaurant.image}></img>
+                <img src={restaurant.image} />
               </div>
               <div className='res-details'>
                 <h1>{restaurant.name}</h1>

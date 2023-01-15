@@ -4,7 +4,9 @@ export default function OrderDetail ({
   order,
   handleChangeQty,
   handleCheckout,
-  foundRestaurant
+  foundRestaurant,
+  setFoundRestaurant,
+  getRetaurantByUser
 }) {
   const lineItems = order.lineItems.map(item =>
     <LineItem
@@ -16,20 +18,16 @@ export default function OrderDetail ({
     />
   )
 
-  //   const test = (item) => {
-  //     console.log(item[0].props.foundRestaurant._id)
-  //     console.log(item[0].props.lineItem.item.restaurantId)
-  //   }
-
-  const test = (order) => {
-    console.log(order)
-  }
-
   return (
     <>
       <div classNam='order-heading'>
         {order.isPaid
-          ? <h2>Order</h2>
+          ? <>
+            <h2>Order</h2>
+            {foundRestaurant
+              ? <h3>{foundRestaurant.name}</h3>
+              : <h4>Restaurant has been removed</h4>}
+          </>
           : <h2>New Order</h2>}
         <span>{new Date(order.updatedAt).toLocaleDateString}</span>
       </div>
@@ -37,7 +35,7 @@ export default function OrderDetail ({
         {lineItems.length
           ? <>
             {lineItems}
-            {test(order)}
+            {/* {test(order)} */}
             <section className='order-total'>
 
               {order.isPaid

@@ -24,10 +24,10 @@ export default function UserLogOut ({
       <h2>Profile Info</h2>
       <div>{user.name}</div>
       <div>{user.email}</div>
-      <br/>
+      <br />
       {/* <div className='image-container'><img src='https://i.imgur.com/ShtsVkV.jpg' /></div> */}
       {/* <div className='image-container'><img src={foundCustomer.image} /></div> */}
-      <br/>
+      <br />
       {/* <div>{foundCustomer.location}</div> */}
       <button onClick={handleLogOut}>LOG OUT</button>
 

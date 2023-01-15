@@ -8,7 +8,8 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail'
 export default function OrderHistoryPage ({
   user,
   setUser,
-  foundRestaurant
+  foundRestaurant,
+  getRestaurant
 }) {
   // ---HOOKS--//
   const [orders, setOrders] = useState([])
@@ -19,7 +20,6 @@ export default function OrderHistoryPage ({
       const orders = await ordersAPI.getOrderHistory()
       setOrders(orders)
       setActiveOrder(orders[0] || null)
-      console.log(orders)
     }
     fetchOrderHistory()
   }, [])
@@ -39,16 +39,18 @@ export default function OrderHistoryPage ({
           activeOrder={activeOrder}
           handleSelectOrder={handleSelectOrder}
           setActiveOrder={setActiveOrder}
+
+          getRestaurant={getRestaurant}
         />
       </div>
       <div className='form-container'>
-
         <br />
         <br />
         {activeOrder !== null
           ? <div className='menu-select'>
             <OrderDetail
               order={activeOrder}
+              foundRestaurant={foundRestaurant}
             />
             </div>
           : ''}

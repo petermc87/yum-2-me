@@ -12,8 +12,8 @@ export default class SignUpForm extends Component {
     error: ''
   }
 
+  // navigate = useNavigate()
   handleSubmit = async (evt) => {
-    // const navigate = useNavigate()
     evt.preventDefault()
     try {
       const formData = { ...this.state }
@@ -24,6 +24,7 @@ export default class SignUpForm extends Component {
     } catch (error) {
       this.setState({ error: 'Sign Up Failed' })
     }
+    useNavigate('/home')
   }
 
   handleChange = (evt) => {
@@ -31,8 +32,6 @@ export default class SignUpForm extends Component {
       [evt.target.name]: evt.target.value
     })
   }
-
-
 
   render () {
     const disable = this.state.password !== this.state.confirm
@@ -57,6 +56,16 @@ export default class SignUpForm extends Component {
     )
   }
 }
+
+{ /* <form autoComplete='off' onSubmit={() =>
+  {this.handleSubmit}
+  {useNavigate('/home')}
+}> */ }
+
+{ /* <form autoComplete='off' onSubmit={() =>
+  this.handleSubmit
+  useNavigate('/home')
+}>   */ }
 
 // import { Component } from 'react'
 // import { signUp } from '../../utilities/users-service'

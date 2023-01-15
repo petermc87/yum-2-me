@@ -7,12 +7,10 @@ export default function LoginForm ({
   getRestaurantsByUser,
   setRestaurantsByUser,
   setUser,
-  user, 
+  user,
 
   getCustomer
 
-
-  // setFoundCustomer
 }) {
   const [credentials, setCredentials] = useState({
     email: '',
@@ -34,18 +32,14 @@ export default function LoginForm ({
       setUser(user)
       navigate('/home')
       // setting the restaurants created by the user ID if the user is a restaurant owner
-      console.log(user._id)
-
+      if (user.userType) {
+        getRestaurantsByUser(user._id)
+      } else {
+        getCustomer(user._id)
+      }
     } catch (error) {
       setError(error.message)
     }
-
-    if (user.userType) {
-      getRestaurantsByUser(user._id)
-    } else{
-      getCustomer(user._id)
-    }
-    // console.log(foundCustomer)
   }
 
   return (
@@ -53,9 +47,7 @@ export default function LoginForm ({
       <div>
         <div className='form-container'>
           <form autoComplete='off' onSubmit={handleSubmit}>
-            {/* <label>Email</label> */}
             <input type='email' name='email' value={credentials.email} onChange={handleChange} placeholder='email' required />
-            {/* <label>Password</label> */}
             <input type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='password' required />
             <button type='submit'>
               LOG IN

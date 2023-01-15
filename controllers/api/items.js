@@ -42,40 +42,35 @@ async function indexUser (req, res) {
   }
 }
 
-// Get Menu items by restaurant 
-async function getMenuByRestaurant (req, res){ 
-  try { 
-    const restaurant = await Restaurant.findById(req.params.id) 
-    const response = await Item.find().where('_id').in(restaurant.menu) 
-      
-      // const response = await Item.find({ '_id': { $in: restaurant.menu} }); 
-    res.status(200).json(response) 
-  } catch (err) { 
-    console.log(err)   
-  } 
-} 
+// Get Menu items by restaurant
+async function getMenuByRestaurant (req, res) {
+  try {
+    const restaurant = await Restaurant.findById(req.params.id)
+    const response = await Item.find().where('_id').in(restaurant.menu)
 
+    // const response = await Item.find({ '_id': { $in: restaurant.menu} });
+    res.status(200).json(response)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
+// async function getMenuByRestaurant (req, res){
+//   try{
 
+//     const restaurant = await Restaurant.findById(req.params.id)
+//     console.log(restaurant)
 
-  // async function getMenuByRestaurant (req, res){
-  //   try{
+//     // const response = await Item.find().where('menu').in(restaurant) -- this was finding every menu array
 
+//     const response = await Item.find({ '_id': { $in: restaurant.menu} });
 
-  //     const restaurant = await Restaurant.findById(req.params.id)
-  //     console.log(restaurant)
+//     // const response = await Item.find().where('menu').in(restaurant.menu).exec()
 
-  //     // const response = await Item.find().where('menu').in(restaurant) -- this was finding every menu array
-
-  //     const response = await Item.find({ '_id': { $in: restaurant.menu} });
-
-  //     // const response = await Item.find().where('menu').in(restaurant.menu).exec()
-
-      
-  //     console.log(response)
-  //     res.status(200).json(response)
-  //     // res.status(200).json(restaurant)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+//     console.log(response)
+//     res.status(200).json(response)
+//     // res.status(200).json(restaurant)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }

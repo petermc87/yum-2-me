@@ -14,5 +14,4 @@ router.get('/restaurant/:id', itemsCtrl.getMenuByRestaurant)
 // // DELETE menu item by restaurant
 // router.delete('/restaurant/:id', itemsCtrl.deleteMenuItemByRestaurant)
 
-
 module.exports = router

@@ -7,14 +7,12 @@ function App () {
   const [state, setState] = useState(null)
   const [user, setUser] = useState(null)
   const [restaurantsByUser, setRestaurantsByUser] = useState([])
-  //Profile info
+  // Profile info
   const [customerProfile, setCustomerProfile] = useState([])
   const [restaurantProfile, setRestaurantProfile] = useState([])
 
-  //customer
+  // customer
   const [foundCustomer, setFoundCustomer] = useState({})
-
-
 
   const fetchState = async () => {
     try {
@@ -31,14 +29,14 @@ function App () {
     try {
       const response = await fetch(`/api/restaurants/user/${id}`)
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       setRestaurantsByUser(data)
     } catch (err) {
       console.log(err)
     }
   }
 
-  //Get customer profile
+  // Get customer profile
   const getCustomerProfile = async (id) => {
     try {
       const response = await fetch(`/api/customers/${id}`)
@@ -49,7 +47,7 @@ function App () {
     }
   }
 
-  //Get restaurant profile
+  // Get restaurant profile
   const getRestaurantProfile = async (id) => {
     try {
       const response = await fetch(`/api/restaurants/${id}`)
@@ -65,7 +63,7 @@ function App () {
     try {
       const response = await fetch(`api/customers/${id}`)
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       setFoundCustomer(data)
     } catch (err) {
       console.log(err)
@@ -95,7 +93,7 @@ function App () {
 
             setRestaurantProfile={setRestaurantProfile}
             restaurantProfile={restaurantProfile}
-            
+
             foundCustomer={foundCustomer}
             setFoundCustomer={setFoundCustomer}
 

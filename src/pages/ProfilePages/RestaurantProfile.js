@@ -46,13 +46,14 @@ export default function RestaurantProfilePage ({
               getRestaurantsByUser={getRestaurantsByUser}
               user={user}
               setUser={setUser}
-            />}
+            />
+}
         />
       </Routes>
-        <UserLogOut
-          user={user}
-          setUser={setUser}
-        />
+      <UserLogOut
+        user={user}
+        setUser={setUser}
+      />
     </>
   )
 }

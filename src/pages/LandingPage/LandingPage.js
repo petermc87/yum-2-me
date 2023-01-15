@@ -6,13 +6,11 @@ import Footer from '../../components/Footer/Footer'
 import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignupPage/SignupPage'
 
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 // import user from '../../../models/customer/user'
 
-
 export default function LandingPage (props) {
-
   return (
     <>
       <body>
@@ -48,6 +46,7 @@ export default function LandingPage (props) {
                     setUser={props.setUser}
                     getRestaurantsByUser={props.getRestaurantsByUser}
                     setRestaurantsByUser={props.setRestaurantsByUser}
+
                     getCustomer={props.getCustomer}
                     user={props.user}
                                     />}

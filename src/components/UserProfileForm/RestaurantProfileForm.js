@@ -8,7 +8,6 @@ export default function CreateRestaurantProfile ({
   getRestaurantsByUser,
   user
 }) {
-
   useEffect(() => {
     getRestaurantsByUser(user._id)
   }, [])
@@ -17,8 +16,8 @@ export default function CreateRestaurantProfile ({
 
   const handleSubmit = () => {
     createRestaurant()
-    navigate('/home')
     getRestaurantsByUser(user._id)
+    navigate('/home')
   }
 
   return (

@@ -29,7 +29,7 @@ export default function RestaurantShowPage ({
           <>
             <div className='res-icon' key={restaurant._id} id='res-icon-index'>
               <div className='res-image'>
-                <img src={restaurant.image}></img>
+                <img src={restaurant.image} />
               </div>
               <div className='res-details'>
                 <h1>{restaurant.name}</h1>

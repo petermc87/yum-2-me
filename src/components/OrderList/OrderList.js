@@ -5,14 +5,17 @@ export default function OrderList ({
   orders,
   activeOrder,
   handleSelectOrder,
-  setActiveOrder
-}) {
+  setActiveOrder,
 
+  getRestaurant
+
+}) {
   const orderItems = orders.map(order =>
     <OrderListItem
       order={order}
       key={order._id}
       setActiveOrder={setActiveOrder}
+      getRestaurant={getRestaurant}
     />
   )
 

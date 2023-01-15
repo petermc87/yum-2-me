@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react'
 export default function OrderListItem ({
   order,
   isSelected,
-  setActiveOrder
-}) {
+  setActiveOrder,
 
+  getRestaurant
+
+}) {
   // ---EVENT HANDLERS---//
   function handleSelectOrder (order) {
     setActiveOrder(order)
+    getRestaurant(order.lineItems[0].item.restaurantId)
   }
 
   return (
