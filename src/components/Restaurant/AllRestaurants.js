@@ -61,38 +61,36 @@ export default function AllRestaurants ({
             </Carousel>
         </div> */}
       </div>
-
       {
         restaurants
           ? <>
             {
-        restaurants.map((restaurant) => {
-          return (
-            <div className='res-icon' key={restaurant._id} id='res-icon-index'>
-              <div className='res-image'>
-                <img src={restaurant.image} />
-              </div>
-              <div className='res-details'>
-                <h1>{restaurant.name}</h1>
-                <p>{restaurant.type}</p>
-              </div>
-              <div className='res-button'>
-                <button
-                  to='orders/new' onClick={() =>
-                  // setFoundRestaurant(restaurant)
-                    handleChange(restaurant)}
-                >
-                  <Link style={{ textDecoration: 'none', color: 'white' }} to='/orders/new'>Order from here</Link>
-                </button>
-              </div>
-            </div>
-          )
-        })
-        }
-          </>
+              restaurants.map((restaurant) => {
+                return (
+                  <div className='res-icon' key={restaurant._id} id='res-icon-index'>
+                    <div className='res-image'>
+                      <img src={restaurant.image} />
+                    </div>
+                    <div className='res-details'>
+                      <h1>{restaurant.name}</h1>
+                      <p>{restaurant.type}</p>
+                    </div>
+                    <div className='res-button'>
+                      <button
+                        to='orders/new' onClick={() =>
+                        // setFoundRestaurant(restaurant)
+                          handleChange(restaurant)}
+                      >
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/orders/new'>Order from here</Link>
+                      </button>
+                    </div>
+                  </div>
+                )
+              })
+            }
+            </>
           : 'No restaurants to display'
       }
-
     </>
   )
 }

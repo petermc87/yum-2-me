@@ -6,6 +6,7 @@ import NewMenuItem from '../../components/MenuItems/NewMenuItem'
 import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
 
 export default function RestaurantEditPage ({
+  setFoundRestaurant,
   foundRestaurant,
   user,
   getRestaurantsByUser,
@@ -107,6 +108,7 @@ export default function RestaurantEditPage ({
       <div className='res-icon' id='show-page'>
 
         <ShowRestaurant
+          setFoundRestaurant={setFoundRestaurant}
           foundRestaurant={foundRestaurant}
           deleteRestaurant={deleteRestaurant}
           user={user}

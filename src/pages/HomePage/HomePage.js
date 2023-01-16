@@ -346,7 +346,9 @@ export default function HomePage (props) {
                     />
                     <Route
                       path='/edit' element={<RestaurantEditPage
+                        setFoundRestaurant={setFoundRestaurant}
                         foundRestaurant={foundRestaurant}
+                        
                         restaurantsByUser={props.restaurantsByUser}
 
                         userType={props.user.userType}
