@@ -24,9 +24,7 @@ export default function CreateRestaurantProfile ({
     <>
       <div className='form-container' id='form-container-profile'>
         <h2>Create Restaurant</h2>
-        <form
-          autoComplete='off' onSubmit={handleSubmit}
-        >
+        <form autoComplete='off' onSubmit={handleSubmit}>
           <input type='text' name='name' value={newRestaurant.name} onChange={restaurantHandleChange} placeholder='name' required />
           <input type='text' name='location' value={newRestaurant.location} onChange={restaurantHandleChange} placeholder='location' required />
           <input type='text' name='type' value={newRestaurant.type} onChange={restaurantHandleChange} placeholder='type' required />

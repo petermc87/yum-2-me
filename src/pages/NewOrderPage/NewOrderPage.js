@@ -11,12 +11,14 @@ export default function NewOrderPage ({
   user,
   menuItems,
   setRestaurantOrder,
-  restaurantOrder
+  restaurantOrder,
+
+  cart,
+  setCart
 
 }) {
-  // const [menuItems, setMenuItems] = useState([]);
-  // const [activeCat, setActiveCat] = useState('');
-  const [cart, setCart] = useState(null)
+
+  // const [cart, setCart] = useState(null)
 
   const navigate = useNavigate()
 
@@ -24,21 +26,15 @@ export default function NewOrderPage ({
     async function getCart () {
       const cart = await ordersAPI.getCart()
       setCart(cart)
-      // console.log(cart)
+
     }
     getCart()
-    // console.log(foundRestaurant)
-    // console.log(cart)
   }, [])
 
   // --- EVENT HANDLERS ---//
   async function handleAddToOrder (itemId) {
-    // console.log(itemId)
     const updatedCart = await ordersAPI.addItemToCart(itemId)
     setCart(updatedCart)
-    // setRestaurantOrder(foundRestaurant)
-    // console.log(restaurantOrder)
-    console.log(user)
   }
 
   async function handleChangeQty (itemId, newQty) {

@@ -24,6 +24,8 @@ export default function OrderHistoryPage ({
     fetchOrderHistory()
   }, [])
 
+
+  // console.log(activeOrder)
   // ---EVENT HANDLERS---//
   function handleSelectOrder (order) {
     setActiveOrder(order)

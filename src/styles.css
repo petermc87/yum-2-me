@@ -231,6 +231,14 @@ main{
   height: 8rem;
 }
 
+.edit-modal{
+  border: solid black;
+  z-index: 10;
+  /* position: fixed; */
+  padding: 2rem;
+  margin-bottom: 10rem;
+}
+
 
 /*--- MENU ITEMS--- */
 .menu-details > p, .menu-details > h4{
@@ -271,15 +279,10 @@ main{
   text-align: center;
 }
 
-/* #menu-item > p, #menu-item > h1, #menu-item > button, .menu-image{
-  margin: 1rem;
-} */
-
-
 .menu-image, .res-image{
   border-width: 0.5px;
-  /* background-image: url("https://i.imgur.com/yKFK1VN.png?3"); */
 }
+
 .menu-image > img, .res-image > img{
   width: 100%;
   height: 110%;

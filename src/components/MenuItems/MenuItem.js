@@ -62,29 +62,3 @@ export default function MenuItem ({
     </>
   )
 }
-
-// <>
-// {
-//     mainItems
-//       ? <>
-//         {
-//           mainItems.map((mainItem) => {
-//             return (
-//               <>
-//                 <div className='res-icon' key={mainItem._id}>
-//                   <h1>{mainItem.name}</h1>
-//                   <p>{mainItem.type}</p>
-//                   {/* <p>{item.category}</p> */}
-//                   <button to='/profile' onClick={() => setFoundMainItem(mainItem)}>
-//                     {/* <Link style={{textDecoration: 'none', color: 'white'}} to='/orders/new'>Add Item</Link> */}
-//                     Add Item
-//                   </button>
-//                 </div>
-//               </>
-//             )
-//           })
-//         }
-//       </>
-//       : 'No mains to display'
-//   }
-// </>

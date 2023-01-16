@@ -22,7 +22,8 @@ export default function HomePage (props) {
   // selected Items
   const [selectedItems, setSelectedItems] = useState([])
 
-  // // mains
+
+  // mains
   // const [mainItems, setMainItems] = useState([])
   // const [foundMainItem, setFoundMainItem] = useState(null)
 
@@ -58,6 +59,10 @@ export default function HomePage (props) {
     location: '',
     user: props.user._id
   })
+
+  // cart
+  const [cart, setCart] = useState(null)
+  // const []
 
   // single item
   const [menuItem, setMenuItem] = useState({})
@@ -136,7 +141,7 @@ export default function HomePage (props) {
     }
   }
 
-  console.log(user)
+  // console.log(user)
   // Index Customers
   const getCustomers = async () => {
     try {
@@ -263,6 +268,9 @@ export default function HomePage (props) {
     }
   }, [])
 
+
+  console.log(cart)
+
   return (
     <>
       <body>
@@ -370,6 +378,8 @@ export default function HomePage (props) {
                         setRestaurantOrder={setRestaurantOrder}
                         restaurantOrder={restaurantOrder}
 
+                        cart={cart}
+                        setCart={setCart}
                                                   />}
                     />
 
@@ -430,3 +440,10 @@ export default function HomePage (props) {
     </>
   )
 }
+
+
+          {/* {cart.isPaid
+            ?
+              ''
+            : <div>You currently have an order pending, want to continue?</div>
+          } */}

@@ -13,6 +13,7 @@ export default function RestaurantEditPage ({
   setMenuItems,
   getMenuItems
 }) {
+  
   // ----HOOKS---//
   const [newMenuItem, setNewMenuItem] = useState({
     name: '',
