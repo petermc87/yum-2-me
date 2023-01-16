@@ -14,11 +14,7 @@ return(
     <>
       <Link>
          <button onClick={(e) => {
-          setShowForm(true)
-
-        }}
-        >
-          &#x270E;
+          setShowForm(true)}}> &#x270E;
          </button>
       </Link>
     </>  
