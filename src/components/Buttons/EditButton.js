@@ -1,6 +1,3 @@
-
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -12,11 +9,11 @@ export default function EditButton ({
 
 return(
     <>
-      <Link>
+      <div className='button-container'>
          <button onClick={(e) => {
-          setShowForm(true)}}> &#x270E;
+            setShowForm(true)}}> &#x270E;
          </button>
-      </Link>
+      </div>
     </>  
   )
 }

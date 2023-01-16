@@ -18,7 +18,7 @@ export default function NewOrderPage ({
 
 }) {
 
-  // const [cart, setCart] = useState(null)
+  const [currentOrder, setCurrentOrder] = useState(null)
 
   const navigate = useNavigate()
 
@@ -67,8 +67,11 @@ export default function NewOrderPage ({
             filterOne='starters'
             filterTwo='starter'
             user={user}
+
             setRestaurantOrder={setRestaurantOrder}
             foundRestaurant={foundRestaurant}
+
+            currentOrder={currentOrder}
           />
         </>
         <>
@@ -82,6 +85,8 @@ export default function NewOrderPage ({
             setCart={setCart}
             setRestaurantOrder={setRestaurantOrder}
             foundRestaurant={foundRestaurant}
+
+            currentOrder={currentOrder}
           />
         </>
         <>
@@ -95,6 +100,8 @@ export default function NewOrderPage ({
             setCart={setCart}
             setRestaurantOrder={setRestaurantOrder}
             foundRestaurant={foundRestaurant}
+
+            currentOrder={currentOrder}
           />
         </>
         <>
@@ -108,6 +115,8 @@ export default function NewOrderPage ({
             setCart={setCart}
             setRestaurantOrder={setRestaurantOrder}
             foundRestaurant={foundRestaurant}
+
+            currentOrder={currentOrder}
           />
         </>
         <>
@@ -121,6 +130,8 @@ export default function NewOrderPage ({
             setCart={setCart}
             setRestaurantOrder={setRestaurantOrder}
             foundRestaurant={foundRestaurant}
+
+            currentOrder={currentOrder}
           />
         </>
       </div>
@@ -132,7 +143,8 @@ export default function NewOrderPage ({
             <>
               <OrderDetail
                 order={cart}
-                    // user={user}
+                setCurrentOrder={setCurrentOrder}
+
                 handleChangeQty={handleChangeQty}
                 handleCheckout={handleCheckout}
                 foundRestaurant={foundRestaurant}

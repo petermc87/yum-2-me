@@ -1,4 +1,5 @@
 import LineItem from '../../components/LineItem/LineItem'
+import { useState } from 'react'
 
 export default function OrderDetail ({
   order,
@@ -6,8 +7,11 @@ export default function OrderDetail ({
   handleCheckout,
   foundRestaurant,
   setFoundRestaurant,
-  getRetaurantByUser
+  getRetaurantByUser,
+  setCurrentOrder
 }) {
+
+
   const lineItems = order.lineItems.map(item =>
     <LineItem
       lineItem={item}
@@ -17,10 +21,10 @@ export default function OrderDetail ({
       foundRestaurant={foundRestaurant}
     />
   )
-
+  
   return (
     <>
-      <div classNam='order-heading'>
+      <div className='order-heading'>
         {order.isPaid
           ? <>
             <h2>Order</h2>
@@ -35,20 +39,25 @@ export default function OrderDetail ({
         {lineItems.length
           ? <>
             {lineItems}
-            {/* {test(order)} */}
             <section className='order-total'>
-
               {order.isPaid
                 ? <h3>TOTAL</h3>
-                : <button
-                    onClick={handleCheckout}
-                    disabled={!lineItems.length}
-                  >CHECKOUT
-                </button>}
-
+                : 
+                  <button
+                      onClick={handleCheckout}
+                      disabled={!lineItems.length}
+                    >CHECKOUT
+                  </button>
+              }
               <span>${order.orderTotal.toFixed(2)}</span>
               <br />
               <span>Items: {order.totalQty}</span>
+                {order.totalQty > 0 
+                  ?
+                  setCurrentOrder(order)
+                  :
+                  setCurrentOrder(null)
+                }
             </section>
           </>
           : <div className='hungry'>Hungry?</div>}

@@ -309,10 +309,10 @@ main{
     background: rgb(133, 133, 255);
   }
 
-  Link{
-    text-decoration: none;
-    color: white;
-  }
+.menu-button{
+  display: flex;
+  justify-content: space-around;
+}
 
 .menu-button > button{
   width: 2.5rem;
@@ -323,23 +323,13 @@ main{
   /* border: solid blue; */
 }
 
-.menu-button > a > button{
+.menu-button > .button-container > button{
   width: 2.5rem;
-  height: 2.5rem;
   border-radius: 50%;
   background-color: rgb(191, 3, 3);
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   font-size: 20px;
-  margin: 0.5rem;
-
-}
-
-.menu-button > a:nth-child(1) > button{
-  background-color: rgb(3, 12, 191);
-}
-
-.menu-button > a:nth-child(1) > button:hover{
-  background-color: rgb(140, 146, 244);
+  margin-bottom: 2rem;
 }
 
 .menu-button > button:hover{
@@ -347,10 +337,30 @@ main{
   background-color: rgb(216, 108, 108);
 }
 
-.menu-button > a > button:hover{
+.menu-button > .button-container > button:hover{
   cursor: pointer;
   background-color: rgb(216, 108, 108);
 }
+
+
+.menu-button > .button-container:nth-child(1) > button{
+  background-color: rgb(3, 12, 191);
+}
+
+.menu-button > .button-container:nth-child(1) > button:hover{
+  background-color: rgb(140, 146, 244);
+}
+
+
+
+.menu-button > .button-container:nth-child(3) > button{
+  background-color: rgb(142, 142, 146);
+}
+
+.menu-button > .button-container:nth-child(3) > button:hover{
+  background-color: rgb(196, 196, 196);
+}
+
 
 .create-button {
   border-width: 0.5px;
@@ -397,6 +407,11 @@ form > button:hover{
   /* align-items: center; */
   /* justify-content: center; */
 }
+
+#menu-button-select > #button-grayed{
+  background-color: rgb(178, 178, 178);
+}
+
 
 /* FORM & PROFILE CONTAINER*/
 form, .order-list-container {

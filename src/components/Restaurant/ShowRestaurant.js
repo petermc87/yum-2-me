@@ -2,21 +2,24 @@ import { Link } from 'react-router-dom'
 import DeleteRestauantButton from '../Buttons/DeleteRetaurantButton'
 import EditButton from '../Buttons/EditButton'
 import { useEffect, useState } from 'react'
-
-
-
-
-  //check controller and route
+import { useNavigate } from 'react-router-dom'
 
   //handleChange function? might not work for each element. Try to dry this
 
 export default function ShowRestaurant ({
   setFoundRestaurant,
   foundRestaurant,
+
   deleteRestaurant,
+
+  getRestaurantsByUser,
+
   user
 }) {
+
   const link = '/home'
+
+  const navigate = useNavigate()
 
   const [showForm, setShowForm] = useState(false)
   const [newRestaurantInfo, setNewRestaurantInfo] = useState()
@@ -32,25 +35,27 @@ export default function ShowRestaurant ({
       })
       const data = await response.json()
       setFoundRestaurant(data)
+      getRestaurantsByUser(user._id)
     } catch (e) {
       console.error(e)
     } 
   }
 
-// console.log(foundRestaurant)
-// setNewRestaurantInfo(foundRestaurant)
- // console.log(newRestaurantInfo)
- //  console.log(newRestaurantInfo.location)
- // console.log(newRestaurantInfo)
 
   useEffect(() => {
     setNewRestaurantInfo(foundRestaurant)
   }, [])
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
     updateRestaurant()
     setShowForm(false)
+  }
+
+  const restaurantIndexUpdate = () => {
+    // getRestaurantsByUser(user._id)
+    navigate('/home')
   }
 
   return (
@@ -102,12 +107,13 @@ export default function ShowRestaurant ({
     }
       <div className='menu-button'>
         {user.userType
-          ? <>
-              <Link style={{ textDecoration: 'none', color: 'white' }} to={link}>
-                <button>
+          ? 
+            <>
+              <div className='button-container'>
+                <button onClick={restaurantIndexUpdate}>
                   &#8249;
                 </button>
-              </Link>
+              </div>
               <DeleteRestauantButton
                 foundRestaurant={foundRestaurant}
                 deleteRestaurant={deleteRestaurant}
@@ -116,22 +122,15 @@ export default function ShowRestaurant ({
                 setShowForm={setShowForm}
               />
             </>
-          : <Link style={{ textDecoration: 'none', color: 'white' }} to={link}>
-            <button>
-              &#8249;
-            </button>
-          </Link>
+          : 
+            <div className='button-container'>
+              <button onClick={restaurantIndexUpdate}>
+                &#8249;
+              </button>
+            </div>
         }
       </div>
     </>
   )
 }
 
-
-
-  //input values that will target each individual input field matching the element of the restaurant
-  //store foundRestaurant in setNewRestaurantInfo
-
-  //pass down setFoundRestaurant so that it will show up on the page
-
-    //put request

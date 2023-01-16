@@ -9,6 +9,7 @@ export default function RestaurantEditPage ({
   setFoundRestaurant,
   foundRestaurant,
   user,
+
   getRestaurantsByUser,
   menuItems,
   setMenuItems,
@@ -110,7 +111,11 @@ export default function RestaurantEditPage ({
         <ShowRestaurant
           setFoundRestaurant={setFoundRestaurant}
           foundRestaurant={foundRestaurant}
+
           deleteRestaurant={deleteRestaurant}
+
+          getRestaurantsByUser={getRestaurantsByUser}
+          
           user={user}
         />
 

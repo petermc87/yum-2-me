@@ -62,7 +62,6 @@ export default function HomePage (props) {
 
   // cart
   const [cart, setCart] = useState(null)
-  // const []
 
   // single item
   const [menuItem, setMenuItem] = useState({})
@@ -348,7 +347,7 @@ export default function HomePage (props) {
                       path='/edit' element={<RestaurantEditPage
                         setFoundRestaurant={setFoundRestaurant}
                         foundRestaurant={foundRestaurant}
-                        
+
                         restaurantsByUser={props.restaurantsByUser}
 
                         userType={props.user.userType}
