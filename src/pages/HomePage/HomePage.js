@@ -50,9 +50,6 @@ export default function HomePage (props) {
     menu: []
   })
 
-  const [restaurantOrder, setRestaurantOrder] = useState(null)
-  const [currentOrder, setCurrentOrder] = useState(null)
-
   // customers
   const [customers, setCustomers] = useState([])
   const [newCustomer, setNewCustomer] = useState({
@@ -63,6 +60,8 @@ export default function HomePage (props) {
 
   // cart
   const [cart, setCart] = useState(null)
+
+  const [currentOrder, setCurrentOrder] = useState(null)
 
   // single item
   const [menuItem, setMenuItem] = useState({})
@@ -269,7 +268,7 @@ export default function HomePage (props) {
   }, [])
 
 
-  console.log(cart)
+  // console.log(cart.lineItems.length)
 
   return (
     <>
@@ -377,14 +376,8 @@ export default function HomePage (props) {
                         setMenuItems={setMenuItems}
                         getMenuItems={getMenuItems}
 
-                        setRestaurantOrder={setRestaurantOrder}
-                        restaurantOrder={restaurantOrder}
-
                         cart={cart}
                         setCart={setCart}
-
-                       currentOrder={currentOrder}
-                       setCurrentOrder={setCurrentOrder}
                                                   />}
                     />
 

@@ -24,7 +24,7 @@ export default function LineItem ({
                 <button
                   className='menu-button' id='menu-button-minus' onClick={() => {
                     handleChangeQty(lineItem.item._id, lineItem.qty - 1)
-                    test(lineItem)
+                    // test(lineItem)
                   }}
                 >−
                 </button>}

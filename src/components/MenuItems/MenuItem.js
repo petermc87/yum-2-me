@@ -2,25 +2,18 @@
 export default function MenuItem ({
   handleRemoveItem,
   handleAddToOrder,
-
   menuItems,
   filterOne,
   filterTwo,
-
   user,
-
-  setCart,
-  setRestaurantOrder,
-
-  foundRestaurant,
-
-  currentOrder
+  cart,
+  foundRestaurant
 }) {
-
+// console.log(currentOrder.lineItems)
 //if there is no current order, then you can place an order. If there is a current order, 
 // and youre looking at a different restaurant, then you can't add to order
 const buttonSelector = (item) => {
-  if(currentOrder === null ){
+  if(cart && cart.totalQty === 0 ){
     return(
       <button onClick={() => {
         handleAddToOrder(item._id)
@@ -28,7 +21,7 @@ const buttonSelector = (item) => {
       >&#43;
     </button>
     )
-  } else if (currentOrder && currentOrder.lineItems[0].item.restaurantId === foundRestaurant._id) {
+  } else if (cart && cart.lineItems[0].item.restaurantId === foundRestaurant._id) {
     return(
       <button onClick={() => {
         handleAddToOrder(item._id)
@@ -105,3 +98,28 @@ const buttonSelector = (item) => {
                                   &#43;
                                 </button>
                             } */}
+
+                              // if(currentOrder === null ){
+  //   console.log(currentOrder)
+  //   return(
+  //     <button onClick={() => {
+  //       handleAddToOrder(item._id)
+  //     }}
+  //     >&#43;
+  //   </button>
+  //   )
+  // } else if (currentOrder && currentOrder.lineItems[0].item.restaurantId === foundRestaurant._id) {
+  //   return(
+  //     <button onClick={() => {
+  //       handleAddToOrder(item._id)
+  //     }}
+  //     >&#43;
+  //   </button>
+  //   )
+  // } else {
+  //   return(
+  //   <button id="button-grayed">
+  //     &#43;
+  //   </button>
+  //   )
+  // }

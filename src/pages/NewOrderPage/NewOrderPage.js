@@ -3,22 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import * as ordersAPI from '../../utilities/orders-api'
 import ShowRestaurant from '../../components/Restaurant/ShowRestaurant'
 import MenuItem from '../../components/MenuItems/MenuItem'
-
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
 export default function NewOrderPage ({
   foundRestaurant,
   user,
   menuItems,
-  setRestaurantOrder,
-  restaurantOrder,
-
   cart,
   setCart,
-
-  setCurrentOrder,
-  currentOrder
-
+  setCurrentOrder
 }) {
 
 
@@ -70,11 +63,8 @@ export default function NewOrderPage ({
             filterOne='starters'
             filterTwo='starter'
             user={user}
-
-            setRestaurantOrder={setRestaurantOrder}
+            cart={cart}
             foundRestaurant={foundRestaurant}
-
-            currentOrder={currentOrder}
           />
         </>
         <>
@@ -85,11 +75,8 @@ export default function NewOrderPage ({
             filterOne='mains'
             filterTwo='main'
             user={user}
-            setCart={setCart}
-            setRestaurantOrder={setRestaurantOrder}
+            cart={cart}
             foundRestaurant={foundRestaurant}
-
-            currentOrder={currentOrder}
           />
         </>
         <>
@@ -100,11 +87,8 @@ export default function NewOrderPage ({
             filterOne='side'
             filterTwo='sides'
             user={user}
-            setCart={setCart}
-            setRestaurantOrder={setRestaurantOrder}
+            cart={cart}
             foundRestaurant={foundRestaurant}
-
-            currentOrder={currentOrder}
           />
         </>
         <>
@@ -115,11 +99,8 @@ export default function NewOrderPage ({
             filterOne='dessert'
             filterTwo='desserts'
             user={user}
-            setCart={setCart}
-            setRestaurantOrder={setRestaurantOrder}
+            cart={cart}
             foundRestaurant={foundRestaurant}
-
-            currentOrder={currentOrder}
           />
         </>
         <>
@@ -130,11 +111,8 @@ export default function NewOrderPage ({
             filterOne='drink'
             filterTwo='drinks'
             user={user}
-            setCart={setCart}
-            setRestaurantOrder={setRestaurantOrder}
+            cart={cart}
             foundRestaurant={foundRestaurant}
-
-            currentOrder={currentOrder}
           />
         </>
       </div>
@@ -151,7 +129,7 @@ export default function NewOrderPage ({
                 handleChangeQty={handleChangeQty}
                 handleCheckout={handleCheckout}
                 foundRestaurant={foundRestaurant}
-                setRestaurantOrder={setRestaurantOrder}
+                // setRestaurantOrder={setRestaurantOrder}
               />
             </>
           </div>
