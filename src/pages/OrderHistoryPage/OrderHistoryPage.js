@@ -9,7 +9,8 @@ export default function OrderHistoryPage ({
   user,
   setUser,
   foundRestaurant,
-  getRestaurant
+  getRestaurant,
+  setCurrentOrder
 }) {
   // ---HOOKS--//
   const [orders, setOrders] = useState([])
@@ -25,11 +26,9 @@ export default function OrderHistoryPage ({
   }, [])
 
 
-  // console.log(activeOrder)
   // ---EVENT HANDLERS---//
   function handleSelectOrder (order) {
     setActiveOrder(order)
-    console.log(activeOrder)
   }
 
   return (
@@ -41,7 +40,6 @@ export default function OrderHistoryPage ({
           activeOrder={activeOrder}
           handleSelectOrder={handleSelectOrder}
           setActiveOrder={setActiveOrder}
-
           getRestaurant={getRestaurant}
         />
       </div>
@@ -53,11 +51,12 @@ export default function OrderHistoryPage ({
             <OrderDetail
               order={activeOrder}
               foundRestaurant={foundRestaurant}
+              setCurrentOrder={setCurrentOrder}
             />
             </div>
-          : ''}
+          : ''
+        }
       </div>
     </>
-
   )
 }

@@ -21,6 +21,10 @@ export default function OrderDetail ({
       foundRestaurant={foundRestaurant}
     />
   )
+
+  const handleCurrentOrder = (orderState) => {
+    setCurrentOrder(orderState)
+  }
   
   return (
     <>
@@ -54,9 +58,9 @@ export default function OrderDetail ({
               <span>Items: {order.totalQty}</span>
                 {order.totalQty > 0 
                   ?
-                  setCurrentOrder(order)
+                    handleCurrentOrder(order)
                   :
-                  setCurrentOrder(null)
+                    handleCurrentOrder(null)
                 }
             </section>
           </>

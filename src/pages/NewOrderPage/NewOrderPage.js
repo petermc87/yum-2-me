@@ -14,11 +14,14 @@ export default function NewOrderPage ({
   restaurantOrder,
 
   cart,
-  setCart
+  setCart,
+
+  setCurrentOrder,
+  currentOrder
 
 }) {
 
-  const [currentOrder, setCurrentOrder] = useState(null)
+
 
   const navigate = useNavigate()
 

@@ -51,6 +51,7 @@ export default function HomePage (props) {
   })
 
   const [restaurantOrder, setRestaurantOrder] = useState(null)
+  const [currentOrder, setCurrentOrder] = useState(null)
 
   // customers
   const [customers, setCustomers] = useState([])
@@ -381,6 +382,9 @@ export default function HomePage (props) {
 
                         cart={cart}
                         setCart={setCart}
+
+                       currentOrder={currentOrder}
+                       setCurrentOrder={setCurrentOrder}
                                                   />}
                     />
 
@@ -391,6 +395,8 @@ export default function HomePage (props) {
                         setFoundRestaurant={setFoundRestaurant}
                         getRestaurantsByUser={props.getRestaurantsByUser}
                         getRestaurant={getRestaurant}
+
+                        setCurrentOrder={setCurrentOrder}
                                               />}
                     />
                     <Route
