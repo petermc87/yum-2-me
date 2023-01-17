@@ -9,7 +9,6 @@ export default function MenuItem ({
   cart,
   foundRestaurant
 }) {
-// console.log(currentOrder.lineItems)
 //if there is no current order, then you can place an order. If there is a current order, 
 // and youre looking at a different restaurant, then you can't add to order
 const buttonSelector = (item) => {
@@ -42,42 +41,43 @@ const buttonSelector = (item) => {
     <>
       {
         menuItems.length > 0
-          ? <>
-            {
-              menuItems.filter(item => item.category === filterOne || item.category === filterTwo).map((item) => {
-                return (
-                  <>
-                    <div className='res-icon' id='menu-item' key={item._id}>
-                      <div className='menu-image'>
-                        <img src={item.image} alt='starter' />
-                      </div>
-                      <div className='menu-details'>
-                        <h4>{item.name}</h4>
-                        <p>${item.price}</p>
-                      </div>
+          ? 
+            <>
+              {
+                menuItems.filter(item => item.category === filterOne || item.category === filterTwo).map((item) => {
+                  return (
+                    <>
+                      <div className='res-icon' id='menu-item' key={item._id}>
+                        <div className='menu-image'>
+                          <img src={item.image} alt='starter' />
+                        </div>
+                        <div className='menu-details'>
+                          <h4>{item.name}</h4>
+                          <p>${item.price}</p>
+                        </div>
 
-                      {
-                      user.userType
-                        ? 
-                          <div className='menu-button'>
-                            <button onClick={() => {
-                              handleRemoveItem(item._id)
-                            }}
-                            >&#10006;
-                            </button>
-                          </div>
-                        : 
-                          <div className='menu-button' id='menu-button-select'> 
-                              {buttonSelector(item)}
-                          </div>
-                      }
+                        {
+                        user.userType
+                          ? 
+                            <div className='menu-button'>
+                              <button onClick={() => {
+                                handleRemoveItem(item._id)
+                              }}
+                              >&#10006;
+                              </button>
+                            </div>
+                          : 
+                            <div className='menu-button' id='menu-button-select'> 
+                                {buttonSelector(item)}
+                            </div>
+                        }
 
-                    </div>
-                  </>
-                )
-              })
-            }
-          </>
+                      </div>
+                    </>
+                  )
+                })
+              }
+            </>
           : 'No items to display'
       }
     </>

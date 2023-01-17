@@ -9,7 +9,6 @@ export default function RestaurantEditPage ({
   setFoundRestaurant,
   foundRestaurant,
   user,
-
   getRestaurantsByUser,
   menuItems,
   setMenuItems,
@@ -45,7 +44,7 @@ export default function RestaurantEditPage ({
   }
 
   // create menu item
-  const createMenuItem = async (category) => {
+  const createMenuItem = async () => {
     try {
       const response = await fetch('/api/restaurants/menu', {
         method: 'POST',
@@ -58,7 +57,7 @@ export default function RestaurantEditPage ({
       setNewMenuItem({
         name: '',
         restaurantId: foundRestaurant._id,
-        category,
+        // category,
         price: Number
       })
     } catch (error) {
@@ -94,7 +93,7 @@ export default function RestaurantEditPage ({
 
   const handleSubmitMenuItem = (e) => {
     e.preventDefault()
-    createMenuItem('starter')
+    createMenuItem()
     navigate('/edit')
     getMenuItems(foundRestaurant._id)
   }

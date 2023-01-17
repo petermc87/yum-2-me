@@ -1,20 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom'
-// import { useState, useEffect } from 'react'
-// import MenuItem from '../../components/MenuItems/MenuItem'
-// import { Navigate } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function NewMenuItem ({
-  createMenuItem,
   newMenuItem,
   menuHandleChange,
-  getMenuItems,
   handleSubmitMenuItem
 }) {
+
   const navigate = useNavigate()
+
+  // const [selectedCategory, setSelecteCategory] = useState('starter')
 
   return (
     <>
-
       <div className='form-container' id='form-container-edit'>
         <h1>Create your Menu Below</h1>
         <form
@@ -24,9 +22,19 @@ export default function NewMenuItem ({
         >
           <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
           <input type='text' name='price' value={newMenuItem.price} onChange={menuHandleChange} placeholder='price' required />
-          <input
-            type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange} placeholder='category' required
-          />
+          <label>
+          <br/>
+            Choose a category
+            <br/>
+            <br/>
+            <select type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange}>
+              <option value='starter'>Starter</option>
+              <option value='main'>Main</option>
+              <option value='side'>Side</option>
+              <option value='dessert'>Dessert</option>
+              <option value='drink'>Drink</option>
+            </select>
+          </label>
           <div className='create-button'>
             <button type='submit'>CREATE
             </button>
@@ -37,3 +45,8 @@ export default function NewMenuItem ({
     </>
   )
 }
+
+
+{/* <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
+<input type='text' name='price' value={newMenuItem.price} onChange={menuHandleChange} placeholder='price' required />
+<input type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange} placeholder='category' required /> */}

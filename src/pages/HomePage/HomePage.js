@@ -18,26 +18,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 export default function HomePage (props) {
   // ---HOOKS---//
-  const navigate = useNavigate()
   // selected Items
   const [selectedItems, setSelectedItems] = useState([])
-
-
-  // mains
-  // const [mainItems, setMainItems] = useState([])
-  // const [foundMainItem, setFoundMainItem] = useState(null)
-
-  // // sides
-  // const [sideItems, setSideItems] = useState([])
-  // const [foundSideItem, setFoundSideItem] = useState(null)
-
-  // // desserts
-  // const [dessertItems, setDessertItems] = useState([])
-  // const [foundDessertItem, setFoundDessertItem] = useState(null)
-
-  // // drinks
-  // const [drinkItems, setDrinkItems] = useState([])
-  // const [foundDrinkItem, setFoundDrinkItem] = useState(null)
 
   // restaurants
   const [restaurants, setRestaurants] = useState([])
@@ -68,6 +50,8 @@ export default function HomePage (props) {
 
   // items array
   const [menuItems, setMenuItems] = useState([])
+
+
 
   // ---BACKEND REQUESTS---//
   // create customer
@@ -140,7 +124,6 @@ export default function HomePage (props) {
     }
   }
 
-  // console.log(user)
   // Index Customers
   const getCustomers = async () => {
     try {
@@ -151,72 +134,6 @@ export default function HomePage (props) {
       console.log(err)
     }
   }
-
-  // // Get Customer Profile
-  // const getCustomer = async (id) => {
-  //   try {
-  //     const response = await fetch(`api/customers/${id}`)
-  //     const data = await response.json()
-  //     setFoundCustomer(data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // Index starter items
-  // const getStarterItems = async () => {
-  //   try {
-  //     const response = await fetch('/api/items')
-  //     // console.log(props)
-  //     const data = await response.json()
-  //     setStarterItems(data.filter(item => item.category === '63b4374e29fa968943911bbf'))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // // Index main items
-  // const getMainItems = async () => {
-  //   try {
-  //     const response = await fetch('/api/items')
-  //     const data = await response.json()
-  //     setMainItems(data.filter(item => item.category === '63b4374e29fa968943911bc0'))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  // // Index side items
-  // const getSideItems = async () => {
-  //   try {
-  //     const response = await fetch('/api/items')
-  //     const data = await response.json()
-  //     setSideItems(data.filter(item => item.category === '63b4374e29fa968943911bc1'))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  // // Index dessert items
-  // const getDessertItems = async () => {
-  //   try {
-  //     const response = await fetch('/api/items')
-  //     const data = await response.json()
-  //     setDessertItems(data.filter(item => item.category === '63b4374e29fa968943911bc2'))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  // // Index drink items
-  // const getDrinkItems = async () => {
-  //   try {
-  //     const response = await fetch('/api/items')
-  //     const data = await response.json()
-  //     setDrinkItems(data.filter(item => item.category === '63b4374e29fa968943911bc3'))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // Index menu items
 
   // --- Index Menu Items by Restaurant --//
   const getMenuItems = async (id) => {
@@ -267,9 +184,6 @@ export default function HomePage (props) {
     }
   }, [])
 
-
-  // console.log(cart.lineItems.length)
-
   return (
     <>
       <body>
@@ -299,132 +213,134 @@ export default function HomePage (props) {
             <Routes>
               <>
                 {props.user.userType
-                  ? <>
+                  ? 
+                    <>
+                        <Route
+                          path='/profile' element={<RestaurantProfilePage
+                            selectedItems={selectedItems}
+                            handleAddItem={handleAddItem}
 
-                    <Route
-                      path='/profile' element={<RestaurantProfilePage
-                        selectedItems={selectedItems}
-                        handleAddItem={handleAddItem}
+                            handleRemoveItem={handleRemoveItem}
 
-                        handleRemoveItem={handleRemoveItem}
+                            user={props.user}
+                            setUser={props.setUser}
 
-                        user={props.user}
-                        setUser={props.setUser}
+                            setNewRestuarant={setNewRestaurant}
+                            newRestaurant={newRestaurant}
+                            setRestaurants={setRestaurants}
+                            restaurants={restaurants}
+                            foundRestaurant={foundRestaurant}
+                            setFoundRestaurant={setFoundRestaurant}
+                            createRestaurant={createRestaurant}
+                            restaurantHandleChange={restaurantHandleChange}
+                            getRestaurantsByUser={props.getRestaurantsByUser}
 
-                        setNewRestuarant={setNewRestaurant}
-                        newRestaurant={newRestaurant}
-                        setRestaurants={setRestaurants}
-                        restaurants={restaurants}
-                        foundRestaurant={foundRestaurant}
-                        setFoundRestaurant={setFoundRestaurant}
-                        createRestaurant={createRestaurant}
-                        restaurantHandleChange={restaurantHandleChange}
-                        getRestaurantsByUser={props.getRestaurantsByUser}
+                            menuItem={menuItem}
+                            setMenuItem={setMenuItem}
+                            menuItems={menuItems}
+                            setMenuItems={setMenuItems}
+                            getMenuItems={getMenuItems}
 
-                        menuItem={menuItem}
-                        setMenuItem={setMenuItem}
-                        menuItems={menuItems}
-                        setMenuItems={setMenuItems}
-                        getMenuItems={getMenuItems}
-
-                                               />}
-                    />
-                    <Route
-                      path='/home'element={<RestaurantIndexPage
-                        getRestaurantsByUser={props.getRestaurantsByUser}
-                        setRestaurantsByUser={props.setRestaurantsByUser}
-                        restaurantsByUser={props.restaurantsByUser}
-                        user={props.user}
-
-                        setFoundRestaurant={setFoundRestaurant}
-                        foundRestaurant={foundRestaurant}
-
-                        getMenuItems={getMenuItems}
-                        setMenuItems={setMenuItems}
-                                           />}
-                    />
-                    <Route
-                      path='/edit' element={<RestaurantEditPage
-                        setFoundRestaurant={setFoundRestaurant}
-                        foundRestaurant={foundRestaurant}
-
-                        restaurantsByUser={props.restaurantsByUser}
-
-                        userType={props.user.userType}
-                        user={props.user}
-
-                        getRestaurantsByUser={props.getRestaurantsByUser}
-                        setRestaurantsByUser={props.setRestaurantsByUser}
-
-                        menuItem={menuItem}
-                        setMenuItem={setMenuItem}
-                        menuItems={menuItems}
-                        setMenuItems={setMenuItems}
-                        getMenuItems={getMenuItems}
-                                            />}
-                    />
-                  </>
-                  : <>
-                    <Route
-                      path='/orders/new' element={<NewOrderPage
-                        foundRestaurant={foundRestaurant}
-
-                        userType={props.user.userType}
-                        user={props.user}
-
-                        menuItems={menuItems}
-                        setMenuItems={setMenuItems}
-                        getMenuItems={getMenuItems}
-
-                        cart={cart}
-                        setCart={setCart}
                                                   />}
-                    />
+                        />
+                        <Route
+                          path='/home'element={<RestaurantIndexPage
+                            getRestaurantsByUser={props.getRestaurantsByUser}
+                            setRestaurantsByUser={props.setRestaurantsByUser}
+                            restaurantsByUser={props.restaurantsByUser}
+                            user={props.user}
 
-                    <Route
-                      path='/orders' element={<OrderHistoryPage
-                        user={props.user}
-                        foundRestaurant={foundRestaurant}
-                        setFoundRestaurant={setFoundRestaurant}
-                        getRestaurantsByUser={props.getRestaurantsByUser}
-                        getRestaurant={getRestaurant}
+                            setFoundRestaurant={setFoundRestaurant}
+                            foundRestaurant={foundRestaurant}
 
-                        setCurrentOrder={setCurrentOrder}
+                            getMenuItems={getMenuItems}
+                            setMenuItems={setMenuItems}
                                               />}
-                    />
-                    <Route
-                      path='/home' element={<Restaurants
-                        setRestaurants={setRestaurants}
-                        restaurants={restaurants}
+                        />
+                        <Route
+                          path='/edit' element={<RestaurantEditPage
+                            setFoundRestaurant={setFoundRestaurant}
+                            foundRestaurant={foundRestaurant}
 
-                        setFoundRestaurant={setFoundRestaurant}
-                        foundRestaurant={foundRestaurant}
+                            restaurantsByUser={props.restaurantsByUser}
 
-                        setMenuItems={setMenuItems}
-                        menItems={menuItems}
+                            userType={props.user.userType}
+                            user={props.user}
 
-                        getMenuItems={getMenuItems}
+                            getRestaurantsByUser={props.getRestaurantsByUser}
+                            setRestaurantsByUser={props.setRestaurantsByUser}
 
-                        foundCustomer={props.foundCustomer}
-                        // createRestaurant={createRestaurant}
-                                            />}
-                    />
-                    <Route
-                      path='/profile' element={<CustomerProfilePage
-                        handleChange={handleChange}
+                            menuItem={menuItem}
+                            setMenuItem={setMenuItem}
+                            menuItems={menuItems}
+                            setMenuItems={setMenuItems}
+                            getMenuItems={getMenuItems}
+                                                />}
+                        />
+                    </>
+                  : 
+                    <>
+                      <Route
+                        path='/orders/new' element={<NewOrderPage
+                          foundRestaurant={foundRestaurant}
 
-                        newCustomer={newCustomer}
-                        foundCustomer={props.foundCustomer}
+                          userType={props.user.userType}
+                          user={props.user}
 
-                        setNewCustomer={setNewCustomer}
-                        createCustomer={createCustomer}
-                        getCustomer={props.getCustomer}
+                          menuItems={menuItems}
+                          setMenuItems={setMenuItems}
+                          getMenuItems={getMenuItems}
 
-                        user={props.user}
-                        setUser={props.setUser}
-                                               />}
-                    />
-                    </>}
+                          cart={cart}
+                          setCart={setCart}
+                                                    />}
+                      />
+
+                      <Route
+                        path='/orders' element={<OrderHistoryPage
+                          user={props.user}
+                          foundRestaurant={foundRestaurant}
+                          setFoundRestaurant={setFoundRestaurant}
+                          getRestaurantsByUser={props.getRestaurantsByUser}
+                          getRestaurant={getRestaurant}
+
+                          setCurrentOrder={setCurrentOrder}
+                                                />}
+                      />
+                      <Route
+                        path='/home' element={<Restaurants
+                          setRestaurants={setRestaurants}
+                          restaurants={restaurants}
+
+                          setFoundRestaurant={setFoundRestaurant}
+                          foundRestaurant={foundRestaurant}
+
+                          setMenuItems={setMenuItems}
+                          menItems={menuItems}
+
+                          getMenuItems={getMenuItems}
+
+                          foundCustomer={props.foundCustomer}
+                          // createRestaurant={createRestaurant}
+                                              />}
+                      />
+                      <Route
+                        path='/profile' element={<CustomerProfilePage
+                          handleChange={handleChange}
+
+                          newCustomer={newCustomer}
+                          foundCustomer={props.foundCustomer}
+
+                          setNewCustomer={setNewCustomer}
+                          createCustomer={createCustomer}
+                          getCustomer={props.getCustomer}
+
+                          user={props.user}
+                          setUser={props.setUser}
+                                                />}
+                      />
+                    </>
+                }
               </>
             </Routes>
           </section>
