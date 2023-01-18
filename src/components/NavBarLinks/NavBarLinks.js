@@ -12,19 +12,9 @@ export default function NavBarLinks ({
 
   return (
     <>
-      {/* {user.userType?
-        ''
-      :
-        <li className='header-text'>
-        {foundCustomer[0].location}
-        </li>
-      }
-    */}
       {user.userType === true || user.userType === 'restaurant'
         ? 
-          <li className='header-text'>
-            <Link to='/restaurantorders'>Orders</Link>
-          </li>
+          <li />
         : user.userType === false || user.userType === 'customer' ?
           <li className='header-text'>
             <Link to='/orders'>Order History</Link>
@@ -60,3 +50,7 @@ export default function NavBarLinks ({
 //     <Link to='/orders'>Order History</Link>
 //   </li>
 // }
+
+{/* <li className='header-text'>
+<Link to='/history'></Link>
+</li> */}

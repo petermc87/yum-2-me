@@ -9,17 +9,14 @@ import { useNavigate } from 'react-router-dom'
 export default function ShowRestaurant ({
   setFoundRestaurant,
   foundRestaurant,
-
   deleteRestaurant,
-
   getRestaurantsByUser,
-
   user
 }) {
 
   const link = '/home'
-
   const navigate = useNavigate()
+
 
   const [showForm, setShowForm] = useState(false)
   const [newRestaurantInfo, setNewRestaurantInfo] = useState()
@@ -102,11 +99,23 @@ export default function ShowRestaurant ({
             <img src={foundRestaurant.image} />
           </div>
           <h2>{foundRestaurant.type}</h2>
-          <h3>Located at: {foundRestaurant.location}</h3>
+          <h3>Location: <br/>{foundRestaurant.location}</h3>
+          <br/>
+          {/* <button onClick={navigate('/restaurantorders')}>
+            Order History
+          </button> */}
+          <button onClick={() => {
+            navigate('/restaurantorders')
+          }}>Order History</button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         </>
+        
     }
       <div className='menu-button'>
-        {user.userType
+        {user.userType === true || user.userType === 'restaurant'
           ? 
             <>
               <div className='button-container'>

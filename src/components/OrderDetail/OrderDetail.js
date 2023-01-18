@@ -1,10 +1,12 @@
+
 import LineItem from '../../components/LineItem/LineItem'
 
 export default function OrderDetail ({
   order,
   handleChangeQty,
   handleCheckout,
-  foundRestaurant
+  foundRestaurant,
+  user
 }) {
 
 
@@ -15,11 +17,13 @@ export default function OrderDetail ({
       handleChangeQty={handleChangeQty}
       key={item._id}
       foundRestaurant={foundRestaurant}
+      user={user}
     />
   )
 
 
 // console.log(order)
+console.log(user)
   return (
     <>
       <div className='order-heading'>
@@ -38,7 +42,7 @@ export default function OrderDetail ({
           ? <>
             {lineItems}
             <section className='order-total'>
-              {order.isPaid
+              {order.isPaid || user.userType === true || user.userType === 'restaurant'
                 ? <h3>TOTAL</h3>
                 : 
                   <button
@@ -58,6 +62,12 @@ export default function OrderDetail ({
     </>
   )
 }
+
+
+
+
+// {order.isPaid || user.userType === true || user.userType === 'restaurant'
+
 
 
                 {/* {order.totalQty >= 1 

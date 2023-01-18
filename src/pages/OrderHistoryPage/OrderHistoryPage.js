@@ -32,7 +32,7 @@ export default function OrderHistoryPage ({
   function handleSelectOrder (order) {
     setActiveOrder(order)
   }
-
+console.log(user)
   return (
     <>
       <h1>Previous Orders</h1>
@@ -55,6 +55,7 @@ export default function OrderHistoryPage ({
               order={activeOrder}
               foundRestaurant={foundRestaurant}
               setCurrentOrder={setCurrentOrder}
+              user={user}
             />
             </div>
           : ''

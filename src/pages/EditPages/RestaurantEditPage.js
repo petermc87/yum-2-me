@@ -104,9 +104,8 @@ export default function RestaurantEditPage ({
 
   return (
     <>
-      <h1>Edit Your Restaurant Below</h1>
+      <h1>Restaurant Profile</h1>
       <div className='res-icon' id='show-page'>
-
         <ShowRestaurant
           setFoundRestaurant={setFoundRestaurant}
           foundRestaurant={foundRestaurant}
@@ -117,7 +116,7 @@ export default function RestaurantEditPage ({
           
           user={user}
         />
-
+        
         <NewMenuItem
           createMenuItem={createMenuItem}
           newMenuItem={newMenuItem}

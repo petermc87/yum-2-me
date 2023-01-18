@@ -13,7 +13,7 @@ export default function RestaurantOrderHistory({
 
 {
     const [ordersByRestaurant, setOrdersByRestaurant] = useState([])
-    
+
     const getOrdersByRestaurant = async (id) => {
         try {
           const response = await fetch(`/api/orders/history/restaurant/${id}`)
@@ -56,6 +56,7 @@ export default function RestaurantOrderHistory({
               <OrderDetail
                 order={activeOrder}
                 foundRestaurant={foundRestaurant}
+                user={user}
                 // setCurrentOrder={setCurrentOrder}
               />
               </div>
