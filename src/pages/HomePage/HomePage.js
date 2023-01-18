@@ -184,7 +184,7 @@ export default function HomePage (props) {
       props.getCustomer(props.user._id)
     }
   }, [])
-
+// console.log(props.user)
 
   return (
     <>
@@ -214,7 +214,7 @@ export default function HomePage (props) {
           <section className='restaurant'>
             <Routes>
               <>
-              {props.user.userType === true || props.user.userType === 'restaurant'
+              {props.user.userType === "true" || props.user.userType === 'restaurant'
                 ? 
                   <>
                       <Route
@@ -293,7 +293,7 @@ export default function HomePage (props) {
                       />
                   </>
                 : 
-                  props.user.userType === false || props.user.userType === 'customer' ?
+                  props.user.userType === "false" || props.user.userType === 'customer' ?
                     <>
                     <Route
                       path='/orders/new' element={<NewOrderPage

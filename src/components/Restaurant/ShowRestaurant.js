@@ -54,7 +54,7 @@ export default function ShowRestaurant ({
     // getRestaurantsByUser(user._id)
     navigate('/home')
   }
-
+ console.log(user)
   return (
     <>
     {showForm
@@ -101,12 +101,16 @@ export default function ShowRestaurant ({
           <h2>{foundRestaurant.type}</h2>
           <h3>Location: <br/>{foundRestaurant.location}</h3>
           <br/>
-          {/* <button onClick={navigate('/restaurantorders')}>
-            Order History
-          </button> */}
-          <button onClick={() => {
+          {user.userType === 'true' || user.userType === 'restaurant'
+            ?
+              <>
+                <button onClick={() => {
             navigate('/restaurantorders')
-          }}>Order History</button>
+                }}>Order History</button>
+              </>
+            :
+             ''
+          }    
           <br/>
           <br/>
           <br/>
@@ -115,7 +119,7 @@ export default function ShowRestaurant ({
         
     }
       <div className='menu-button'>
-        {user.userType === true || user.userType === 'restaurant'
+        {user.userType === 'true' || user.userType === 'restaurant'
           ? 
             <>
               <div className='button-container'>

@@ -5,17 +5,12 @@ export default function NavBarLinks ({
   user,
   foundCustomer
 }) {
-  // // console.log(user.userType)
-  // if(user.userType === false){
-  //   console.log(foundCustomer[0].location)
-  // }
-
   return (
     <>
-      {user.userType === true || user.userType === 'restaurant'
+      {user.userType === 'true' || user.userType === 'restaurant'
         ? 
           <li />
-        : user.userType === false || user.userType === 'customer' ?
+        : user.userType === 'false' || user.userType === 'customer' ?
           <li className='header-text'>
             <Link to='/orders'>Order History</Link>
           </li>

@@ -7,7 +7,7 @@ export default function LineItem ({
 }) {
 // Ternary to ensure line items only associated with the current restaurant order shows when 
 // Looking at a different restaurant. Also when looking at order history hence the OR condition
-console.log(user)
+// console.log(user)
   return (
     <>
     {foundRestaurant && lineItem.item.restaurantId === foundRestaurant._id || foundRestaurant === null && lineItem.item.restaurantId?
@@ -21,7 +21,7 @@ console.log(user)
               <p>${lineItem.item.price}</p>
             </div>
             <div className='menu-button' id='menu-add'>
-              {!isPaid && user.userType === false || !isPaid && user.userType === 'customer' &&
+              {!isPaid && 
                 <button
                   className='menu-button' id='menu-button-minus' onClick={() => {
                     handleChangeQty(lineItem.item._id, lineItem.qty - 1)
@@ -29,7 +29,7 @@ console.log(user)
                 >−
                 </button>}
               <span>{lineItem.qty}</span>
-              {!isPaid && user.userType === false || !isPaid && user.userType === 'customer' &&
+              {!isPaid && 
                 <button
                   className='menu-button' id='menu-button-plus'
                   onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}

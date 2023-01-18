@@ -42,7 +42,7 @@ console.log(user)
           ? <>
             {lineItems}
             <section className='order-total'>
-              {order.isPaid || user.userType === true || user.userType === 'restaurant'
+              {order.isPaid || user.userType === 'true' || user.userType === 'restaurant'
                 ? <h3>TOTAL</h3>
                 : 
                   <button

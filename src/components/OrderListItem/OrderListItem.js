@@ -22,11 +22,11 @@ export default function OrderListItem ({
   
   // ---EVENT HANDLERS---//
   function handleSelectOrder (order) {
-    if(user.userType === true || user.userType === 'restaurant'){
+    if(user.userType === 'true' || user.userType === 'restaurant'){
       setActiveOrder(restaurantOrder)
       getRestaurant(restaurantOrder.lineItems[0].item.restaurantId)
     }
-    else if(user.userType === false || user.userType === 'customer'){
+    else if(user.userType === 'false' || user.userType === 'customer'){
       setActiveOrder(order)
       getRestaurant(order.lineItems[0].item.restaurantId)
     }
@@ -42,7 +42,7 @@ export default function OrderListItem ({
         className='res-icon' id='menu-item' onClick={() => { handleSelectOrder(order) }}
       >
         {/* <div> */}
-        {restaurantOrder && user.userType === true || restaurantOrder && user.userType === 'restaurant'
+        {restaurantOrder && user.userType === 'true' || restaurantOrder && user.userType === 'restaurant'
           ? 
             <>
               <div>
@@ -58,7 +58,7 @@ export default function OrderListItem ({
                 <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
               </div>
             </>
-          : user && user.userType === false || user && user.userType === 'customer'
+          : user && user.userType === 'false' || user && user.userType === 'customer'
             ?
               <>
                 <div>

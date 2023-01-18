@@ -57,7 +57,7 @@ const buttonSelector = (item) => {
                         </div>
 
                         {
-                        user.userType
+                        user.userType === 'true' || user.userType === 'restaurant'
                           ? 
                             <div className='menu-button'>
                               <button onClick={() => {

@@ -129,6 +129,7 @@ export default function NewOrderPage ({
                 handleChangeQty={handleChangeQty}
                 handleCheckout={handleCheckout}
                 foundRestaurant={foundRestaurant}
+                user={user}
                 // setRestaurantOrder={setRestaurantOrder}
               />
             </>
