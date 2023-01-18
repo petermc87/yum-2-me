@@ -479,6 +479,17 @@ form > h1, .menu-select > h1{
   text-align: center;
 }
 
+.delivery-progress{
+  color: rgb(188, 188, 7);
+}
+
+.delivery-not-started{
+  color: rgb(193, 0, 61);
+}
+
+.delivery-complete{
+  color: rgb(66, 214, 2);
+}
 
 input {
   padding: 1vmin;
@@ -493,10 +504,6 @@ input {
 input:focus{
   border:  .1vmin solid rgb(106, 87, 255);
 }
-
-/* .image-container{
-  border: solid black;
-} */
 
 .image-container > img{
   /* border: solid black; */

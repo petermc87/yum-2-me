@@ -35,8 +35,7 @@ export default function OrderListItem ({
   useEffect(() => {
     getOrder(order.id)
   }, [])
-// console.log(user)
-  // console.log(restaurantOrder)
+
   return (
     <>
       <div
@@ -55,7 +54,7 @@ export default function OrderListItem ({
                 <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
               </div>
               <div>
-                <div>Delivery: {restaurantOrder.isComplete === false ? 'in progress' : 'complete'} </div>
+                <div>Delivery: {restaurantOrder.isComplete === false && restaurantOrder.isPaid === true ? <div className='delivery-progress'>in progress</div> : restaurantOrder.isComplete === false && restaurantOrder.isPaid === false ? <div className='delivery-not-started'>not started</div> : <div className='delivery-complete'>complete</div>} </div>
                 <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
               </div>
             </>

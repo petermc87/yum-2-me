@@ -13,7 +13,7 @@ export default function RestaurantOrderHistory({
 
 {
     const [ordersByRestaurant, setOrdersByRestaurant] = useState([])
-    // console.log(restaurantsByUser)
+    
     const getOrdersByRestaurant = async (id) => {
         try {
           const response = await fetch(`/api/orders/history/restaurant/${id}`)
