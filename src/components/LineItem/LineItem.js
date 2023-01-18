@@ -21,20 +21,29 @@ export default function LineItem ({
               <p>${lineItem.item.price}</p>
             </div>
             <div className='menu-button' id='menu-add'>
-              {!isPaid && 
-                <button
-                  className='menu-button' id='menu-button-minus' onClick={() => {
-                    handleChangeQty(lineItem.item._id, lineItem.qty - 1)
-                  }}
-                >−
-                </button>}
-              <span>{lineItem.qty}</span>
-              {!isPaid && 
-                <button
-                  className='menu-button' id='menu-button-plus'
-                  onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}
-                >+
-                </button>}
+              {user.userType === 'false' || user.userType === 'customer' 
+                ?
+                  <>
+                    {!isPaid && 
+                      <button
+                        className='menu-button' id='menu-button-minus' onClick={() => {
+                          handleChangeQty(lineItem.item._id, lineItem.qty - 1)
+                        }}
+                      >−
+                      </button>}
+                    <span>{lineItem.qty}</span>
+                    {!isPaid && 
+                      <button
+                        className='menu-button' id='menu-button-plus'
+                        onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}
+                      >+
+                      </button>}
+                  </>
+                :
+                  <>
+                    <span>Qty: {lineItem.qty}</span>
+                  </>
+              }
             </div>
           </div>
         </> :
