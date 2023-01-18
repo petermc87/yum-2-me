@@ -10,12 +10,14 @@ import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import Restaurants from '../../components/Restaurant/AllRestaurants'
 import RestaurantIndexPage from '../RestaurantByUser/RestaurantByUser'
 import RestaurantOrderHistory from '../RestaurantOrderHistory/RestaurantOrderHistory'
+import DriverProfilePage from '../ProfilePages/DriverProfilePage'
 
 import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
 
 export default function HomePage (props) {
   // ---HOOKS---//
@@ -184,7 +186,6 @@ export default function HomePage (props) {
       props.getCustomer(props.user._id)
     }
   }, [])
-// console.log(props.user)
 
   return (
     <>
@@ -295,72 +296,80 @@ export default function HomePage (props) {
                 : 
                   props.user.userType === "false" || props.user.userType === 'customer' ?
                     <>
-                    <Route
-                      path='/orders/new' element={<NewOrderPage
-                        foundRestaurant={foundRestaurant}
+                      <Route
+                        path='/orders/new' element={<NewOrderPage
+                          foundRestaurant={foundRestaurant}
 
-                        userType={props.user.userType}
-                        user={props.user}
+                          userType={props.user.userType}
+                          user={props.user}
 
-                        menuItems={menuItems}
-                        setMenuItems={setMenuItems}
-                        getMenuItems={getMenuItems}
+                          menuItems={menuItems}
+                          setMenuItems={setMenuItems}
+                          getMenuItems={getMenuItems}
 
-                        cart={cart}
-                        setCart={setCart}
-                                                  />}
-                    />
+                          cart={cart}
+                          setCart={setCart}
+                                                    />}
+                      />
 
-                    <Route
-                      path='/orders' element={<OrderHistoryPage
-                        user={props.user}
-                        
-                        foundRestaurant={foundRestaurant}
-                        setFoundRestaurant={setFoundRestaurant}
-                        getRestaurantsByUser={props.getRestaurantsByUser}
-                        getRestaurant={getRestaurant}
+                      <Route
+                        path='/orders' element={<OrderHistoryPage
+                          user={props.user}
+                          
+                          foundRestaurant={foundRestaurant}
+                          setFoundRestaurant={setFoundRestaurant}
+                          getRestaurantsByUser={props.getRestaurantsByUser}
+                          getRestaurant={getRestaurant}
 
-                        setCurrentOrder={setCurrentOrder}
+                          setCurrentOrder={setCurrentOrder}
 
-                        activeOrder={activeOrder} 
-                        setActiveOrder={setActiveOrder}
+                          activeOrder={activeOrder} 
+                          setActiveOrder={setActiveOrder}
+                                                />}
+                      />
+                      <Route
+                        path='/home' element={<Restaurants
+                          setRestaurants={setRestaurants}
+                          restaurants={restaurants}
+
+                          setFoundRestaurant={setFoundRestaurant}
+                          foundRestaurant={foundRestaurant}
+
+                          setMenuItems={setMenuItems}
+                          menItems={menuItems}
+
+                          getMenuItems={getMenuItems}
+
+                          foundCustomer={props.foundCustomer}
+                          // createRestaurant={createRestaurant}
                                               />}
-                    />
+                      />
+                      <Route
+                        path='/profile' element={<CustomerProfilePage
+                          handleChange={handleChange}
+
+                          newCustomer={newCustomer}
+                          foundCustomer={props.foundCustomer}
+
+                          setNewCustomer={setNewCustomer}
+                          createCustomer={createCustomer}
+                          getCustomer={props.getCustomer}
+
+                          user={props.user}
+                          setUser={props.setUser}
+                                                />}
+                      />
+                    </>
+                  : 
+                  <>
+
                     <Route
-                      path='/home' element={<Restaurants
-                        setRestaurants={setRestaurants}
-                        restaurants={restaurants}
-
-                        setFoundRestaurant={setFoundRestaurant}
-                        foundRestaurant={foundRestaurant}
-
-                        setMenuItems={setMenuItems}
-                        menItems={menuItems}
-
-                        getMenuItems={getMenuItems}
-
-                        foundCustomer={props.foundCustomer}
-                        // createRestaurant={createRestaurant}
-                                            />}
-                    />
-                    <Route
-                      path='/profile' element={<CustomerProfilePage
-                        handleChange={handleChange}
-
-                        newCustomer={newCustomer}
-                        foundCustomer={props.foundCustomer}
-
-                        setNewCustomer={setNewCustomer}
-                        createCustomer={createCustomer}
-                        getCustomer={props.getCustomer}
-
+                      path='/profile' element={<DriverProfilePage
                         user={props.user}
                         setUser={props.setUser}
                                               />}
                     />
-                    </>
-                  : 
-                  ''
+                  </>
               }
               </>
             </Routes>
