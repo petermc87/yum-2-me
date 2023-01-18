@@ -185,6 +185,7 @@ export default function HomePage (props) {
     }
   }, [])
 
+
   return (
     <>
       <body>
@@ -292,7 +293,7 @@ export default function HomePage (props) {
                       />
                   </>
                 : 
-                  props.user.userType === false || props.userType === 'customer' ?
+                  props.user.userType === false || props.user.userType === 'customer' ?
                     <>
                     <Route
                       path='/orders/new' element={<NewOrderPage

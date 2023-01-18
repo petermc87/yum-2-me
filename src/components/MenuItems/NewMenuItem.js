@@ -9,8 +9,6 @@ export default function NewMenuItem ({
 
   const navigate = useNavigate()
 
-  // const [selectedCategory, setSelecteCategory] = useState('starter')
-
   return (
     <>
       <div className='form-container' id='form-container-edit'>

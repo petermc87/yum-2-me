@@ -19,7 +19,8 @@ const userSchema = new Schema({
     minlength: 3,
     required: true
   },
-  userType: { type: Boolean, required: true, default: false }
+  // userType: { type: Boolean, required: true, default: false }
+  userType: { type: String, required: true, default: 'customer'}
 }, {
   timestamps: true,
   toJSON: {

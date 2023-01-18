@@ -8,7 +8,7 @@ export default class SignUpForm extends Component {
     email: '',
     password: '',
     confirm: '',
-    userType: false,
+    userType: 'customer',
     error: ''
   }
 
@@ -44,8 +44,13 @@ export default class SignUpForm extends Component {
               <input type='email' name='email' value={this.state.email} onChange={this.handleChange} placeholder='email' required />
               <input type='password' name='password' value={this.state.password} onChange={this.handleChange} placeholder='password' required />
               <input type='password' name='confirm' value={this.state.confirm} onChange={this.handleChange} placeholder='confirm' required />
-              <label>Are you a restaurant?</label>
-              <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} />
+              <label>Restaurant owner or driver? Please select below</label>
+              {/* <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} /> */}
+              <select type='text' name='userType' value={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.value })}>
+                <option value='customer'>Customer</option>
+                <option value='restaurant'>Restaurant</option>
+                <option value='driver'>Driver</option>
+              </select>
               <button type='submit' disabled={disable}>SIGN UP</button>
             </form>
           </div>
@@ -56,6 +61,9 @@ export default class SignUpForm extends Component {
     )
   }
 }
+
+
+{/* <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} /> */}
 
 { /* <form autoComplete='off' onSubmit={() =>
   {this.handleSubmit}

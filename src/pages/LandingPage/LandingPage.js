@@ -46,14 +46,13 @@ export default function LandingPage (props) {
                     setUser={props.setUser}
                     getRestaurantsByUser={props.getRestaurantsByUser}
                     setRestaurantsByUser={props.setRestaurantsByUser}
-
                     getCustomer={props.getCustomer}
                     user={props.user}
                                     />}
                 />
                 <Route
                   path='/signup' element={<SignUpPage
-                    setUser={props.setUser}
+                  setUser={props.setUser}
                                           />}
                 />
               </Routes>

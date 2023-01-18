@@ -105,18 +105,11 @@ function App () {
             restaurantsByUser={restaurantsByUser}
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
-
             getCustomerProfile={getCustomerProfile}
             getRestaurantProfile={getRestaurantProfile}
-
             setCustomerProfile={setCustomerProfile}
-            // customerProfile={customerProfile}
-
             setRestaurantProfile={setRestaurantProfile}
-
-            // foundCustomer={fou}
             setFoundCustomer={setFoundCustomer}
-            // restaurantProfile={restaurantProfile}
           />}
     </>
   )

@@ -109,11 +109,8 @@ export default function RestaurantEditPage ({
         <ShowRestaurant
           setFoundRestaurant={setFoundRestaurant}
           foundRestaurant={foundRestaurant}
-
           deleteRestaurant={deleteRestaurant}
-
           getRestaurantsByUser={getRestaurantsByUser}
-          
           user={user}
         />
         
