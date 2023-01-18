@@ -43,6 +43,7 @@ export default function OrderHistoryPage ({
           handleSelectOrder={handleSelectOrder}
           setActiveOrder={setActiveOrder}
           getRestaurant={getRestaurant}
+          user={user}
         />
       </div>
       <div className='form-container'>

@@ -27,7 +27,7 @@ export default function RestaurantOrderHistory({
     useEffect(() => {
         getOrdersByRestaurant(foundRestaurant._id)
       }, [])
-      console.log(ordersByRestaurant)
+    //   console.log(ordersByRestaurant)
     
 
     // ---EVENT HANDLERS---//

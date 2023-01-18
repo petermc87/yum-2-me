@@ -35,22 +35,150 @@ export default function OrderListItem ({
   useEffect(() => {
     getOrder(order.id)
   }, [])
-
-  console.log(restaurantOrder)
+// console.log(user)
+  // console.log(restaurantOrder)
   return (
     <>
       <div
         className='res-icon' id='menu-item' onClick={() => { handleSelectOrder(order) }}
       >
-        <div>
-          <div>Order ID: {order._id}</div>
-          <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
-        </div>
-        <div>
-          <div>${order.orderTotal.toFixed(2)}</div>
-          <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
-        </div>
+        {/* <div> */}
+        {restaurantOrder && user.userType === true || restaurantOrder && user.userType === 'restaurant'
+          ? 
+            <>
+              <div>
+                <div>Order ID: {restaurantOrder.orderId}</div>
+                <div>{new Date(restaurantOrder.updatedAt).toLocaleDateString()}</div>
+              </div>              
+              <div>
+                <div>${restaurantOrder.orderTotal.toFixed(2)}</div>
+                <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
+              </div>
+              <div>
+                <div>Delivery: {restaurantOrder.isComplete === false ? 'in progress' : 'complete'} </div>
+                <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
+              </div>
+            </>
+          : user && user.userType === false || user && user.userType === 'customer'
+            ?
+              <>
+                <div>
+                  <div>Order ID: {order.orderId}</div>
+                  <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
+                </div>
+                <div>
+                  <div>${order.orderTotal.toFixed(2)}</div>
+                  <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
+                </div>
+              </>
+            :
+              <>driver</>
+          }
+        {/* </div> */}
       </div>
     </>
   )
 }
+
+
+
+
+
+
+
+
+// {restaurantOrder && user.userType === true || restaurantOrder && user.userType === 'restaurant'
+// ? 
+//   <>
+//     <div>
+//       <div>Order ID: {restaurantOrder.orderId}</div>
+//       <div>{new Date(restaurantOrder.updatedAt).toLocaleDateString()}</div>
+//     </div>              
+//     <div>
+//       <div>${restaurantOrder.orderTotal.toFixed(2)}</div>
+//       <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
+//     </div>
+//     <div>
+//       <div>Delivery: {restaurantOrder.isComplete === false ? 'in progress' : 'complete'} </div>
+//       <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
+//     </div>
+//   </>
+// :
+//     <>
+//       <div>
+//         <div>Order ID: {order.orderId}</div>
+//         <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
+//       </div>
+//       <div>
+//         <div>${order.orderTotal.toFixed(2)}</div>
+//         <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
+//       </div>
+//     </>
+// }
+
+
+
+// {restaurantOrder && user.userType === true || restaurantOrder && user.userType === 'restaurant'
+// ? 
+//   <>
+//     <div>
+//       <div>Order ID: {restaurantOrder.orderId}</div>
+//       <div>{new Date(restaurantOrder.updatedAt).toLocaleDateString()}</div>
+//     </div>              
+//     <div>
+//       <div>${restaurantOrder.orderTotal.toFixed(2)}</div>
+//       <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
+//     </div>
+//     <div>
+//       <div>Delivery: {restaurantOrder.isComplete === false ? 'in progress' : 'complete'} </div>
+//       <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
+//     </div>
+//   </>
+// : user && user.userType === false || user && user.userType === 'customer'
+//   ?
+//     <>
+//       <div>
+//         <div>Order ID: {order.orderId}</div>
+//         <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
+//       </div>
+//       <div>
+//         <div>${order.orderTotal.toFixed(2)}</div>
+//         <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
+//       </div>
+//     </>
+//   :
+//     <>driver</>
+// }
+
+
+
+
+
+// {restaurantOrder && user.userType === true || restaurantOrder && user.userType === 'restaurant'
+// ? 
+//   <>
+//     <div>
+//       <div>Order ID: {restaurantOrder.orderId}</div>
+//       <div>{new Date(restaurantOrder.updatedAt).toLocaleDateString()}</div>
+//     </div>              
+//     <div>
+//       <div>${restaurantOrder.orderTotal.toFixed(2)}</div>
+//       <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
+//     </div>
+//     <div>
+//       <div>Delivery: {restaurantOrder.isComplete === false ? 'in progress' : 'complete'} </div>
+//       <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
+//     </div>
+//   </>
+// :
+//     <>
+//       <div>
+//         <div>Order ID: {order.orderId}</div>
+//         <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
+//       </div>
+//       <div>
+//         <div>${order.orderTotal.toFixed(2)}</div>
+//         <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
+//       </div>
+//     </>
+// }
