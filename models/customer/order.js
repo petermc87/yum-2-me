@@ -19,7 +19,8 @@ const orderSchema = new Schema({
   restaurant: { type: Schema.Types.ObjectId, ref: 'Restaurant' },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   lineItems: [lineItemSchema],
-  isPaid: { type: Boolean, default: false }
+  isPaid: { type: Boolean, default: false },
+  isComplete: { type: Boolean, default: false }
 }, {
   timestamps: true,
   toJSON: { virtuals: true }
