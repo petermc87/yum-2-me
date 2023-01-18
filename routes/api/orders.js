@@ -6,6 +6,12 @@ const ordersCtrl = require('../../controllers/api/orders')
 router.get('/cart', ordersCtrl.cart)
 // GET /api/orders/history
 router.get('/history', ordersCtrl.history)
+// GET /api/orders/history/restaurant/:id
+router.get('/history/restaurant/:id', ordersCtrl.historyByRestaurant)
+// GET /api/orders/:id
+router.get('/:id', ordersCtrl.order)
+
+
 // POST /api/orders/cart/items/:id
 router.post('/cart/items/:id', ordersCtrl.addToCart)
 // POST /api/orders/cart/checkout
@@ -14,3 +20,4 @@ router.post('/cart/checkout', ordersCtrl.checkout)
 router.put('/cart/qty', ordersCtrl.setItemQtyInCart)
 
 module.exports = router
+ 

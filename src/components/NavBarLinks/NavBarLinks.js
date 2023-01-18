@@ -22,7 +22,9 @@ export default function NavBarLinks ({
     */}
       {user.userType === true || user.userType === 'restaurant'
         ? 
-          <li />
+          <li className='header-text'>
+            <Link to='/restaurantorders'>Orders</Link>
+          </li>
         : user.userType === false || user.userType === 'customer' ?
           <li className='header-text'>
             <Link to='/orders'>Order History</Link>

@@ -5,7 +5,9 @@ module.exports = {
   addToCart,
   setItemQtyInCart,
   checkout,
-  history
+  history,
+  historyByRestaurant,
+  order
 }
 
 // A cart is the unpaid order for a user
@@ -64,3 +66,27 @@ async function history (req, res) {
     res.status(400).json({ msg: e.message })
   }
 }
+
+async function historyByRestaurant (req, res) {
+  try{
+    const orders = await Order
+      .find({
+        //finding the order by the restaurantId
+        "lineItems.item.restaurantId": req.params.id},
+        //picking the first line item in the array of items
+        { "lineItems.$": 1 })
+      res.status(200).json(orders)
+  } catch (e) {
+    res.status(400).json({ msg: e.message })
+  }
+}
+
+async function order (req, res){
+  try{
+    const order = await Order.findById(req.params.id)
+    res.status(200).json(order)
+  } catch (e) {
+    res.status(400).json({ msg: e.message })
+  }
+}
+

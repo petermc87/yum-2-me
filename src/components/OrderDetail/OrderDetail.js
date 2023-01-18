@@ -19,6 +19,7 @@ export default function OrderDetail ({
   )
 
 
+// console.log(order)
   return (
     <>
       <div className='order-heading'>

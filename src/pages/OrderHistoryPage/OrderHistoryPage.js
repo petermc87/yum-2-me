@@ -10,11 +10,13 @@ export default function OrderHistoryPage ({
   setUser,
   foundRestaurant,
   getRestaurant,
-  setCurrentOrder
+  setCurrentOrder,
+  activeOrder,
+  setActiveOrder
 }) {
   // ---HOOKS--//
   const [orders, setOrders] = useState([])
-  const [activeOrder, setActiveOrder] = useState(null)
+  // const [activeOrder, setActiveOrder] = useState(null)
 
   useEffect(function () {
     async function fetchOrderHistory () {

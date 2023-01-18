@@ -43,7 +43,7 @@ export default function HomePage (props) {
 
   // cart
   const [cart, setCart] = useState(null)
-
+  const [activeOrder, setActiveOrder] = useState(null)
   const [currentOrder, setCurrentOrder] = useState(null)
 
   // single item
@@ -278,9 +278,18 @@ export default function HomePage (props) {
                           getMenuItems={getMenuItems}
                                               />}
                       />
-                      {/* <Route 
-                        path='/history' element={<RestaurantOrderHistory />}
-                      /> */}
+                      <Route 
+                        path='/restaurantorders' element={<RestaurantOrderHistory
+                          restaurantsByUser={props.restaurantsByUser}
+                          foundRestaurant={foundRestaurant}
+
+                          activeOrder={activeOrder}
+                          setActiveOrder={setActiveOrder}
+
+                          getRestaurant={getRestaurant}
+                          user={props.user}
+                          />}
+                      />
                   </>
                 : 
                   props.user.userType === false || props.userType === 'customer' ?
@@ -310,6 +319,9 @@ export default function HomePage (props) {
                         getRestaurant={getRestaurant}
 
                         setCurrentOrder={setCurrentOrder}
+
+                        activeOrder={activeOrder} 
+                        setActiveOrder={setActiveOrder}
                                               />}
                     />
                     <Route

@@ -28,6 +28,7 @@ app.use('/api/customers', require('./routes/api/customers'))
 app.use('/api/restaurants', require('./routes/api/restaurants'))
 app.use('/api/items', require('./routes/api/items'))
 // app.use('/api/drivers', require('./routes/api/users'));
+app.use('/api/orders', require('./routes/api/orders'))
 
 // Protect the API routes below from anonymous users
 const ensureLoggedIn = require('./config/ensureLoggedIn')
