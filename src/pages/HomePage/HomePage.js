@@ -21,8 +21,7 @@ import { Routes, Route } from 'react-router-dom'
 
 export default function HomePage (props) {
   // ---HOOKS---//
-  // selected Items
-  const [selectedItems, setSelectedItems] = useState([])
+
 
   // restaurants
   const [restaurants, setRestaurants] = useState([])
@@ -42,6 +41,12 @@ export default function HomePage (props) {
     location: '',
     user: props.user._id
   })
+
+  // driver
+  const [foundDriver, setFoundDriver] = useState({})
+
+  // selected Items
+  const [selectedItems, setSelectedItems] = useState([])
 
   // cart
   const [cart, setCart] = useState(null)
@@ -79,6 +84,7 @@ export default function HomePage (props) {
     }
     // console.log(foundCustomer)
   }
+
 
   // create restaurant
   const createRestaurant = async () => {
@@ -152,6 +158,8 @@ export default function HomePage (props) {
   const handleChange = (evt) => {
     setNewCustomer({ ...newCustomer, [evt.target.name]: evt.target.value })
   }
+
+
 
   const restaurantHandleChange = (evt) => {
     setNewRestaurant({ ...newRestaurant, [evt.target.name]: evt.target.value })
@@ -366,6 +374,13 @@ export default function HomePage (props) {
                       path='/profile' element={<DriverProfilePage
                         user={props.user}
                         setUser={props.setUser}
+
+                        getDriverProfile={props.getDriverProfile}
+                        setDriverProfile={props.getDriverProfile}
+                        driverProfile={props.driverProfile}
+                        
+                        setFoundDriver={setFoundDriver}
+                        foundDriver={foundDriver}
                                               />}
                     />
                   </>

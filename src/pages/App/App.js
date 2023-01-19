@@ -10,9 +10,12 @@ function App () {
   // Profile info
   const [customerProfile, setCustomerProfile] = useState([])
   const [restaurantProfile, setRestaurantProfile] = useState([])
+  const [driverProfile, setDriverProfile] = useState({})
 
   // customer
   const [foundCustomer, setFoundCustomer] = useState({})
+
+
 
   const fetchState = async () => {
     try {
@@ -63,6 +66,7 @@ function App () {
     try{
       const response = await fetch (`/api/drivers/${id}`)
       const data = await response.json ()
+      setDriverProfile(data)
     } catch (e) {
       console.log(e)
     }
@@ -89,26 +93,30 @@ function App () {
       {user
         ? <>
           <HomePage
-            user={user}
             setUser={setUser}
-            restaurantsByUser={restaurantsByUser}
+            user={user}
+
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
+            restaurantsByUser={restaurantsByUser}
 
             getCustomerProfile={getCustomerProfile}
-            getRestaurantProfile={getRestaurantProfile}
-            getDriverProfile={getDriverProfile}
-
             setCustomerProfile={setCustomerProfile}
             customerProfile={customerProfile}
 
+            getCustomer={getCustomer}
+
+            setFoundCustomer={setFoundCustomer}
+            foundCustomer={foundCustomer}
+
+
+            getRestaurantProfile={getRestaurantProfile}
             setRestaurantProfile={setRestaurantProfile}
             restaurantProfile={restaurantProfile}
 
-            foundCustomer={foundCustomer}
-            setFoundCustomer={setFoundCustomer}
-
-            getCustomer={getCustomer}
+            getDriverProfile={getDriverProfile}
+            setDriverProfile={setDriverProfile}
+            driverProfile={driverProfile}            
           />
         </>
         : <LandingPage
@@ -116,11 +124,19 @@ function App () {
             restaurantsByUser={restaurantsByUser}
             getRestaurantsByUser={getRestaurantsByUser}
             setRestaurantsByUser={setRestaurantsByUser}
+
             getCustomerProfile={getCustomerProfile}
             getRestaurantProfile={getRestaurantProfile}
+
             setCustomerProfile={setCustomerProfile}
             setRestaurantProfile={setRestaurantProfile}
+
             setFoundCustomer={setFoundCustomer}
+
+            getDriverProfile={getDriverProfile}
+            setDriverProfile={setDriverProfile}
+
+      
           />}
     </>
   )
