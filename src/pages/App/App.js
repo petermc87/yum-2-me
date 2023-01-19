@@ -12,7 +12,7 @@ function App () {
   const [restaurantProfile, setRestaurantProfile] = useState([])
   const [driverProfile, setDriverProfile] = useState({})
   // driver
-  const [foundDriver, setFoundDriver] = useState({})
+  const [foundDriver, setFoundDriver] = useState()
 
 
   // customer

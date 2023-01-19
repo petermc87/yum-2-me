@@ -53,7 +53,7 @@ export default function ShowRestaurant ({
   const restaurantIndexUpdate = () => {
     navigate('/home')
   }
-//  console.log(user)
+
   return (
     <>
     {showForm

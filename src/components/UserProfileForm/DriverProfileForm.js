@@ -9,15 +9,15 @@ export default function DriverProfileForm ({
     driverProfile,
     
     setFoundDriver,
-    foundDriver
+    foundDriver,
+    setShowForm,
+    showForm
   
   }) {
  
     const [newDriver, setNewDriver] = useState({})
-
-
-
-
+    const [newDriverInfo, setNewDriverInfo] = useState()
+  
     // create driver
     const createDriver = async () => {
         try {
@@ -32,8 +32,7 @@ export default function DriverProfileForm ({
         setFoundDriver(data)
         setNewDriver({
             image: '',
-            location: '',
-            user: user._id
+            location: ''
         })
         } catch (error) {
         console.error(error)
@@ -51,13 +50,58 @@ export default function DriverProfileForm ({
     const handleChange = (evt) => {
         setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
       }
- 
+    
+      useEffect(() => {
+        setNewDriverInfo(foundDriver)
+      }, [])
+
+
+    //update profile
+    const updateDriver = async () => {
+        try{
+          const response = await fetch(`/api/drivers/${foundDriver[0]._id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newDriverInfo)
+          })
+          const data = await response.json()
+          setFoundDriver(data)
+          getDriverProfile(user._id)
+        } catch (e) {
+          console.error(e)
+        } 
+      }
+    
+      const handleSubmitUpdate = (e) => {
+        e.preventDefault()
+        updateDriver()
+        setShowForm(false)
+      }
 
     return (
       <>
-        {foundDriver
+        {foundDriver[0]
           ? 
-            ''
+            showForm 
+              ?
+                <>
+                  <form onSubmit={(e) => {handleSubmitUpdate(e)}}>
+                     <h2>Edit your profile</h2>
+                     <br/>
+                     <input type='text'value={newDriverInfo.image} placeholder='image' onChange={(e) => {
+                      setNewDriverInfo({...newDriverInfo, image: e.target.value})}}/>
+                     <input type='text'value={newDriverInfo.location} placeholder='location' onChange={(e) => {
+                      setNewDriverInfo({...newDriverInfo, location: e.target.value})}}/>
+                    <div className='button-container'>
+                      <button type='submit'> confirm</button>
+                      <button onClick={() => {setShowForm(false)}}> Close</button>
+                    </div>
+                  </form>
+                </>
+              :
+              ''
           : 
           <div className='form-container' id='form-container-profile'>
             <h2>Create Your Profile</h2>

@@ -7,7 +7,9 @@ export default function UserLogOut ({
   setUser,
   foundCustomer,
   foundDriver,
+  setShowForm
 }) {
+  // console.log(foundDriver)
   const navigate = useNavigate()
 
   function handleLogOut () {
@@ -15,6 +17,7 @@ export default function UserLogOut ({
     setUser(null)
     navigate('/')
   }
+
 
   return (
     <>
@@ -38,9 +41,21 @@ export default function UserLogOut ({
               <div>{user.name}</div>
               <div>{user.email}</div>
               <br />
-              <div className='image-container'><img src={foundDriver[0].image} /></div>
-              <br />
-              <div>{foundDriver[0].location}</div>
+              {foundDriver[0]
+                ?
+                <>
+                  <div className='image-container'><img src={foundDriver[0].image} />
+                  </div>
+                  <br />
+                  <div>{foundDriver[0].location}</div>
+                </>
+                :
+                ''
+              }
+              <button onClick={()=>{
+                setShowForm(true)
+              }}>EDIT PROFILE</button>
+      
               <button onClick={handleLogOut}>LOG OUT</button>
             </div>
             :
