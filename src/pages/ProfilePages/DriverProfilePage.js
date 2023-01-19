@@ -5,11 +5,9 @@ import { Routes, Route } from 'react-router-dom'
 export default function DriverProfilePage ({
     user,
     setUser,
-
     getDriverProfile,
     setDriverProfile,
     driverProfile,
-    
     setFoundDriver,
     foundDriver
 }){
@@ -18,7 +16,9 @@ export default function DriverProfilePage ({
       <div className='index-header'>
         <h1>Your Profile</h1>
       </div>
+
       <Routes>
+        
         <Route
           path='/' element={
             <DriverProfileForm
@@ -31,13 +31,15 @@ export default function DriverProfilePage ({
 
                 setFoundDriver={setFoundDriver}
                 foundDriver={foundDriver}
-            />
-}
+            />}
         />
+
       </Routes>
+      
       <UserLogOut
         user={user}
         setUser={setUser}
+        foundDriver={foundDriver}
       />
     </>
 

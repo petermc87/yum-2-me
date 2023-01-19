@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function DriverProfileForm ({
     user,
@@ -15,7 +15,10 @@ export default function DriverProfileForm ({
  
     const [newDriver, setNewDriver] = useState({})
 
-      // create customer
+
+
+
+    // create driver
     const createDriver = async () => {
         try {
         const response = await fetch('/api/drivers', {
@@ -36,7 +39,7 @@ export default function DriverProfileForm ({
         console.error(error)
         }
     }
-
+    //submit driver
     const handleSubmit = (e) => {
       e.preventDefault()
       //nesting the user ID when the form is being submitted
@@ -44,17 +47,19 @@ export default function DriverProfileForm ({
       createDriver()
       getDriverProfile(user._id)
     }
-
+    //new driver info
     const handleChange = (evt) => {
         setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
       }
-    //   console.log(foundDriver)
+ 
 
     return (
       <>
         {foundDriver
-          ? ''
-          : <div className='form-container' id='form-container-profile'>
+          ? 
+            ''
+          : 
+          <div className='form-container' id='form-container-profile'>
             <h2>Create Your Profile</h2>
             <form autoComplete='off' onSubmit={handleSubmit}>
               <input type='text' name='image' value={newDriver.image} onChange={handleChange} placeholder='image' />

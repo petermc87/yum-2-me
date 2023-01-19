@@ -11,6 +11,9 @@ function App () {
   const [customerProfile, setCustomerProfile] = useState([])
   const [restaurantProfile, setRestaurantProfile] = useState([])
   const [driverProfile, setDriverProfile] = useState({})
+  // driver
+  const [foundDriver, setFoundDriver] = useState({})
+
 
   // customer
   const [foundCustomer, setFoundCustomer] = useState({})
@@ -66,7 +69,10 @@ function App () {
     try{
       const response = await fetch (`/api/drivers/${id}`)
       const data = await response.json ()
-      setDriverProfile(data)
+      // setDriverProfile(data)
+      // console.log(driverProfile)
+      setFoundDriver(data)
+      console.log(foundDriver)
     } catch (e) {
       console.log(e)
     }
@@ -116,7 +122,9 @@ function App () {
 
             getDriverProfile={getDriverProfile}
             setDriverProfile={setDriverProfile}
-            driverProfile={driverProfile}            
+            driverProfile={driverProfile}
+            setFoundDriver={setFoundDriver}
+            foundDriver={foundDriver}            
           />
         </>
         : <LandingPage

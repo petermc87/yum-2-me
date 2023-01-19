@@ -51,10 +51,9 @@ export default function ShowRestaurant ({
   }
 
   const restaurantIndexUpdate = () => {
-    // getRestaurantsByUser(user._id)
     navigate('/home')
   }
- console.log(user)
+//  console.log(user)
   return (
     <>
     {showForm

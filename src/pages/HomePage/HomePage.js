@@ -42,8 +42,6 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
-  // driver
-  const [foundDriver, setFoundDriver] = useState({})
 
   // selected Items
   const [selectedItems, setSelectedItems] = useState([])
@@ -160,7 +158,6 @@ export default function HomePage (props) {
   }
 
 
-
   const restaurantHandleChange = (evt) => {
     setNewRestaurant({ ...newRestaurant, [evt.target.name]: evt.target.value })
   }
@@ -187,11 +184,14 @@ export default function HomePage (props) {
     getCustomers()
   }, [props.foundCustomer])
 
+
   useEffect(() => {
-    if (props.user.userType) {
+    if (props.user.userType === 'restaurant' || props.user.userType === 'true') {
       console.log(props.user._id)
-    } else {
+    } else if (props.user.userType === 'customer' || props.user.userType === 'false') {
       props.getCustomer(props.user._id)
+    } else {
+      props.getDriverProfile(props.user._id)
     }
   }, [])
 
@@ -379,8 +379,8 @@ export default function HomePage (props) {
                         setDriverProfile={props.getDriverProfile}
                         driverProfile={props.driverProfile}
                         
-                        setFoundDriver={setFoundDriver}
-                        foundDriver={foundDriver}
+                        setFoundDriver={props.setFoundDriver}
+                        foundDriver={props.foundDriver}
                                               />}
                     />
                   </>
