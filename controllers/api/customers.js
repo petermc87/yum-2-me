@@ -1,8 +1,5 @@
-// const e = require('express')
-// const Usertest = require('../../models/restaurant/usertest')
-// const Blog = require('../../models/restaurant/blog')
+
 const Customer = require('../../models/customer/customerProfile')
-// const User = require('../../models/customer/user')
 
 const dataController = {
   // Index,

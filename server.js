@@ -25,15 +25,15 @@ app.use('/api', routes) <====== Finish code once you got it
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/customers', require('./routes/api/customers'))
+app.use('/api/drivers', require('./routes/api/driver'));
 app.use('/api/restaurants', require('./routes/api/restaurants'))
 app.use('/api/items', require('./routes/api/items'))
-// app.use('/api/drivers', require('./routes/api/users'));
 app.use('/api/orders', require('./routes/api/orders'))
 
 // Protect the API routes below from anonymous users
-const ensureLoggedIn = require('./config/ensureLoggedIn')
-app.use('/api/items', ensureLoggedIn, require('./routes/api/items'))
-app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'))
+// const ensureLoggedIn = require('./config/ensureLoggedIn')
+// app.use('/api/items', ensureLoggedIn, require('./routes/api/items'))
+// app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'))
 
 app.get('/api/test', (req, res) => {
   res.json({ eureka: 'you have found it' })

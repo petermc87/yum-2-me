@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 
 export default function HomePage (props) {
@@ -362,7 +362,6 @@ export default function HomePage (props) {
                     </>
                   : 
                   <>
-
                     <Route
                       path='/profile' element={<DriverProfilePage
                         user={props.user}

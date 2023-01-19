@@ -58,6 +58,16 @@ function App () {
     }
   }
 
+  // get Driver Profile
+  const getDriverProfile = async (id) => {
+    try{
+      const response = await fetch (`/api/drivers/${id}`)
+      const data = await response.json ()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   // Get Customer Profile
   const getCustomer = async (id) => {
     try {
@@ -87,6 +97,7 @@ function App () {
 
             getCustomerProfile={getCustomerProfile}
             getRestaurantProfile={getRestaurantProfile}
+            getDriverProfile={getDriverProfile}
 
             setCustomerProfile={setCustomerProfile}
             customerProfile={customerProfile}
