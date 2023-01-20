@@ -1,5 +1,5 @@
-
 import LineItem from '../../components/LineItem/LineItem'
+import { useNavigate } from 'react-router-dom'
 
 export default function OrderDetail ({
   order,
@@ -9,6 +9,7 @@ export default function OrderDetail ({
   user
 }) {
 
+  const navigate = useNavigate()
 
   const lineItems = order.lineItems.map(item =>
     <LineItem
@@ -22,8 +23,8 @@ export default function OrderDetail ({
   )
 
 
-// console.log(order)
-console.log(user)
+console.log(order)
+// console.log(user)
   return (
     <>
       <div className='order-heading'>
@@ -42,18 +43,36 @@ console.log(user)
           ? <>
             {lineItems}
             <section className='order-total'>
+              {/* if the user is a restaurant, then the checkout button wont show */}
               {order.isPaid || user.userType === 'true' || user.userType === 'restaurant'
-                ? <h3>TOTAL</h3>
+                ? 
+                <>
+                  <br/>
+                  <h3>TOTAL</h3>
+                  <span>${order.orderTotal.toFixed(2)}</span>
+                  <br />
+                  <span>Items: {order.totalQty}</span>
+                  <br/>
+                  <button onClick={()=>{navigate('/drivers')}}>
+                    Add Driver
+                  </button>
+                </>
                 : 
+                <>
+                  <span>${order.orderTotal.toFixed(2)}</span>
+                  <br />
+                  <span>Items: {order.totalQty}</span>
+                  <br/>
                   <button
                       onClick={handleCheckout}
                       disabled={!lineItems.length}
                     >CHECKOUT
                   </button>
+                </>
               }
-              <span>${order.orderTotal.toFixed(2)}</span>
+              {/* <span>${order.orderTotal.toFixed(2)}</span>
               <br />
-              <span>Items: {order.totalQty}</span>
+              <span>Items: {order.totalQty}</span> */}
 
             </section>
           </>
@@ -63,23 +82,3 @@ console.log(user)
   )
 }
 
-
-
-
-// {order.isPaid || user.userType === true || user.userType === 'restaurant'
-
-
-
-                {/* {order.totalQty >= 1 
-                  ?
-                    handleCurrentOrder(order)
-                  :
-                    handleCurrentOrder(order)
-                } */}
-                {/* {handleCurrentOrder(order.totalQty)} */}
-
-  // const handleCurrentOrder = (orderState) => {
-  //   // console.log(orderState)
-  //   setCurrentOrder(orderState)
-  // }
-  // console.log(order.totalQty)

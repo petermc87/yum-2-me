@@ -16,7 +16,7 @@ export default function DriverProfilePage ({
     const [showForm, setShowForm] = useState(false)
 
     return(
-    <>
+    <div>
       <div className='index-header'>
         <h1>Your Profile</h1>
       </div>
@@ -45,6 +45,6 @@ export default function DriverProfilePage ({
             foundDriver={foundDriver}
             setShowForm={setShowForm}
         />
-    </>
+    </div>
     ) 
 }

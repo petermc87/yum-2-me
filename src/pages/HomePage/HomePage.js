@@ -11,6 +11,7 @@ import Restaurants from '../../components/Restaurant/AllRestaurants'
 import RestaurantIndexPage from '../RestaurantByUser/RestaurantByUser'
 import RestaurantOrderHistory from '../RestaurantOrderHistory/RestaurantOrderHistory'
 import DriverProfilePage from '../ProfilePages/DriverProfilePage'
+import AllDrivers from '../AllDrivers/AllDrivers'
 
 import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
@@ -299,7 +300,15 @@ export default function HomePage (props) {
 
                           getRestaurant={getRestaurant}
                           user={props.user}
+
+                          getDriverProfile={props.getDriverProfile}
+                          foundDriver={props.foundDriver}
                           />}
+                      />
+                      <Route
+                        path='/drivers' element={<AllDrivers
+                          
+                        />}
                       />
                   </>
                 : 

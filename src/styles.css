@@ -508,6 +508,9 @@ input:focus{
   max-height: 100%;
 }
 
+#history-button{
+  padding-bottom: 2rem;
+}
 
 /* BOTTOM CONTENT */
 .info-item{

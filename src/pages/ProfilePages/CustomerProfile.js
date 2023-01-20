@@ -15,7 +15,7 @@ export default function CustomerProfilePage ({
   foundCustomer
 }) {
   return (
-    <>
+    <div>
       <h1>Your Profile</h1>
       <CustomerProfileFormn
         handleChange={handleChange}
@@ -33,6 +33,6 @@ export default function CustomerProfilePage ({
         getCustomer={getCustomer}
       />
 
-    </>
+    </div>
   )
 }

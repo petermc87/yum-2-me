@@ -8,7 +8,9 @@ export default function RestaurantOrderHistory({
     setActiveOrder,
     activeOrder,
     getRestaurant,
-    user
+    user,
+    getDriverProfile,
+    foundDriver
 })
 
 {
@@ -36,7 +38,7 @@ export default function RestaurantOrderHistory({
     }
         
     return (
-        <>
+        <div>
         <h1>Completed Orders & Orders In Progress</h1>
         <div className='form-container'>
           <OrderList
@@ -57,12 +59,14 @@ export default function RestaurantOrderHistory({
                 order={activeOrder}
                 foundRestaurant={foundRestaurant}
                 user={user}
+                getDriverProfile={getDriverProfile}
+                foundDriver={foundDriver}
                 // setCurrentOrder={setCurrentOrder}
               />
               </div>
             : ''
           }
         </div>
-      </>
+      </div>
     )
 }

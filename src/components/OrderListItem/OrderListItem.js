@@ -41,7 +41,6 @@ export default function OrderListItem ({
       <div
         className='res-icon' id='menu-item' onClick={() => { handleSelectOrder(order) }}
       >
-        {/* <div> */}
         {restaurantOrder && user.userType === 'true' || restaurantOrder && user.userType === 'restaurant'
           ? 
             <>
@@ -54,6 +53,7 @@ export default function OrderListItem ({
                 <div>{restaurantOrder.totalQty} Item{restaurantOrder.totalQty > 1 ? 's' : ''}</div>
               </div>
               <div>
+                {/* checking if there is a order in progress or not */}
                 <div>Delivery: {restaurantOrder.isComplete === false && restaurantOrder.isPaid === true ? <div className='delivery-progress'>in progress</div> : restaurantOrder.isComplete === false && restaurantOrder.isPaid === false ? <div className='delivery-not-started'>not started</div> : <div className='delivery-complete'>complete</div>} </div>
                 <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
               </div>
@@ -73,7 +73,6 @@ export default function OrderListItem ({
             :
               <>driver</>
           }
-        {/* </div> */}
       </div>
     </>
   )

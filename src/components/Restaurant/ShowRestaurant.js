@@ -81,13 +81,16 @@ export default function ShowRestaurant ({
                 ...newRestaurantInfo, location: e.target.value
               })
             }}/>                             
-          <button type='submit'>
-            Edit Restaurant
+          <div className='button-container'>
+            <button type='submit'>
+              Submit
+            </button>
+            <button onClick={() => {
+              setShowForm(false)}
+              }> Cancel
           </button>
-          <button onClick={() => {
-            setShowForm(false)}
-            }> Close
-         </button>
+          </div>
+
         </form>
       :
         <>
@@ -100,20 +103,10 @@ export default function ShowRestaurant ({
           <h2>{foundRestaurant.type}</h2>
           <h3>Location: <br/>{foundRestaurant.location}</h3>
           <br/>
-          {user.userType === 'true' || user.userType === 'restaurant'
-            ?
-              <>
-                <button onClick={() => {
-            navigate('/restaurantorders')
-                }}>Order History</button>
-              </>
-            :
-             ''
-          }    
+  
           <br/>
           <br/>
-          <br/>
-          <br/>
+
         </>
         
     }
@@ -142,6 +135,19 @@ export default function ShowRestaurant ({
             </div>
         }
       </div>
+      <br/>
+      <br/>
+      {user.userType === 'true' || user.userType === 'restaurant'
+            ?
+              <div className='button-container' id='history-button'>
+                <button onClick={() => {
+            navigate('/restaurantorders')
+                }}>Order History</button>
+              </div> 
+            :
+             ''
+          }
+ 
     </>
   )
 }

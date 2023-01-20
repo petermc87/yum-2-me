@@ -69,8 +69,6 @@ function App () {
     try{
       const response = await fetch (`/api/drivers/${id}`)
       const data = await response.json ()
-      // setDriverProfile(data)
-      // console.log(driverProfile)
       setFoundDriver(data)
       console.log(foundDriver)
     } catch (e) {

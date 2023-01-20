@@ -52,7 +52,7 @@ export default function DriverProfileForm ({
         console.log(newDriverInfo)
       }
     
-      useEffect(() => {
+    useEffect(() => {
         setNewDriverInfo(foundDriver)
       }, [])
 
