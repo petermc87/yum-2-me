@@ -72,11 +72,11 @@ export default function HomePage (props) {
       })
       const data = await response.json()
       props.setFoundCustomer(data)
-      setNewCustomer({
-        image: '',
-        location: '',
-        user: props.user._id
-      })
+      // setNewCustomer({
+      //   image: '',
+      //   location: '',
+      //   user: props.user._id
+      // })
     } catch (error) {
       console.error(error)
     }

@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 export default function CreateCustomerProfile ({
   handleChange,
   newCustomer,
@@ -13,15 +14,11 @@ export default function CreateCustomerProfile ({
     getCustomer(user._id)
   }
 
-  // useEffect(() => {
-  //   if(user.userType){
-  //     console.log(user._id)
-  //   } else{
-  //     getCustomer(user._id)
-  //   }
+  useEffect(() => {
+    getCustomer(user._id)
+  }, [])
 
   // }, [])
-
   return (
     <>
       {foundCustomer.length > 0
@@ -31,7 +28,7 @@ export default function CreateCustomerProfile ({
           <form autoComplete='off' onSubmit={handleSubmit}>
             <input type='text' name='image' value={newCustomer.image} onChange={handleChange} placeholder='image' />
             <input type='text' name='location' value={newCustomer.location} onChange={handleChange} placeholder='location' required />
-            <button type='submit'>UPDATE</button>
+            <button type='submit'>Submit</button>
           </form>
         </div>}
     </>

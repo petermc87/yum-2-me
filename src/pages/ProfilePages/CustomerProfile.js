@@ -30,6 +30,7 @@ export default function CustomerProfilePage ({
         user={user}
         setUser={setUser}
         foundCustomer={foundCustomer}
+        getCustomer={getCustomer}
       />
 
     </>

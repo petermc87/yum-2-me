@@ -14,6 +14,7 @@ export default function DriverProfileForm ({
     showForm
   
   }) {
+    console.log(user)
  
     const [newDriver, setNewDriver] = useState({})
     const [newDriverInfo, setNewDriverInfo] = useState()
@@ -32,7 +33,8 @@ export default function DriverProfileForm ({
         setFoundDriver(data)
         setNewDriver({
             image: '',
-            location: ''
+            location: '',
+            user: user._id
         })
         } catch (error) {
         console.error(error)
@@ -42,13 +44,14 @@ export default function DriverProfileForm ({
     const handleSubmit = (e) => {
       e.preventDefault()
       //nesting the user ID when the form is being submitted
-      setNewDriver({ ...newDriver, user: user._id})
+    //   setNewDriver({ ...newDriver, user: user._id})
       createDriver()
       getDriverProfile(user._id)
     }
     //new driver info
     const handleChange = (evt) => {
         setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
+        // setNewDriver({ ...newDriver, user: user._id})
       }
     
       useEffect(() => {

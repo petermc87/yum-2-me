@@ -1,13 +1,15 @@
 // import styles from './UserLogOut.module.scss';
 import { logOut } from '../../utilities/users-service'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export default function UserLogOut ({
   user,
   setUser,
   foundCustomer,
   foundDriver,
-  setShowForm
+  setShowForm,
+  getCustomer
 }) {
   // console.log(foundDriver)
   const navigate = useNavigate()
@@ -19,6 +21,10 @@ export default function UserLogOut ({
   }
 
 
+// useEffect(() => {
+//   getCustomer(user._id)
+// })
+
   return (
     <>
       {user.userType === 'customer' || user.userType === 'false' 
@@ -29,9 +35,17 @@ export default function UserLogOut ({
           <div>{user.email}</div>
           <br />
           {/* <div className='image-container'><img src='https://i.imgur.com/ShtsVkV.jpg' /></div> */}
-          <div className='image-container'><img src={foundCustomer[0].image} /></div>
-          <br />
-          <div>{foundCustomer[0].location}</div>
+          {foundCustomer.length > 0
+            ?
+              <>
+                <div className='image-container'><img src={foundCustomer[0].image} /></div>
+                  <br />
+                <div>{foundCustomer[0].location}</div>
+              </>
+            :
+            ''
+          }
+
         <button onClick={handleLogOut}>LOG OUT</button>
         </div>
         : user.userType === 'driver' 
