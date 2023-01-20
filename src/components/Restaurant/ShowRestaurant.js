@@ -111,11 +111,6 @@ export default function ShowRestaurant ({
         {user.userType === 'true' || user.userType === 'restaurant'
           ? 
             <>
-              <div className='button-container'>
-                <button onClick={restaurantIndexUpdate}>
-                  &#8249;
-                </button>
-              </div>
               <DeleteRestauantButton
                 foundRestaurant={foundRestaurant}
                 deleteRestaurant={deleteRestaurant}
@@ -125,11 +120,7 @@ export default function ShowRestaurant ({
               />
             </>
           : 
-            <div className='button-container'>
-              <button onClick={restaurantIndexUpdate}>
-                &#8249;
-              </button>
-            </div>
+          ''
         }
       </div>
       <br/>

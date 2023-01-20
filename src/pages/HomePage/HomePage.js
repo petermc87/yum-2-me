@@ -307,7 +307,8 @@ export default function HomePage (props) {
                       />
                       <Route
                         path='/drivers' element={<AllDrivers
-                          
+                          foundDriver={props.foundDriver}
+                          setFoundDriver={props.setFoundDriver}
                         />}
                       />
                   </>

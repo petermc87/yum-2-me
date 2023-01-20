@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import OrderList from '../../components/OrderList/OrderList'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
@@ -16,6 +17,8 @@ export default function RestaurantOrderHistory({
 {
     const [ordersByRestaurant, setOrdersByRestaurant] = useState([])
 
+    const navigate = useNavigate()
+
     const getOrdersByRestaurant = async (id) => {
         try {
           const response = await fetch(`/api/orders/history/restaurant/${id}`)
@@ -29,8 +32,6 @@ export default function RestaurantOrderHistory({
     useEffect(() => {
         getOrdersByRestaurant(foundRestaurant._id)
       }, [])
-    //   console.log(ordersByRestaurant)
-    
 
     // ---EVENT HANDLERS---//
     function handleSelectOrder (order) {
@@ -38,8 +39,15 @@ export default function RestaurantOrderHistory({
     }
         
     return (
-        <div>
-        <h1>Completed Orders & Orders In Progress</h1>
+      <div>
+      <div className='res-icon' id='back-button'>
+        <div className='button-container' id='back-button'>
+          <button onClick={()=>{navigate('/home')}}>
+            &#8249;
+          </button>
+        </div>
+      </div>
+       <h1>Completed Orders & Orders In Progress</h1>
         <div className='form-container'>
           <OrderList
             orders={ordersByRestaurant}

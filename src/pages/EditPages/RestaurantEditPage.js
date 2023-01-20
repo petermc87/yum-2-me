@@ -104,6 +104,11 @@ export default function RestaurantEditPage ({
 
   return (
     <>
+      <div className='button-container' id='back-button'>
+        <button onClick={()=>{navigate('/home')}}>
+          &#8249;
+        </button>
+      </div>
       <h1>Restaurant Profile</h1>
       <div className='res-icon' id='show-page'>
         <ShowRestaurant

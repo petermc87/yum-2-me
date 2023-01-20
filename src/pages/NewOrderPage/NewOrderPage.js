@@ -45,6 +45,13 @@ export default function NewOrderPage ({
 
   return (
     <>
+    <div className='res-icon' id='back-button'>
+      <div className='button-container' id='back-button'>
+        <button onClick={()=>{navigate('/home')}}>
+          &#8249;
+        </button>
+      </div>
+    </div>
       <div className='res-icon' id='show-page'>
         <>
           <ShowRestaurant

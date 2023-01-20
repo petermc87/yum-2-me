@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
-export default function AllDrivers(){
+export default function AllDrivers({
+    setFoundDriver,
+    foundDriver
+}){
 
 const [drivers, setDrivers] = useState([])
 
@@ -26,12 +29,15 @@ useEffect(() => {
 
   return (
     <>
-      <h1>All Drivers</h1>
-      <div className='button-container'>
-       <button onClick={()=>{navigate('/restaurantorders')}}>
-        &#8249;
-      </button>
+      <div className='res-icon' id='back-button'>
+        <div className='button-container' id='back-button'>
+          <button onClick={()=>{navigate('/restaurantorders')}}>
+            &#8249;
+          </button>
+        </div>
       </div>
+      <h1>All Drivers</h1>
+
       {
         drivers
           ? <>

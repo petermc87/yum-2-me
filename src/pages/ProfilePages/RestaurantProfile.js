@@ -1,7 +1,7 @@
 import RestaurantProfileFormn from '../../components/UserProfileForm/RestaurantProfileForm'
 import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import UserLogOut from '../../components/UserLogOut/UserLogOut'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 export default function RestaurantProfilePage ({
   createRestaurant,
@@ -22,6 +22,7 @@ export default function RestaurantProfilePage ({
   user
 
 }) {
+  const navigate = useNavigate()
   return (
     <>
       <div className='index-header'>
