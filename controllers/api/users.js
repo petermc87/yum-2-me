@@ -39,14 +39,38 @@ const dataController = {
     } catch {
       res.status(400).json('Bad Credentials')
     }
-  }
+  },
+  async getUser (req, res, next) {
+    try{
+      const user = await User.findById(req.params.id)
+      res.locals.data.user = user
+      next()
+    } catch (e) {
+      res.status(400).json(e)
+    }
+  },
+  async getDriverUsers (req, res, next) {
+    try{
+      const users = await User.find({ userType: "driver" })
+      res.locals.data.users = users
+      next()
+    } catch (e) {
+      res.status(400).json(e)
+    }
+  },
+
 }
 
 const apiController = {
   auth (req, res) {
     res.json(res.locals.data.token)
+  },
+  index (req, res) {
+    res.json(res.locals.data.users)
   }
 }
+
+
 
 module.exports = {
   checkToken,

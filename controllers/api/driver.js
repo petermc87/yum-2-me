@@ -45,6 +45,7 @@ const dataController = {
   async show (req, res, next) {
     try{
       const foundDriver = await Driver.find({ user: req.params.id })
+      // console.log(foundDriver)
       res.locals.data.driver = foundDriver
       next()
     } catch (e) {

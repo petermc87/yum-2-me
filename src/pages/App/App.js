@@ -68,9 +68,8 @@ function App () {
   const getDriverProfile = async (id) => {
     try{
       const response = await fetch (`/api/drivers/${id}`)
-      const data = await response.json ()
+      const data = await response.json()
       setFoundDriver(data)
-      console.log(foundDriver)
     } catch (e) {
       console.log(e)
     }
@@ -91,6 +90,7 @@ function App () {
   useEffect(() => {
     fetchState()
   }, [])
+  console.log(foundDriver)
 
   return (
     <>

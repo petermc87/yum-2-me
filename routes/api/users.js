@@ -8,6 +8,10 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 router.post('/', dataController.create, apiController.auth)
 // POST /api/users/login
 router.post('/login', dataController.login, apiController.auth)
+// GET /api/users/:id
+router.get('/:id', dataController.getUser, apiController.auth)
+// GET /api/users
+router.get('/', dataController.getDriverUsers, apiController.index)
 
 // GET /api/users/check-token
 router.get('/check-token', ensureLoggedIn, checkToken)

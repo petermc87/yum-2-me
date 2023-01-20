@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react'
 
 export default function AllDrivers({
     setFoundDriver,
-    foundDriver
+    foundDriver,
+    getDriverProfile
 }){
 
 const [drivers, setDrivers] = useState([])
+const [userInfo, setUserInfo] = useState()
+const [driversByUser, setDriversByUser] = useState([])
 
 const navigate = useNavigate()
 
@@ -21,11 +24,50 @@ const getDrivers = async () => {
   }
 }
 
+//Get user information
+const getUser = async (id) => {
+  try{
+    const response = await fetch(`api/users/${id}`)
+    const data = response.json()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const getDriversByUser = async () => {
+  try{
+    const response = await fetch(`api/users/`)
+    const data = await response.json()
+    setDriversByUser(data)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 useEffect(() => {
     getDrivers()
+    getDriversByUser()
   }, [])
 
-  console.log(drivers)
+//   console.log(driversByUser)
+
+  function availability (driver) {
+    if(driver && driver.availability){
+      return <div className='driver-available'>Available</div>
+    }
+    else{
+      return <div className='driver-busy'>Busy</div>
+    }
+  }
+
+
+const driverInfo = (id) => {
+    //finding the drivers user info by the index from the nested user id in 'driver'
+    const driverIndex = driversByUser.findIndex(element => element._id === id)
+    if (driverIndex >= 0){
+        return <>{driversByUser[driverIndex].name}</>
+    }
+}
 
   return (
     <>
@@ -37,30 +79,23 @@ useEffect(() => {
         </div>
       </div>
       <h1>All Drivers</h1>
-
       {
         drivers
           ? <>
             {
               drivers.map((driver) => {
                 return (
-                  <div className='res-icon' key={driver._id} id='res-icon-index'>
+                  <div className='res-icon' key={driver._id} id='res-icon-index' onClick={() => {
+                    setFoundDriver(driver)
+                  }}>
                     <div className='res-image'>
                       <img src={driver.image} />
                     </div>
                     <div className='res-details'>
-                      <h1>{driver.location}</h1>
-                      <p>{driver.availability}</p>
+                     <h2>{driverInfo(driver.user)}</h2>
+                      <p>{driver.location}</p>
+                      <div>{availability(driver)}</div>
                     </div>
-                    {/* <div className='res-button'>
-                      <button
-                        to='orders/new' onClick={() =>
-                        // setFoundRestaurant(restaurant)
-                          handleChange(restaurant)}
-                      >
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/orders/new'>Order from here</Link>
-                      </button>
-                    </div> */}
                   </div>
                 )
               })
