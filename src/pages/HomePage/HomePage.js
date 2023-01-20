@@ -68,21 +68,22 @@ export default function HomePage (props) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...newCustomer })
+        body: JSON.stringify({
+          //nesting the user id on creation 
+          ...newCustomer,
+          user: props.user._id
+        })
       })
       const data = await response.json()
       props.setFoundCustomer(data)
-      // setNewCustomer({
-      //   image: '',
-      //   location: '',
-      //   user: props.user._id
-      // })
+      setNewCustomer({
+        image: '',
+        location: '',
+      })
     } catch (error) {
       console.error(error)
     }
-    // console.log(foundCustomer)
   }
-
 
   // create restaurant
   const createRestaurant = async () => {

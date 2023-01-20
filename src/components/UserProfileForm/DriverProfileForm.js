@@ -14,10 +14,10 @@ export default function DriverProfileForm ({
     showForm
   
   }) {
-    console.log(user)
+    console.log(foundDriver)
  
     const [newDriver, setNewDriver] = useState({})
-    const [newDriverInfo, setNewDriverInfo] = useState()
+    const [newDriverInfo, setNewDriverInfo] = useState({})
   
     // create driver
     const createDriver = async () => {
@@ -27,31 +27,28 @@ export default function DriverProfileForm ({
             headers: {
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...newDriver })
+            body: JSON.stringify({ 
+              ...newDriver,
+              user: user._id
+            })
         })
         const data = await response.json()
         setFoundDriver(data)
-        setNewDriver({
-            image: '',
-            location: '',
-            user: user._id
-        })
         } catch (error) {
         console.error(error)
         }
     }
     //submit driver
     const handleSubmit = (e) => {
+      // setNewDriver({ ...newDriver, user: user._id})
       e.preventDefault()
       //nesting the user ID when the form is being submitted
-    //   setNewDriver({ ...newDriver, user: user._id})
       createDriver()
       getDriverProfile(user._id)
     }
     //new driver info
     const handleChange = (evt) => {
         setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
-        // setNewDriver({ ...newDriver, user: user._id})
       }
     
       useEffect(() => {

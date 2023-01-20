@@ -66,11 +66,11 @@ export default function UserLogOut ({
                 :
                 ''
               }
-              <button onClick={()=>{
-                setShowForm(true)
-              }}>EDIT PROFILE</button>
-      
-              <button onClick={handleLogOut}>LOG OUT</button>
+              <div className='button-container'>
+                <button onClick={()=>{
+                  setShowForm(true)}}>EDIT PROFILE</button>
+                <button onClick={handleLogOut}>LOG OUT</button>
+              </div>
             </div>
             :
             <div className='form-container' id='profile-info'>
