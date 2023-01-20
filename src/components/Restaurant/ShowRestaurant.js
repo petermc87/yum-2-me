@@ -103,12 +103,9 @@ export default function ShowRestaurant ({
           <h2>{foundRestaurant.type}</h2>
           <h3>Location: <br/>{foundRestaurant.location}</h3>
           <br/>
-  
           <br/>
           <br/>
-
         </>
-        
     }
       <div className='menu-button'>
         {user.userType === 'true' || user.userType === 'restaurant'
