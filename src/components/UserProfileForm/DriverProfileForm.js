@@ -14,7 +14,7 @@ export default function DriverProfileForm ({
     showForm
   
   }) {
-    console.log(foundDriver)
+    // console.log(foundDriver)
  
     const [newDriver, setNewDriver] = useState({})
     const [newDriverInfo, setNewDriverInfo] = useState({})
@@ -49,6 +49,7 @@ export default function DriverProfileForm ({
     //new driver info
     const handleChange = (evt) => {
         setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
+        console.log(newDriverInfo)
       }
     
       useEffect(() => {
@@ -76,10 +77,11 @@ export default function DriverProfileForm ({
     
       const handleSubmitUpdate = (e) => {
         e.preventDefault()
+        console.log(newDriverInfo)
         updateDriver()
         setShowForm(false)
       }
-
+// console.log(foundDriver)
     return (
       <>
         {foundDriver[0]
@@ -94,6 +96,10 @@ export default function DriverProfileForm ({
                       setNewDriverInfo({...newDriverInfo, image: e.target.value})}}/>
                      <input type='text'value={newDriverInfo.location} placeholder='location' onChange={(e) => {
                       setNewDriverInfo({...newDriverInfo, location: e.target.value})}}/>
+                      <br />
+                    <div>Select your availability <input type='checkbox' checked={newDriverInfo.availability} onChange={(e) => {
+                      setNewDriverInfo({...newDriverInfo, availability: e.target.checked })}} /></div>
+                      <br />
                     <div className='button-container'>
                       <button type='submit'> confirm</button>
                       <button onClick={() => {setShowForm(false)}}> Close</button>

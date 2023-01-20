@@ -71,7 +71,7 @@ export default function HomePage (props) {
         body: JSON.stringify({
           //nesting the user id on creation 
           ...newCustomer,
-          user: props.user._id
+          user: props.user._id 
         })
       })
       const data = await response.json()

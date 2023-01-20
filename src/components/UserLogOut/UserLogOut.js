@@ -1,7 +1,6 @@
 // import styles from './UserLogOut.module.scss';
 import { logOut } from '../../utilities/users-service'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 
 export default function UserLogOut ({
   user,
@@ -11,7 +10,7 @@ export default function UserLogOut ({
   setShowForm,
   getCustomer
 }) {
-  // console.log(foundDriver)
+
   const navigate = useNavigate()
 
   function handleLogOut () {
@@ -20,10 +19,17 @@ export default function UserLogOut ({
     navigate('/')
   }
 
+  function availability () {
+    if(foundDriver[0] && foundDriver[0].availability){
+      // console.log('Available')
+      return <div className='driver-available'>Available</div>
+    }
+    else{
+      // console.log('Not available')
+      return <div className='driver-busy'>Busy</div>
+    }
+  }
 
-// useEffect(() => {
-//   getCustomer(user._id)
-// })
 
   return (
     <>
@@ -34,7 +40,6 @@ export default function UserLogOut ({
           <div>{user.name}</div>
           <div>{user.email}</div>
           <br />
-          {/* <div className='image-container'><img src='https://i.imgur.com/ShtsVkV.jpg' /></div> */}
           {foundCustomer.length > 0
             ?
               <>
@@ -62,6 +67,9 @@ export default function UserLogOut ({
                   </div>
                   <br />
                   <div>{foundDriver[0].location}</div>
+                  <br/>
+                  <div>{availability()}</div>
+                  <br/>
                 </>
                 :
                 ''
@@ -72,7 +80,7 @@ export default function UserLogOut ({
                 <button onClick={handleLogOut}>LOG OUT</button>
               </div>
             </div>
-            :
+            : 
             <div className='form-container' id='profile-info'>
               <h2>Profile Info</h2>
               <div>{user.name}</div>

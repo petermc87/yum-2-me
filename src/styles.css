@@ -480,11 +480,11 @@ form > h1, .menu-select > h1{
   color: rgb(188, 188, 7);
 }
 
-.delivery-not-started{
+.delivery-not-started, .driver-busy{
   color: rgb(193, 0, 61);
 }
 
-.delivery-complete{
+.delivery-complete, .driver-available{
   color: rgb(66, 214, 2);
 }
 
