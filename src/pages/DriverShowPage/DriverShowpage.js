@@ -30,6 +30,25 @@ export default function DriverShowPage({
         } 
       }
 
+ const updateOrderAssginment = async () => {
+        try{
+          const response = await fetch(`/api/orders/${activeOrder._id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                assigned: false
+            })
+          })
+          const data = await response.json()
+          setFoundDriver(data)
+        //   getDriverProfile(user._id)
+        } catch (e) {
+          console.error(e)
+        } 
+      }
+
 // console.log(foundDriver)
 
   return(
@@ -53,7 +72,10 @@ export default function DriverShowPage({
                 ?
                   <>
                     <div className="driver-available">Available</div>
-                    <button onClick={() => {updateDriver()}}>Add</button>
+                    <button onClick={() => {
+                        updateDriver()
+                        updateOrderAssginment()
+                        }}>Add</button>
                   </>
                 :
                 <>

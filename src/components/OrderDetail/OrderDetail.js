@@ -43,8 +43,7 @@ console.log(order)
           ? <>
             {lineItems}
             <section className='order-total'>
-              {/* if the user is a restaurant, then the checkout button wont show */}
-              {order.isPaid || user.userType === 'true' || user.userType === 'restaurant'
+              {order.isPaid && user.userType === 'true' || user.userType === 'restaurant'
                 ? 
                 <>
                   <br/>
@@ -53,9 +52,15 @@ console.log(order)
                   <br />
                   <span>Items: {order.totalQty}</span>
                   <br/>
-                  <button onClick={()=>{navigate('/drivers')}}>
-                    Add Driver
-                  </button>
+                  {order.isPaid 
+                    ?
+                    <button onClick={()=>{navigate('/drivers')}}>
+                      Add Driver
+                    </button>
+                    :
+                    ''
+                  }
+
                 </>
                 : 
                 <>
@@ -63,17 +68,18 @@ console.log(order)
                   <br />
                   <span>Items: {order.totalQty}</span>
                   <br/>
-                  <button
-                      onClick={handleCheckout}
-                      disabled={!lineItems.length}
-                    >CHECKOUT
-                  </button>
+                  {order.isPaid 
+                    ?
+                      ''
+                    :
+                    <button onClick={handleCheckout}
+                        disabled={!lineItems.length}
+                      >CHECKOUT
+                    </button>
+                  }
+
                 </>
               }
-              {/* <span>${order.orderTotal.toFixed(2)}</span>
-              <br />
-              <span>Items: {order.totalQty}</span> */}
-
             </section>
           </>
           : <div className='hungry'>Hungry?</div>}

@@ -20,7 +20,8 @@ const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   lineItems: [lineItemSchema],
   isPaid: { type: Boolean, default: false },
-  isComplete: { type: Boolean, default: false }
+  isComplete: { type: Boolean, default: false },
+  assigned: { type: Boolean, default: false }
 }, {
   timestamps: true,
   toJSON: { virtuals: true }

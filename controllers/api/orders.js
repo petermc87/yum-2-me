@@ -73,7 +73,8 @@ async function historyByRestaurant (req, res) {
       .find({
         //finding the order by the restaurantId
         "lineItems.item.restaurantId": req.params.id},
-        //picking the first line item in the array of items
+        //picking the first line item in the array of items that has the restaurantId stored
+        //The restaurantId was nested when creating the new menu item
         { "lineItems.$": 1 })
       res.status(200).json(orders)
   } catch (e) {
