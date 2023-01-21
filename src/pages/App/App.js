@@ -90,7 +90,7 @@ function App () {
   useEffect(() => {
     fetchState()
   }, [])
-  console.log(foundDriver)
+  // console.log(foundDriver)
 
   return (
     <>
@@ -121,6 +121,7 @@ function App () {
             getDriverProfile={getDriverProfile}
             setDriverProfile={setDriverProfile}
             driverProfile={driverProfile}
+            
             setFoundDriver={setFoundDriver}
             foundDriver={foundDriver}            
           />

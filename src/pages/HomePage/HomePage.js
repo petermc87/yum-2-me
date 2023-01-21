@@ -19,6 +19,7 @@ import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 import { Routes, Route } from 'react-router-dom'
+import { act } from 'react-dom/test-utils'
 
 
 export default function HomePage (props) {
@@ -320,8 +321,10 @@ export default function HomePage (props) {
                       />
                       <Route
                         path='/driver' element={<DriverShowPage
+                          setFoundDriver={props.setFoundDriver}
                           foundDriver={props.foundDriver}
                           driverUser={driverUser}
+                          activeOrder={activeOrder}
                         />}
                       />
                   </>

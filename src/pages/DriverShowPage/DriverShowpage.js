@@ -2,35 +2,70 @@ import { useNavigate } from "react-router-dom"
 
 export default function DriverShowPage({
   foundDriver,
-  driverUser
+  driverUser,
+  setFoundDriver,
+  activeOrder
 }){
   
   const navigate = useNavigate()
 
+  //adding the selected order into selected drivers profile
+  const updateDriver = async () => {
+        try{
+          const response = await fetch(`/api/drivers/${foundDriver._id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                assignedOrders : activeOrder,
+                availability: false
+            })
+          })
+          const data = await response.json()
+          setFoundDriver(data)
+        //   getDriverProfile(user._id)
+        } catch (e) {
+          console.error(e)
+        } 
+      }
+
+// console.log(foundDriver)
+
   return(
-    <>
-     
-      {/* <div className='res-icon' id='back-button'> */}
+    <div className="driver-showpage">
         <div className='button-container' id='back-button'>
-        <h1>Driver Profile</h1>
             <button onClick={()=>{navigate('/drivers')}}>
                 &#8249;
             </button>
         </div>
-      {/* </div> */}
+        <h1>Driver Profile</h1>
       {foundDriver && driverUser 
         ?
-            <div className="form-container" id="profile-info">
+          <div className="form-container" id="profile-info">
             <h2>{driverUser.name}</h2>
             <div className='res-image'>
                 <img src={foundDriver.image} />
             </div>
-            <h1>{foundDriver.location}</h1>
-            </div>
+            <br/>
+            <h4>{foundDriver.location}</h4>
+            <p>{foundDriver.availability
+                ?
+                  <>
+                    <div className="driver-available">Available</div>
+                    <button onClick={() => {updateDriver()}}>Add</button>
+                  </>
+                :
+                <>
+                  <div className="driver-busy">Busy</div>
+                  <br />
+                  <>Cannot Add Driver</>
+                </>
+            }</p>
+          </div>
         :
         ''
       }
-
-    </>
+    </div>
   ) 
 }

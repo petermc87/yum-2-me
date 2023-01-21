@@ -81,7 +81,7 @@ export default function DriverProfileForm ({
         updateDriver()
         setShowForm(false)
       }
-// console.log(foundDriver)
+
     return (
       <>
         {foundDriver[0]

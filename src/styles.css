@@ -489,6 +489,24 @@ form > h1, .menu-select > h1{
   width: 12rem;
   text-align: center;
 }
+.driver-showpage{
+   align-items: center;
+   padding: 3rem;
+}
+
+.driver-showpage > #profile-info{
+  padding: 3rem;
+  /* border: solid red; */
+}
+.driver-showpage > #back-button{
+  padding: 0 8rem 0 8rem;
+}
+
+.driver-showpage > h1{
+  /* padding: 0 8rem 0 8rem; */
+  /* border: solid black; */
+  padding-left: 4rem;
+}
 
 .delivery-progress{
   color: rgb(188, 188, 7);
