@@ -12,6 +12,7 @@ import RestaurantIndexPage from '../RestaurantByUser/RestaurantByUser'
 import RestaurantOrderHistory from '../RestaurantOrderHistory/RestaurantOrderHistory'
 import DriverProfilePage from '../ProfilePages/DriverProfilePage'
 import AllDrivers from '../AllDrivers/AllDrivers'
+import DriverShowPage from '../DriverShowPage/DriverShowpage'
 
 import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
@@ -43,6 +44,9 @@ export default function HomePage (props) {
     user: props.user._id
   })
 
+
+  //driver
+  const [driverUser, setDriverUser] = useState(null)
 
   // selected Items
   const [selectedItems, setSelectedItems] = useState([])
@@ -310,6 +314,14 @@ export default function HomePage (props) {
                           foundDriver={props.foundDriver}
                           setFoundDriver={props.setFoundDriver}
                           getDriverProfile={props.getDriverProfile}
+                          driverUser={driverUser}
+                          setDriverUser={setDriverUser}
+                        />}
+                      />
+                      <Route
+                        path='/driver' element={<DriverShowPage
+                          foundDriver={props.foundDriver}
+                          driverUser={driverUser}
                         />}
                       />
                   </>

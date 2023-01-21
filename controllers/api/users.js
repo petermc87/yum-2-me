@@ -43,7 +43,8 @@ const dataController = {
   async getUser (req, res, next) {
     try{
       const user = await User.findById(req.params.id)
-      res.locals.data.user = user
+      // console.log(user)
+      res.locals.data.driver = user
       next()
     } catch (e) {
       res.status(400).json(e)
@@ -67,6 +68,9 @@ const apiController = {
   },
   index (req, res) {
     res.json(res.locals.data.users)
+  },
+  driverUser (req, res) {
+    res.json(res.locals.data.driver)
   }
 }
 

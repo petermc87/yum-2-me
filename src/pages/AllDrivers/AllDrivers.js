@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react'
 export default function AllDrivers({
     setFoundDriver,
     foundDriver,
-    getDriverProfile
+    getDriverProfile,
+    driverUser,
+    setDriverUser
 }){
 
 const [drivers, setDrivers] = useState([])
-const [userInfo, setUserInfo] = useState()
 const [driversByUser, setDriversByUser] = useState([])
 
 const navigate = useNavigate()
@@ -28,12 +29,16 @@ const getDrivers = async () => {
 const getUser = async (id) => {
   try{
     const response = await fetch(`api/users/${id}`)
-    const data = response.json()
+    const data = await response.json()
+    // console.log(data)
+    setDriverUser(data)
+    
   } catch (e) {
     console.log(e)
   }
 }
 
+//get all drivers user info
 const getDriversByUser = async () => {
   try{
     const response = await fetch(`api/users/`)
@@ -49,9 +54,10 @@ useEffect(() => {
     getDriversByUser()
   }, [])
 
-//   console.log(driversByUser)
+// console.log(driverUser)
 
-  function availability (driver) {
+
+function availability (driver) {
     if(driver && driver.availability){
       return <div className='driver-available'>Available</div>
     }
@@ -65,9 +71,12 @@ const driverInfo = (id) => {
     //finding the drivers user info by the index from the nested user id in 'driver'
     const driverIndex = driversByUser.findIndex(element => element._id === id)
     if (driverIndex >= 0){
+        //returing the name of the corresponding user in the card details
         return <>{driversByUser[driverIndex].name}</>
     }
 }
+
+
 
   return (
     <>
@@ -86,7 +95,10 @@ const driverInfo = (id) => {
               drivers.map((driver) => {
                 return (
                   <div className='res-icon' key={driver._id} id='res-icon-index' onClick={() => {
+                    setDriverUser(null)
                     setFoundDriver(driver)
+                    getUser(driver.user)
+                    navigate('/driver')
                   }}>
                     <div className='res-image'>
                       <img src={driver.image} />

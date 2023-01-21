@@ -9,7 +9,7 @@ router.post('/', dataController.create, apiController.auth)
 // POST /api/users/login
 router.post('/login', dataController.login, apiController.auth)
 // GET /api/users/:id
-router.get('/:id', dataController.getUser, apiController.auth)
+router.get('/:id', dataController.getUser, apiController.driverUser)
 // GET /api/users
 router.get('/', dataController.getDriverUsers, apiController.index)
 
