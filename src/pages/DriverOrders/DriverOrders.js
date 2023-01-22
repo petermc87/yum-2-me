@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
+import OrderList from '../../components/OrderList/OrderList'
 
 export default function DriverOrders ({
   driverProfile,
@@ -7,7 +8,9 @@ export default function DriverOrders ({
   setActiveOrder,
   activeOrder,
   user,
-  getRestaurant
+  getRestaurant,
+  foundRestaurant,
+  setCurrentOrder
 }) {
   const [orders, setOrders] = useState([])
 
@@ -20,26 +23,36 @@ export default function DriverOrders ({
       console.log(err)
     }
   }
-  // const getDriver
-  // console.log(foundDriver)
-  // console.log(driverProfile)
 
   useEffect(() => {
     getAssignedOrders(user._id)
   }, [])
 
-  // console.log(orders)
-  // console.log(user._id)
+  console.log(activeOrder)
   return (
     <>
-      {/* <OrderDetail
+      <h1>Assigned Orders</h1>
+      <OrderList
           orders={orders}
           setActiveOrder={setActiveOrder}
           getRestaurant={getRestaurant}
           user={user}
           activeOrder={activeOrder}
-    
-      /> */}
+      />
+      <div className='form-container'>
+        <br />
+        <br />
+        {activeOrder !== null
+          ? <div className='menu-select'>
+            <OrderDetail
+              order={activeOrder}
+              foundRestaurant={foundRestaurant}
+              setCurrentOrder={setCurrentOrder}
+              user={user}
+            />
+            </div>
+          : ''}
+      </div>
     </>
   )
 }

@@ -409,6 +409,8 @@ export default function HomePage (props) {
                           activeOrder={activeOrder}
                           getRestaurant={getRestaurant}
                           user={props.user}
+                          foundRestaurant={foundRestaurant}
+                          setCurrentOrder={setCurrentOrder}
                                               />}
                       />
                     </>}

@@ -21,7 +21,7 @@ export default function OrderDetail ({
     />
   )
 
-  console.log(order)
+  // console.log(order)
   // console.log(user)
   return (
     <>
