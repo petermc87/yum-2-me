@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
+import { useEffect } from 'react'
+
 export default function DriverShowPage ({
   foundDriver,
   driverUser,
@@ -41,7 +43,7 @@ export default function DriverShowPage ({
         },
         body: JSON.stringify({
           assigned: true,
-          driver: user._id
+          driver: driverUser._id
           // user: true
         })
       })
@@ -53,7 +55,12 @@ export default function DriverShowPage ({
     }
   }
 
+
+
+  // useEffect(() => {
+  //     console.log(driverUser._id)
   // console.log(foundDriver)
+  // }, [])
 
   return (
     <div className='driver-showpage'>
