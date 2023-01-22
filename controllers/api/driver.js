@@ -31,6 +31,23 @@ const dataController = {
       res.status(400).send({ msg: e.message })
     }
   },
+    //update orders
+    async updateDriverOrders (req, res, next){
+      try {
+        const updatedDriver = await Driver.findByIdAndUpdate(req.params.id, {
+          $push: {
+            assignedOrders: req.body
+          },
+          availability: false
+        })
+        res.locals.data.driver = updatedDriver
+        next()
+      } catch (e) {
+        res.status(400).send({ msg: e.message })
+      }
+    },
+
+
   //Delete
   async delete (req, res, next){
     try {

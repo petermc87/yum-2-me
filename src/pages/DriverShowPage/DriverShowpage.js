@@ -14,16 +14,22 @@ export default function DriverShowPage({
   //adding the selected order into selected drivers profile
   const updateDriver = async () => {
         try{
-          const response = await fetch(`/api/drivers/${foundDriver._id}`, {
+          const response = await fetch(`/api/drivers/orders/${foundDriver._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                assignedOrders : activeOrder,
-                availability: false
+            // body: JSON.stringify({
+            //     assignedOrders : activeOrder,
+            //     availability: false
 
-            })
+            // })
+                body: JSON.stringify({ 
+                  ...activeOrder,
+                availability: false
+                
+                })
+
           })
           const data = await response.json()
           setFoundDriver(data)
@@ -32,6 +38,7 @@ export default function DriverShowPage({
           console.error(e)
         } 
       }
+  
 
  const updateOrderAssginment = async () => {
         try{

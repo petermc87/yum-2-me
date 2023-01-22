@@ -13,13 +13,14 @@ import RestaurantOrderHistory from '../RestaurantOrderHistory/RestaurantOrderHis
 import DriverProfilePage from '../ProfilePages/DriverProfilePage'
 import AllDrivers from '../AllDrivers/AllDrivers'
 import DriverShowPage from '../DriverShowPage/DriverShowpage'
+import DriverOrders from '../DriverOrders/DriverOrders'
 
 import { useState, useEffect } from 'react'
 import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 import { Routes, Route } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
+// import { act } from 'react-dom/test-utils'
 
 
 export default function HomePage (props) {
@@ -410,6 +411,12 @@ export default function HomePage (props) {
                         setFoundDriver={props.setFoundDriver}
                         foundDriver={props.foundDriver}
                                               />}
+                    />
+                    <Route
+                      path='/home' element={<DriverOrders
+                        driverProfile={props.driverProfile}
+                        foundDriver={props.foundDriver}         
+                        />}
                     />
                   </>
               }

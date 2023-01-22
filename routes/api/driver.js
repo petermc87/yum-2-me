@@ -10,6 +10,8 @@ router.post('/', dataController.create, apiController.show)
 router.delete('/:id', dataController.delete, apiController.show)
 // Update
 router.put('/:id', dataController.update, apiController.show)
+// Update
+router.put('/orders/:id', dataController.updateDriverOrders, apiController.show)
 // Show
 router.get('/:id', dataController.show, apiController.show)
 

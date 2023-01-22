@@ -102,7 +102,9 @@ const dataController = {
   async createMenu (req, res, next) {
     try {
       const newMenuItem = await Item.create(req.body)
+      //find the restaurant by the id stored in the new menu item
       await Restaurant.findByIdAndUpdate(newMenuItem.restaurantId, {
+        //push that new menu item into the menu array
         $push: {
           menu: newMenuItem._id
         }
