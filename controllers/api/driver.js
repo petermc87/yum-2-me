@@ -74,6 +74,7 @@ const dataController = {
       const orders = await Order.find(
         {"driver": req.params.id}
       )
+      
       res.locals.data.drivers = orders
       next()
     } catch (e) {

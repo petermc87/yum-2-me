@@ -405,6 +405,7 @@ export default function HomePage (props) {
                         path='/home' element={<DriverOrders
                           driverProfile={props.driverProfile}
                           foundDriver={props.foundDriver}
+                          setFoundDriver={props.setFoundDriver}
                           setActiveOrder={setActiveOrder}
                           activeOrder={activeOrder}
                           getRestaurant={getRestaurant}

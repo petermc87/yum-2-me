@@ -6,7 +6,10 @@ export default function OrderDetail ({
   handleChangeQty,
   handleCheckout,
   foundRestaurant,
-  user
+  user,
+  setOrder,
+  foundDriver,
+  setFoundDriver
 }) {
   const navigate = useNavigate()
 
@@ -21,8 +24,42 @@ export default function OrderDetail ({
     />
   )
 
-  // console.log(order)
-  // console.log(user)
+  const updateOrderComplete = async () => {
+      try {
+        const response = await fetch(`/api/orders/${order._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            isComplete: true
+          })
+        })
+        const data = await response.json()
+        setOrder(data)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  
+    // console.log(foundDriver)
+
+  const updateDriverStatus = async () => {
+    try{
+      const response = await fetch(`/api/drivers/${order.driver}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          availability: true
+        })
+      })
+    } catch (e) {
+
+    }
+  }
+console.log(user)
   return (
     <>
       <div className='order-heading'>
@@ -42,34 +79,51 @@ export default function OrderDetail ({
             {lineItems}
             <section className='order-total'>
               {order.isPaid && user.userType === 'true' || user.userType === 'restaurant'
-                ? <>
-                  <br />
-                  <h3>TOTAL</h3>
-                  <span>${order.orderTotal.toFixed(2)}</span>
-                  <br />
-                  <span>Items: {order.totalQty}</span>
-                  <br />
-                  {order.isPaid && !order.assigned
-                    ? <button onClick={() => { navigate('/drivers') }}>
-                      Add Driver
-                    </button>
-                    : ''}
-
-                </>
-                : <>
-                  <span>${order.orderTotal.toFixed(2)}</span>
-                  <br />
-                  <span>Items: {order.totalQty}</span>
-                  <br />
-                  {order.isPaid
-                    ? ''
-                    : <button
-                        onClick={handleCheckout}
-                        disabled={!lineItems.length}
-                      >CHECKOUT
-                    </button>}
-
-                </>}
+                ? 
+                  <>
+                    <br />
+                    <h3>TOTAL</h3>
+                    <span>${order.orderTotal.toFixed(2)}</span>
+                    <br />
+                    <span>Items: {order.totalQty}</span>
+                    <br />
+                    {order.isPaid && !order.assigned
+                      ? <button onClick={() => { navigate('/drivers') }}>
+                        Add Driver
+                      </button>
+                      : ''}
+                  </>
+                : 
+                  <>
+                    <span>${order.orderTotal.toFixed(2)}</span>
+                    <br />
+                    <span>Items: {order.totalQty}</span>
+                    <br />
+                    {order.isPaid && user.userType == 'restaurant' || !user.userType === 'true'
+                      ? 
+                        ''
+                      : !order.isPaid && user.userType === 'false' || user.userType === 'customer'
+                        ?
+                          <button
+                            onClick={handleCheckout}
+                            disabled={!lineItems.length}
+                          >CHECKOUT
+                          </button>
+                        : !order.isComplete && user.userType === 'driver' 
+                          ?
+                            <>
+                              <button
+                                onClick={() => {
+                                  updateOrderComplete()
+                                  updateDriverStatus()
+                                }}
+                              >Order Complete</button>
+                            </>
+                          :
+                            ''
+                    }
+                  </>
+                }
             </section>
           </>
           : <div className='hungry'>Hungry?</div>}

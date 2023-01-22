@@ -5,6 +5,7 @@ import OrderList from '../../components/OrderList/OrderList'
 export default function DriverOrders ({
   driverProfile,
   foundDriver,
+  setFoundDriver,
   setActiveOrder,
   activeOrder,
   user,
@@ -46,9 +47,12 @@ export default function DriverOrders ({
           ? <div className='menu-select'>
             <OrderDetail
               order={activeOrder}
+              setOrder={setActiveOrder}
               foundRestaurant={foundRestaurant}
               setCurrentOrder={setCurrentOrder}
               user={user}
+              foundDriver={foundDriver}
+              setFoundDriver={setFoundDriver}
             />
             </div>
           : ''}
