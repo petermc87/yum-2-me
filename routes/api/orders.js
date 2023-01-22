@@ -10,6 +10,9 @@ router.get('/history', ordersCtrl.history)
 router.get('/history/restaurant/:id', ordersCtrl.historyByRestaurant)
 // GET /api/orders/:id
 router.get('/:id', ordersCtrl.order)
+// GET /api/orders/:id
+router.put('/:id', ordersCtrl.update)
+
 
 
 // POST /api/orders/cart/items/:id

@@ -325,6 +325,7 @@ export default function HomePage (props) {
                           foundDriver={props.foundDriver}
                           driverUser={driverUser}
                           activeOrder={activeOrder}
+                          user={props.user}
                         />}
                       />
                   </>

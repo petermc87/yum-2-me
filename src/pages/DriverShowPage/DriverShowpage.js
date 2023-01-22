@@ -4,8 +4,10 @@ export default function DriverShowPage({
   foundDriver,
   driverUser,
   setFoundDriver,
-  activeOrder
+  activeOrder,
+  user
 }){
+  console.log(activeOrder)
   
   const navigate = useNavigate()
 
@@ -20,6 +22,7 @@ export default function DriverShowPage({
             body: JSON.stringify({
                 assignedOrders : activeOrder,
                 availability: false
+
             })
           })
           const data = await response.json()
@@ -32,13 +35,15 @@ export default function DriverShowPage({
 
  const updateOrderAssginment = async () => {
         try{
+          console.log(activeOrder._id)
           const response = await fetch(`/api/orders/${activeOrder._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                assigned: false
+                assigned: true,
+                // user: true
             })
           })
           const data = await response.json()

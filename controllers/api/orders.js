@@ -7,7 +7,8 @@ module.exports = {
   checkout,
   history,
   historyByRestaurant,
-  order
+  order,
+  update
 }
 
 // A cart is the unpaid order for a user
@@ -88,6 +89,15 @@ async function order (req, res){
     res.status(200).json(order)
   } catch (e) {
     res.status(400).json({ msg: e.message })
+  }
+}
+
+async function update (req, res){
+  try {
+    const updatedOrder = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(updatedOrder)
+  } catch (e) {
+    res.status(400).send({ msg: e.message })
   }
 }
 

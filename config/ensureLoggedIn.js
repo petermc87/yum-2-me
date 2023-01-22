@@ -1,5 +1,9 @@
-// /config/ensureLoggedIn.js
+
 module.exports = (req, res, next) => {
-  if (!req.user) return res.status(401).json('Unauthorized')
+  // console.log(req.body.user)
+  //adding in an extra component for put request when adding driver. Its showing user
+  //as false in req.user. To get around this, an extra user component was 
+  //added in the front end put request
+  if (!req.user && !req.body.user) return res.status(401).json('Unauthorized')
   next()
 }

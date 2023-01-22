@@ -52,7 +52,7 @@ console.log(order)
                   <br />
                   <span>Items: {order.totalQty}</span>
                   <br/>
-                  {order.isPaid 
+                  {order.isPaid && !order.assigned
                     ?
                     <button onClick={()=>{navigate('/drivers')}}>
                       Add Driver
