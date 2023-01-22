@@ -5,7 +5,7 @@ const driverProfileSchema = new Schema({
   location: { type: String, required: true },
   user: { type: String },
   availability: { type: Boolean, default: true },
-  assignedOrders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
+  assignedOrders: [{ type: Schema.Types.ObjectId, ref: 'Order' }]
 }, {
   timestamps: true
 })

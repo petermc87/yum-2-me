@@ -14,7 +14,6 @@ export default function RestaurantEditPage ({
   setMenuItems,
   getMenuItems
 }) {
-  
   // ----HOOKS---//
   const [newMenuItem, setNewMenuItem] = useState({
     name: '',
@@ -105,7 +104,7 @@ export default function RestaurantEditPage ({
   return (
     <>
       <div className='button-container' id='back-button'>
-        <button onClick={()=>{navigate('/home')}}>
+        <button onClick={() => { navigate('/home') }}>
           &#8249;
         </button>
       </div>
@@ -118,7 +117,7 @@ export default function RestaurantEditPage ({
           getRestaurantsByUser={getRestaurantsByUser}
           user={user}
         />
-        
+
         <NewMenuItem
           createMenuItem={createMenuItem}
           newMenuItem={newMenuItem}

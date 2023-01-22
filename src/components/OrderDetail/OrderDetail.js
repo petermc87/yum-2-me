@@ -8,7 +8,6 @@ export default function OrderDetail ({
   foundRestaurant,
   user
 }) {
-
   const navigate = useNavigate()
 
   const lineItems = order.lineItems.map(item =>
@@ -22,9 +21,8 @@ export default function OrderDetail ({
     />
   )
 
-
-console.log(order)
-// console.log(user)
+  console.log(order)
+  // console.log(user)
   return (
     <>
       <div className='order-heading'>
@@ -44,42 +42,34 @@ console.log(order)
             {lineItems}
             <section className='order-total'>
               {order.isPaid && user.userType === 'true' || user.userType === 'restaurant'
-                ? 
-                <>
-                  <br/>
+                ? <>
+                  <br />
                   <h3>TOTAL</h3>
                   <span>${order.orderTotal.toFixed(2)}</span>
                   <br />
                   <span>Items: {order.totalQty}</span>
-                  <br/>
+                  <br />
                   {order.isPaid && !order.assigned
-                    ?
-                    <button onClick={()=>{navigate('/drivers')}}>
+                    ? <button onClick={() => { navigate('/drivers') }}>
                       Add Driver
                     </button>
-                    :
-                    ''
-                  }
+                    : ''}
 
                 </>
-                : 
-                <>
+                : <>
                   <span>${order.orderTotal.toFixed(2)}</span>
                   <br />
                   <span>Items: {order.totalQty}</span>
-                  <br/>
-                  {order.isPaid 
-                    ?
-                      ''
-                    :
-                    <button onClick={handleCheckout}
+                  <br />
+                  {order.isPaid
+                    ? ''
+                    : <button
+                        onClick={handleCheckout}
                         disabled={!lineItems.length}
                       >CHECKOUT
-                    </button>
-                  }
+                    </button>}
 
-                </>
-              }
+                </>}
             </section>
           </>
           : <div className='hungry'>Hungry?</div>}
@@ -87,4 +77,3 @@ console.log(order)
     </>
   )
 }
-

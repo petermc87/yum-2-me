@@ -69,22 +69,23 @@ async function history (req, res) {
 }
 
 async function historyByRestaurant (req, res) {
-  try{
+  try {
     const orders = await Order
       .find({
-        //finding the order by the restaurantId
-        "lineItems.item.restaurantId": req.params.id},
-        //picking the first line item in the array of items that has the restaurantId stored
-        //The restaurantId was nested when creating the new menu item
-        { "lineItems.$": 1 })
-      res.status(200).json(orders)
+        // finding the order by the restaurantId
+        'lineItems.item.restaurantId': req.params.id
+      },
+      // picking the first line item in the array of items that has the restaurantId stored
+      // The restaurantId was nested when creating the new menu item
+      { 'lineItems.$': 1 })
+    res.status(200).json(orders)
   } catch (e) {
     res.status(400).json({ msg: e.message })
   }
 }
 
-async function order (req, res){
-  try{
+async function order (req, res) {
+  try {
     const order = await Order.findById(req.params.id)
     res.status(200).json(order)
   } catch (e) {
@@ -92,7 +93,7 @@ async function order (req, res){
   }
 }
 
-async function update (req, res){
+async function update (req, res) {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
     res.status(200).json(updatedOrder)
@@ -100,6 +101,3 @@ async function update (req, res){
     res.status(400).send({ msg: e.message })
   }
 }
-
-
-

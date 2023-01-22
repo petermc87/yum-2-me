@@ -1,21 +1,20 @@
-import DriverProfileForm from "../../components/UserProfileForm/DriverProfileForm"
-import UserLogOut from "../../components/UserLogOut/UserLogOut"
+import DriverProfileForm from '../../components/UserProfileForm/DriverProfileForm'
+import UserLogOut from '../../components/UserLogOut/UserLogOut'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
 export default function DriverProfilePage ({
-    user,
-    setUser,
-    getDriverProfile,
-    setDriverProfile,
-    driverProfile,
-    setFoundDriver,
-    foundDriver
-}){
+  user,
+  setUser,
+  getDriverProfile,
+  setDriverProfile,
+  driverProfile,
+  setFoundDriver,
+  foundDriver
+}) {
+  const [showForm, setShowForm] = useState(false)
 
-    const [showForm, setShowForm] = useState(false)
-
-    return(
+  return (
     <div>
       <div className='index-header'>
         <h1>Your Profile</h1>
@@ -24,27 +23,28 @@ export default function DriverProfilePage ({
         <Route
           path='/' element={
             <DriverProfileForm
-                user={user}
-                setUser={setUser}
+              user={user}
+              setUser={setUser}
 
-                getDriverProfile={getDriverProfile}
-                setDriverProfile={setDriverProfile}
-                driverProfile={driverProfile}
+              getDriverProfile={getDriverProfile}
+              setDriverProfile={setDriverProfile}
+              driverProfile={driverProfile}
 
-                setFoundDriver={setFoundDriver}
-                foundDriver={foundDriver}
+              setFoundDriver={setFoundDriver}
+              foundDriver={foundDriver}
 
-                setShowForm={setShowForm}
-                showForm={showForm}
-            />}
+              setShowForm={setShowForm}
+              showForm={showForm}
+            />
+}
         />
       </Routes>
-        <UserLogOut
-            user={user}
-            setUser={setUser}
-            foundDriver={foundDriver}
-            setShowForm={setShowForm}
-        />
+      <UserLogOut
+        user={user}
+        setUser={setUser}
+        foundDriver={foundDriver}
+        setShowForm={setShowForm}
+      />
     </div>
-    ) 
+  )
 }

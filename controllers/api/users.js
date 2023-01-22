@@ -41,7 +41,7 @@ const dataController = {
     }
   },
   async getUser (req, res, next) {
-    try{
+    try {
       const user = await User.findById(req.params.id)
       // console.log(user)
       res.locals.data.driver = user
@@ -51,14 +51,14 @@ const dataController = {
     }
   },
   async getDriverUsers (req, res, next) {
-    try{
-      const users = await User.find({ userType: "driver" })
+    try {
+      const users = await User.find({ userType: 'driver' })
       res.locals.data.users = users
       next()
     } catch (e) {
       res.status(400).json(e)
     }
-  },
+  }
 
 }
 
@@ -73,8 +73,6 @@ const apiController = {
     res.json(res.locals.data.driver)
   }
 }
-
-
 
 module.exports = {
   checkToken,

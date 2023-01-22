@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true
   },
   // userType: { type: Boolean, required: true, default: false }
-  userType: { type: String, required: true, default: 'customer'}
+  userType: { type: String, required: true, default: 'customer' }
 }, {
   timestamps: true,
   toJSON: {

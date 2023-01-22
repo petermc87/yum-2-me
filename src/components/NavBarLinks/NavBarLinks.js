@@ -8,15 +8,12 @@ export default function NavBarLinks ({
   return (
     <>
       {user.userType === 'true' || user.userType === 'restaurant'
-        ? 
-          <li />
-        : user.userType === 'false' || user.userType === 'customer' ?
-          <li className='header-text'>
+        ? <li />
+        : user.userType === 'false' || user.userType === 'customer'
+          ? <li className='header-text'>
             <Link to='/orders'>Order History</Link>
-          </li>
-            : 
-              ''  
-      }
+            </li>
+          : ''}
       <li id='icon'>
         <Link className='cat-icon' to='/profile'><CgProfile size={22} /></Link>
       </li>
@@ -24,28 +21,26 @@ export default function NavBarLinks ({
   )
 }
 
-
 // {user.userType === true || user.userType === 'restaurant'
-// ? 
+// ?
 //   <li />
 // : user.userType === false || user.userType === 'customer' ?
 //   <li className='header-text'>
 //     <Link to='/orders'>Order History</Link>
 //   </li>
-//     : 
-//       ''  
+//     :
+//       ''
 // }
 
-
 // {user.userType === true || user.userType === 'restaurant'
-// ? 
+// ?
 //   <li />
-// : 
+// :
 //   <li className='header-text'>
 //     <Link to='/orders'>Order History</Link>
 //   </li>
 // }
 
-{/* <li className='header-text'>
+{ /* <li className='header-text'>
 <Link to='/history'></Link>
-</li> */}
+</li> */ }

@@ -6,7 +6,6 @@ export default function NewMenuItem ({
   menuHandleChange,
   handleSubmitMenuItem
 }) {
-
   const navigate = useNavigate()
 
   return (
@@ -21,10 +20,10 @@ export default function NewMenuItem ({
           <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
           <input type='text' name='price' value={newMenuItem.price} onChange={menuHandleChange} placeholder='price' required />
           <label>
-          <br/>
+            <br />
             Choose a category
-            <br/>
-            <br/>
+            <br />
+            <br />
             <select type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange}>
               <option value='starter'>Starter</option>
               <option value='main'>Main</option>
@@ -44,7 +43,6 @@ export default function NewMenuItem ({
   )
 }
 
-
-{/* <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
+{ /* <input type='text' name='name' value={newMenuItem.name} onChange={menuHandleChange} placeholder='name' required />
 <input type='text' name='price' value={newMenuItem.price} onChange={menuHandleChange} placeholder='price' required />
-<input type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange} placeholder='category' required /> */}
+<input type='text' name='category' value={newMenuItem.category} onChange={menuHandleChange} placeholder='category' required /> */ }

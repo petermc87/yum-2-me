@@ -52,7 +52,7 @@ export default function LandingPage (props) {
                 />
                 <Route
                   path='/signup' element={<SignUpPage
-                  setUser={props.setUser}
+                    setUser={props.setUser}
                                           />}
                 />
               </Routes>

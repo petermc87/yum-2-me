@@ -27,12 +27,11 @@ export default function OrderHistoryPage ({
     fetchOrderHistory()
   }, [])
 
-
   // ---EVENT HANDLERS---//
   function handleSelectOrder (order) {
     setActiveOrder(order)
   }
-console.log(user)
+  console.log(user)
   return (
     <>
       <h1>Previous Orders</h1>
@@ -58,8 +57,7 @@ console.log(user)
               user={user}
             />
             </div>
-          : ''
-        }
+          : ''}
       </div>
     </>
   )

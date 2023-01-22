@@ -13,16 +13,12 @@ export default function NewOrderPage ({
   setCart,
   setCurrentOrder
 }) {
-
-
-
   const navigate = useNavigate()
 
   useEffect(function () {
     async function getCart () {
       const cart = await ordersAPI.getCart()
       setCart(cart)
-
     }
     getCart()
   }, [])
@@ -45,13 +41,13 @@ export default function NewOrderPage ({
 
   return (
     <>
-    <div className='res-icon' id='back-button'>
-      <div className='button-container' id='back-button'>
-        <button onClick={()=>{navigate('/home')}}>
-          &#8249;
-        </button>
+      <div className='res-icon' id='back-button'>
+        <div className='button-container' id='back-button'>
+          <button onClick={() => { navigate('/home') }}>
+            &#8249;
+          </button>
+        </div>
       </div>
-    </div>
       <div className='res-icon' id='show-page'>
         <>
           <ShowRestaurant

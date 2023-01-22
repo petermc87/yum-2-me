@@ -62,8 +62,7 @@ export default class SignUpForm extends Component {
   }
 }
 
-
-{/* <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} /> */}
+{ /* <input type='checkbox' name='userType' checked={this.state.userType} onChange={(evt) => this.setState({ userType: evt.target.checked })} /> */ }
 
 { /* <form autoComplete='off' onSubmit={() =>
   {this.handleSubmit}

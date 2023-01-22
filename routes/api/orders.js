@@ -13,8 +13,6 @@ router.get('/:id', ordersCtrl.order)
 // GET /api/orders/:id
 router.put('/:id', ordersCtrl.update)
 
-
-
 // POST /api/orders/cart/items/:id
 router.post('/cart/items/:id', ordersCtrl.addToCart)
 // POST /api/orders/cart/checkout
@@ -23,4 +21,3 @@ router.post('/cart/checkout', ordersCtrl.checkout)
 router.put('/cart/qty', ordersCtrl.setItemQtyInCart)
 
 module.exports = router
- 

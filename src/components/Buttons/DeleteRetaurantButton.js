@@ -4,8 +4,7 @@ export default function DeleteRestauantButton ({
   foundRestaurant,
   deleteRestaurant
 }) {
-
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
   return (
     <>

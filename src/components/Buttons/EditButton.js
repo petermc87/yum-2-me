@@ -5,31 +5,29 @@ import Modal from 'react-bootstrap/Modal'
 export default function EditButton ({
   setShowForm
 }) {
-
-
-return(
+  return (
     <>
       <div className='button-container'>
-         <button onClick={(e) => {
-            setShowForm(true)}}> &#x270E;
-         </button>
+        <button onClick={(e) => {
+          setShowForm(true)
+        }}
+        > &#x270E;
+        </button>
       </div>
-    </>  
+    </>
   )
 }
-
-
 
 // const [showModal, setShowModal] = useState(false)
 
 // const handleClose = () => setShowModal(false)
 // const handleShow = () => setShowModal(true)
 
-{/* <Button variant='primary' onClick={handleShow}>
+{ /* <Button variant='primary' onClick={handleShow}>
 &#x270E;
-</Button> */}
+</Button> */ }
 
-{/* <Modal className='edit-modal' show={showModal} onHide={handleClose}>
+{ /* <Modal className='edit-modal' show={showModal} onHide={handleClose}>
 <Modal.Header>
   <Modal.Title>Edit Restaurant</Modal.Title>
 </Modal.Header>
@@ -47,4 +45,4 @@ return(
     Close
   </Button>
 </Modal.Footer>
-</Modal> */}
+</Modal> */ }
