@@ -14,5 +14,7 @@ router.put('/:id', dataController.update, apiController.show)
 router.put('/orders/:id', dataController.updateDriverOrders, apiController.show)
 // Show
 router.get('/:id', dataController.show, apiController.show)
+// GET Orders
+router.get('/orders/:id', dataController.ordersIndex, apiController.index)
 
 module.exports = router

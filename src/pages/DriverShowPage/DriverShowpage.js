@@ -40,7 +40,8 @@ export default function DriverShowPage ({
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          assigned: true
+          assigned: true,
+          driver: user._id
           // user: true
         })
       })

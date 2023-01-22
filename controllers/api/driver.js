@@ -1,5 +1,5 @@
 const Driver = require('../../models/driver/driverProfile')
-
+const Order = require('../../models/customer/order')
 const dataController = {
   async index (req, res, next) {
     try {
@@ -67,6 +67,18 @@ const dataController = {
     } catch (e) {
       res.status(400).send({ msg: e.message })
     }
+  },
+
+  async ordersIndex (req, res, next) {
+    try {
+      const orders = await Order.find(
+        {"driver": req.params.id}
+      )
+      res.locals.data.drivers = orders
+      next()
+    } catch (e) {
+      res.status(400).send({ msg: e.message })
+    }
   }
 }
 
@@ -83,127 +95,3 @@ module.exports = {
   dataController,
   apiController
 }
-
-// index (req, res, next) {
-//   Driver.find({}, (err, foundDrivers) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       res.locals.data.drivers = foundDrivers
-//       next()
-//     }
-//   })
-// },
-
-// // Create
-// create (req, res, next) {
-//   Driver.create(req.body, (err, createdDriver) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       res.locals.data.driver = createdDrievr
-//       next()
-//     }
-//   })
-// },
-
-//   // Destroy
-//   destroy (req, res, next) {
-//     Driver.findByIdAndDelete(req.params.id, (err, deletedDriver) => {
-//       if (err) {
-//         res.status(400).send({
-//           msg: err.message
-//         })
-//       } else {
-//         res.locals.data.driver = deletedDriver
-//         next()
-//       }
-//     })
-//   },
-//   // Update
-//   update (req, res, next) {
-//     Driver.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedDriver) => {
-//       if (err) {
-//         res.status(400).send({
-//           msg: err.message
-//         })
-//       } else {
-//         res.locals.data.driver = updatedDriver
-//         next()
-//       }
-//     })
-//   },
-//   // Create
-//   create (req, res, next) {
-//     Driver.create(req.body, (err, createdDriver) => {
-//       if (err) {
-//         res.status(400).send({
-//           msg: err.message
-//         })
-//       } else {
-//         res.locals.data.driver = createdDriver
-//         next()
-//       }
-//     })
-//   },
-//   // Edit
-//   // Show - finding profile info by their ID
-//   show (req, res, next) {
-//     Driver.find({ user: req.params.id }, (err, foundDriver) => {
-//       if (err) {
-//         res.status(404).send({
-//           msg: err.message,
-//           output: 'Could not find a Driver with that ID'
-//         })
-//       } else {
-//         console.log(foundDriver)
-//         res.locals.data.driver = foundDriver
-//         next()
-//       }
-//     })
-//   }
-// }
-
-// createDriver (req, res, next) {
-//   Driver.create(req.body, (err, createdDriver) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       res.locals.data.Driver = createdDriver
-//       next()
-//     }
-//   })
-// },
-
-// async createBlog (req, res, next) {
-//   Blog.create(req.body, async (err, createdBlog) => {
-//     if (err) {
-//       res.status(400).send({
-//         msg: err.message
-//       })
-//     } else {
-//       await Usertest.findByIdAndUpdate(req.params.id, { $push: { blogs: createdBlog._id } })
-//       res.locals.data.user = createdBlog
-//       next()
-//     }
-//   })
-// },
-// async updateDriver (req, res, next) {
-//   User.findById(req.params.id, async (err, foundUser) => {
-//     if (err) {
-//       res.status(404).send({
-//         msg: err.message,
-//         output: 'Could not find a movie with that ID'
-//       })
-//     } else {
-//       await Driver.findByIdAndUpdate(req.params.id, { $push: { user: foundUser._id } })
-//       res.locals.data.Driver = foundUser
-//       next()
-//     }
-//   })
