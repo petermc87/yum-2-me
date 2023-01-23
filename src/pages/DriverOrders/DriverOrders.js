@@ -11,7 +11,8 @@ export default function DriverOrders ({
   user,
   getRestaurant,
   foundRestaurant,
-  setCurrentOrder
+  setCurrentOrder,
+  getDriverProfile
 }) {
   const [orders, setOrders] = useState([])
 
@@ -29,7 +30,7 @@ export default function DriverOrders ({
     getAssignedOrders(user._id)
   }, [])
 
-  console.log(activeOrder)
+  // console.log(activeOrder)
   return (
     <>
       <h1>Assigned Orders</h1>
@@ -53,6 +54,7 @@ export default function DriverOrders ({
               user={user}
               foundDriver={foundDriver}
               setFoundDriver={setFoundDriver}
+              getDriverProfile={getDriverProfile}
             />
             </div>
           : ''}

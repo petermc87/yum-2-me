@@ -412,6 +412,7 @@ export default function HomePage (props) {
                           user={props.user}
                           foundRestaurant={foundRestaurant}
                           setCurrentOrder={setCurrentOrder}
+                          getDriverProfile={props.getDriverProfile}
                                               />}
                       />
                     </>}

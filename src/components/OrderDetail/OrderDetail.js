@@ -11,7 +11,8 @@ export default function OrderDetail ({
   user,
   setOrder,
   foundDriver,
-  setFoundDriver
+  setFoundDriver,
+  getDriverProfile
 }) {
   const navigate = useNavigate()
 
@@ -59,16 +60,15 @@ export default function OrderDetail ({
         })
       })
       const data = await response.json()
-      console.log(data)
-      // setFoundDriver(data)
-      // setOrder(order)
+      getDriverProfile(user._id)
+      
     } catch (e) {
       console.error(e)
     }
   }
 // console.log(foundDriver[0])
-console.log(order.isPaid)
-console.log(user)
+// console.log(order.isPaid)
+// console.log(user)
 
   return (
     <>

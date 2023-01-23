@@ -8,7 +8,7 @@ export default function OrderList ({
   user,
   activeOrder
 }) {
-  console.log(orders)
+  // console.log(orders)
   const orderItems = orders.map(order =>
     <OrderListItem
       order={order}
