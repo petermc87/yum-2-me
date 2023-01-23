@@ -1,5 +1,5 @@
-
 const Customer = require('../../models/customer/customerProfile')
+const Rating = require('../../models/rating/rating')
 
 const dataController = {
   // Index,
@@ -71,6 +71,7 @@ const dataController = {
     })
   }
 }
+
 
 const apiController = {
   index (req, res, next) {

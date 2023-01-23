@@ -1,4 +1,5 @@
 const Restaurant = require('../../models/restaurant/restaurantProfile')
+const Rating = require('../../models/rating/rating')
 
 const Item = require('../../models/restaurant/item')
 
@@ -56,35 +57,6 @@ const dataController = {
       }
     })
   },
-  // Update Menu
-  // async updateMenu (req, res, next) {
-
-  //   try {
-  //     const addedItem = await Item.findById(req.params.id)
-  //     await Restaurant.findByIdAndUpdate(addedItem.company, {
-  //       $push: {
-  //         menu: req.params.id
-  //       }
-  //     })
-  //     res.status(200).json(addedItem)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
-
-  // Create
-  // create (req, res, next) {
-  //   Restaurant.create(req.body, (err, createdRestaurant) => {
-  //     if (err) {
-  //       res.status(400).send({
-  //         msg: err.message
-  //       })
-  //     } else {
-  //       res.locals.data.restaurant = createdRestaurant
-  //       next()
-  //     }
-  //   })
-  // },
   create (req, res, next) {
     Restaurant.create(req.body, (err, createdRestaurant) => {
       if (err) {
@@ -97,7 +69,6 @@ const dataController = {
       }
     })
   },
-
   // Create Menu item
   async createMenu (req, res, next) {
     try {
@@ -111,11 +82,29 @@ const dataController = {
       })
       res.status(200).json(newMenuItem)
       res.locals.data.restaurant = newMenuItem
+      next()
     } catch (error) {
       console.log(error)
     }
   },
-
+  //Create rating
+async createRating (req, res, next) {
+  try{
+    //stores the new rating in a variable
+    const rating = await Rating.create(req.body)
+    //finds the restaurant profile by the stored user id and updates
+    const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, {
+      $push: {
+        ratings: rating
+      }
+    })
+    res.status(200).json(restaurant)
+    res.locals.data.restaurant= restaurant
+    next()
+  } catch (e){
+    res.status(400).json(e)
+  }
+},
   // Find menu items by restaurant
   // Index by User
   indexItems (req, res, next) {
@@ -130,7 +119,6 @@ const dataController = {
       }
     })
   },
-
   // Delete Menu Items
   deleteItem (req, res, next) {
     console.log(req.params.id)
@@ -145,7 +133,6 @@ const dataController = {
       }
     })
   },
-
   // Edit
   // Show
   show (req, res, next) {
@@ -173,3 +160,71 @@ const apiController = {
 }
 
 module.exports = { dataController, apiController }
+
+
+
+// async createRating (req, res, next) {
+//   try{
+//     console.log(req.body)
+//     console.log(req.params.id)
+//     //stores the new rating in a variable
+//     const rating = await Rating.create(req.body)
+//     //finds the restaurant profile by the stored user id
+//     await Restaurant.findByIdAndUpdate(req.params.id, {
+//       $push: {
+//         ratings: rating
+//       }
+//     })
+//     res.status(200).json(rating)
+//     res.locals.data.customer = rating
+//     next()
+//   } catch (e){
+//     res.status(400).json(e)
+//   }
+// }
+
+
+
+    // restaurantComments.ratings.rater.forEach(rater => {
+    //   console.log(rater)
+    //   if(rater === rating.rater){
+    //     console.log('it already exists')
+    //   }
+    // })
+    // console.log(restaurantComments.ratings)
+
+    //   restaurantComments.ratings.forEach(rater => {
+    //   console.log(rater)
+    // })
+
+    // restaurantComments.ratings.forEach(currentrating => {
+    //   console.log(currentrating.rater._id, rating.rater)
+
+    //   if(currentrating.rater._id === rating.rater._id){
+    //     console.log('it already exists')
+    //     res.locals.data.restaurant = 'You have already created a comment'
+    //     next()
+    //   }
+    //   else()
+    // })
+
+
+
+// async createRating (req, res, next) {
+//   try{
+//     console.log(req.body)
+//     //stores the new rating in a variable
+//     const rating = await Rating.create(req.body)
+//     //finds the restaurant profile by the stored user id
+//     // await Restaurant.findByIdAndUpdate(rating.restaurant, {
+//     //   $push: {
+//     //     ratings: rating
+//     //   }
+//     // })
+//     res.status(200).json(rating)
+//     res.locals.data.customer = rating
+//     next()
+//   } catch (e){
+//     res.status(400).json(e)
+//   }
+// },
