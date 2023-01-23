@@ -1,5 +1,7 @@
 import LineItem from '../../components/LineItem/LineItem'
 import { useNavigate } from 'react-router-dom'
+// import { response } from 'express'
+import { useState, useEffect } from 'react'
 
 export default function OrderDetail ({
   order,
@@ -12,6 +14,8 @@ export default function OrderDetail ({
   setFoundDriver
 }) {
   const navigate = useNavigate()
+
+  // const [availability, setAvailability] = useState(true)
 
   const lineItems = order.lineItems.map(item =>
     <LineItem
@@ -42,24 +46,30 @@ export default function OrderDetail ({
       }
     }
   
-    // console.log(foundDriver)
-
   const updateDriverStatus = async () => {
-    try{
-      const response = await fetch(`/api/drivers/${order.driver}`, {
+    try {
+      const response = await fetch(`/api/drivers/${foundDriver[0]._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          // ...status
           availability: true
         })
       })
+      const data = await response.json()
+      console.log(data)
+      // setFoundDriver(data)
+      // setOrder(order)
     } catch (e) {
-
+      console.error(e)
     }
   }
+// console.log(foundDriver[0])
+console.log(order.isPaid)
 console.log(user)
+
   return (
     <>
       <div className='order-heading'>
@@ -78,7 +88,7 @@ console.log(user)
           ? <>
             {lineItems}
             <section className='order-total'>
-              {order.isPaid && user.userType === 'true' || user.userType === 'restaurant'
+              {order.isPaid && (user.userType === 'true' || user.userType === 'restaurant')
                 ? 
                   <>
                     <br />
@@ -99,29 +109,28 @@ console.log(user)
                     <br />
                     <span>Items: {order.totalQty}</span>
                     <br />
-                    {order.isPaid && user.userType == 'restaurant' || !user.userType === 'true'
+                    {order.isPaid === false && (user.userType === 'customer' || user.userType === 'false')
                       ? 
-                        ''
-                      : !order.isPaid && user.userType === 'false' || user.userType === 'customer'
+                      <button
+                        onClick={handleCheckout}
+                        disabled={!lineItems.length}
+                        >CHECKOUT
+                      </button>
+
+                      :  !order.isComplete && user.userType === 'driver' 
                         ?
-                          <button
-                            onClick={handleCheckout}
-                            disabled={!lineItems.length}
-                          >CHECKOUT
-                          </button>
-                        : !order.isComplete && user.userType === 'driver' 
-                          ?
-                            <>
-                              <button
-                                onClick={() => {
-                                  updateOrderComplete()
-                                  updateDriverStatus()
-                                }}
-                              >Order Complete</button>
-                            </>
+                          <>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                updateOrderComplete()
+                                updateDriverStatus()
+                              }}
+                            >Order Complete</button>
+                          </>
                           :
-                            ''
-                    }
+                          ''
+                      }
                   </>
                 }
             </section>
@@ -131,3 +140,5 @@ console.log(user)
     </>
   )
 }
+
+

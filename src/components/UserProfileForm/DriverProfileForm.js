@@ -81,9 +81,11 @@ export default function DriverProfileForm ({
     setShowForm(false)
   }
 
+
+  console.log(foundDriver)
   return (
     <>
-      {foundDriver[0]
+      {foundDriver && foundDriver[0] 
         ? showForm
           ? <>
             <form onSubmit={(e) => { handleSubmitUpdate(e) }}>

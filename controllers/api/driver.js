@@ -24,6 +24,7 @@ const dataController = {
   // update
   async update (req, res, next) {
     try {
+      console.log(req.body)
       const updatedDriver = await Driver.findByIdAndUpdate(req.params.id, req.body, { new: true })
       res.locals.data.driver = updatedDriver
       next()
@@ -35,9 +36,11 @@ const dataController = {
   async updateDriverOrders (req, res, next) {
     try {
       const updatedDriver = await Driver.findByIdAndUpdate(req.params.id, {
+        //adding assigned order on selection from the restaurant
         $push: {
           assignedOrders: req.body
         },
+        //if an order is assigned, the driver is occupied with that delivery
         availability: false
       })
       res.locals.data.driver = updatedDriver

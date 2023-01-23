@@ -48,6 +48,7 @@ export default function DriverShowPage ({
         })
       })
       const data = await response.json()
+      console.log(data)
       setFoundDriver(data)
       //   getDriverProfile(user._id)
     } catch (e) {
