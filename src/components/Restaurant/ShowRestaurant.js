@@ -17,6 +17,7 @@ export default function ShowRestaurant ({
 
   const [showForm, setShowForm] = useState(false)
   const [newRestaurantInfo, setNewRestaurantInfo] = useState()
+  const [showComments, setShowComments] = useState(false)
 
   const updateRestaurant = async () => {
     try {
@@ -134,6 +135,92 @@ export default function ShowRestaurant ({
         </div>
         : ''}
 
+        <div>
+          {!showComments
+            ?
+              <>
+                <div onClick={() => {setShowComments(true)}}><h4>show all reviews &#8964;</h4></div>  
+              </>
+            :
+              <>
+                <div onClick={() => {setShowComments(false)}}><h4>hide reviews &#8963;</h4></div>  
+              </>
+          }
+        </div>
+        <div className='comment-container'>
+
+          <div className='info-container'>
+            <div className='info' id="user-item">
+                <div className='image-container'>
+                  <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+                </div>
+                <div className='name-container'><p>Peter</p></div>
+              </div>
+            <div className='info'>
+              <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+            </div>
+          </div>
+
+          <div className='comment-left'>
+            <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+          </div>
+        </div>
+        {showComments 
+          ?
+          <div className='all-reviews'>
+            <div className='comment-container'>
+              <div className='info-container'>
+                <div className='info' id="user-item">
+                    <div className='image-container'>
+                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+                    </div>
+                    <div className='name-container'><p>Peter</p></div>
+                  </div>
+                <div className='info'>
+                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+                </div>
+              </div>
+              <div className='comment-left'>
+                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+              </div>
+            </div>
+            <div className='comment-container'>
+              <div className='info-container'>
+                <div className='info' id="user-item">
+                    <div className='image-container'>
+                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+                    </div>
+                    <div className='name-container'><p>Peter</p></div>
+                  </div>
+                <div className='info'>
+                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+                </div>
+              </div>
+              <div className='comment-left'>
+                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+              </div>
+            </div>
+            <div className='comment-container'>
+              <div className='info-container'>
+                <div className='info' id="user-item">
+                    <div className='image-container'>
+                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+                    </div>
+                    <div className='name-container'><p>Peter</p></div>
+                  </div>
+                <div className='info'>
+                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+                </div>
+              </div>
+              <div className='comment-left'>
+                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+              </div>
+            </div>
+          </div>
+          :
+          ''
+        }
+  <br/>
     </>
   )
 }

@@ -544,6 +544,59 @@ input:focus{
   padding-bottom: 2rem;
 }
 
+
+/* ratings */
+.comment-container{
+  border-top: solid rgb(193, 193, 193);
+  max-width: 40rem;
+  /* border-radius: 0.5rem; */
+  border-radius: 0;
+  /* padding: 0.2rem; */
+  border-width: 0.1px;
+  /* border-bottom: solid gray; */
+}
+.info-container{
+  display: grid;
+  grid-template-columns: 0.6fr 1.5fr 
+}
+
+
+#user-item{
+    display: grid;
+  grid-template-columns: 0.6fr 1fr; 
+/*     border: solid orange; */
+}
+.comment{
+  /* border-top: solid gray; */
+  word-wrap: break-word;
+
+  border-width: .03px;
+  padding: 0.2rem;
+}
+.stars{
+/*   border: solid gray; */
+  color: gold;
+  font-size: 1.5rem;
+  margin-top: 0.7rem;
+}
+
+.image > img{
+  width: 50%;
+  height: 60%;
+  border-radius: 50%;
+  margin: 0.7rem 
+}
+.name-container > p{
+  word-wrap: break-word;
+}
+
+/* .comments-container:last-child {
+  border-bottom: solid black;
+} */
+
+
+
+
 /* BOTTOM CONTENT */
 .info-item{
   padding: 10%;
