@@ -594,7 +594,10 @@ input:focus{
   border-bottom: solid black;
 } */
 
-
+.review-reveal:hover{
+  cursor: pointer;
+  color: gray;
+}
 
 
 /* BOTTOM CONTENT */

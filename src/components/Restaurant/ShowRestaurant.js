@@ -2,6 +2,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import DeleteRestauantButton from '../Buttons/DeleteRetaurantButton'
 import EditButton from '../Buttons/EditButton'
 import { useEffect, useState } from 'react'
+import Ratings from '../Ratings/Ratings'
+import { Rating } from '@mui/material'
 
 // handleChange function? might not work for each element. Try to dry this
 
@@ -50,10 +52,23 @@ export default function ShowRestaurant ({
     navigate('/home')
   }
 
+ const allReviews = foundRestaurant.ratings.map(rating => {
+      <Ratings
+        rating={rating}
+      />
+    })
+
+    // console.log(foundRestaurant.ratings.map(rating => {
+    //   console.log(rating)
+    // }))
+    // console.log(foundRestaurant.ratings[0])
+    // console.log(foundRestaurant.ratings.map(rating => console.log(rating.rating)))
+// console.log(foundRestaurant)
   return (
     <>
       {showForm
-        ? <form onSubmit={(e) => {
+        ? 
+          <form onSubmit={(e) => {
           handleSubmit(e)
         }}
           >
@@ -96,20 +111,21 @@ export default function ShowRestaurant ({
             </button>
           </div>
 
-        </form>
-        : <>
-          <br />
-          <h2>{foundRestaurant.name}</h2>
-          <br />
-          <div className='menu-image'>
-            <img src={foundRestaurant.image} />
-          </div>
-          <h2>{foundRestaurant.type}</h2>
-          <h3>Location: <br />{foundRestaurant.location}</h3>
-          <br />
-          <br />
-          <br />
-        </>}
+          </form>
+        : 
+          <>
+            <br />
+            <h2>{foundRestaurant.name}</h2>
+            <br />
+            <div className='menu-image'>
+              <img src={foundRestaurant.image} />
+            </div>
+            <h2>{foundRestaurant.type}</h2>
+            <h3>Location: <br />{foundRestaurant.location}</h3>
+            <br />
+            <br />
+            <br />
+          </>}
       <div className='menu-button'>
         {user.userType === 'true' || user.userType === 'restaurant'
           ? <>
@@ -134,91 +150,83 @@ export default function ShowRestaurant ({
           </button>
         </div>
         : ''}
-
+        
         <div>
           {!showComments
             ?
               <>
-                <div onClick={() => {setShowComments(true)}}><h4>show all reviews &#8964;</h4></div>  
+                <div className='review-reveal' onClick={() => {setShowComments(true)}}><h4>show all reviews &#8964;</h4></div>  
               </>
             :
               <>
-                <div onClick={() => {setShowComments(false)}}><h4>hide reviews &#8963;</h4></div>  
+                <div className='review-reveal' onClick={() => {setShowComments(false)}}><h4>hide reviews &#8963;</h4></div>  
               </>
           }
         </div>
-        <div className='comment-container'>
-
-          <div className='info-container'>
-            <div className='info' id="user-item">
-                <div className='image-container'>
-                  <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-                </div>
-                <div className='name-container'><p>Peter</p></div>
-              </div>
-            <div className='info'>
-              <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-            </div>
-          </div>
-
-          <div className='comment-left'>
-            <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-          </div>
-        </div>
+        {/* <Ratings/> */}
         {showComments 
-          ?
-          <div className='all-reviews'>
-            <div className='comment-container'>
-              <div className='info-container'>
-                <div className='info' id="user-item">
-                    <div className='image-container'>
-                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-                    </div>
-                    <div className='name-container'><p>Peter</p></div>
-                  </div>
-                <div className='info'>
-                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-                </div>
-              </div>
-              <div className='comment-left'>
-                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-              </div>
-            </div>
-            <div className='comment-container'>
-              <div className='info-container'>
-                <div className='info' id="user-item">
-                    <div className='image-container'>
-                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-                    </div>
-                    <div className='name-container'><p>Peter</p></div>
-                  </div>
-                <div className='info'>
-                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-                </div>
-              </div>
-              <div className='comment-left'>
-                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-              </div>
-            </div>
-            <div className='comment-container'>
-              <div className='info-container'>
-                <div className='info' id="user-item">
-                    <div className='image-container'>
-                      <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-                    </div>
-                    <div className='name-container'><p>Peter</p></div>
-                  </div>
-                <div className='info'>
-                  <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-                </div>
-              </div>
-              <div className='comment-left'>
-                <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-              </div>
-            </div>
-          </div>
+          ? foundRestaurant.ratings.length
+            ?
+              // allReviews
+              foundRestaurant.ratings.map(rating => {
+                <Rating
+                  rating={rating}
+                />
+              })
+            // <div className='all-reviews'>
+            //   <div className='comment-container'>
+            //     <div className='info-container'>
+            //       <div className='info' id="user-item">
+            //           <div className='image-container'>
+            //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+            //           </div>
+            //           <div className='name-container'><p>Peter</p></div>
+            //         </div>
+            //       <div className='info'>
+            //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+            //       </div>
+            //     </div>
+            //     <div className='comment-left'>
+            //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+            //     </div>
+            //   </div>
+            //   <div className='comment-container'>
+            //     <div className='info-container'>
+            //       <div className='info' id="user-item">
+            //           <div className='image-container'>
+            //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+            //           </div>
+            //           <div className='name-container'><p>Peter</p></div>
+            //         </div>
+            //       <div className='info'>
+            //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+            //       </div>
+            //     </div>
+            //     <div className='comment-left'>
+            //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+            //     </div>
+            //   </div>
+            //   <div className='comment-container'>
+            //     <div className='info-container'>
+            //       <div className='info' id="user-item">
+            //           <div className='image-container'>
+            //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
+            //           </div>
+            //           <div className='name-container'><p>Peter</p></div>
+            //         </div>
+            //       <div className='info'>
+            //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
+            //       </div>
+            //     </div>
+            //     <div className='comment-left'>
+            //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
+            //     </div>
+            //   </div>
+            // </div>
+            :
+              ''
           :
-          ''
+            ''
         }
   <br/>
     </>
