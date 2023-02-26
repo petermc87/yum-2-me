@@ -22,8 +22,6 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-
-    /* background-color: var(--tan-4); */
     padding: 2vmin;
     height: 100vh;
   }
@@ -68,7 +66,7 @@
   -webkit-text-fill-color: transparent;
   animation: textclip 3s linear infinite;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 3rem;
   /* line-height: 10px; */
   margin: 0 auto;
 }
@@ -78,9 +76,6 @@
     background-position: 200% center;
   }
 }
-
-
-
 
 /*--- HOME PAGE ----*/
 body{
@@ -124,21 +119,53 @@ ul{
   display: flex;
   justify-content: space-between;
 }
-
-.top-container{
-  box-shadow: 0.5px 0.5px 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 20% 10% 20% 10%;
+.top-content{
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
   background-color: white;
 }
-#top-container-1{
-  width: 40%;
-  padding-left: 7%;
-  margin-right: 3px;
+
+
+
+.top-container{
+  padding: 10rem 2rem 10rem 2rem;
 }
+
+
+
+.container{
+  /* border: solid black; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 880px)  {
+  .top-content{
+    flex-direction: column;
+    
+  }
+  .animate-charcter{
+    font-size: 2.6rem;
+  }
+  .top-container{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  #top-container-1{
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    /* border-bottom: solid rgb(206, 206, 206); */
+    /* border-radius: 0; */
+    /* border-width: 0.05px; */
+    /* margin: 0 30px 0 0px; */
+  }
+}
+
 
 
 main{
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 
@@ -292,22 +319,22 @@ main{
 
 /* BUTTONS */
 
-  button {
-    background-color: blue;
-    color: white;
-    border: none;
-    margin-left: 5px;
-    margin-top: 10px;
-    width: 9rem;
-    padding: 10px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 0.2rem;
-  }
+button {
+  background-color: blue;
+  color: white;
+  border: none;
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 9rem;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 0.2rem;
+}
 
-  button:hover {
-    background: rgb(133, 133, 255);
-  }
+button:hover {
+  background: rgb(133, 133, 255);
+}
 
 .menu-button{
   display: flex;
@@ -418,8 +445,6 @@ form > button:hover{
 #menu-add{
   /* border: solid black; */
   padding-top: .57em;
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
 #menu-button-select > #button-grayed{
@@ -429,12 +454,19 @@ form > button:hover{
 
 /* FORM & PROFILE CONTAINER*/
 form, .order-list-container {
-  display: grid;
-  grid-template-rows: 2fr 2fr;
   gap: 1.25vmin;
   color: var(--text-light);
   box-shadow: 0px 0px 0.5px 0.5px rgb(0 0 0 / 30%);
-  padding: 2rem;
+  padding: 2rem; 
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+}
+
+label{
+  color: gray;
+  font-size: 0.8rem;
+  margin: 1rem 0 0.2rem 0;
 }
 
 form > h1, .menu-select > h1{
@@ -521,10 +553,12 @@ form > h1, .menu-select > h1{
 }
 
 input {
-  padding: 1vmin;
-  font-size: 2vmin;
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   border: .1vmin solid rgb(191, 191, 191);
   border-radius: .5vmin;
+  height: 1.5rem;
   color: var(--text-dark);
   background-image: none !important; 
   outline: none;
@@ -603,11 +637,21 @@ input:focus{
 /* BOTTOM CONTENT */
 .info-item{
   padding: 10%;
-  width: 90%;
+  /* width: 90%; */
   text-align: center;
   border-radius: 0;
   color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
 
+@media only screen and (max-width: 600px)  {
+  .info-item{
+    padding: 7%;
+    font-size: 1rem;
+    font-weight: 300;
+
+  }
 }
 
 #footer-list{

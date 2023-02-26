@@ -80,13 +80,9 @@ module.exports = {
   apiController
 }
 
-/* -- Helper Functions -- */
-
+// Helper Function //
+// help function so we dont have to write token information over and over
 function createJWT (user) {
-  return jwt.sign(
-    // data payload
-    { user },
-    process.env.SECRET,
-    { expiresIn: '24h' }
-  )
+  // accept a user and return a token
+  return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h'})
 }

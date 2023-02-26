@@ -1,8 +1,11 @@
 import { getToken } from './users-service'
 
-export default async function sendRequest (url, method = 'GET', payload = null) {
+export default async function sendRequest (url, method = 'GET', payload = null, clearStorage = false) {
   // Fetch takes an optional options object as the 2nd argument
   // used to include a data payload, set headers, etc.
+  if (localStorage) {
+    localStorage.clear()
+  }
   const options = { method }
   if (payload) {
     options.headers = { 'Content-Type': 'application/json' }
