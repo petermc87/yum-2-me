@@ -31,7 +31,7 @@ export default function OrderHistoryPage ({
   function handleSelectOrder (order) {
     setActiveOrder(order)
   }
-  console.log(user)
+  // console.log(user)
   return (
     <>
       <h1>Previous Orders</h1>

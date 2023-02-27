@@ -84,5 +84,5 @@ module.exports = {
 // help function so we dont have to write token information over and over
 function createJWT (user) {
   // accept a user and return a token
-  return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h'})
+  return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h' })
 }
