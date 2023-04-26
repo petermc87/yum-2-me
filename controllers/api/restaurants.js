@@ -87,24 +87,24 @@ const dataController = {
       console.log(error)
     }
   },
-  //Create rating
-async createRating (req, res, next) {
-  try{
-    //stores the new rating in a variable
-    const rating = await Rating.create(req.body)
-    //finds the restaurant profile by the stored user id and updates
-    const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, {
-      $push: {
-        ratings: rating
-      }
-    })
-    res.status(200).json(restaurant)
-    res.locals.data.restaurant= restaurant
-    next()
-  } catch (e){
-    res.status(400).json(e)
-  }
-},
+  // Create rating
+  async createRating (req, res, next) {
+    try {
+    // stores the new rating in a variable
+      const rating = await Rating.create(req.body)
+      // finds the restaurant profile by the stored user id and updates
+      const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, {
+        $push: {
+          ratings: rating
+        }
+      })
+      res.status(200).json(restaurant)
+      res.locals.data.restaurant = restaurant
+      next()
+    } catch (e) {
+      res.status(400).json(e)
+    }
+  },
   // Find menu items by restaurant
   // Index by User
   indexItems (req, res, next) {
@@ -161,8 +161,6 @@ const apiController = {
 
 module.exports = { dataController, apiController }
 
-
-
 // async createRating (req, res, next) {
 //   try{
 //     console.log(req.body)
@@ -183,32 +181,28 @@ module.exports = { dataController, apiController }
 //   }
 // }
 
+// restaurantComments.ratings.rater.forEach(rater => {
+//   console.log(rater)
+//   if(rater === rating.rater){
+//     console.log('it already exists')
+//   }
+// })
+// console.log(restaurantComments.ratings)
 
+//   restaurantComments.ratings.forEach(rater => {
+//   console.log(rater)
+// })
 
-    // restaurantComments.ratings.rater.forEach(rater => {
-    //   console.log(rater)
-    //   if(rater === rating.rater){
-    //     console.log('it already exists')
-    //   }
-    // })
-    // console.log(restaurantComments.ratings)
+// restaurantComments.ratings.forEach(currentrating => {
+//   console.log(currentrating.rater._id, rating.rater)
 
-    //   restaurantComments.ratings.forEach(rater => {
-    //   console.log(rater)
-    // })
-
-    // restaurantComments.ratings.forEach(currentrating => {
-    //   console.log(currentrating.rater._id, rating.rater)
-
-    //   if(currentrating.rater._id === rating.rater._id){
-    //     console.log('it already exists')
-    //     res.locals.data.restaurant = 'You have already created a comment'
-    //     next()
-    //   }
-    //   else()
-    // })
-
-
+//   if(currentrating.rater._id === rating.rater._id){
+//     console.log('it already exists')
+//     res.locals.data.restaurant = 'You have already created a comment'
+//     next()
+//   }
+//   else()
+// })
 
 // async createRating (req, res, next) {
 //   try{

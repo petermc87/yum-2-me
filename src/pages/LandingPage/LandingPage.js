@@ -7,8 +7,6 @@ import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignupPage/SignupPage'
 
 import { Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-// import user from '../../../models/customer/user'
 
 export default function LandingPage (props) {
   return (
@@ -34,9 +32,6 @@ export default function LandingPage (props) {
                   </div>
                 </div>
               </div>
-              {/* <h1></h1>
-              <br/>
-              <h2>Oh So Yummy!</h2> */}
             </div>
             <div className='top-container'>
 

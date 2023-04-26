@@ -7,7 +7,7 @@ export default async function sendRequest (url, method = 'GET', payload = null) 
   //   localStorage.clear()
   // }
   console.log(payload)
-  
+
   const options = { method }
   if (payload) {
     options.headers = { 'Content-Type': 'application/json' }

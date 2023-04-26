@@ -30,16 +30,15 @@ export default function DriverOrders ({
     getAssignedOrders(user._id)
   }, [])
 
-  // console.log(activeOrder)
   return (
     <>
       <h1>Assigned Orders</h1>
       <OrderList
-          orders={orders}
-          setActiveOrder={setActiveOrder}
-          getRestaurant={getRestaurant}
-          user={user}
-          activeOrder={activeOrder}
+        orders={orders}
+        setActiveOrder={setActiveOrder}
+        getRestaurant={getRestaurant}
+        user={user}
+        activeOrder={activeOrder}
       />
       <div className='form-container'>
         <br />

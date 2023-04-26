@@ -51,32 +51,27 @@ export default function OrderListItem ({
             </div>
             <div>
               {/* checking if there is a order in progress or not */}
-              <div>Delivery: {restaurantOrder.assigned && !restaurantOrder.isComplete 
-                ? 
-                  <div className='delivery-progress'>in progress</div>
+              <div>Delivery: {restaurantOrder.assigned && !restaurantOrder.isComplete
+                ? <div className='delivery-progress'>in progress</div>
                 : restaurantOrder.isComplete && restaurantOrder.assigned
-                    ? 
-                      <div className='delivery-complete'>complete</div>
-                    : 
-                      <div className='delivery-not-started'>not started</div>}
+                  ? <div className='delivery-complete'>complete</div>
+                  : <div className='delivery-not-started'>not started</div>}
               </div>
               <div>Paid: {restaurantOrder.isPaid ? 'yes' : 'no'}</div>
             </div>
           </>
           : user && user.userType === 'false' || user && user.userType === 'customer'
-            ? 
-              <>
-                <div>
-                  <div>Order ID: {order.orderId}</div>
-                  <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
-                </div>
-                <div>
-                  <div>${order.orderTotal.toFixed(2)}</div>
-                  <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
-                </div>
-              </>
-            : 
-              <>Invalid</>}
+            ? <>
+              <div>
+                <div>Order ID: {order.orderId}</div>
+                <div>{new Date(order.updatedAt).toLocaleDateString()}</div>
+              </div>
+              <div>
+                <div>${order.orderTotal.toFixed(2)}</div>
+                <div>{order.totalQty} Item{order.totalQty > 1 ? 's' : ''}</div>
+              </div>
+            </>
+            : <>Invalid</>}
       </div>
     </>
   )

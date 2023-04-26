@@ -8,7 +8,7 @@ const restaurantProfileSchema = new Schema({
   location: { type: String, required: true },
   type: { type: String },
   menu: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
-  ratings: {type: Array}
+  ratings: { type: Array }
 }, {
   timestamps: true
 })

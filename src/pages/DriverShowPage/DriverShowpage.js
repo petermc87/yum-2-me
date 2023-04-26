@@ -9,8 +9,6 @@ export default function DriverShowPage ({
   activeOrder,
   user
 }) {
-  // console.log(activeOrder)
-
   const navigate = useNavigate()
 
   // adding the selected order into selected drivers profile
@@ -55,13 +53,6 @@ export default function DriverShowPage ({
       console.error(e)
     }
   }
-
-
-
-  // useEffect(() => {
-  //     console.log(driverUser._id)
-  // console.log(foundDriver)
-  // }, [])
 
   return (
     <div className='driver-showpage'>

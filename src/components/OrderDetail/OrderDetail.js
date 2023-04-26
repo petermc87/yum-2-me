@@ -30,23 +30,23 @@ export default function OrderDetail ({
   )
 
   const updateOrderComplete = async () => {
-      try {
-        const response = await fetch(`/api/orders/${order._id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            isComplete: true
-          })
+    try {
+      const response = await fetch(`/api/orders/${order._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          isComplete: true
         })
-        const data = await response.json()
-        setOrder(data)
-      } catch (e) {
-        console.error(e)
-      }
+      })
+      const data = await response.json()
+      setOrder(data)
+    } catch (e) {
+      console.error(e)
     }
-  
+  }
+
   const updateDriverStatus = async () => {
     try {
       const response = await fetch(`/api/drivers/${foundDriver[0]._id}`, {
@@ -61,14 +61,13 @@ export default function OrderDetail ({
       })
       const data = await response.json()
       getDriverProfile(user._id)
-      
     } catch (e) {
       console.error(e)
     }
   }
-// console.log(foundDriver[0])
-// console.log(order.isPaid)
-// console.log(user)
+  // console.log(foundDriver[0])
+  // console.log(order.isPaid)
+  // console.log(user)
 
   return (
     <>
@@ -89,50 +88,44 @@ export default function OrderDetail ({
             {lineItems}
             <section className='order-total'>
               {order.isPaid && (user.userType === 'true' || user.userType === 'restaurant')
-                ? 
-                  <>
-                    <br />
-                    <h3>TOTAL</h3>
-                    <span>${order.orderTotal.toFixed(2)}</span>
-                    <br />
-                    <span>Items: {order.totalQty}</span>
-                    <br />
-                    {order.isPaid && !order.assigned
-                      ? <button onClick={() => { navigate('/drivers') }}>
-                        Add Driver
-                      </button>
-                      : ''}
-                  </>
-                : 
-                  <>
-                    <span>${order.orderTotal.toFixed(2)}</span>
-                    <br />
-                    <span>Items: {order.totalQty}</span>
-                    <br />
-                    {order.isPaid === false && (user.userType === 'customer' || user.userType === 'false')
-                      ? 
-                      <button
+                ? <>
+                  <br />
+                  <h3>TOTAL</h3>
+                  <span>${order.orderTotal.toFixed(2)}</span>
+                  <br />
+                  <span>Items: {order.totalQty}</span>
+                  <br />
+                  {order.isPaid && !order.assigned
+                    ? <button onClick={() => { navigate('/drivers') }}>
+                      Add Driver
+                    </button>
+                    : ''}
+                </>
+                : <>
+                  <span>${order.orderTotal.toFixed(2)}</span>
+                  <br />
+                  <span>Items: {order.totalQty}</span>
+                  <br />
+                  {order.isPaid === false && (user.userType === 'customer' || user.userType === 'false')
+                    ? <button
                         onClick={handleCheckout}
                         disabled={!lineItems.length}
-                        >CHECKOUT
+                      >CHECKOUT
                       </button>
 
-                      :  !order.isComplete && user.userType === 'driver' 
-                        ?
-                          <>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                updateOrderComplete()
-                                updateDriverStatus()
-                              }}
-                            >Order Complete</button>
+                    : !order.isComplete && user.userType === 'driver'
+                        ? <>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault()
+                              updateOrderComplete()
+                              updateDriverStatus()
+                            }}
+                          >Order Complete
+                          </button>
                           </>
-                          :
-                          ''
-                      }
-                  </>
-                }
+                        : ''}
+                </>}
             </section>
           </>
           : <div className='hungry'>Hungry?</div>}
@@ -140,5 +133,3 @@ export default function OrderDetail ({
     </>
   )
 }
-
-

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import * as ordersAPI from '../../utilities/orders-api'
 import OrderList from '../../components/OrderList/OrderList'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
-// import PreviousOrderDetail from '../../components/PreviousOrderDetail/PreviousOrderDetail'
 
 export default function OrderHistoryPage ({
   user,
@@ -16,7 +15,6 @@ export default function OrderHistoryPage ({
 }) {
   // ---HOOKS--//
   const [orders, setOrders] = useState([])
-  // const [activeOrder, setActiveOrder] = useState(null)
 
   useEffect(function () {
     async function fetchOrderHistory () {
@@ -31,7 +29,7 @@ export default function OrderHistoryPage ({
   function handleSelectOrder (order) {
     setActiveOrder(order)
   }
-  // console.log(user)
+
   return (
     <>
       <h1>Previous Orders</h1>

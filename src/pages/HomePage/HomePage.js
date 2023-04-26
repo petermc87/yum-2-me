@@ -20,11 +20,9 @@ import { MdDinnerDining, MdLunchDining } from 'react-icons/md'
 import { RiCake3Fill } from 'react-icons/ri'
 import { BsCupStraw } from 'react-icons/bs'
 import { Routes, Route } from 'react-router-dom'
-// import { act } from 'react-dom/test-utils'
 
 export default function HomePage (props) {
   // ---HOOKS---//
-
   // restaurants
   const [restaurants, setRestaurants] = useState([])
   const [foundRestaurant, setFoundRestaurant] = useState(null)
@@ -431,4 +429,3 @@ export default function HomePage (props) {
     </>
   )
 }
-

@@ -26,8 +26,8 @@ export default function LineItem ({
                   {!isPaid &&
                     <button
                       className='menu-button' id='menu-button-minus' onClick={() => {
-                      handleChangeQty(lineItem.item._id, lineItem.qty - 1)
-                    }}
+                        handleChangeQty(lineItem.item._id, lineItem.qty - 1)
+                      }}
                     >−
                     </button>}
                   <span>{lineItem.qty}</span>
