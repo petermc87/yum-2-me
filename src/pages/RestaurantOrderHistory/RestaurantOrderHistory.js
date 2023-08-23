@@ -4,7 +4,6 @@ import OrderList from '../../components/OrderList/OrderList'
 import OrderDetail from '../../components/OrderDetail/OrderDetail'
 
 export default function RestaurantOrderHistory ({
-  restaurantsByUser,
   foundRestaurant,
   setActiveOrder,
   activeOrder,

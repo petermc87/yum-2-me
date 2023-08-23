@@ -8,8 +8,6 @@ export default function RestaurantProfilePage ({
   newRestaurant,
   setFoundRestaurant,
   foundRestaurant,
-  setRestaurants,
-  restaurants,
   restaurantHandleChange,
 
   selectedItems,
