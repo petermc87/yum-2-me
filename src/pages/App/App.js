@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import HomePage from '../HomePage/HomePage'
 import LandingPage from '../LandingPage/LandingPage'
@@ -35,7 +34,7 @@ function App () {
       // console.log(data)
       setRestaurantsByUser(data)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
@@ -46,7 +45,7 @@ function App () {
       const data = await response.json()
       setCustomerProfile(data)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
@@ -57,7 +56,7 @@ function App () {
       const data = await response.json()
       setRestaurantProfile(data)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
@@ -68,7 +67,7 @@ function App () {
       const data = await response.json()
       setFoundDriver(data)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -80,14 +79,13 @@ function App () {
       // console.log(data)
       setFoundCustomer(data)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
   useEffect(() => {
     fetchState()
   }, [])
-  // console.log(foundDriver)
 
   return (
     <>

@@ -2,24 +2,17 @@ import { useState, useEffect } from 'react'
 
 export default function DriverProfileForm ({
   user,
-  setUser,
-
   getDriverProfile,
-  setDriverProfile,
-  driverProfile,
-
   setFoundDriver,
   foundDriver,
   setShowForm,
   showForm
 
 }) {
-  // console.log(foundDriver)
-
   const [newDriver, setNewDriver] = useState({})
   const [newDriverInfo, setNewDriverInfo] = useState({})
 
-  // create driver
+  // Create driver
   const createDriver = async () => {
     try {
       const response = await fetch('/api/drivers', {
@@ -38,15 +31,14 @@ export default function DriverProfileForm ({
       console.error(error)
     }
   }
-  // submit driver
+  // Submit driver
   const handleSubmit = (e) => {
-    // setNewDriver({ ...newDriver, user: user._id})
     e.preventDefault()
-    // nesting the user ID when the form is being submitted
+    // Nesting the user ID when the form is being submitted
     createDriver()
     getDriverProfile(user._id)
   }
-  // new driver info
+  // New driver info
   const handleChange = (evt) => {
     setNewDriver({ ...newDriver, [evt.target.name]: evt.target.value })
     console.log(newDriverInfo)
@@ -56,7 +48,7 @@ export default function DriverProfileForm ({
     setNewDriverInfo(foundDriver)
   }, [])
 
-  // update profile
+  // Update profile
   const updateDriver = async () => {
     try {
       const response = await fetch(`/api/drivers/${foundDriver[0]._id}`, {

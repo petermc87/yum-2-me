@@ -1,4 +1,3 @@
-// import styles from './UserLogOut.module.scss';
 import { logOut } from '../../utilities/users-service'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +7,6 @@ export default function UserLogOut ({
   foundCustomer,
   foundDriver,
   setShowForm,
-  getCustomer
 }) {
   const navigate = useNavigate()
 
@@ -19,11 +17,10 @@ export default function UserLogOut ({
   }
 
   function availability () {
+    // Finding the availability of the driver in the array. This will display in their profile.
     if (foundDriver[0] && foundDriver[0].availability) {
-      // console.log('Available')
       return <div className='driver-available'>Available</div>
     } else {
-      // console.log('Not available')
       return <div className='driver-busy'>Busy</div>
     }
   }

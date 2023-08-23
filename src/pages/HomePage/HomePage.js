@@ -228,12 +228,9 @@ export default function HomePage (props) {
                       path='/profile' element={<RestaurantProfilePage
                         selectedItems={selectedItems}
                         handleAddItem={handleAddItem}
-
                         handleRemoveItem={handleRemoveItem}
-
                         user={props.user}
                         setUser={props.setUser}
-
                         setNewRestuarant={setNewRestaurant}
                         newRestaurant={newRestaurant}
                         setRestaurants={setRestaurants}
@@ -243,7 +240,6 @@ export default function HomePage (props) {
                         createRestaurant={createRestaurant}
                         restaurantHandleChange={restaurantHandleChange}
                         getRestaurantsByUser={props.getRestaurantsByUser}
-
                         menuItem={menuItem}
                         setMenuItem={setMenuItem}
                         menuItems={menuItems}
@@ -257,10 +253,8 @@ export default function HomePage (props) {
                         setRestaurantsByUser={props.setRestaurantsByUser}
                         restaurantsByUser={props.restaurantsByUser}
                         user={props.user}
-
                         setFoundRestaurant={setFoundRestaurant}
                         foundRestaurant={foundRestaurant}
-
                         getMenuItems={getMenuItems}
                         setMenuItems={setMenuItems}
                                            />}
@@ -269,15 +263,11 @@ export default function HomePage (props) {
                       path='/edit' element={<RestaurantEditPage
                         setFoundRestaurant={setFoundRestaurant}
                         foundRestaurant={foundRestaurant}
-
                         restaurantsByUser={props.restaurantsByUser}
-
                         userType={props.user.userType}
                         user={props.user}
-
                         getRestaurantsByUser={props.getRestaurantsByUser}
                         setRestaurantsByUser={props.setRestaurantsByUser}
-
                         menuItem={menuItem}
                         setMenuItem={setMenuItem}
                         menuItems={menuItems}
@@ -289,13 +279,10 @@ export default function HomePage (props) {
                       path='/restaurantorders' element={<RestaurantOrderHistory
                         restaurantsByUser={props.restaurantsByUser}
                         foundRestaurant={foundRestaurant}
-
                         activeOrder={activeOrder}
                         setActiveOrder={setActiveOrder}
-
                         getRestaurant={getRestaurant}
                         user={props.user}
-
                         getDriverProfile={props.getDriverProfile}
                         foundDriver={props.foundDriver}
                                                         />}
@@ -324,14 +311,11 @@ export default function HomePage (props) {
                       <Route
                         path='/orders/new' element={<NewOrderPage
                           foundRestaurant={foundRestaurant}
-
                           userType={props.user.userType}
                           user={props.user}
-
                           menuItems={menuItems}
                           setMenuItems={setMenuItems}
                           getMenuItems={getMenuItems}
-
                           cart={cart}
                           setCart={setCart}
                                                     />}
@@ -340,14 +324,11 @@ export default function HomePage (props) {
                       <Route
                         path='/orders' element={<OrderHistoryPage
                           user={props.user}
-
                           foundRestaurant={foundRestaurant}
                           setFoundRestaurant={setFoundRestaurant}
                           getRestaurantsByUser={props.getRestaurantsByUser}
                           getRestaurant={getRestaurant}
-
                           setCurrentOrder={setCurrentOrder}
-
                           activeOrder={activeOrder}
                           setActiveOrder={setActiveOrder}
                                                 />}
@@ -356,30 +337,22 @@ export default function HomePage (props) {
                         path='/home' element={<Restaurants
                           setRestaurants={setRestaurants}
                           restaurants={restaurants}
-
                           setFoundRestaurant={setFoundRestaurant}
                           foundRestaurant={foundRestaurant}
-
                           setMenuItems={setMenuItems}
                           menItems={menuItems}
-
                           getMenuItems={getMenuItems}
-
                           foundCustomer={props.foundCustomer}
-                          // createRestaurant={createRestaurant}
                                               />}
                       />
                       <Route
                         path='/profile' element={<CustomerProfilePage
                           handleChange={handleChange}
-
                           newCustomer={newCustomer}
                           foundCustomer={props.foundCustomer}
-
                           setNewCustomer={setNewCustomer}
                           createCustomer={createCustomer}
                           getCustomer={props.getCustomer}
-
                           user={props.user}
                           setUser={props.setUser}
                                                  />}
@@ -390,11 +363,9 @@ export default function HomePage (props) {
                         path='/profile' element={<DriverProfilePage
                           user={props.user}
                           setUser={props.setUser}
-
                           getDriverProfile={props.getDriverProfile}
                           setDriverProfile={props.getDriverProfile}
                           driverProfile={props.driverProfile}
-
                           setFoundDriver={props.setFoundDriver}
                           foundDriver={props.foundDriver}
                                                  />}

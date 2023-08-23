@@ -12,7 +12,6 @@ const dataController = {
   },
   // create
   async create (req, res, next) {
-    // console.log(req.body)
     try {
       const createdDriver = await Driver.create(req.body)
       res.locals.data.driver = createdDriver

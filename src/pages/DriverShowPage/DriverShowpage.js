@@ -1,13 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 
-import { useEffect } from 'react'
-
 export default function DriverShowPage ({
   foundDriver,
   driverUser,
   setFoundDriver,
   activeOrder,
-  user
 }) {
   const navigate = useNavigate()
 
@@ -25,7 +22,6 @@ export default function DriverShowPage ({
       })
       const data = await response.json()
       setFoundDriver(data)
-      //   getDriverProfile(user._id)
     } catch (e) {
       console.error(e)
     }
@@ -42,13 +38,11 @@ export default function DriverShowPage ({
         body: JSON.stringify({
           assigned: true,
           driver: driverUser._id
-          // user: true
         })
       })
       const data = await response.json()
       console.log(data)
       setFoundDriver(data)
-      //   getDriverProfile(user._id)
     } catch (e) {
       console.error(e)
     }

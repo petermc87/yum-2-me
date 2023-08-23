@@ -1,7 +1,5 @@
 import LineItem from '../../components/LineItem/LineItem'
 import { useNavigate } from 'react-router-dom'
-// import { response } from 'express'
-import { useState, useEffect } from 'react'
 
 export default function OrderDetail ({
   order,
@@ -11,12 +9,10 @@ export default function OrderDetail ({
   user,
   setOrder,
   foundDriver,
-  setFoundDriver,
   getDriverProfile
 }) {
-  const navigate = useNavigate()
 
-  // const [availability, setAvailability] = useState(true)
+  const navigate = useNavigate()
 
   const lineItems = order.lineItems.map(item =>
     <LineItem
@@ -55,7 +51,6 @@ export default function OrderDetail ({
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          // ...status
           availability: true
         })
       })
@@ -65,9 +60,6 @@ export default function OrderDetail ({
       console.error(e)
     }
   }
-  // console.log(foundDriver[0])
-  // console.log(order.isPaid)
-  // console.log(user)
 
   return (
     <>
@@ -86,6 +78,7 @@ export default function OrderDetail ({
         {lineItems.length
           ? <>
             {lineItems}
+            {/* Making sure both the legacy items (boolean for just restaurant and customer) and the added restaurant profile option. */}
             <section className='order-total'>
               {order.isPaid && (user.userType === 'true' || user.userType === 'restaurant')
                 ? <>
@@ -106,6 +99,7 @@ export default function OrderDetail ({
                   <br />
                   <span>Items: {order.totalQty}</span>
                   <br />
+                  {/* Covering all profiles in terms of button display for each pay state & profiel type. */}
                   {order.isPaid === false && (user.userType === 'customer' || user.userType === 'false')
                     ? <button
                         onClick={handleCheckout}

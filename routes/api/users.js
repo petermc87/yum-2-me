@@ -1,4 +1,3 @@
-// /routes/api/users.js
 const express = require('express')
 const router = express.Router()
 const { checkToken, dataController, apiController } = require('../../controllers/api/users')

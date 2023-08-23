@@ -9,9 +9,5 @@ router.get('/:id', itemsCtrl.show)
 
 // GET menu items by restaurant
 router.get('/restaurant/:id', itemsCtrl.getMenuByRestaurant)
-// router.get('/restaurant/', itemsCtrl.getMenuByRestaurant)
-
-// // DELETE menu item by restaurant
-// router.delete('/restaurant/:id', itemsCtrl.deleteMenuItemByRestaurant)
 
 module.exports = router

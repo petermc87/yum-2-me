@@ -1,5 +1,4 @@
 import OrderListItem from '../OrderListItem/OrderListItem'
-import { useState } from 'react'
 
 export default function OrderList ({
   orders,
@@ -8,7 +7,6 @@ export default function OrderList ({
   user,
   activeOrder
 }) {
-  // console.log(orders)
   const orderItems = orders.map(order =>
     <OrderListItem
       order={order}

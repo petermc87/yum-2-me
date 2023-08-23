@@ -119,7 +119,6 @@ export default function NewOrderPage ({
           />
         </>
       </div>
-
       {cart
         ? <>
           <h1>Your Order</h1>
@@ -128,12 +127,10 @@ export default function NewOrderPage ({
               <OrderDetail
                 order={cart}
                 setCurrentOrder={setCurrentOrder}
-
                 handleChangeQty={handleChangeQty}
                 handleCheckout={handleCheckout}
                 foundRestaurant={foundRestaurant}
                 user={user}
-                // setRestaurantOrder={setRestaurantOrder}
               />
             </>
           </div>

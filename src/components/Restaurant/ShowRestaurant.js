@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react'
 import Ratings from '../Ratings/Ratings'
 import { Rating } from '@mui/material'
 
-// handleChange function? might not work for each element. Try to dry this
-
 export default function ShowRestaurant ({
   setFoundRestaurant,
   foundRestaurant,
@@ -57,13 +55,6 @@ export default function ShowRestaurant ({
       rating={rating}
     />
   })
-
-  // console.log(foundRestaurant.ratings.map(rating => {
-  //   console.log(rating)
-  // }))
-  // console.log(foundRestaurant.ratings[0])
-  // console.log(foundRestaurant.ratings.map(rating => console.log(rating.rating)))
-  // console.log(foundRestaurant)
   return (
     <>
       {showForm
@@ -112,17 +103,17 @@ export default function ShowRestaurant ({
 
         </form>
         : <>
-          <br />
+            <br />
           <h2>{foundRestaurant.name}</h2>
-          <br />
+            <br />
           <div className='menu-image'>
             <img src={foundRestaurant.image} />
           </div>
           <h2>{foundRestaurant.type}</h2>
           <h3>Location: <br />{foundRestaurant.location}</h3>
-          <br />
-          <br />
-          <br />
+            <br />
+            <br />
+            <br />
         </>}
       <div className='menu-button'>
         {user.userType === 'true' || user.userType === 'restaurant'
@@ -168,56 +159,6 @@ export default function ShowRestaurant ({
               rating={rating}
             />
           })
-        // <div className='all-reviews'>
-        //   <div className='comment-container'>
-        //     <div className='info-container'>
-        //       <div className='info' id="user-item">
-        //           <div className='image-container'>
-        //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-        //           </div>
-        //           <div className='name-container'><p>Peter</p></div>
-        //         </div>
-        //       <div className='info'>
-        //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-        //       </div>
-        //     </div>
-        //     <div className='comment-left'>
-        //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-        //     </div>
-        //   </div>
-        //   <div className='comment-container'>
-        //     <div className='info-container'>
-        //       <div className='info' id="user-item">
-        //           <div className='image-container'>
-        //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-        //           </div>
-        //           <div className='name-container'><p>Peter</p></div>
-        //         </div>
-        //       <div className='info'>
-        //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-        //       </div>
-        //     </div>
-        //     <div className='comment-left'>
-        //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-        //     </div>
-        //   </div>
-        //   <div className='comment-container'>
-        //     <div className='info-container'>
-        //       <div className='info' id="user-item">
-        //           <div className='image-container'>
-        //             <div className='image'><img src='https://i.imgur.com/ShtsVkV.jpg'/></div>
-        //           </div>
-        //           <div className='name-container'><p>Peter</p></div>
-        //         </div>
-        //       <div className='info'>
-        //         <div className='stars'>  &#9733;  &#9733;  &#9733;  &#9733; &#9734;</div>
-        //       </div>
-        //     </div>
-        //     <div className='comment-left'>
-        //       <div className='comment'><p>sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfadsadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</p></div>
-        //     </div>
-        //   </div>
-        // </div>
           : ''
         : ''}
       <br />

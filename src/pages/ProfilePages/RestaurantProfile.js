@@ -1,5 +1,4 @@
 import RestaurantProfileFormn from '../../components/UserProfileForm/RestaurantProfileForm'
-import RestaurantEditPage from '../EditPages/RestaurantEditPage'
 import UserLogOut from '../../components/UserLogOut/UserLogOut'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 

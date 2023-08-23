@@ -3,7 +3,6 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail'
 import OrderList from '../../components/OrderList/OrderList'
 
 export default function DriverOrders ({
-  driverProfile,
   foundDriver,
   setFoundDriver,
   setActiveOrder,

@@ -1,24 +1,14 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 export default function RestaurantShowPage ({
   restaurantsByUser,
-  setFoundRestaurant,
-  foundRestaurant,
-  getRestaurantsByUser,
-  setRestaurantsByUser,
-  user,
-
-  getMenuItems,
-  setMenuItems
+  setFoundRestaurant
 }) {
   return (
     <>
-
       {
-
       restaurantsByUser
         ? <>
-
           <div className='index-header'>
             <h1>Your Restaurants</h1>
           </div>

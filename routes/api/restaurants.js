@@ -27,16 +27,8 @@ router.get('/menu/items/:id', dataController.indexItems, apiController.index)
 router.delete('/menu/items/:id', dataController.deleteItem, apiController.show)
 
 // RATINGS
-
 // Create
 router.post('/rating/:id', dataController.createRating, apiController.show)
 
-// //Create
-// router.post('/rating', dataController.createRating, apiController.show)
-
-// Get ratings
-
 module.exports = router
 
-// Create
-// router.post('/rating/:id', dataController.createRating, apiController.show)

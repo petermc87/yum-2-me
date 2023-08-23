@@ -4,8 +4,6 @@ require('./database')
 const Item = require('../models/restaurant/item')
 const Category = require('../models/restaurant/category')
 
-// const Restaurant = require('../models/restaurant/restaurantProfile')
-
 (async function () {
   await Category.deleteMany({})
   const categories = await Category.create([

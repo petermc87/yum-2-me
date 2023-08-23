@@ -32,7 +32,6 @@ export default function OrderListItem ({
   useEffect(() => {
     getOrder(order.id)
   }, [])
-  // console.log(restaurantOrder)
 
   return (
     <>

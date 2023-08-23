@@ -3,9 +3,6 @@ import { useState, useEffect } from 'react'
 
 export default function AllDrivers ({
   setFoundDriver,
-  foundDriver,
-  getDriverProfile,
-  driverUser,
   setDriverUser
 }) {
   const [drivers, setDrivers] = useState([])
@@ -20,7 +17,7 @@ export default function AllDrivers ({
       const data = await response.json()
       setDrivers(data)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -29,10 +26,9 @@ export default function AllDrivers ({
     try {
       const response = await fetch(`api/users/${id}`)
       const data = await response.json()
-      // console.log(data)
       setDriverUser(data)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -43,7 +39,7 @@ export default function AllDrivers ({
       const data = await response.json()
       setDriversByUser(data)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -52,7 +48,6 @@ export default function AllDrivers ({
     getDriversByUser()
   }, [])
 
-  // console.log(driverUser)
 
   function availability (driver) {
     if (driver && driver.availability) {
