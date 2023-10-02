@@ -115,6 +115,8 @@ export default function ShowRestaurant ({
             <br />
             <br />
         </>}
+        {/* If the profile is restaurant, then you are allowed to edit or delete your */}
+        {/* restaurants. */}
       <div className='menu-button'>
         {user.userType === 'true' || user.userType === 'restaurant'
           ? <>

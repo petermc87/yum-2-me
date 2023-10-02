@@ -54,7 +54,6 @@ export default function LandingPage (props) {
             </div>
           </article>
           <Perks />
-          <Perks />
         </main>
         <footer>
           <Footer />

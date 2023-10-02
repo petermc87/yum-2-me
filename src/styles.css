@@ -29,9 +29,8 @@
 
 /* LADNING PAGE */
 .info-item{
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+   background-color: rgb(241, 73, 101);
+
 }
 
 @keyframes gradient {
@@ -91,9 +90,9 @@ body{
  background-color: white;
  margin: 0 auto;
  padding: 20px;
- 
-flex-wrap: wrap;
+ flex-wrap: wrap;
 }
+
 main{
   margin: 4px;
   border-radius: 4px;
@@ -116,9 +115,11 @@ ul{
 
 /* TOP */
 .top-content, .bottom-content{
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
 }
+
+
+
 .top-content{
   box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
   background-color: white;
@@ -155,10 +156,6 @@ ul{
   #top-container-1{
     padding-top: 10rem;
     padding-bottom: 4rem;
-    /* border-bottom: solid rgb(206, 206, 206); */
-    /* border-radius: 0; */
-    /* border-width: 0.05px; */
-    /* margin: 0 30px 0 0px; */
   }
 }
 
@@ -171,7 +168,6 @@ main{
 
 /* RESTAURANT CONTAINTERS */
 .restaurant{
-  /* border: solid blue; */
   box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-around;
@@ -196,9 +192,7 @@ main{
  
 }
 .res-icon{
-  /* border: solid purple */
   background-image: url("https://i.imgur.com/yKFK1VN.png?3");
-  /* opacity: 0.7; */
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   color: #b0d3f7;
   padding: 1rem;
@@ -217,7 +211,6 @@ main{
 
 #show-page{
   width: 60vw;
-  /* box-shadow: none; */
   box-shadow: 0px 0px 0.5px 0.5px rgb(0 0 0 / 30%);
 }
 
@@ -624,38 +617,24 @@ input:focus{
   word-wrap: break-word;
 }
 
-/* .comments-container:last-child {
-  border-bottom: solid black;
-} */
-
 .review-reveal:hover{
   cursor: pointer;
   color: gray;
 }
 
 
-/* BOTTOM CONTENT */
 .info-item{
-  padding: 10%;
-  /* width: 90%; */
-  text-align: center;
-  border-radius: 0;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-
-@media only screen and (max-width: 600px)  {
-  .info-item{
-    padding: 7%;
     font-size: 1rem;
     font-weight: 300;
-
+    min-height: 400px;
+    width: 100%;
+    color: white;
+    background-color: rgb(241, 73, 101);
   }
-}
 
 #footer-list{
   border-radius: 0;
+  background-color: #44107a;
 }
 
 
