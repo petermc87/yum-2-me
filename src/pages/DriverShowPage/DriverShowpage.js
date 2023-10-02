@@ -4,7 +4,7 @@ export default function DriverShowPage ({
   foundDriver,
   driverUser,
   setFoundDriver,
-  activeOrder,
+  activeOrder
 }) {
   const navigate = useNavigate()
 

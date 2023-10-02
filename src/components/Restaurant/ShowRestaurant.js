@@ -103,20 +103,20 @@ export default function ShowRestaurant ({
 
         </form>
         : <>
-            <br />
+          <br />
           <h2>{foundRestaurant.name}</h2>
-            <br />
+          <br />
           <div className='menu-image'>
             <img src={foundRestaurant.image} />
           </div>
           <h2>{foundRestaurant.type}</h2>
           <h3>Location: <br />{foundRestaurant.location}</h3>
-            <br />
-            <br />
-            <br />
+          <br />
+          <br />
+          <br />
         </>}
-        {/* If the profile is restaurant, then you are allowed to edit or delete your */}
-        {/* restaurants. */}
+      {/* If the profile is restaurant, then you are allowed to edit or delete your */}
+      {/* restaurants. */}
       <div className='menu-button'>
         {user.userType === 'true' || user.userType === 'restaurant'
           ? <>

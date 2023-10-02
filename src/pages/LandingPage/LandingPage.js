@@ -44,7 +44,7 @@ export default function LandingPage (props) {
                     getCustomer={props.getCustomer}
                     user={props.user}
                                     />}
-                                    
+
                 />
                 <Route
                   path='/signup' element={<SignUpPage

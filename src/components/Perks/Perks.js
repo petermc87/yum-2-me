@@ -1,5 +1,4 @@
 
-
 export default function NavBar (props) {
   return (
     <article className='bottom-content'>

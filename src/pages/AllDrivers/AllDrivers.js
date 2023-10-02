@@ -48,7 +48,6 @@ export default function AllDrivers ({
     getDriversByUser()
   }, [])
 
-
   function availability (driver) {
     if (driver && driver.availability) {
       return <div className='driver-available'>Available</div>

@@ -2,27 +2,27 @@ import LoginForm from '../../components/LoginForm/LoginForm'
 export default function LoginPage (props) {
   return (
     <>
-        <div>
+      <div>
         <h2>Try out a sample account!</h2>
-          <strong>Customer:</strong>
-          <br />
-          Email: j@j.com
-          <br />
-          Password: 12345
-        <br/>
-        <br/>
-          <strong>Driver:</strong>
-            <br />
-            Email: jerry@mail.com
-            <br />
-            Password: 12345
-        <br/>
-        <br/>
-          <strong>Restaurant:</strong>
-            <br />
-            Email: me@gmail.com
-            <br />
-            Password: 12345
+        <strong>Customer:</strong>
+        <br />
+        Email: j@j.com
+        <br />
+        Password: 12345
+        <br />
+        <br />
+        <strong>Driver:</strong>
+        <br />
+        Email: jerry@mail.com
+        <br />
+        Password: 12345
+        <br />
+        <br />
+        <strong>Restaurant:</strong>
+        <br />
+        Email: me@gmail.com
+        <br />
+        Password: 12345
       </div>
 
       <h2>~ OR ~</h2>
@@ -37,6 +37,6 @@ export default function LoginPage (props) {
       />
 
     </>
-     
+
   )
 }

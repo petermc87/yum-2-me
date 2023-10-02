@@ -31,4 +31,3 @@ router.delete('/menu/items/:id', dataController.deleteItem, apiController.show)
 router.post('/rating/:id', dataController.createRating, apiController.show)
 
 module.exports = router
-

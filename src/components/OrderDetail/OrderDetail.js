@@ -11,7 +11,6 @@ export default function OrderDetail ({
   foundDriver,
   getDriverProfile
 }) {
-
   const navigate = useNavigate()
 
   const lineItems = order.lineItems.map(item =>

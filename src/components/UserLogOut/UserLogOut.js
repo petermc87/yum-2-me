@@ -6,7 +6,7 @@ export default function UserLogOut ({
   setUser,
   foundCustomer,
   foundDriver,
-  setShowForm,
+  setShowForm
 }) {
   const navigate = useNavigate()
 
